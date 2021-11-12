@@ -10,7 +10,6 @@ const FoodModals = ({data,setShowmodal,displeysetigs}) => {
 
     return (
         <div className={css.modalcontainer} >
-
           <div className={css.closebtn} onClick={()=>setShowmodal(false)}>
                 <img src={close} alt=""/>
             </div>
