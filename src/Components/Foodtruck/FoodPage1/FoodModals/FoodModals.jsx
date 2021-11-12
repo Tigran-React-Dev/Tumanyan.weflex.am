@@ -18,6 +18,7 @@ const FoodModals = ({data,setShowmodal,displeysetigs}) => {
                <div className={css.sliderfood}>
                     <FootSlider sliderdata={data.image}/>
                </div>
+
                <div className={css.infoslider}>
                     <h2>{data.title}</h2>
                     <h3>{data.date}</h3>
