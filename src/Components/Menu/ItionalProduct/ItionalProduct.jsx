@@ -6,10 +6,8 @@ import css from "./ItionalProduct.module.scss";
 
 
 
-const ItionalProduct =({idkey,setItionaldata,AddlichniyProduct,priceItional, setPriceItional,itionalitem,setItionalitem,itionaldata,setItionalData})=>{
+const ItionalProduct =({idkey,setItionaldata,ingredients,AddlichniyProduct,priceItional, setPriceItional,itionalitem,setItionalitem,itionaldata,setItionalData})=>{
 
-    // const {itionaldata,setItionaldata}=useProduct()
-    //  const [itionalData,setItionalData]=useState(itionaldata)
 
 
  
@@ -49,36 +47,53 @@ const ItionalProduct =({idkey,setItionaldata,AddlichniyProduct,priceItional, set
         <div className={css.itionalwraper}>
           <div className={css.itionalwrraper} onClick={AddlichniyProduct}/>
            <div className={css.itionalcategory} >
-               <div className={css.banjarexen}>
-                <p>Բանջարեղեն</p>
-               </div>
-               <div className={css.overfloscrol}>
-                  <form>
-                      {
-                          itionaldata[idkey].filter((item)=>item.type==="Բանջարեղեն").map((obj,i)=>{
-                              return(
-                                <CheckBox key={i} cn="Checkboxitional" onchangecheck={(e)=>onchangecheck({
-                                    ...obj,
-                                    isChecked:e.target.checked
-                                },idkey)} {...obj} />
-                              )
-                          })
 
-                      }
-                     <p className={css.souces}>Սոուսներ</p>
-                     {
-                          itionaldata[idkey].filter((item)=>item.type==="Սոուսներ").map((obj,i)=>{
-                              return(
-                                <CheckBox key={i} cn="Checkboxitional" onchangecheck={(e)=>onchangecheck({
-                                    ...obj,
-                                    isChecked:e.target.checked
-                                },idkey)} {...obj} />
-                              )
-                          })
+               {ingredients===undefined ?
+                   <>
+                   <div className={css.banjarexen}>
+                   <p>Բանջարեղեն</p>
+                   </div>
+                   <div className={css.overfloscrol}>
+                   <form>
+               {
+                   itionaldata[idkey].filter((item)=>item.type==="Բանջարեղեն").map((obj,i)=>{
+                   return(
+                   <CheckBox key={i} cn="Checkboxitional" onchangecheck={(e)=>onchangecheck({
+                   ...obj,
+                   isChecked:e.target.checked
+               },idkey)} {...obj} />
+                   )
+               })
 
-                      }
-                  </form>
+               }
+                   <p className={css.souces}>Սոուսներ</p>
+               {
+                   itionaldata[idkey].filter((item)=>item.type==="Սոուսներ").map((obj,i)=>{
+                   return(
+                   <CheckBox key={i} cn="Checkboxitional" onchangecheck={(e)=>onchangecheck({
+                   ...obj,
+                   isChecked:e.target.checked
+               },idkey)} {...obj} />
+                   )
+               })
+
+               }
+                   </form>
+                   </div>
+                   </>
+               :
+               <div className={css.ingredentsblok}>
+
+                       {
+                           ingredients.map(({id,ingredient,quantity},i)=>{
+                               return <div key={id} className={css.igraditem} style={{marginTop:i==0 ? "0px" : " 1.01vw"}}>
+                                   <p>{ingredient}</p><p>{quantity}</p>
+                               </div>
+                           })
+                       }
+
                </div>
+               }
            </div>
         </div>
     )

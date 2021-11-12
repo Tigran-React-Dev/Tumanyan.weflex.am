@@ -78,6 +78,9 @@ export const initialState = {
                 {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
                 {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
                 {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:8,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:9,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
              ]
           },
         {

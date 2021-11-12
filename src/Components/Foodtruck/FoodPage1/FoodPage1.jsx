@@ -10,9 +10,9 @@ const FoodPage1 = ({foodTruckdata}) => {
     const [activeModaldata,setACtiveModaldata]=useState({})
     const [displeysetigs,setDisplaySetins]=useState("none")
 const ShowModal =(itemWindow)=>{
-    setACtiveModaldata(itemWindow)
-    setShowmodal(!showModal)
 
+    setShowmodal(!showModal)
+    setACtiveModaldata(itemWindow)
 }
 
 
@@ -51,7 +51,7 @@ const ShowModal =(itemWindow)=>{
 
                                   </div>
                              }
-                             {showModal && <FoodModals data={activeModaldata} displeysetigs={displeysetigs} setShowmodal={setShowmodal}/>}
+                             {showModal && <FoodModals data={activeModaldata} showModal={showModal} displeysetigs={displeysetigs} setShowmodal={setShowmodal}/>}
 
                          </>
                      )

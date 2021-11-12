@@ -11,7 +11,7 @@ import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 
-const ProductBlok = ({id,like,itionaldata,setItionaldata, title, image, price, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,image, price, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
     const [itempricesitog, setpricesItog] = useState(price[0].price)
     const [activeprice, setactivprice] = useState(price[0].price)
@@ -44,7 +44,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, image, price, b
     const addtoCart = (categor) => {
 
         const newProductcard = {
-            id,
+             id,
             _id:Date.now(),
             title,
             image,
@@ -55,6 +55,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, image, price, b
             price: bonus ? (itempricesitog - (itempricesitog / 100 * bonus)) +priceItional: itempricesitog+priceItional,
             size: price.length===3 ? size==1 ? "M" : size==2 ? "L" : size==3 ? "XL" : null : price.length===2 ? size==1 ? "1 բ" : size==2 ? "2 բ"  : null : false,
             count,
+            ingredients,
             description,
             like
         }
@@ -202,6 +203,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, image, price, b
                     </div>
                     {sowlichniproductmodal &&
                     <ItionalProduct
+                        ingredients={ingredients}
                         idkey={id}
                         AddlichniyProduct={AddlichniyProduct}
                         priceItional={priceItional}

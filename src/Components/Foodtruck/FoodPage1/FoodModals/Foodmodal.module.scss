@@ -16,13 +16,6 @@
   right: 0;
   background-image: url("../../../../images/product/bgmodal.png");
   background-size: contain;
-
-  //background-color: rgba(255, 255, 255, 0.5);
-  //
-  //-webkit-backdrop-filter: blur(100px);
-
-  //backdrop-filter: blur(100px);
-  //   opacity: .9!important;
   z-index: 30;
 }
 .containmod{
@@ -33,7 +26,6 @@
   top: 0;
   right: 0;
 
-
 }
 
 
@@ -43,10 +35,6 @@
   height: get-vw(650px,1920);
   position: absolute;
   z-index: 40;
-
-
-
-  //-webkit-backdrop-filter: blur(100px)!important;
   left: get-vw(177px,1920);
   top: get-vw(215px,3000);
 
