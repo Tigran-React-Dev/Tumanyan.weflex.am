@@ -13,6 +13,7 @@ const FoodModals = ({data,setShowmodal,displeysetigs}) => {
           <div className={css.closebtn} onClick={()=>setShowmodal(false)}>
                 <img src={close} alt=""/>
             </div>
+
             <div className={css.modalimgandinfo}>
                <div className={css.sliderfood}>
                     <FootSlider sliderdata={data.image}/>
