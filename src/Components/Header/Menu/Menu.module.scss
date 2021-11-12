@@ -1,0 +1,43 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+.menu{
+    width: get-vw(625px,1920 );
+    height: get-vw(22px, 1920);
+    
+
+    ul{
+      width: 32.55208vw;
+      height: get-vw(22px, 1920);
+      display: flex;
+      margin-left: get-vw(495px,1920 );
+      align-items: center;
+      justify-content: flex-end;
+
+
+
+        li{
+          min-width: max-content;
+          margin-left: get-vw(80px,1920 );
+           a{
+             min-width: max-content;
+            text-decoration: none; 
+            font-family: Montserrat-Regular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: get-vw(18px,1920 );
+            line-height: 22px;
+            letter-spacing: -0.02em;
+            color: #252223;
+             &:hover{
+               color: #BFB7B6;
+             }
+
+           }
+          }
+    }
+    
+}

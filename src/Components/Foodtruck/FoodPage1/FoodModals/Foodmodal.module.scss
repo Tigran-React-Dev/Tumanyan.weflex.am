@@ -1,0 +1,111 @@
+
+
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+.modalcontainer{
+  width: get-vw(1920px,1920);
+  height:get-vw(1080px,1920 );
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-image: url("../../../../images/product/bgmodal.png");
+  background-size: contain;
+
+  //background-color: rgba(255, 255, 255, 0.5);
+  //
+  //-webkit-backdrop-filter: blur(100px);
+
+  //backdrop-filter: blur(100px);
+  //   opacity: .9!important;
+  z-index: 30;
+}
+.containmod{
+  width: get-vw(1920px,1920);
+  height:get-vw(1080px,1920 );
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+
+}
+
+
+
+.modalimgandinfo{
+  width: get-vw(1610px,1920);
+  height: get-vw(650px,1920);
+  position: absolute;
+  z-index: 40;
+
+
+
+  //-webkit-backdrop-filter: blur(100px)!important;
+  left: get-vw(177px,1920);
+  top: get-vw(215px,3000);
+
+  display: flex;
+  .sliderfood{
+    width: get-vw(1040px,1920 );
+    height: get-vw(650px,1920);
+
+    position: relative;
+    z-index: 50;
+  }
+  .infoslider{
+    width: get-vw(521px,1920 );
+    height: get-vw(650px,1920);
+    background: transparent;
+    margin-left: get-vw(45px,1920 );
+
+    h2{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(26px,1920);
+      line-height: 150%;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+    }
+    h3{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-top: get-vw(24px,1920);
+    }
+    p{
+      width: get-vw(512px,1920);
+      height: get-vw(561px,1920);
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920);
+      line-height: 160%;
+       letter-spacing: -0.02em;
+     color: #252223;
+      cursor: pointer;
+    }
+  }
+}
+.closebtn{
+  width: get-vw(1601px,1920);
+  height: get-vw(27px,1920);
+  margin-left: get-vw(1751px,1920);
+   margin-top: get-vw(112px,3000);
+  cursor: pointer;
+  img{
+    width: get-vw(27px,1920);
+    height: get-vw(27px,1920);
+  }
+}

@@ -1,0 +1,117 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+.projecthdr{
+  width: get-vw(1920px,1920);
+  height: get-vw(389px,1920);
+  background: #FFFFFF;
+  padding-top: get-vw(195px,1920);
+  .projrcttitle{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(80px,1920);
+    line-height: get-vw(94px,1920);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+    margin-left: get-vw(142px,1920);
+
+  }
+}
+.projectContainer{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(391px,1920);
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  .projectitemcontainer{
+    width: get-vw(1920px,1920);
+    min-height: get-vw(391px,1920);
+    display: flex;
+    flex-direction: column;
+
+
+  }
+
+}
+.controler{
+  width: get-vw(1920px,1920);
+  height: get-vw(391px,1920);
+  box-shadow: 0px -1px 0px #C4C4C4, 0px 1px 0px #C4C4C4;
+  cursor: pointer;
+  transition: all 2s;
+  -moz-transition: all 2s; /* Firefox Support */
+  -webkit-transition: all 2s; /* Chrome and Safari Support */
+  -o-transition: all 2s; /* Opera Support */
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ptojectitem{
+  width: get-vw(1636px,1920);
+  height: get-vw(391px,1920);
+
+  margin-left: get-vw(142px,1920);
+  padding-top: get-vw(110px,1920);
+  display: flex;
+  h5{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(21px,1920);
+    line-height: 160%;
+    letter-spacing: -0.02em;
+    color: #252223;
+    //margin-top: get-vw(110px,1920);
+  }
+  .titleanddescription{
+    width: get-vw(800px,1920);
+    min-height: get-vw(171px,1920);
+    display: flex;
+    flex-direction: column;
+    margin-left: get-vw(158px,1920);
+    h2{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(60px,1920);
+      line-height: get-vw(70px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+
+    }
+
+  }
+  img{
+    width: get-vw(45px,1920);
+    height: get-vw(16px,1920);
+    object-fit: cover;
+    margin-left: get-vw(503px,1920);
+    margin-top: get-vw(79px,1920);
+  }
+}
+.fotproject{
+  width: get-vw(1920px,1920);
+  height: get-vw(258px,1920);
+}
+.containerProjectmodal{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(391px,1920);
+}

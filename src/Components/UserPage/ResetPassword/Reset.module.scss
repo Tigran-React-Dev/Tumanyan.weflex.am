@@ -1,0 +1,60 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+.sendconstructor{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(236px,1920);
+  background: #FFFFFF;
+  .sendhdr{
+    width: get-vw(1920px,1920);
+    height: get-vw(236px,1920);
+
+    p{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(48px,1920);
+      line-height: get-vw(56px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+      margin-left: get-vw(142px,1920);
+      padding-top: get-vw(100px,1920);
+    }
+  }
+}
+.formresetpass{
+  width: get-vw(628px,1920);
+  height: get-vw(476px,1920);
+  margin-left: get-vw(646px,1920);
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(22px,1920);
+    letter-spacing: -0.02em;
+  }
+  .linknazat{
+
+    width: get-vw(140px,1920);
+    height: get-vw(22px,1920);
+    margin-top: get-vw(50px,1920);
+    margin-left: get-vw(244px,1920);
+    a{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(18px,1920);
+      line-height:get-vw(22px,1920);
+      text-align: center;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: #BFB7B6;
+    }
+  }
+
+}

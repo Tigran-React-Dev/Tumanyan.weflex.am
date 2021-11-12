@@ -1,0 +1,52 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+.aboutcontainer{
+   width: get-vw(1920px,1920);
+   min-height: get-vw(486px,1920);
+  background-color:#FFFFFF;
+   .abouthdr{
+     width: get-vw(1920px,1920);
+     height: get-vw(486px,1920);
+     background-image: url("../../images/bgtoabout.png");
+     background-size: cover;
+     padding-top: get-vw(195px,1920);
+     h1{
+       font-family: Mardoto-Medium;
+       font-style: normal;
+       font-weight: 500;
+       font-size: get-vw(80px,1920);
+       line-height: get-vw(94px,1920);
+       letter-spacing: -0.04em;
+       text-transform: uppercase;
+        color: #252223;
+       text-align: center;
+
+     }
+   }
+}
+.abouttitle{
+  width: get-vw(803px,1920);
+  height: get-vw(72px,1920);
+  margin: get-vw(30px,1920) auto;
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(21px,1920);
+    line-height: 170%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #252223;
+  }
+}
+.jobpicturent{
+  width: get-vw(1672px,1920);
+  min-height: get-vw(1177px,1920);
+  border: 1px solid red;
+  margin-left: get-vw(110px,1920);
+}

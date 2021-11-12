@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #FFFFFF;
+  height: 1080px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none!important;
+
+
+}
+p{
+  margin-bottom:0;
+}
+
+
+
+.main {
+  margin-top: 8.20vw;
+
+}
+
+
+@font-face {
+  font-family: "Mardoto";
+  src: local("Montserratarm-Black"),
+  url("./font/Montserrat arm/Montserratarm-Regular.otf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Mardoto-Medium";
+  src: url("./font/Mardoto/Mardoto-Medium.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Thin";
+  src: url("./font/Mardoto/Mardoto-Thin.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Bold";
+  src: url("./font/Mardoto/Mardoto-Bold.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Black";
+  src: url("./font/Mardoto/Mardoto-Black.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Medium";
+  src: url("./font/Mardoto/Mardoto-Medium.ttf");
+
+}
+
+
+@font-face {
+  font-family: "Montserrat arm";
+  src: url("./font/Montserrat arm/Montserratarm-Regular.otf");
+
+}
+@font-face {
+  font-family: "Mardoto-Regular";
+  src: url("./font/Mardoto/Mardoto-Regular.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Medium";
+  src: url("./font/Mardoto/Mardoto-Medium.ttf");
+
+}
+@font-face {
+  font-family: "Montserrat arm_normal";
+  src: url("./font/Montserrat arm/Montserratarm-Regular.otf");
+
+}
+@font-face {
+  font-family: "Montserratarm-Light";
+  src: url("./font/Montserrat arm/Montserratarm-Light.otf");
+
+}
+
+
+@font-face {
+  font-family: "Mardoto-Light";
+  src: url("./font/Mardoto/Mardoto-Light.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Thin";
+  src: url("./font/Mardoto/Mardoto-Thin.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Lighn";
+  src: url("./font/Mardoto/Mardoto-Light.ttf");
+
+}
+@font-face {
+  font-family: "manrope-reg";
+  src: url("./font/manrope/regular.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-BlackItalic";
+  src: url("./font/Mardoto/Mardoto-BlackItalic.ttf");
+
+}
+@font-face {
+  font-family: "Mardoto-Itali";
+  src: url("./font/Mardoto/Mardoto-Italic.ttf");
+
+}
+/* @font-face {
+  font-family: "Mardoto-Medium";
+  src: url("./font/Mardoto/Mardoto-Medium.ttf");
+
+} */
+@font-face {
+  font-family: "Mardoto-Medium";
+  src: url("./font/Mardoto/Mardoto-Medium.ttf");
+
+}
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("./font/Armenian/Montserrat/Montserratarm-Medium.otf");
+
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("./font/Armenian/Montserrat/Montserratarm-Regular.otf");
+
+}
+@font-face {
+  font-family: "Manrope-Medium";
+  src: url("./font/English_Russian/Manrope/Manrope-Medium.ttf");
+
+}
+@font-face {
+  font-family: "Montserratarm-Light";
+  src: url("./font/Montserrat arm/Montserratarm-Light.otf");
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.foodcontainer{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(648px,1920);
+  background: #ffffff;
+  .foodhdr{
+    width: get-vw(1920px,1920);
+    height: get-vw(548px,1920);
+    background-image: url("../../images/product/foodtruckhdr.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: get-vw(227px,1920);
+    h1{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(80px,1920);
+      line-height: get-vw(94px,1920);
+       text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+
+    }
+  }
+  .btnfoodmenu{
+    width: get-vw(1920px,1920);
+    height: get-vw(100px,1920);
+    display: flex;
+    .btnfood{
+      width: get-vw(640px,1920);
+      height: get-vw(100px,1920);
+      background: #13AD54;
+      box-shadow: inset -2px 0px 0px #FFFFFF;
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size:get-vw(24px,1920);
+      line-height: get-vw(28px,1920);
+      text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      &:hover{
+        background: #EB2F2F;
+        color: #FFFFFF;
+        
+
+      }
+    }
+  }
+}
+.foodcontainer2{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(703px,1920);
+  margin-left: get-vw(102px,1920);
+  margin-top: get-vw(20px,1920);
+  position: relative;
+}

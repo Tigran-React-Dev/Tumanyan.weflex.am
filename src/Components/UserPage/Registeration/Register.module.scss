@@ -1,0 +1,79 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+.registerconstructor{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(236px,1920);
+  background: #FFFFFF;
+  .reghdr{
+    width: get-vw(1920px,1920);
+    height: get-vw(211px,1920);
+
+    p{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(48px,1920);
+      line-height: get-vw(56px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+      margin-left: get-vw(142px,1920);
+      padding-top: get-vw(100px,1920);
+    }
+  }
+}
+.formregister{
+  width: get-vw(628px,1920);
+  min-height: get-vw(724px,1920);
+  margin: auto auto;
+
+}
+.zabilandzapomnit{
+  width: get-vw(628px,1920);
+  margin-top: get-vw(30px,1920);
+  label{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(18px,1920) !important;
+    line-height: get-vw(22px,1920) !important;
+    letter-spacing: -0.02em;
+    color: #252223;
+  }
+}
+.footregister{
+  width: get-vw(628px,1920);
+  height: get-vw(22px,1920);
+  display: flex;
+  margin-top: get-vw(50px,1920);
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(22px,1920);
+    letter-spacing: -0.02em;
+    color: #252223;
+   margin-left: get-vw(155px,1920);
+
+    min-width: max-content;
+  }
+  a{
+    min-width:max-content ;
+    font-family: Montserrat-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(22px,1920);
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #13AD54;
+    margin-left: get-vw(10px,1920);
+  }
+}

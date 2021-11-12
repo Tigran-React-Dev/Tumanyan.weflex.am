@@ -1,0 +1,73 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.grandebufecontantainer{
+   width: get-vw(1920px,1920);
+   min-height: get-vw(548px,1920);
+   background: #FFFFFF;
+   display: flex;
+   flex-direction: column;
+  .grandbufeHdr{
+    width: get-vw(1920px,1920);
+    height: get-vw(548px,1920);
+    background-image: url("../../images/product/grandbufehdr.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    h1{
+      font-family: Mardoto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(80px,1920);
+      line-height: get-vw(94px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-top: get-vw(227px,1920);
+      text-align: center;
+    }
+  }
+  .menuconsreuctor{
+   height: get-vw(131px,1920);
+    width: get-vw(1636px,1920);
+
+    margin-left: get-vw(112px,1920);
+    display: flex;
+     .itemmenu{
+       width: get-vw(178px,1920);
+       height: get-vw(60px,1920);
+       border: get-vw(1px,1920) solid #BFB7B6;
+       box-sizing: border-box;
+       border-radius: get-vw(10px,1920);
+       cursor: pointer;
+       margin-left: get-vw(30px,1920);
+       margin-top: get-vw(71px,1920);
+       p{
+         font-family: Mardoto-Medium;
+         font-style: normal;
+         font-weight: 500;
+         font-size: get-vw(18px,1920);
+         line-height: get-vw(21px,1920);
+         text-align: center;
+         letter-spacing: -0.04em;
+         text-transform: uppercase;
+          color: #BFB7B6;
+         margin-top: get-vw(20px,1920);
+       }
+     }
+  }
+}
+.bufetitemblok{
+  width: get-vw(1679px,1920);
+  min-height: get-vw(613px,1920);
+  border: get-vw(1px,1920) solid red;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: get-vw(102px,1920);
+
+}

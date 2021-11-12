@@ -1,0 +1,173 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.userinfoblok1{
+  width: get-vw(818px,1920);
+  height: get-vw(1149px,1920);
+  background: #ffffff;
+  border-right: 1px solid #EFEFEF;;
+  margin-top: get-vw(80px,1920);
+  .titleinfo{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(21px,1920);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+  }
+  form{
+    width: get-vw(818px,1920);
+    height: get-vw(863px,1920);
+    margin-top: get-vw(15px,1920);
+  }
+}
+.newcheckbpx{
+  margin-top: get-vw(30px,1920);
+}
+.resetpass{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(18px,1920);
+  line-height: 21px;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #252223;
+  margin-top: get-vw(100px,1920);
+  padding-bottom: get-vw(15px,1920);
+}
+.passresetdiv{
+  width: get-vw(818px,1920);
+  position: relative;
+}
+.sowicon{
+   position: absolute;
+  top: get-vw(48px,1920);
+  left: get-vw(700px,1920);
+  cursor: pointer;
+
+}
+.sowicon2{
+  position: absolute;
+  top: get-vw(148px,1920);
+  left: get-vw(700px,1920);
+  cursor: pointer;
+}
+
+.userinfoblok2{
+  width: get-vw(817px,1920);
+  min-height: get-vw(308px,1920);
+  margin-top: get-vw(80px,1920);
+}
+.useradrss{
+   width: get-vw(768px,1920);
+   height: get-vw(308px,1920);
+   margin-left: get-vw(49px,1920);
+
+}
+.adresshdr{
+  width: get-vw(768px,1920);
+  height: get-vw(21px,1920);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(21px,1920);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+  }
+  img{
+    width: get-vw(15px,1920);
+    height: get-vw(20px,1920);
+    cursor: pointer;
+  }
+}
+.domandbuild{
+  width: get-vw(429px,1920);
+  height: get-vw(75px,1920);
+  display: flex;
+  margin-top: get-vw(25px,1920);
+  justify-content: space-between;
+  align-items: center;
+}
+.divadress{
+  width: get-vw(768px,1920);
+  height: get-vw(75px,1920);
+  background: #FFFFFF;
+  border: get-vw(1px,1920) solid #DFDFDF;
+  box-sizing: border-box;
+  border-radius: get-vw(10px,1920);
+  margin-top: get-vw(40px,1920);
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(22px,1920);
+    letter-spacing: -0.02em;
+     color: #252223;
+    margin-top: get-vw(27px,1920);
+    margin-left: get-vw(25px,1920);
+  }
+}
+.dom,.build{
+  width: get-vw(204px,1920);
+  height: get-vw(75px,1920);
+  background: #FFFFFF;
+  border: get-vw(1px,1920) solid #DFDFDF;
+  box-sizing: border-box;
+  border-radius: get-vw(10px,1920);
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(18px,1920);
+    line-height: get-vw(22px,1920);
+    letter-spacing: -0.02em;
+    color: #252223;
+    margin-top: get-vw(27px,1920);
+    margin-left: get-vw(25px,1920);
+  }
+}
+.addnewadresbtn{
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(18px,1920);
+  line-height: get-vw(22px,1920);
+  letter-spacing: -0.02em;
+  color: #13AD54;
+  margin-left: get-vw(52px,1920);
+  cursor: pointer;
+}
+.windownewAdres{
+    width: get-vw(768px,1920);
+    height: get-vw(286px,1920);
+    margin-left: get-vw(52px,1920);
+  
+   p{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,1920 );
+    line-height: get-vw(21px,1920 );
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+   }
+}
+
+

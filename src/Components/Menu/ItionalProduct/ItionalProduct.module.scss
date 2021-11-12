@@ -1,0 +1,95 @@
+@function get-vw($size, $width){
+    $vw-context: $width * 0.01 * 1px;
+    @return $size / $vw-context * 1vw;
+    @return $size;
+  }
+
+
+.itionalwraper{
+   width: get-vw(1920px,1920 );
+   height: get-vw(1920px,1920 );
+   position: absolute;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 10;
+}
+.itionalwrraper{
+    width: get-vw(1920px,1920 );
+    height: get-vw(1920px,1920 );
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+}
+.itionalcategory{
+    width: get-vw(379px,1920 );
+    height: get-vw(353px, 1920);
+    background: #F9F9F9;
+    border: 1px solid #BFB7B6;
+    box-sizing: border-box;
+    border-radius: get-vw(10px,1920 );
+    position: absolute;
+    z-index: 12;
+}
+.banjarexen{
+    width: get-vw(379px,1920);
+    height: get-vw(20px,1920);
+    p{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(18px,1920 ) !important;
+        line-height: get-vw(21px,1920 );
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #252223; 
+        margin-top: get-vw(20px,1920 );
+        margin-left: get-vw(20px,1920 );
+    }
+}
+.overfloscrol{
+    width: get-vw(358px,1920 );
+    height: get-vw(287px, 1920);
+    overflow: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        width: 1px;
+        height: get-vw(260px,1920 );
+      }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+      }
+    &::-webkit-scrollbar-thumb {
+        background:  #13AD54; 
+        border-radius: 10px;
+        width: get-vw(69px,1920 );
+      }
+
+  form{
+    width: get-vw(358px,1920 );
+    height: get-vw(287px, 1920);
+  }
+  .souces{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,1920 ) ;
+    line-height: get-vw(21px,1920 );
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223; 
+     margin-top: get-vw(30px,1920);
+    margin-left:get-vw(20px,1920);
+  }
+
+
+}
+
+  
+
+ 

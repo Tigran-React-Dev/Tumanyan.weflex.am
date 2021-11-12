@@ -1,0 +1,77 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.itemrecom{
+  width: get-vw(503px,1920);
+  height: get-vw(193px,1920);
+  background: #F9F9F9;
+  display: flex;
+  border-top: get-vw(1px,1920) solid  #BFB7B6 ;
+  margin-left: get-vw(40px,1920);
+  .imagerecom{
+    width: get-vw(158px,1920);
+    height: get-vw(152px,1920);
+    object-fit: contain;
+    margin-top: get-vw(10px,1920);
+  }
+  .recomtitlebtn{
+    width: get-vw(345px,1920);
+    height: get-vw(152px,1920);
+    .rectitle{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(22px,1920);
+      line-height: get-vw(26px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+      margin-top: get-vw(30px,1920);
+      margin-left: get-vw(30px,1920);
+    }
+    .descript{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(18px,1920);
+      line-height: get-vw(22px,1920);
+      letter-spacing: -0.02em;
+      color: #BFB7B6;
+      margin-top: get-vw(15px,1920);
+      margin-left: get-vw(30px,1920);
+    }
+    .addcardandprice{
+      width: get-vw(315px,1920);
+      height: get-vw(50px,1920);
+      background: #13AD54;
+      border-radius: get-vw(6.25px,1920);
+      margin-top: get-vw(30px,1920);
+      margin-left: get-vw(30px,1920);
+      display: flex;
+      img{
+        width: get-vw(32px,1920);
+        height: get-vw(32px,1920);
+        margin-top: get-vw(9px,1920);
+        margin-left: get-vw(175px,1920);
+        cursor: pointer;
+      }
+      p{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size:get-vw(22px,1920);
+        line-height: get-vw(26px,1920);
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+         color: #FFFFFF;
+        margin-top: get-vw(12.5px,1920);
+        margin-left: get-vw(20px,1920);
+      }
+    }
+  }
+}

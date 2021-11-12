@@ -1,0 +1,23 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+.likehdr{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(764px,1920);
+  border: 1px solid red;
+}
+.shaurmatitle{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(18px,1920);
+  line-height: get-vw(21px,1920);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #252223;
+  margin-top: get-vw(80px,1920);
+}

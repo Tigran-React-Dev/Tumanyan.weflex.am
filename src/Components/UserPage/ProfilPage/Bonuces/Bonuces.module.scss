@@ -1,0 +1,46 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.bonucess{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(399px,1920);
+  margin-left: get-vw(142px,1920 );
+
+}
+.divprice{
+  display: flex;
+  margin-top: get-vw(80px,1920);
+  align-items: center;
+
+}
+.titlebns{
+  font-family: Montserrat-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: get-vw(18px,1920);
+  line-height: get-vw(22px,1920);
+  letter-spacing: -0.02em;
+  color: #252223;
+
+}
+.tokosprice{
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size:get-vw( 30px,1920);
+  line-height: get-vw(37px,1920);
+  letter-spacing: -0.02em;
+  color: #13AD54;
+  margin-left: get-vw(30px,1920);
+}
+.divprice2{
+  display: flex;
+  margin-top: get-vw(27px,1920);
+  align-items: center;
+}
+

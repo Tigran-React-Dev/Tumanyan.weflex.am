@@ -1,0 +1,112 @@
+
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.page2container{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(929px,1920);
+  padding-bottom: get-vw(100px,1920);
+  .page2hdr{
+    width: get-vw(1636px,1920);
+    height: get-vw(635px,1920);
+    display: flex;
+    justify-content: center;
+    margin-top: get-vw(60px,1920);
+    .fodtrack{
+      width: get-vw(1314px,1920);
+      height: get-vw(635px,1920);
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+.textblok{
+  width: get-vw(1029px,1920);
+  height: get-vw(326px,1920);
+  margin: auto auto;
+  h2{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(24px,1920);
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+  }
+  p{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(21px,1920);
+    line-height: 160%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #252223;
+    margin-top: get-vw(50px,1920);
+  }
+
+}
+.sliderandsize{
+  width: get-vw(1636px,1920);
+  height: get-vw(582px,1920);
+  background: #F9F9F9;
+  border-radius: get-vw(10px,1920);
+  margin-top: get-vw(100px,1920);
+  margin-left: get-vw(40px,1920);
+  display: flex;
+  .sizetext{
+    width: get-vw(463px,1920);
+    height: get-vw(344px,1920);
+     margin-left: get-vw(100px,1920);
+    margin-top: get-vw(100px,1920);
+    h2{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(48px,1920);
+      line-height: get-vw(56px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+       color: #252223;
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-top: get-vw(50px,1920)
+    }
+  }
+  .sizeslider{
+    width: get-vw(913px,1920);
+    height: get-vw(451px,1920);
+    margin-left: get-vw(60px,1920);
+    margin-top: get-vw(100px,1920);
+  }
+
+}
+.videoblok{
+  width: get-vw(1636px,1920);
+  height: get-vw(920px,1920);
+  margin-top: get-vw(100px,1920);
+  margin-left: get-vw(40px,1920);
+
+   iframe{
+     width: get-vw(1636px,1920);
+     height: get-vw(920px,1920);
+
+   }
+}
