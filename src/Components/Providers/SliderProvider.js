@@ -8,7 +8,9 @@ import slideritem from "../../images/product/slideritemproject.png";
 import sev from "../../images/product/sev burger 1 (1).png";
 import spitak from "../../images/product/spitak burger.png";
 import paraton from "../../images/product/paraton.png";
-import foodtrack1 from "../../images/product/foodtack1.png"
+import foodtrack1 from "../../images/product/foodtack1.png";
+import tnorennormal from "../../images/tnorenNormal.png";
+import glxavor from "../../images/glxavor.png"
 
 
 const SliderContext = createContext({});
@@ -56,13 +58,13 @@ const SliderProvider =({children})=>{
                      "Ճաշացանկի ուսումնասիրում",
                      "Ճաշատեսակների մատուցում",
                      "Հաշվի ներկայացում",
-                    "Սեղանների մաքրություն"],
+                     "Սեղանների մաքրություն"],
             skills:["Բարձրագույն կամ միջին մասնագիտական կրթություն",
-                  "Առնվազն 1 տարվա աշխատանքային փորձ հյուրընկալության ոլորտում ցանկալի է",
-                   "Հայերենի, ռուսերենի ազատ տիրապետումը պարտադիր է",
-                   " Դրական, պրագմատիկ, մասնագիտական վերաբերմունք",
-                   "Բազմակի առաջադրանքներ կատարելու ունակություն",
-                  "Կարող է աշխատել շաբաթվա ցանկացած օր, ներառյալ հանգստյան օրերին"
+                   "Առնվազն 1 տարվա աշխատանքային փորձ հյուրընկալության ոլորտում ցանկալի է",
+                    "Հայերենի, ռուսերենի ազատ տիրապետումը պարտադիր է",
+                    " Դրական, պրագմատիկ, մասնագիտական վերաբերմունք",
+                    "Բազմակի առաջադրանքներ կատարելու ունակություն",
+                   "Կարող է աշխատել շաբաթվա ցանկացած օր, ներառյալ հանգստյան օրերին"
             ]
         },
         {
@@ -99,6 +101,11 @@ const [jobs ,SetJobs]=useState(jobsData)
         "Գլխավոր օֆիս":"0040, ՀՀ, ք․ Երևան  Թումանյան փ. 32",
         "Տնօրենի գրասենյակ":"+374 91 12-34-56"
     }
+
+    ////PROJECT-------DATA///////
+
+
+
    const Projects =[
        {
            id:1,
@@ -154,6 +161,7 @@ const [jobs ,SetJobs]=useState(jobsData)
 
     const [project,setproject]=useState(Projects)
 
+     ////FoodTRUCK-------DATA///////
 
     const FoodTruck=[
         {id:1,title:"Շաուրմայի փառատոն",date:"10/12/2021",image:[foodtrack1,foodtrack1,],information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
@@ -225,6 +233,31 @@ const [jobs ,SetJobs]=useState(jobsData)
 
     const [foodTruckdata,setFootruckData]=useState(FoodTruck)
 
+    ////ABOUTUS-------DATA///////
+
+
+    const AboutFounder=[
+        {
+            id:1,
+            follname:'Աշոտ Հարությունյան',
+            position:"Նախագահ",
+            image:tnorennormal,
+            information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
+                "\n" +
+                "2013 թվականին Արաբկիր վարչական շրջանում՝ Կոմիտաս 50/50 հասցեում, բացվեց \"Թումանյան Շաուրմա\"-ի երկրորդ մասնաճյուղը:\n"
+        },
+        {
+            id:2,
+            follname:'Աշոտ Հարությունյան',
+            position:"Գլխավոր տնօրեն",
+            image:glxavor,
+            information:"«Թումանյան Շաուրմա»-ն հիմնադրվել է 1998 թվականին: «Թումանյան Շաուրմա»-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում, որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր \n" +
+                "զբաղեցնում էր բավականին փոքր։"
+        },
+    ];
+
+    const [aboutDataone,setAboutDataone]=useState(AboutFounder)
+
 
 
 
@@ -240,7 +273,8 @@ const [jobs ,SetJobs]=useState(jobsData)
         project,
         activeProjectdata,
         setActiveProjectdata,
-        foodTruckdata
+        foodTruckdata,
+        aboutDataone,
     }}>
         {children}
     </SliderContext.Provider>

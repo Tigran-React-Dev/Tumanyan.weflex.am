@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import ProductBlok from "../Menu/ProductBlok/ProductBlok";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
+import {BiJoystickButton} from "react-icons/all";
+import Button from "../Global/Button/Button";
 
 
 const GrantBuffet = () => {
@@ -74,6 +76,9 @@ const GrantBuffet = () => {
                         )
                     })
                 }
+            </div>
+            <div className={css.grandbufefooter}>
+                <Button title="տեսնել ավելին" cn="btnreadmore2"/>
             </div>
         </div>
     );

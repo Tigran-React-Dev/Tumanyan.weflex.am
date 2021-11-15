@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 
 const Basketitem = ({obj}) => {
  const dispatch = useDispatch()
-const {id,title,image, itionalitem,description,bonus,price,size,count,_id} =obj
+const {id,title,image, itionalitem,description,bonus,price,size,count,_id,category} =obj
 
 
     const DeleteItems =(_id)=>{
@@ -29,7 +29,7 @@ const {id,title,image, itionalitem,description,bonus,price,size,count,_id} =obj
 
     return (
          <div className={css.basketelement}>
-             <img className={css.productpicturent} src={image} alt="" />
+             {<img className={css.productpicturent} src={image} alt=""/>}
              <div className={css.titleanddescription}>
                     <p className={css.titleproduct}>{title}</p>
                     <p className={css.description}>{itionalitem!=undefined ? itionalitem.map(i=><span key={i.id}>{i.product},</span>) : description !=undefined ? description : null } </p>

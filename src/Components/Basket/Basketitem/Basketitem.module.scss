@@ -16,6 +16,7 @@
       height: get-vw(148px,1920 );
       margin-left: get-vw(55px,1920 );
       margin-top: get-vw(21px, 1920);
+      object-fit: contain;
   }
   .titleanddescription{
     width: get-vw(531px,1920);
@@ -61,6 +62,7 @@
   }
   .size{
     width: get-vw(22px,1920);
+    min-width: max-content;
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;

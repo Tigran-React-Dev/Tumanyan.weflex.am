@@ -1,34 +1,78 @@
-//@function get-vw($size, $width){
-//    $vw-context: $width * 0.01 * 1px;
-//    @return $size / $vw-context * 1vw;
-//    @return $size;
-//  }
-//
-//
-//.newsinfo[type=checkbox] + label {
-//    cursor: pointer;
-//    display: flex;
-//    align-items: center;
-//    margin-top: get-vw(30px,1920 );
-//
-//
-//  }
-//.jobscheck[type=checkbox] + label {
-//  cursor: pointer;
-//  display: flex;
-//
-//  margin-top: get-vw(30px,1920 );
-//
-//
-//}
-//.loginchecked[type=checkbox] + label {
-//  cursor: pointer;
-//  display: flex;
-//  align-items: center;
-//
-//
-//
-//}
+@function get-vw($size, $width){
+    $vw-context: $width * 0.01 * 1px;
+    @return $size / $vw-context * 1vw;
+    @return $size;
+  }
+
+
+.checkproduct[type=checkbox] + label {
+  display: block;
+  margin-left: get-vw(20px,1920);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.ckekckdiv {
+  width: get-vw(27px, 1920);
+  height: get-vw(27px, 1920);
+  background: #F9F9F9;
+  background-size: get-vw(20px, 1920) get-vw(15px, 1920);
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Gray */
+  border: 1px solid #BFB7B6;
+  box-sizing: border-box;
+  border-radius: get-vw(5px, 1920);
+}
+.container{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: get-vw(15px,1920 );
+  p{
+    width: max-content;
+    display: inline-block;
+    font-family: Montserrat-Regular;
+
+  }
+}
+.price{
+  font-family: Montserrat-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size:get-vw(18px,1920);
+  line-height: 150%;
+  margin-left: 0 !important;
+  text-transform: none!important;
+  letter-spacing: -0.02em;
+  color: #000000;
+  position: absolute;
+  right: 1.59vw;
+}
+.textstyle{
+  font-family: Montserrat-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size:get-vw(18px,1920);
+  line-height: 150%;
+  margin-left: get-vw(15px,1920 ) !important;
+  text-transform: none!important;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+.dram{
+  position: absolute;
+  right: get-vw(48px,1920);
+}
+
+
 //
 //  input[type=checkbox] {
 //    display: none;

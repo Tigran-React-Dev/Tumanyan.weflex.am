@@ -36,7 +36,7 @@ export const CheckBox = props => {
 
 
                    }}>
-                     {/*{props.isChecked && <img  src={checkt} alt="" /> }*/}
+
                    </div>
                     <p className={css.product}>{props.product}</p>
                     <p className={css.price}>{+props.price !==0 && props.price + " ֏"}</p>  </label>

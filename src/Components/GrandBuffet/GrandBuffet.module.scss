@@ -65,9 +65,15 @@
 .bufetitemblok{
   width: get-vw(1679px,1920);
   min-height: get-vw(613px,1920);
-  border: get-vw(1px,1920) solid red;
+
   display: flex;
   flex-wrap: wrap;
   margin-left: get-vw(102px,1920);
 
+}
+.grandbufefooter{
+  width: get-vw(1636px,1920);
+  height: get-vw(275px,1920);
+  margin-left: get-vw(142px,1920);
+  display: flex;
 }

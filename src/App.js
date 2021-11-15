@@ -13,6 +13,7 @@ import Footer from "./Components/Footer/Footer";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {loadLocalCard} from "./Components/redux/Action/CardAction"
+import axios from "axios";
 
 function App() {
 
@@ -28,16 +29,19 @@ function App() {
     const history = useLocation()
     const [loading,setloading]=useState(false)
 
+    useEffect(()=>{
+
+    },[])
+
+
   useEffect(()=>{
     getData()
   },[])
 
 
   useEffect(() => {
-      
-    const item = JSON.parse(sessionStorage.getItem("card"))
-   
-    if(item){
+     const item = JSON.parse(sessionStorage.getItem("card"))
+   if(item){
       dispath(loadLocalCard(item))
     }
     
@@ -55,6 +59,8 @@ function App() {
 
     },[])
 
+
+
     if(history.pathname==="/"){
         return <Redirect to={HOME_PAGE}/>
     }
@@ -63,6 +69,9 @@ function App() {
         setSowZapros(!sowZapros)
         sessionStorage.setItem("key",false)
     }
+
+
+
 
   
 

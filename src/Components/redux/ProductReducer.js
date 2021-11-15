@@ -11,7 +11,7 @@ export const initialState = {
             title:"Հավի շաուրմա",
             category:"շաուրմա",
             image:shaurma,
-            price:[{id:1,size:"1",price:1200},{id:2,size: "2",price: 1500},{id:3,size:"3",price:1600}],
+            price:[{size:"1",price:1200},{size: "2",price: 1500},{size:"3",price:1600}],
             bonus:10,
             like:false,
             itional:[]
@@ -22,7 +22,7 @@ export const initialState = {
             title:"Խոզի շաուրմա",
             category:"շաուրմա",
             image:shaurma,
-            price:[{id:1,size:"1",price:1200},{id:2,size: "2",price: 1500},{id:3,size:"3",price:1600}],
+            price:[{size:"1",price:1200},{size: "2",price: 1500},{size:"3",price:1600}],
             bonus:20,
             like:false,
             itional:[],
@@ -34,7 +34,7 @@ export const initialState = {
             title:"Հորթի շաուրմա",
             category:"շաուրմա",
             image:shaurma,
-            price:[{id:1,size:"1",price:1200},{id:2,size: "2",price: 1500},{id:3,size:"3",price:1600}],
+            price:[{size:"1",price:1200},{size: "2",price: 1500},{size:"3",price:1600}],
             bonus:0,
             like:false,
             itional:[],
@@ -45,7 +45,7 @@ export const initialState = {
             title:"Գառան շաուրմա",
             category:"շաուրմա",
             image:shaurma,
-            price:[{id:1,size:"1",price:1200},{id:2,size: "2",price: 1500},{id:3,size:"3",price:1600}],
+            price:[{size:"1",price:1200},{size: "2",price: 1500},{size:"3",price:1600}],
             bonus:0,
             like:false,
             itional:[]
@@ -56,7 +56,7 @@ export const initialState = {
             title:"մայոնեզ",
             category:"սոուսներ",
             image:shaurma,
-            price:[{id:1,price:20,}],
+            price:[{price:20,}],
             bonus:0,
             like:false,
             description:"20գ"
@@ -67,7 +67,7 @@ export const initialState = {
             title:"վեգան",
             category:"աղցաններ",
             image:vegan,
-            price:[{id:1,size:"1",price:480},{id:2,size: "2",price: 600}],
+            price:[{size:"1",price:480},{size: "2",price: 600}],
             bonus:0,
             like:false,
             ingredients:[
@@ -88,7 +88,7 @@ export const initialState = {
             title:"ավելուկով",
             category:"աղցաններ",
             image:vegan,
-            price:[{id:1,size:"1",price:480},{id:2,size: "2",price: 600}],
+            price:[{size:"1",price:480},{size: "2",price: 600}],
             bonus:0,
             like:false,
             ingredients:[
@@ -106,7 +106,7 @@ export const initialState = {
             title:"հավով",
             category:"աղցաններ",
             image:vegan,
-            price:[{id:1,size:"1",price:480},{id:2,size: "2",price: 600}],
+            price:[{size:"1",price:480},{size: "2",price: 600}],
             bonus:0,
             like:false,
             ingredients:[
@@ -124,7 +124,7 @@ export const initialState = {
             title:"բորշ",
             category:"աղցաններ",
             image:vegan,
-            price:[{id:1,size:"1",price:480},{id:2,size: "2",price: 600}],
+            price:[{size:"1",price:480},{size: "2",price: 600}],
             bonus:0,
             like:false,
             ingredients:[
@@ -142,7 +142,7 @@ export const initialState = {
             title:"Սեվ Թի-Բուրգեր",
             category:"recoment",
             image:shaurma,
-            price:[{id:1,price:1500,size:"M"}],
+            price:[{price:1500,size:"M"}],
             bonus:0,
             like:false,
             description:"Տավարի մսով"
@@ -153,7 +153,7 @@ export const initialState = {
             title:"Բուրգեր",
             category:"recoment",
             image:shaurma,
-            price:[{id:1,price:1100,size:"M"}],
+            price:[{price:1100,size:"M"}],
             bonus:0,
             like:false,
             description:"մսով"
@@ -174,7 +174,7 @@ export const initialState = {
             title:"մայոնեզ",
             category:"սոուսներ",
             image:shaurma,
-            price:[{id:1,price:20,}],
+            price:[{price:20,}],
             bonus:0,
             like:false,
             description:"20գ"
