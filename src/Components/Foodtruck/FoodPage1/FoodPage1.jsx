@@ -38,7 +38,7 @@ const ShowModal =(itemWindow)=>{
                                       </div>
                                  </div>
                                      :
-                                  <div className={css.smollitem} style={{marginTop:  "2.211764705882355vw",
+                                  <div key={elem.id} className={css.smollitem} style={{marginTop:  "2.211764705882355vw",
                                       marginLeft:(index===1 || index===2 || index==7 || index==8  ) ? "2.0vw" : (index===5 || index===11 || index==17 || index==23  ) ? "2.0vw" : null,
                                       backgroundImage:`url(${elem.image[0]})`
                                   }} 

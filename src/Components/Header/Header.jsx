@@ -232,31 +232,6 @@ const Header = () => {
                                     )
                                 })
 
-                                // :
-
-                                // adressCountry.map((item) => {
-                                //     return (
-                                //         defaultCity === item.city &&
-                                //         <div
-                                //             key={item.id}
-                                //             onClick={() => showactiveAdress(item.id, item.adress, item.city)}
-                                //             style={{
-                                //                 background: adressactive[item.id] ?
-                                //                     "#13AD54" : "#FFFFFF"
-                                //
-                                //             }}
-                                //             className={css.adressitem}
-                                //         >
-                                //             <img src={verify} alt="" style={{
-                                //                 display: adressactive[item.id] ?
-                                //                     "block" : "none",
-                                //             }} />
-                                //             <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.titleitem}>{item.title}</p>
-                                //             <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{item.adress}</p>
-                                //             <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
-                                //         </div>
-                                //     )
-                                // })
 
 
                             }
@@ -271,6 +246,20 @@ const Header = () => {
                 </div>}
 
             </div>
+       {/*MOBILE VERSION -JSX CODE*/}
+            <div className={css.mobileheader}>
+                <NavLink
+                    to={HOME_PAGE} exact
+                    onClick={home}>
+                    <img src={logo} alt="" className={css.logos} />
+                </NavLink>
+                <div className={css.coll88}>
+                     <img className={css.phonemobile} src={phone} alt=""/>
+                     <a className={css.phoneNumber} href="tel:81 88"> 81 88</a>
+                </div>
+
+            </div>
+
 
         </>
     )

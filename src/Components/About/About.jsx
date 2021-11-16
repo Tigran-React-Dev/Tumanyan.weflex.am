@@ -9,7 +9,7 @@ const About =()=>{
     const [activeMneuStyle,setAactiveMenuStyle]=useState(1)
     const [hoveritemStyle,setHoverItemStyle]=useState({})
     const { t } = useTranslation();
-    const {aboutDataone}=useSlider()
+    const {aboutDataone,menejments}=useSlider()
 
   const btnTitle=[
       {id:1,name:"պատմություն"},
@@ -81,8 +81,23 @@ const About =()=>{
                         </div>
                         :
                     activeMneuStyle===3 ?
-                        <div>
+                        <div className={css.menejmentcontroler}>
+                            {
+                                menejments.map(({id,fullname,position,email,image},index)=>{
+                                    return (
+                                        <div
+                                            key={id}
+                                            className={css.itemmenejment}
 
+                                        >
+                                            <img src={image} alt=""/>
+                                            <h4>{fullname}</h4>
+                                            <h5>{position}</h5>
+                                            <h6>{email}</h6>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                        :
                        null

@@ -69,7 +69,7 @@ const Basket = () => {
         setchecked(!checket)
       }
 
-    console.log(items)
+
     return (
          <div className={css.Basketconstructor}>
                <div className={css.bskhdr}>

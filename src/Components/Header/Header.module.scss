@@ -453,29 +453,65 @@ position: absolute;
 
 
 
+//MOBILE STYLES
+
+.mobileheader{
+  display: none;
+}
+
+
 
 
 //media
 
 
-@media  screen and (max-width:420px){
+@media  screen and (max-width:500px){
   .headerContainer{
-    width: get-vw(375px,375);
-  }
-  .header{
-    width:get-vw(375px,375) ;
     display: none;
   }
-  .menuandlog{
-    width:get-vw(375px,375) ;
-    .linkmenu{
-      display: none;
+  .mobileheader{
+    width: get-vw(375px,375);
+    height: get-vw(62px,375);
+    background-color:  #252223;
+    display: block;
+    position: fixed;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: flex;
+
+  }
+  .logos{
+    width: get-vw(49px,375);
+    height: get-vw(54px,375);
+    margin-top: get-vw(4px,375);
+    margin-left: get-vw(15px,375);
+  }
+  .phoneNumber{
+    min-width: max-content;
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(24px, 375);
+    line-height: get-vw(28px, 375);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+
+    margin-left: get-vw(13px,375);
+    cursor: pointer;
+    color: #13AD54;
+    &:hover{
+      color: #EB2F2F;
     }
-    .gic1{
-      display: none;
-    }
-    .logos{
-      width: get-vw(56px,375 );
+  }
+  .coll88{
+    margin-top: get-vw(17px,375);
+    margin-left: get-vw(74px,375);
+    .phonemobile{
+      width: get-vw(17px,375);
+      height: get-vw(17px,375);
     }
   }
 }

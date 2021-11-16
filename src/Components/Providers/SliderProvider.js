@@ -11,7 +11,7 @@ import paraton from "../../images/product/paraton.png";
 import foodtrack1 from "../../images/product/foodtack1.png";
 import tnorennormal from "../../images/tnorenNormal.png";
 import glxavor from "../../images/glxavor.png"
-
+import menejer from "../../images/menejer.png"
 
 const SliderContext = createContext({});
 
@@ -258,6 +258,18 @@ const [jobs ,SetJobs]=useState(jobsData)
 
     const [aboutDataone,setAboutDataone]=useState(AboutFounder)
 
+    const menejment=[
+        {id:1,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        {id:2,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        {id:3,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        {id:4,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        {id:5,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+
+    ];
+
+
+    const [menejments,setMenejmentdata]=useState(menejment)
+
 
 
 
@@ -275,6 +287,7 @@ const [jobs ,SetJobs]=useState(jobsData)
         setActiveProjectdata,
         foodTruckdata,
         aboutDataone,
+        menejments,
     }}>
         {children}
     </SliderContext.Provider>
