@@ -3,11 +3,14 @@ import {motion} from 'framer-motion';
 import {Fragment} from "react";
 import css from "./ProjectModal.module.scss"
 import {useSlider} from "../../Providers/SliderProvider";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import ProjectSlider from "../ProjectSlider/ProjectSlider";
 import { useTranslation } from 'react-i18next';
 import storaket from "../../../images/icons/storaket.png"
+import {PROJECT_PAGE} from "../../urls";
 const ProjectModals = () => {
+
+
     const { t } = useTranslation();
     const {project,activeProjectdata,setActiveProjectdata}=useSlider()
    const [index,setindex]=useState(0)
@@ -52,8 +55,12 @@ const ProjectModals = () => {
                         return(
                             <>
                                 <div className={css.container2}
-                                     style={{background:`url(${product.image})`}}
+                                     style={{backgroundColor:"#1B1B1B",opasity:"0.3",backgroundImage:`url(${product.image})`}}
                                 >
+                                    <NavLink to={PROJECT_PAGE} exact ><svg xmlns="http://www.w3.org/2000/svg" width="3.3088235294117645vw" height="1.1764705882352942vw" viewBox="0 0 45 16" fill="none">
+                                        <path d="M3.49691e-07 8L15 14.9282L15 1.0718L3.49691e-07 8Z" fill="white"/>
+                                        <rect width="30" height="2" transform="matrix(-1 0 0 1 45 7)" fill="white"/>
+                                    </svg></NavLink>
                                     <h1 className={css.titleproject2}>
                                         {product.title}
                                     </h1>

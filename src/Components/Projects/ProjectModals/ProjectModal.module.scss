@@ -20,7 +20,13 @@
   background-position: center;
   background-repeat: no-repeat!important;
   background-size: cover !important;
-  padding-top: get-vw(183px,1920);
+  padding-top: get-vw(90px,1920);
+   a{
+     margin-left: get-vw(142px,1920);
+     svg{
+       margin-left: get-vw(142px,1920);
+     }
+   }
   .titleproject2{
     font-family: Mardoto-Medium;
     font-style: normal;
@@ -32,6 +38,7 @@
     text-transform: uppercase;
     color: #FFFFFF;
     height: get-vw(120px,1920);
+    margin-top: get-vw(90px,1920);
 
 
   }
