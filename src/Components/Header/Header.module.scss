@@ -11,9 +11,9 @@
     width: get-vw(1920px, 1920);
     height: get-vw(160px,1920 );
     top: 0px;
-     bottom: 0;
-     left: 0;
-     right: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 30;
 
 }
@@ -54,7 +54,7 @@
      }
 }
 
-  // menu 2 
+  // menu 2
 
 .menuandlog{
         width: get-vw(1920px, 1920);
@@ -115,13 +115,13 @@ position: absolute;
           margin-left: get-vw(35px, 1920);
           margin-top: get-vw(36px,1920);
           border-bottom:  1px dashed rgba(255, 255, 255, 0.3);
-         
+
         .masnajuxwraper{
           min-width: get-vw(150px, 1920);
           height: get-vw(20px,1920 );
           display: flex;
           align-items: center;
-          
+
           // position: relative;
           // z-index: 32;
          .adresicon{
@@ -136,7 +136,7 @@ position: absolute;
            margin-bottom: get-vw(2px,1920);
            cursor: pointer;
          }
-   
+
          .masnajuxname{
                min-width:max-content ;
                background-color:transparent;
@@ -152,11 +152,11 @@ position: absolute;
               cursor: pointer;
               z-index: 32;
               margin-left: get-vw(10px,1920 );
-              
+
           }
-        
+
         }
-     
+
 
 }
 .contactandlogin{
@@ -200,7 +200,7 @@ position: absolute;
       justify-content: flex-end;
     }
 
-    
+
     .corzina{
         min-width:min-content;
         max-width: get-vw(140px, 1920);
@@ -226,21 +226,21 @@ position: absolute;
              color: #FFFFFF;
              margin-top: get-vw(12px,1920 );
 
-            
+
         }
         img{
           width: get-vw(17px,1920 );
           height: get-vw(16px,1920 );
           margin-left: get-vw(10px,1920 );
           margin-top: get-vw(14px,1920 );
-          
-          
+
+
         }
 
     }
 }
 
- 
+
 
 
 .activeLanguage{
@@ -272,19 +272,19 @@ position: absolute;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-       
+
 
           li {
             font-style: normal;
              font-weight: bold;
             font-size: get-vw(18px,1920 );
              line-height: 25px;
-            
+
             text-align: center;
              letter-spacing: -0.04em;
              text-transform: uppercase;
 
-            
+
             color: #252223;
             cursor: pointer;
             &:hover{
@@ -343,7 +343,7 @@ position: absolute;
     margin-left: get-vw(15px,1920);
     margin-top: get-vw(15px,1920);
 
-   
+
 
   }
 
@@ -370,7 +370,7 @@ position: absolute;
     border: 1px solid #13AD54;
     box-sizing: border-box;
    box-shadow: none;
-    
+
     }
   img{
     width: get-vw(21px,1920);
@@ -430,7 +430,7 @@ position: absolute;
   margin-left:get-vw(40px,1920);
   margin-top: get-vw(40px,1920);
   padding-bottom: get-vw(40px,1920);
-  
+
 }
 
 
@@ -479,7 +479,7 @@ position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 30;
+    z-index: 40;
     display: flex;
 
   }
@@ -514,4 +514,29 @@ position: absolute;
       height: get-vw(17px,375);
     }
   }
+  .iconmobilemenu{
+    width: get-vw(26px,375);
+    height: get-vw(16px,375);
+    margin-top: get-vw(23px,375);
+    margin-left: get-vw(96px,375);
+    cursor: pointer;
+  }
+  .iconmobilemenuclose{
+    width: get-vw(20px,375);
+    height: get-vw(20px,375);
+    margin-top: get-vw(21px,375);
+    margin-left: get-vw(102px,375);
+    cursor: pointer;
+  }
+  .mobilecontn{
+    width: get-vw(375px,375);
+    height:get-vw(812px,375);
+    background-color: #252223;
+    //position: absolute;
+    top:get-vw(-812px,375);
+    bottom: 0;
+    z-index: 26!important;
+
+  }
+
 }

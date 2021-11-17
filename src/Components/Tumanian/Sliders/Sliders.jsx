@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade } from 'swiper';
 // Import Swiper style
-import 'swiper/swiper.scss'
+
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -44,7 +44,7 @@ const  TumanianSlider= () =>{
 
                   }}
                        >
-                     <h1>{description}</h1>
+                     <h5 className="descriptionsld">{description}</h5>
                      <button >Պատվիրել</button>
                   </div>
 

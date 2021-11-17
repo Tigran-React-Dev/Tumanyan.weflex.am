@@ -28,7 +28,7 @@ function App() {
     const [bgcolor,setBgcolor]=useState(null)
     const history = useLocation()
     const [loading,setloading]=useState(false)
-
+    const [sowmenu, setSoumenu] = useState(false)
     useEffect(()=>{
 
     },[])
@@ -70,8 +70,23 @@ function App() {
         sessionStorage.setItem("key",false)
     }
 
+    const changeScrol = (e) => {
+        if (window.scrollY >= 150) {
+            setSoumenu(true)
+        } else {
+            setSoumenu(false)
+        }
 
 
+    }
+    window.addEventListener("scroll", changeScrol)
+
+
+    const stylemain={
+        position:sowmenu ? "relative" : "absolute",
+        top:  sowmenu ? "-3.3vw" : "0",
+        transition: "all 0.3s ease-in",
+    }
 
   
 
@@ -81,13 +96,14 @@ function App() {
   return (
     <>
      {loading ? <div>
-      
-      
-      <Header/>
-      <div className="main">
-         <Routes/>
+
+         <Header/>
+      <div className="main" style={stylemain}>
+
+           <Routes/>
+          <Footer/>
        </div>
-       <Footer/>
+
          {sowZapros   && !key  && <div className="modalzapros">
              <div className="wraper" onClick={()=>setSowZapros(!sowZapros)} />
                  <div className="zapros" onClick={(e)=>e.stopPropagation()}>

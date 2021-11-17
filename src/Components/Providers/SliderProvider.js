@@ -259,11 +259,11 @@ const [jobs ,SetJobs]=useState(jobsData)
     const [aboutDataone,setAboutDataone]=useState(AboutFounder)
 
     const menejment=[
-        {id:1,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
-        {id:2,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
-        {id:3,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
-        {id:4,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
-        {id:5,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        // {id:1,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        // {id:2,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        // {id:3,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        // {id:4,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
+        // {id:5,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
 
     ];
 
@@ -288,6 +288,7 @@ const [jobs ,SetJobs]=useState(jobsData)
         foodTruckdata,
         aboutDataone,
         menejments,
+        setMenejmentdata
     }}>
         {children}
     </SliderContext.Provider>

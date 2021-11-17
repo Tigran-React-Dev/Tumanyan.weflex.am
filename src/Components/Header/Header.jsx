@@ -17,8 +17,8 @@ import log from "../../images/icons/logins.svg";
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import {useSelector} from "react-redux";
-
-
+import iconmenu from "../../images/icons/iconmobilemenu.svg"
+import iconclose from "../../images/icons/closebtniconmobilemenu.svg"
 
 
 const Header = () => {
@@ -34,6 +34,8 @@ const Header = () => {
     const [adresses, setAdress] = useState("")
     const [inputborder, setInputborder] = useState(false)
     const [languagess, setLanguage] = useState(1)
+    const [menuiconClik,setMenuIconClik]=useState(false)
+
    
     const handleClickSelect = () => {
         setSelectIcon(!selecticon)
@@ -107,13 +109,13 @@ const Header = () => {
     const cardStyle = {
 
         top:  sowmenu ? "-3.4vw" : "0vw",
-        transition: "all 0.4s ease-in-out",
+        transition: "all 0.3s ease-in",
         // opacity: sowmenu ? "0" : "1",
 
     };
     const menublogstyle = {
 
-        top:  sowmenu ? "-3.3vw" : "0vw",
+        top:  sowmenu ? "-3.3vw" : "0",
         transition: "all 0.3s ease-in",
 
     }
@@ -124,6 +126,17 @@ const Header = () => {
     }
 
 
+    // mobileversion js code
+
+const ChangeMobileMenu =()=>{
+    setMenuIconClik(!menuiconClik)
+}
+
+const mobilemenustyle ={
+        position:menuiconClik ? "relative" : "absolute",
+        top:menuiconClik && "16.5vw",
+        transition: "all 0.9s",
+}
 
    
     return (
@@ -257,8 +270,18 @@ const Header = () => {
                      <img className={css.phonemobile} src={phone} alt=""/>
                      <a className={css.phoneNumber} href="tel:81 88"> 81 88</a>
                 </div>
+                {!menuiconClik ?
+                    <img className={css.iconmobilemenu} src={iconmenu} alt="" onClick={ChangeMobileMenu}/>
+                    :
+                    <img className={css.iconmobilemenuclose} src={iconclose} alt="" onClick={ChangeMobileMenu}/>
+                }
+
 
             </div>
+            <div style={mobilemenustyle} className={css.mobilecontn}  >
+
+            </div>
+
 
 
         </>

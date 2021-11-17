@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
    overflow-x: hidden;
@@ -22,6 +23,7 @@ code {
 
 
 }
+
 p{
   margin-bottom:0;
 }
@@ -34,8 +36,11 @@ p{
 }
 @media  screen and (max-width:500px){
   .main {
-    margin-top: 16vw;
+    margin-top: 16.5vw;
 
+  }
+  html,body{
+    overflow-x: hidden;
   }
 }
 

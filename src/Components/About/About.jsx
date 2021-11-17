@@ -1,23 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import css from "./About.module.scss"
 import TumanianSlider from "../Tumanian/Sliders/Sliders";
 import { useTranslation } from 'react-i18next';
 import Button from "../Global/Button/Button";
 import {useSlider} from "../Providers/SliderProvider";
+import axios from "axios";
 
 const About =()=>{
     const [activeMneuStyle,setAactiveMenuStyle]=useState(1)
     const [hoveritemStyle,setHoverItemStyle]=useState({})
     const { t } = useTranslation();
-    const {aboutDataone,menejments}=useSlider()
-
+    const {aboutDataone,menejments,setMenejmentdata}=useSlider()
+    const [loading,setLoading]=useState(false)
   const btnTitle=[
       {id:1,name:"պատմություն"},
       {id:2,name:"հիմնադիրներ"},
       {id:3,name:"մենեջմենթ"},
+]
 
+    useEffect(()=>{
 
-  ]
+        const respons=axios.get("http://tumanyanadmin.weflex.am/api/about", )
+        respons.then(res=>console.log(res)).catch(err=>console.log(err))
+
+    },[])
 
 
 
@@ -81,9 +87,10 @@ const About =()=>{
                         </div>
                         :
                     activeMneuStyle===3 ?
-                        <div className={css.menejmentcontroler}>
+                        <>
+                        {loading && <div className={css.menejmentcontroler}>
                             {
-                                menejments.map(({id,fullname,position,email,image},index)=>{
+                                menejments.map(({id, fullname, position, email, image}, index) => {
                                     return (
                                         <div
                                             key={id}
@@ -98,7 +105,8 @@ const About =()=>{
                                     )
                                 })
                             }
-                        </div>
+                        </div>}
+                        </>
                        :
                        null
                 }
