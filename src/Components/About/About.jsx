@@ -41,7 +41,10 @@ const About =()=>{
 
     },[])
 
-
+  const changestyleandscrolingmenu =(id)=>{
+    setAactiveMenuStyle(id)
+   
+  }
 
 
 
@@ -61,7 +64,7 @@ const About =()=>{
                         return <button
                         key={id}
                         className={css.btnmenuabout}
-                        onClick={()=>setAactiveMenuStyle(id)}
+                        onClick={()=>changestyleandscrolingmenu(id)}
                         style={{background:activeMneuStyle===id && "#ffffff" ,
                             boxShadow:activeMneuStyle===id && "inset -1px 0px 0px",
                             color:activeMneuStyle===id && "#13AD54"
@@ -83,20 +86,22 @@ const About =()=>{
                     activeMneuStyle===2 ?
                         <>
                         {loading && <div className={css.tnoren}>
+                            
                             {
-                                aboutDataone.map(({id, foll_name, position, image, information}, index) => {
+                                aboutDataone.map(({id, full_name,full_nameEN,full_nameRU, position,positionEN,positionRU, image, information,informationEN,informationRU}, index) => {
                                     return (
                                         <div key={id}
                                              className={css.itemabout}
 
                                         >
                                             <img src={process.env.REACT_APP_IMG_URL+"/about/"+image} alt=""/>
-                                            {/*{hoveritemStyle[index] ? <img src={imageHover} alt="" onMouseLeave={()=>setHoverItemStyle({})}/> : <img src={imageNormal} alt="" onMouseEnter={()=>setHoverItemStyle({[index]:!hoveritemStyle[index]})}/>}*/}
-                                            <h4>{foll_name}</h4>
-                                            <h5>{position}</h5>
+                                           <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
+                                            <h6>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h6>
                                             {
-                                                index === 0 ? <p>{information.substring(0, 167)} <br/>
-                                                    <br/> {information.substring(167, 290)}</p> : <p>{information}</p>
+                                                // index === 0 ? <p>{languae=="ՀԱՅ" ? information.substring(0, 167) :
+                                                // languae=="ENG" ?information.substring(0, 167) :languae=="РУС" ? information.substring(167, 290) : null} <br/>
+                                                //     <br/> {information.substring(167, 290)}</p> :
+                                                     <p>{languae=="ՀԱՅ" ? information : languae=="ENG" ? informationEN : languae=="РУС" ? informationRU : null}</p>
                                             }
                                         </div>
                                     )

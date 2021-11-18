@@ -103,7 +103,11 @@
        display: flex;
        flex-direction: column;
        img{
+         width: get-vw(718px,1920 );
+         height: get-vw(600px,1920 );
+         border-radius: get-vw(10px, 1920);
          &:hover{
+
            cursor: pointer;
            transform: matrix(-1, 0, 0, 1, 0, 0);
 
@@ -120,7 +124,7 @@
          color: #252223;
          margin-top: get-vw(50px,1920);
        }
-       h5{
+       h6{
          font-family: Montserrat-Regular;
          font-style: normal;
          font-weight: normal;

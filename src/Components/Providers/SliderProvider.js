@@ -19,7 +19,7 @@ const SliderContext = createContext({});
 const SliderProvider =({children})=>{
     const [activeProjectdata,setActiveProjectdata]=useState({})
     const [menejments,setMenejmentdata]=useState([])
-
+    const [aboutDataone,setAboutDataone]=useState([])
     const Reclam = [
         {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
         {id:2,images:rec2,description:"Food truck"},
@@ -30,6 +30,17 @@ const SliderProvider =({children})=>{
         {id:2,stepARM:"Օնլայն պատվիրիր",stepENG:"Order online",stepRUS:"Заказать онлайн"},
         {id:3,stepARM:"օգտագործիր հավելվածը",stepENG:"use the app",stepRUS:"использовать приложение"},
     ];
+    const contacts1 ={
+        "Առաջարկների համար":"info@tumanyan.am",
+        "PR բաժին":"info@tumanyanpr.am",
+        "HR բաժին":"info@tumanyanhr.am",
+
+
+    }
+    const contacts2={
+        "Գլխավոր օֆիս":"0040, ՀՀ, ք․ Երևան  Թումանյան փ. 32",
+        "Տնօրենի գրասենյակ":"+374 91 12-34-56"
+    }
     const sliders=[
         {id:1,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
         {id:2,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
@@ -93,17 +104,7 @@ const SliderProvider =({children})=>{
 const [jobs ,SetJobs]=useState(jobsData)
 
 
-    const contacts1 ={
-        "Առաջարկների համար":"info@tumanyan.am",
-        "PR բաժին":"info@tumanyanpr.am",
-        "HR բաժին":"info@tumanyanhr.am",
-
-
-    }
-    const contacts2={
-        "Գլխավոր օֆիս":"0040, ՀՀ, ք․ Երևան  Թումանյան փ. 32",
-        "Տնօրենի գրասենյակ":"+374 91 12-34-56"
-    }
+    
 
     ////PROJECT-------DATA///////
 
@@ -259,7 +260,7 @@ const [jobs ,SetJobs]=useState(jobsData)
         // },
     ];
 
-    const [aboutDataone,setAboutDataone]=useState(AboutFounder)
+    
 
     const menejment=[
         // {id:1,fullname:"Դավիթ Պողոսյան",position:"Ցանցերի ղեկավար",email:"davitpoghosyan@gmail.com",image:menejer},
