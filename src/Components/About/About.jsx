@@ -5,12 +5,14 @@ import { useTranslation } from 'react-i18next';
 import Button from "../Global/Button/Button";
 import {useSlider} from "../Providers/SliderProvider";
 import axios from "axios";
+import {useProduct} from "../Providers/ProductMenu";
 
 const About =()=>{
     const [activeMneuStyle,setAactiveMenuStyle]=useState(1)
     const [hoveritemStyle,setHoverItemStyle]=useState({})
     const { t } = useTranslation();
-    const {aboutDataone,menejments,setMenejmentdata}=useSlider()
+    const {languae}=useProduct()
+    const {aboutDataone,menejments,setMenejmentdata,setAboutDataone}=useSlider()
     const [loading,setLoading]=useState(false)
   const btnTitle=[
       {id:1,name:"պատմություն"},
@@ -20,8 +22,22 @@ const About =()=>{
 
     useEffect(()=>{
 
-        const respons=axios.get("http://tumanyanadmin.weflex.am/api/about", )
-        respons.then(res=>console.log(res)).catch(err=>console.log(err))
+        const respons=axios.get(process.env.REACT_APP_API_URL + "/about_management", )
+        respons.then(res=> {
+
+             setMenejmentdata(res.data)
+
+        }).catch(err=>console.log(err))
+        const respons2=axios.get(process.env.REACT_APP_API_URL + "/about_founder", )
+        respons2.then(res=> {
+
+            setAboutDataone(res.data)
+
+        }).catch(err=>console.log(err))
+
+
+
+        setLoading(true)
 
     },[])
 
@@ -65,41 +81,45 @@ const About =()=>{
                         </div>
                         :
                     activeMneuStyle===2 ?
-                        <div className={css.tnoren}>
+                        <>
+                        {loading && <div className={css.tnoren}>
                             {
-                                aboutDataone.map(({id,follname,position,image,information},index)=>{
-                                    return  (
+                                aboutDataone.map(({id, foll_name, position, image, information}, index) => {
+                                    return (
                                         <div key={id}
-                                         className={css.itemabout}
+                                             className={css.itemabout}
 
                                         >
-                                            <img src={image} alt=""/>
+                                            <img src={process.env.REACT_APP_IMG_URL+"/about/"+image} alt=""/>
                                             {/*{hoveritemStyle[index] ? <img src={imageHover} alt="" onMouseLeave={()=>setHoverItemStyle({})}/> : <img src={imageNormal} alt="" onMouseEnter={()=>setHoverItemStyle({[index]:!hoveritemStyle[index]})}/>}*/}
-                                          <h4>{follname}</h4>
-                                          <h5>{position}</h5>
+                                            <h4>{foll_name}</h4>
+                                            <h5>{position}</h5>
                                             {
-                                                index===0 ? <p>{information.substring(0,167)} <br/>  <br/> {information.substring(167,290)}</p>  : <p>{information}</p>
+                                                index === 0 ? <p>{information.substring(0, 167)} <br/>
+                                                    <br/> {information.substring(167, 290)}</p> : <p>{information}</p>
                                             }
                                         </div>
                                     )
                                 })
                             }
-                        </div>
+                        </div>}
+                        </>
                         :
                     activeMneuStyle===3 ?
                         <>
-                        {loading && <div className={css.menejmentcontroler}>
+                        { loading && <div className={css.menejmentcontroler}>
+
                             {
-                                menejments.map(({id, fullname, position, email, image}, index) => {
+                                menejments.map(({id, full_name,full_nameRU,full_nameEN, position,positionEN,positionRU, email, image}, index) => {
                                     return (
                                         <div
                                             key={id}
                                             className={css.itemmenejment}
 
                                         >
-                                            <img src={image} alt=""/>
-                                            <h4>{fullname}</h4>
-                                            <h5>{position}</h5>
+                                            <img src={process.env.REACT_APP_IMG_URL+"/about/" + image} alt=""/>
+                                            <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
+                                            <h2>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h2>
                                             <h6>{email}</h6>
                                         </div>
                                     )

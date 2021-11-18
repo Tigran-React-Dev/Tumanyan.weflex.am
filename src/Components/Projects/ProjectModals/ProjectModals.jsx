@@ -92,7 +92,7 @@ const ProjectModals = () => {
                                             {product.coment.text}
                                         </p>
                                         <h4>{product.coment.after.name}</h4>
-                                        <h5>{product.coment.after.info}</h5>
+                                        <h6>{product.coment.after.info}</h6>
                                     </div>
                                     <div className={css.positionimageblok}>
                                        <div className={css.bigimg}>

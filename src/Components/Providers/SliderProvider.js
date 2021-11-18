@@ -18,7 +18,18 @@ const SliderContext = createContext({});
 
 const SliderProvider =({children})=>{
     const [activeProjectdata,setActiveProjectdata]=useState({})
-      
+    const [menejments,setMenejmentdata]=useState([])
+
+    const Reclam = [
+        {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
+        {id:2,images:rec2,description:"Food truck"},
+
+    ];
+    const aboutStep=[
+        {id:1,stepARM:"Զանգահարիր",stepENG:"Call",stepRUS:"Вызов"},
+        {id:2,stepARM:"Օնլայն պատվիրիր",stepENG:"Order online",stepRUS:"Заказать онлайн"},
+        {id:3,stepARM:"օգտագործիր հավելվածը",stepENG:"use the app",stepRUS:"использовать приложение"},
+    ];
     const sliders=[
         {id:1,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
         {id:2,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
@@ -26,11 +37,7 @@ const SliderProvider =({children})=>{
         {id:4,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
     ];
 
-    const Reclam = [
-        {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
-        {id:2,images:rec2,description:"Food truck"},
 
-    ];
 
     const Reclam2 =[
         {id:1,images:rec3},
@@ -41,11 +48,7 @@ const SliderProvider =({children})=>{
         title:"Մեր մասին",
         info:"'Թումանյան Շաուրմա'-ն հիմնադրվել է 1998 թվականին:'Թումանյան Շաուրմա'-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում,որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր զբաղեցնում էր բավականին փոքր... "
     }
-    const aboutStep=[
-        {id:1,stepARM:"Զանգահարիր",stepENG:"Call",stepRUS:"Вызов"},
-        {id:2,stepARM:"Օնլայն պատվիրիր",stepENG:"Order online",stepRUS:"Заказать онлайн"},
-        {id:3,stepARM:"օգտագործիր հավելվածը",stepENG:"use the app",stepRUS:"использовать приложение"},
-    ]
+
 
 
     const jobsData=[
@@ -237,23 +240,23 @@ const [jobs ,SetJobs]=useState(jobsData)
 
 
     const AboutFounder=[
-        {
-            id:1,
-            follname:'Աշոտ Հարությունյան',
-            position:"Նախագահ",
-            image:tnorennormal,
-            information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
-                "\n" +
-                "2013 թվականին Արաբկիր վարչական շրջանում՝ Կոմիտաս 50/50 հասցեում, բացվեց \"Թումանյան Շաուրմա\"-ի երկրորդ մասնաճյուղը:\n"
-        },
-        {
-            id:2,
-            follname:'Աշոտ Հարությունյան',
-            position:"Գլխավոր տնօրեն",
-            image:glxavor,
-            information:"«Թումանյան Շաուրմա»-ն հիմնադրվել է 1998 թվականին: «Թումանյան Շաուրմա»-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում, որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր \n" +
-                "զբաղեցնում էր բավականին փոքր։"
-        },
+        // {
+        //     id:1,
+        //     follname:'Աշոտ Հարությունյան',
+        //     position:"Նախագահ",
+        //     image:tnorennormal,
+        //     information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
+        //         "\n" +
+        //         "2013 թվականին Արաբկիր վարչական շրջանում՝ Կոմիտաս 50/50 հասցեում, բացվեց \"Թումանյան Շաուրմա\"-ի երկրորդ մասնաճյուղը:\n"
+        // },
+        // {
+        //     id:2,
+        //     follname:'Աշոտ Հարությունյան',
+        //     position:"Գլխավոր տնօրեն",
+        //     image:glxavor,
+        //     information:"«Թումանյան Շաուրմա»-ն հիմնադրվել է 1998 թվականին: «Թումանյան Շաուրմա»-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում, որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր \n" +
+        //         "զբաղեցնում էր բավականին փոքր։"
+        // },
     ];
 
     const [aboutDataone,setAboutDataone]=useState(AboutFounder)
@@ -268,7 +271,7 @@ const [jobs ,SetJobs]=useState(jobsData)
     ];
 
 
-    const [menejments,setMenejmentdata]=useState(menejment)
+
 
 
 
@@ -288,7 +291,8 @@ const [jobs ,SetJobs]=useState(jobsData)
         foodTruckdata,
         aboutDataone,
         menejments,
-        setMenejmentdata
+        setMenejmentdata,
+        setAboutDataone
     }}>
         {children}
     </SliderContext.Provider>

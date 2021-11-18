@@ -7,6 +7,7 @@ import burger from "../../images/product/sev burger 1 (1).png"
 import { useTranslation } from 'react-i18next';
 import {NavLink} from "react-router-dom";
 import {FOOD_TRUCK_PAGE} from "../urls";
+import HomeSlider2 from "./HomeSlider2/HomeSlider2";
 
 
 
@@ -69,7 +70,7 @@ const hoverItem=(id)=>{
                                         <div  className={css.itemreclam} style={{
                                             backgroundImage: `url(${images})`
                                         }}  />
-                                        <h2 className={css.rectitle}>{description}</h2>
+                                        <h2 className={css.rectitle2}>{description}</h2>
                                     </div></NavLink>
                             }
                            </>
@@ -110,8 +111,11 @@ const hoverItem=(id)=>{
                         )
                     })
                 }
-            </div>
 
+            </div>
+            <div className={css.mobileversinsld2}>
+               <HomeSlider2/>
+            </div>
             <div className={css.aboutblock}>
                  <div className={css.aboutglobal}>
 

@@ -448,6 +448,10 @@ position: absolute;
    }
 
 }
+.adressblokmobile{
+  display: none;
+}
+
 
 
 
@@ -470,6 +474,7 @@ position: absolute;
     display: none;
   }
   .mobileheader{
+    overflow-x: hidden!important;
     width: get-vw(375px,375);
     height: get-vw(62px,375);
     background-color:  #252223;
@@ -530,12 +535,195 @@ position: absolute;
   }
   .mobilecontn{
     width: get-vw(375px,375);
-    height:get-vw(812px,375);
+    height:get-vw(910px,375);
     background-color: #252223;
     //position: absolute;
     top:get-vw(-812px,375);
     bottom: 0;
     z-index: 26!important;
+    padding-top: get-vw(40px,375);
+  }
+  .masnajuxmobile{
+    max-width: min-content;
+    height: get-vw(26px, 375);
+    margin-left: get-vw(15px, 375);
+    border-bottom:  get-vw(1px,375) dashed rgba(255, 255, 255, 0.3);
+
+    .masnajuxwrapermobile{
+      min-width: get-vw(150px, 375);
+      height: get-vw(20px,375 );
+      display: flex;
+      align-items: center;
+
+      // position: relative;
+      // z-index: 32;
+      .adresiconmobile{
+        width: get-vw(24px,375);
+        height: get-vw(24px,375);
+        cursor: pointer;
+      }
+      .slaqmobile{
+        width: get-vw(14px, 375);
+        height: get-vw(14px, 375);
+        margin-left: get-vw(10px,375 );
+        //margin-bottom: get-vw(2px,1920);
+        cursor: pointer;
+      }
+
+      .masnajuxnamemobile{
+        min-width:max-content ;
+        background-color:transparent;
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(16px,375 );
+        line-height: get-vw(19px, 375);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        color: #FFFFFF;
+        cursor: pointer;
+        z-index: 32;
+        margin-left: get-vw(10px,375 );
+
+      }
+
+    }
+
+
+  }
+  .adressblokmobile{
+    display: block;
+    width: get-vw(375px, 375);
+    height: get-vw(375px, 375);
+    position:absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 31;
+    border-bottom: 120px;
+
+  }
+  .adresswraper{
+    width: get-vw(375px, 375);
+    height: get-vw(375px, 375);
+    position:fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 16;
+  }
+  .adresses{
+    min-width:get-vw(345px,375 );
+    max-width: get-vw(345px ,375);
+    min-height:get-vw(116px,375);
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: get-vw(10px,375);
+    position: absolute !important;
+    left: get-vw(15px, 375);
+    top: 18vw;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 20;
+
+
+    .adresstop{
+      min-width: get-vw(345px ,375);
+      max-width: get-vw(345px ,375);
+      min-height:get-vw(116px,375);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+
+
+    }
+
+  }
+  .adressitem{
+    width: get-vw(315px,375);
+    height: get-vw(101px,375);
+    background: #FFFFFF;
+    box-shadow: 1px 1px 5px rgba(3, 142, 62, 0.2);
+    border-radius: get-vw(10px,375);
+    cursor: pointer;
+    z-index: 33;
+    display: flex;
+    flex-direction: column;
+    //padding-left: 20px;
+    position: relative;
+    color: #BFB7B6;
+    margin-top: get-vw(15px,375);
+
+
+    &:hover{
+      background: #FFFFFF;
+      border: 1px solid #13AD54;
+      box-sizing: border-box;
+      box-shadow: none;
+
+    }
+    img{
+      width: get-vw(21px,375);
+      height: get-vw(21px,375);
+      position: absolute;
+      top: get-vw(8px,375);
+      left: get-vw(279px,375);
+
+    }
+
+    .titleitem{
+      font-family: Montserrat-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(20px,375);
+      letter-spacing: -0.02em;
+      color: #252223;
+      text-transform: none;
+      margin-top: get-vw(15px,375);
+      margin-left: get-vw(15px,375);
+    }
+    .adressity{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(14px,375);
+      line-height: get-vw(17px,375);
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-top: get-vw(9px,375);
+      margin-left: get-vw(15px,375);
+    }
+    .dates{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(14px,375);
+      line-height: get-vw(17px,375);
+      letter-spacing: -0.02em;
+      margin-top:get-vw( 8px,375);
+      margin-left: get-vw(15px,375);
+      color: #BFB7B6;
+    }
+
+  }
+  .select_menu{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(16px,375);
+    line-height: get-vw(20px,375);
+    letter-spacing: -0.02em;
+    color: #13AD54;
+    cursor: pointer;
+    z-index: 35;
+    margin-left:get-vw(15px,375);
+    margin-top: get-vw(25px,375);
+    padding-bottom: get-vw(15px,375);
 
   }
 

@@ -279,6 +279,56 @@ const mobilemenustyle ={
 
             </div>
             <div style={mobilemenustyle} className={css.mobilecontn}  >
+                <div className={css.masnajuxmobile}  >
+                    <div className={css.masnajuxwrapermobile} >
+                        <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelect} />
+                        <p  className={css.masnajuxnamemobile} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
+                        {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelect} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
+                    </div>
+                    {sowAdress &&
+                    <div className={css.adressblokmobile}>
+                        <div className={css.adresswraper} onClick={()=>setSowAdress(!sowAdress)}/>
+                        <div  className={css.adresses} onClick={(e)=>e.stopPropagation()} >
+                            <div className={css.adresstop} >
+                                {activSub.length &&
+                                adressCountry.map((item) => {
+                                    return (
+                                        defaultCity === item.city &&
+                                        <div key={item.id}
+                                             onClick={() => showactiveAdress(item.id, item.adress, item.city)}
+                                             style={{
+                                                 background: adressactive[item.id] ?
+                                                     "#13AD54" : "#FFFFFF",
+                                                 boxShadow:adressactive[item.id] ? null : "1px 1px 5px rgba(3, 142, 62, 0.2);"
+                                             }}
+                                             className={css.adressitem}
+                                        >
+                                            <img src={verify} alt="" style={{
+                                                display: adressactive[item.id] ?
+                                                    "block" : "none",
+                                            }} />
+                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{item.title}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{item.adress}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
+                                        </div>
+                                    )
+                                })
+
+
+
+                                }
+                            </div>
+                            <p
+                                className={css.select_menu}
+                                onClick={changeMenu}>{defaultCity === "Երեվան" ?
+                                t("adressadd1") : defaultCity === "ծաղկաձոր" ?
+                                    t("adressadd2") :  t("adressadd2")}
+                            </p>
+                        </div>
+                    </div>}
+
+
+                </div>
 
             </div>
 

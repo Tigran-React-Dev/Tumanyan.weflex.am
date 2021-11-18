@@ -33,7 +33,7 @@
         cursor: pointer;
         margin-left: get-vw(40px,1920 );
         position: relative;
-        .rectitle{
+        .rectitle, .rectitle2{
             font-family: Mardoto-Medium;
             font-style: normal;
             font-weight: 500;
@@ -133,7 +133,9 @@
 
 //    reclam 2
 
-
+.mobileversinsld2{
+    display: none;
+}
 
 .rec2{
     width: get-vw(1920px,1920 );
@@ -285,8 +287,193 @@
 @media  screen and (max-width:500px){
      .home{
          width: get-vw(375px,375 );
+         overflow-x: hidden!important;
      }
      slider{
         width: get-vw(375px,375 );  
      }
+    .reclams{
+        min-width: get-vw(375px,375 );
+        min-height:get-vw(100px,375 );
+        margin-left: get-vw(0px,375 )!important;
+        margin-top: get-vw(40px,375);
+        .wraperreclam{
+            min-width: get-vw(161px, 375);
+            min-height: get-vw(100px,375 );
+            border-radius: get-vw(10px, 375);
+            margin-left: get-vw(15px,375 )!important;
+            .itemreclam{
+                width: get-vw(161px, 375);
+                height: get-vw(100px,375 );
+                border-radius: get-vw(10px, 375);
+                object-fit: contain;
+                background-repeat: no-repeat;
+                background-size: cover;
+                transition: transform 0.5s ease;
+
+                &:hover{
+                    border-radius: get-vw(10px, 375);
+                    transform: scale(1.1);
+                    overflow: hidden!important;
+
+                }
+
+
+
+            }
+            .rectitle{
+                min-width: max-content;
+                font-size: get-vw(18px,375 );
+                line-height: get-vw(21px,375);
+                top: get-vw(39px,375);
+                left: get-vw(20px,375);
+
+            }
+            .rectitle2{
+                min-width: max-content;
+                font-size: get-vw(18px,375 );
+                line-height: get-vw(21px,375);
+                top: get-vw(39px,375);
+                left: get-vw(30px,375);
+            }
+
+
+        }
+
+    }
+    .menu{
+        width: get-vw(345px,375 );
+        min-height: get-vw(161px,375);
+        margin-left: get-vw(15px,375 );
+        margin-top: get-vw(17px,375 );
+        justify-content: space-between;
+        .menuitem{
+            width: get-vw(161px,375 );
+            min-height:  get-vw(161px,375 );
+            border-radius: get-vw(10px,375 );
+            margin-left: get-vw(0px,375 );
+            margin-top: get-vw(23px,375 );
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color:  #EFEFEF;
+            box-sizing: border-box;
+            cursor: pointer;
+            &:hover {
+                img{
+                    filter: grayscale(100%) !important;
+                }
+
+            }
+            p{
+                width: max-content;
+                font-family: Mardoto-Medium;
+                font-style: normal;
+                font-weight: 500;
+                font-size: get-vw(18px,375);
+                line-height: get-vw(21px, 375);
+                letter-spacing: -0.04em;
+                text-transform: uppercase;
+                color: #252223;
+                margin-top: get-vw(20px, 375);
+                margin-left: get-vw(15px,375 );
+            }
+            img{
+                width: get-vw(130px, 375);
+                height: get-vw(84px,375);
+                top: get-vw(76px,375);
+                margin: 0 auto;
+
+
+
+            }
+
+        }
+    }
+    .rec2{
+        display: none;
+    }
+    .mobileversinsld2{
+        display: block;
+        width: get-vw(375px,375);
+        height: get-vw(308px,375);
+        margin-top: get-vw(60px,375);
+    }
+
+
+    .burger{
+        display: none!important;
+    }
+    .aboutblock{
+        width: get-vw(375px,375);
+        min-height: get-vw(556px,375);
+        display: flex;
+
+        .aboutglobal{
+            width: get-vw(335px,375);
+            min-height: get-vw(556px,375 );
+
+
+            h1{
+                width: get-vw(156px,375);
+                font-family: Mardoto-Medium;
+                font-size: get-vw(28px, 375);
+                line-height: get-vw(33px, 375);
+                 margin-left: get-vw(0px,1920 );
+                //margin-top: get-vw(100px,1920);
+
+            }
+            .aboutp{
+                width: get-vw(345px,375);
+                min-height: get-vw(208px,375);
+                font-size: get-vw(16px, 375);
+                margin-top: get-vw( 30px,375);
+                margin-left: get-vw(0px,375 );
+            }
+            .step {
+                width: get-vw(259px, 375);
+                height: get-vw(245px,375);
+                margin-left: get-vw(0px, 375);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: get-vw(40px, 375);
+                margin-left: get-vw(30px,375);
+               padding-bottom: get-vw(60px,375);
+
+                .itemstop {
+                    min-width: max-content;
+                    position: relative;
+
+                    div {
+                        width: get-vw(46px, 375);
+                        height: get-vw(46px, 375);
+                        justify-content: center;
+                        align-items: center;
+                        left: get-vw(-34px, 375);
+                        bottom: get-vw(11px, 375);
+
+
+
+                    }
+
+                    .circlenumber {
+                        font-size: get-vw(18px, 375);
+                        line-height: get-vw(21px, 375);
+
+                    }
+
+                    .stepname {
+                        font-size: get-vw(18px, 375);
+                        line-height: get-vw(21px, 375);
+
+
+                    }
+                }
+
+            }
+        }
+    }
+
+
   }

@@ -84,13 +84,9 @@ function App() {
 
     const stylemain={
         position:sowmenu ? "relative" : "absolute",
-        top:  sowmenu ? "-3.3vw" : "0",
+        top:  sowmenu ? "-1.5vw" : "0",
         transition: "all 0.3s ease-in",
     }
-
-  
-
-
 
 
   return (

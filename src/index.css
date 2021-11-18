@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #FFFFFF;
-  height: 1080px;
+  padding-top: -30px;
 }
 
 code {
@@ -37,10 +37,10 @@ p{
 @media  screen and (max-width:500px){
   .main {
     margin-top: 16.5vw;
-
+    overflow-x: hidden!important;
   }
   html,body{
-    overflow-x: hidden;
+    overflow-x: hidden!important;
   }
 }
 
