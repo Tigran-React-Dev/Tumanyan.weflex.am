@@ -34,7 +34,7 @@ p{
   margin-top: 6.4vw;
 
 }
-@media  screen and (max-width:500px){
+@media  screen and (max-width:450px){
   .main {
     margin-top: 16.5vw;
     overflow-x: hidden!important;

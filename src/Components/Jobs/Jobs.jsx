@@ -176,7 +176,7 @@ const Jobs =()=>{
                                   fileRef.current.click();
                               }}
                           >
-                              <h5>Կցել ռեզյումե</h5>
+                              <h2>Կցել ռեզյումե</h2>
                               <h6>max. 4 MB PDF, DOC, DOCX</h6>
 
                           </button>

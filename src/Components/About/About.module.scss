@@ -86,7 +86,6 @@
 .aboutmenusow{
   width: get-vw(1732px,1920);
   min-height: get-vw(918px,1920);
-  border: 1px solid red;
   margin-left: get-vw(92px,1920);
    .tnoren{
      width: get-vw(1636px,1920);
@@ -202,6 +201,174 @@
       text-decoration-line: underline;
       color: #252223;
       margin-top: get-vw(24px,1920);
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .aboutcontainer{
+    width: get-vw(375px,375);
+    min-height: get-vw(322px,375);
+    .abouthdr{
+      width: get-vw(375px,375);
+      height: get-vw(622px,375);
+      flex-direction: column;
+
+    }
+  }
+  .abouttitle{
+    width: get-vw(314px,375);
+    height: get-vw(233px,375);
+    margin-left: get-vw(15px,375);
+
+
+    h1{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(34px,375);
+      line-height: 120%;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+      margin-top: get-vw(60px,375);
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-top: get-vw(24px,375);
+      letter-spacing: -0.02em;
+      color: #252223;
+    }
+  }
+  .aboutteam{
+    width: get-vw(375px,375);
+    height: get-vw(358px,375);
+    margin-top: get-vw(60px,375);
+    background-image: url("../../images/team.png");
+    background-repeat: no-repeat;
+    background-size: get-vw(375px,375) get-vw(358px,375) ;
+    background-position: top;
+    object-fit: contain!important;
+  }
+  .btnblok{
+    width: get-vw(375px,375);
+    height: get-vw(67px,375);
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+     &::-webkit-scrollbar{
+       display: none;
+     }
+  }
+  .btnmenuabout{
+    min-width: max-content;
+    height: get-vw(67px,375);
+    background: #13AD54;
+    box-shadow: inset -2px 0px 0px #FFFFFF;
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size:get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border: none;
+    padding: 0 get-vw(24px,375);
+    cursor: pointer;
+    &:hover{
+      background: #EB2F2F;
+      color: #FFFFFF;
+
+
+    }
+  }
+  .aboutmenusow{
+    width: get-vw(375px,375);
+    min-height: get-vw(207px,375);
+    margin-left: get-vw(0px,375);
+    .tnoren{
+      width: get-vw(375px,375);
+      min-height: get-vw(663px,1920);
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: get-vw(15px,375);
+      padding-bottom: get-vw(60px,375);
+      .itemabout{
+        width: get-vw(345px,375);
+        height: get-vw(663px,375);
+        margin-top: get-vw(60px,375);
+        margin-left: get-vw(0px,375);
+        display: flex;
+        flex-direction: column;
+
+        img{
+          width: get-vw(345px,375 );
+          height: get-vw(288px,375 );
+          border-radius: get-vw(10px, 375);
+          margin-left: 0;
+           }
+        h4{
+         font-size:get-vw(20px,375);
+          line-height: 150%;
+          margin-top: get-vw(15px,375);
+        }
+        h6{
+         font-size:get-vw( 13px,375);
+          line-height: 160%;
+          margin-top: get-vw(8px,375);
+        }
+        p{
+
+          font-size:get-vw( 16px,375);
+          line-height: 160%;
+          margin-top: get-vw(15px,375);
+        }
+      }
+    }
+
+  }
+  .menejmentcontroler{
+    width: get-vw(375px,375);
+    min-height: get-vw(457px,375);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: get-vw(60px,375);
+    .itemmenejment{
+      width: get-vw(345px,375);
+      height: get-vw(397px,375);
+      display: flex;
+      flex-direction: column;
+       margin-left: get-vw(15px,375);
+      margin-top: get-vw(60px,375);
+
+      img{
+        width: get-vw(345px,375);
+        height: get-vw(288px,375);
+        border-radius: get-vw(10px,375);
+        }
+      h4{
+       font-size: get-vw(20px,375);
+        line-height: 150%;
+        margin-top: get-vw(8px,375);
+      }
+      h2{
+       font-size: get-vw(16px,375);
+        line-height: get-vw(20px,375);
+       margin-top: get-vw(15px,375);
+      }
+      h6{
+        font-size: get-vw(13px,375);
+        line-height: 160%;
+         margin-top: get-vw(8px,375);
+      }
     }
   }
 }

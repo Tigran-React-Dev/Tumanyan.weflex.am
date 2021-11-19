@@ -131,8 +131,8 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
                         price.map(({id, size, price}, index) => {
                             return <li
                                 key={index}
-                                onClick={() => changeSizeAndprice(price, id, size)}
-                                className={activeBtnStyle == id ? css.btnsize : css.btnsize1}
+                                onClick={() => changeSizeAndprice(price, index+1, size)}
+                                className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
                             >
                                 { size==1 ? "M" : size==2 ? "L" : size==3 ? "XL" : null}
 

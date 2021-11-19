@@ -20,6 +20,7 @@ const SliderProvider =({children})=>{
     const [activeProjectdata,setActiveProjectdata]=useState({})
     const [menejments,setMenejmentdata]=useState([])
     const [aboutDataone,setAboutDataone]=useState([])
+    const [sliderHome1,setSliderHome1]=useState([])
     const Reclam = [
         {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
         {id:2,images:rec2,description:"Food truck"},
@@ -42,7 +43,7 @@ const SliderProvider =({children})=>{
         "Տնօրենի գրասենյակ":"+374 91 12-34-56"
     }
     const sliders=[
-        {id:1,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
+        {id:1,imagis:sld1,description:"Հավի M չափի շաուրմա", },
         {id:2,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
         {id:3,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
         {id:4,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
@@ -278,7 +279,9 @@ const [jobs ,SetJobs]=useState(jobsData)
 
 
     return <SliderContext.Provider value={{
-        sliders,
+        // sliders,
+        sliderHome1,
+        setSliderHome1,
         Reclam,
         Reclam2,
         aboutinfo,

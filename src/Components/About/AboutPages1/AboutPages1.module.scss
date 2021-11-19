@@ -1,0 +1,509 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+
+.pages1container{
+  width: get-vw(1732px,1920);
+  min-height: get-vw(918px,1920);
+  margin-top: get-vw(100px,1920);
+  display: flex;
+  flex-direction: column;
+  margin-left: get-vw(40px,1920);
+
+   .brendblok1{
+     width: get-vw(1636px,1920);
+     min-height: get-vw(668px,1920);
+     background: #F9F9F9;
+     border-radius: get-vw(10px,1920);
+     display: flex;
+
+
+     .brendlogo{
+       width: get-vw(740px,1920);
+       height: get-vw(390px,1920);
+
+       img{
+         width: get-vw(498px,1920);
+         height: get-vw(178px,1920);
+         margin-top: get-vw(100px,1920);
+         margin-left: get-vw(100px,1920);
+         object-fit: contain;
+       }
+       p{
+         font-family: Montserrat-Medium;
+         font-style: normal;
+         font-weight: 500;
+         font-size: get-vw(48px,1920);
+         line-height: 150%;
+         letter-spacing: -0.02em;
+         color: #252223;
+         margin-top: get-vw(40px,1920);
+         margin-left: get-vw(100px,1920);
+
+       }
+     }
+     .textbrend1{
+       width: get-vw(718px,1920);
+       height: get-vw(668px,1920);
+
+       margin-left: get-vw(78px,1920);
+       h6{
+         font-family: Montserrat-Regular;
+         font-style: normal;
+         font-weight: normal;
+         font-size: get-vw(26px,1920);
+         line-height: 160%;
+         letter-spacing: -0.02em;
+         color: #252223;
+         margin-top: get-vw(120px,1920);
+       }
+       p{
+         font-family: Montserrat arm;
+         font-style: normal;
+         font-weight: normal;
+         font-size: get-vw(21px,1920);
+         line-height: 160%;
+         color: #252223;
+        letter-spacing: -0.02em;
+         margin-top: get-vw(50px,1920);
+       }
+     }
+   }
+
+}
+
+.brendsteps{
+  width: get-vw(1536px,1920);
+  min-height: get-vw(371px,1920);
+  display: flex;
+  flex-wrap:wrap;
+  margin-top: get-vw(100px,1920);
+  justify-content: space-between;
+  .step0{
+    width: get-vw(718px,1920);
+    height: get-vw(371px,1920);
+    background-size: get-vw(485px,1920) get-vw(249px,1920);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    h1{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(80px,1920);
+      line-height: get-vw(94px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+      margin-top: get-vw(100px,1920);
+    }
+  }
+  .stepsaloy{
+    width: get-vw(718px,1920);
+    height: get-vw(371px,1920);
+    display: flex;
+    flex-direction: column;
+
+    .indexandlogo{
+      width: get-vw(322px,1920);
+      height: get-vw(202px,1920);
+      display: flex;
+      align-items: center;
+      h1{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(155px,1920);
+        line-height: get-vw(182px,1920);
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #EFEFEF;
+      }
+      img{
+        width: get-vw(183px,1920);
+        height: get-vw(150px,1920);
+        object-fit: contain;
+        margin-left: get-vw(50px,1920);
+      }
+
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(26px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+       color: #252223;
+      margin-top: get-vw(50px,1920);
+    }
+  }
+}
+.haccpblok{
+  width: get-vw(1636px,1920);
+  height: get-vw(625px,1920);
+  background: #F9F9F9;
+  border-radius: get-vw(10px,1920);
+  display: flex;
+
+  .haccplogo{
+    width: get-vw(818px,1920);
+    height: get-vw(625px,1920);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    img{
+      width: get-vw(390px,1920);
+      height: get-vw(324px,1920);
+
+    }
+  }
+  .haccpText{
+    width: get-vw(818px,1920);
+    height: get-vw(625px,1920);
+    display: flex;
+    flex-direction: column;
+    .indexandtitle{
+      width: get-vw(671px,1920);
+      height: get-vw(182px,1920);
+      display: flex;
+      margin-top: get-vw(100px,1920);
+      align-items: center;
+      h1{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(155px,1920);
+        line-height: get-vw(182px,1920);
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #EFEFEF;
+      }
+      h2{
+        font-family: Montserrat-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(48px,1920);
+        line-height: 150%;
+         letter-spacing: -0.02em;
+         color: #13AD54;
+        margin-left: get-vw(50px,1920);
+      }
+    }
+    p{
+      width: get-vw(718px,1920);
+      height: get-vw(168px,1920);
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(26px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-top: get-vw(75px,1920);
+    }
+
+  }
+}
+.page1stepsfooterborder{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(1px,1920);
+  border-top: 1px solid  #EFEFEF;
+  margin-top: get-vw(100px,1920);
+
+}
+.page1stepsfooter{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(342px,1920);
+  margin-top: get-vw(100px,1920);
+  display: flex;
+  flex-direction: column;
+  h1{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(80px,1920);
+    line-height: get-vw(94px,1920);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+  }
+}
+.stepsfoterblok{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(142px,1920);
+  display: flex;
+  justify-content: space-between;
+  margin-top: get-vw(100px,1920);
+  padding-bottom: get-vw(100px,1920);
+  .itemstep{
+    width: get-vw(350px,1920);
+    height: get-vw(142px,1920);
+    .iconandtitle{
+      width: get-vw(168px,1920);
+      height: get-vw(39px,1920);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img{
+        width: get-vw(32px,1920);
+        height: get-vw(32px,1920);
+        object-fit: contain;
+      }
+      h1{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(26px,1920);
+        line-height: 150%;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #13AD54;
+      }
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-top: get-vw(35px,1920);
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pages1container{
+    width: get-vw(375px,375);
+    min-height: get-vw(300px,375);
+    margin-top: get-vw(60px,375);
+    display: flex;
+    flex-direction: column;
+    margin-left: get-vw(0px,375);
+
+    .brendblok1{
+      width: get-vw(375px,375);
+      min-height: get-vw(811px,375);
+
+      border-radius: get-vw(0px,375);
+      display: flex;
+      flex-direction: column;
+
+
+      .brendlogo{
+        width: get-vw(287px,375);
+        height: get-vw(201px,375);
+        display: flex;
+        flex-direction: column;
+        img{
+          width: get-vw(257px,375);
+          height: get-vw(96px,375);
+          margin-top: get-vw(60px,375);
+          margin-left: get-vw(15px,375);
+          object-fit: contain;
+        }
+        p{
+          font-size: get-vw(20px,375);
+          margin-top: get-vw(15px,375);
+          margin-left: get-vw(15px,375);
+
+        }
+      }
+      .textbrend1{
+        width: get-vw(345px,375);
+        height: get-vw(610px,375);
+        margin-left: get-vw(15px,375);
+        h6{
+         font-size: get-vw(20px,375);
+          margin-top: get-vw(60px,375);
+        }
+        p{
+         font-size: get-vw(16px,375);
+          margin-top: get-vw(50px,375);
+        }
+      }
+    }
+
+  }
+
+  .brendsteps{
+    width: get-vw(375px,375);
+    min-height: get-vw(371px,375);
+     flex-direction: column;
+     margin-top: get-vw(60px,375);
+    justify-content: space-between;
+    border-top: get-vw(1px,375) solid #EFEFEF ;
+    .step0{
+      width: get-vw(345px,375);
+      height: get-vw(161px,375);
+      background-image: unset;
+      margin-left: get-vw(15px,375);
+      h1{
+
+        font-size: get-vw(34px,375);
+        line-height: 120%;
+        margin-top: get-vw(60px,375);
+      }
+    }
+    .stepsaloy{
+      width: get-vw(345px,375);
+      height: get-vw(210px,375);
+      display: flex;
+      flex-direction: column;
+
+      .indexandlogo{
+        width: get-vw(181px,375);
+        height: get-vw(114px,375);
+        display: flex;
+        align-items: center;
+        margin-left: get-vw(15px,375);
+        h1{
+         font-size: get-vw(80px,375);
+          line-height: get-vw(94px,375);
+
+        }
+        img{
+          width: get-vw(86px,375);
+          height: get-vw(70px,375);
+          object-fit: contain;
+          margin-left: get-vw(50px,375);
+        }
+
+      }
+      p{
+        font-size: get-vw(16px,375);
+        margin-top: get-vw(15px,375);
+        margin-left: get-vw(15px,375);
+      }
+    }
+  }
+  .haccpblok{
+    width: get-vw(375px,375);
+    height: get-vw(435px,375);
+    flex-direction: column;
+    border-radius: get-vw(0px,375);
+    .haccplogo{
+      width: get-vw(375px,375);
+      height: get-vw(110px,375);
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      object-fit: contain;
+      margin-left: get-vw(110px,375);
+      img{
+        width: get-vw(84px,375);
+        height: get-vw(70px,375);
+
+      }
+    }
+    .haccpText{
+      width: get-vw(345px,375);
+      height: get-vw(270px,375);
+      display: flex;
+      flex-direction: column;
+      margin-left: get-vw(15px,375);
+      .indexandtitle{
+        width: get-vw(345px,375);
+        height: get-vw(94px,375);
+        display: flex;
+        margin-top: get-vw(44px,375);
+        align-items: center;
+        h1{
+          font-size: get-vw(80px,375);
+          line-height: get-vw(94px,375);
+
+        }
+        h2{
+          font-size: get-vw(20px,375);
+          line-height: 150%;
+
+          margin-left: get-vw(50px,375);
+        }
+      }
+      p{
+        width: get-vw(345px,375);
+        height: get-vw(156px,375);
+       font-size: get-vw(16px,375);
+        line-height: 160%;
+        margin-top: get-vw(32px,375);
+
+      }
+
+    }
+  }
+  .page1stepsfooterborder{
+    width: get-vw(1636px,1920);
+    min-height: get-vw(1px,1920);
+    border-top: 1px solid  #EFEFEF;
+    margin-top: get-vw(100px,1920);
+
+  }
+  .page1stepsfooter{
+    width: get-vw(1636px,1920);
+    min-height: get-vw(342px,1920);
+    margin-top: get-vw(100px,1920);
+    display: flex;
+    flex-direction: column;
+    h1{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(80px,1920);
+      line-height: get-vw(94px,1920);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+    }
+  }
+  .stepsfoterblok{
+    width: get-vw(1636px,1920);
+    min-height: get-vw(142px,1920);
+    display: flex;
+    justify-content: space-between;
+    margin-top: get-vw(100px,1920);
+    padding-bottom: get-vw(100px,1920);
+    .itemstep{
+      width: get-vw(350px,1920);
+      height: get-vw(142px,1920);
+      .iconandtitle{
+        width: get-vw(168px,1920);
+        height: get-vw(39px,1920);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+          width: get-vw(32px,1920);
+          height: get-vw(32px,1920);
+          object-fit: contain;
+        }
+        h1{
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(26px,1920);
+          line-height: 150%;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #13AD54;
+        }
+      }
+      p{
+        font-family: Montserrat-Regular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: get-vw(21px,1920);
+        line-height: 160%;
+        letter-spacing: -0.02em;
+        color: #252223;
+        margin-top: get-vw(35px,1920);
+      }
+    }
+  }
+}

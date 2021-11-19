@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import css from "./About.module.scss"
 import TumanianSlider from "../Tumanian/Sliders/Sliders";
 import { useTranslation } from 'react-i18next';
@@ -6,11 +6,13 @@ import Button from "../Global/Button/Button";
 import {useSlider} from "../Providers/SliderProvider";
 import axios from "axios";
 import {useProduct} from "../Providers/ProductMenu";
+import AboutPages1 from "./AboutPages1/AboutPages1";
 
 const About =()=>{
     const [activeMneuStyle,setAactiveMenuStyle]=useState(1)
     const [hoveritemStyle,setHoverItemStyle]=useState({})
     const { t } = useTranslation();
+    const ref=useRef(null)
     const {languae}=useProduct()
     const {aboutDataone,menejments,setMenejmentdata,setAboutDataone}=useSlider()
     const [loading,setLoading]=useState(false)
@@ -41,7 +43,20 @@ const About =()=>{
 
     },[])
 
-  const changestyleandscrolingmenu =(id)=>{
+  const changestyleandscrolingmenu =(id,i)=>{
+        switch (i){
+            case 0 :
+                ref.current.scrollLeft=0;
+                break
+            case 1 :
+                ref.current.scrollLeft=100;
+                break
+            case 2 :
+                ref.current.scrollLeft=250;
+                break
+            default :
+                break
+        }
     setAactiveMenuStyle(id)
    
   }
@@ -58,13 +73,13 @@ const About =()=>{
                </div>
                 <div className={css.aboutteam}/>
          </div>
-            <div className={css.btnblok}>
+            <div className={css.btnblok} ref={ref}>
                 {
-                    btnTitle.map(({id,name})=>{
+                    btnTitle.map(({id,name},index)=>{
                         return <button
                         key={id}
                         className={css.btnmenuabout}
-                        onClick={()=>changestyleandscrolingmenu(id)}
+                        onClick={()=>changestyleandscrolingmenu(id,index)}
                         style={{background:activeMneuStyle===id && "#ffffff" ,
                             boxShadow:activeMneuStyle===id && "inset -1px 0px 0px",
                             color:activeMneuStyle===id && "#13AD54"
@@ -80,7 +95,7 @@ const About =()=>{
                 {
                     activeMneuStyle===1 ?
                         <div>
-                            HISTORY
+                           <AboutPages1/>
                         </div>
                         :
                     activeMneuStyle===2 ?
