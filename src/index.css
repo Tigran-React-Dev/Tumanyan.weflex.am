@@ -39,8 +39,10 @@ p{
     margin-top: 16.5vw;
     overflow-x: hidden!important;
   }
-  html,body{
-    overflow-x: hidden!important;
+  html{
+  /*  height: auto;*/
+  /*  overflow-y: auto;*/
+  /* overflow-x: scroll;*/
   }
 }
 

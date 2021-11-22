@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import {NavLink} from "react-router-dom";
 import {FOOD_TRUCK_PAGE} from "../urls";
 import HomeSlider2 from "./HomeSlider2/HomeSlider2";
+import axios from "axios";
 
 
 
@@ -15,16 +16,19 @@ import HomeSlider2 from "./HomeSlider2/HomeSlider2";
 
 const Tumanian =({history})=>{
 
-    const {Reclam ,Reclam2,aboutinfo, aboutStep} =useSlider()
+    const {Reclam ,homepageReclam2,setHomePageReclam2,aboutinfo, aboutStep} =useSlider()
     const {activSub,setactiveMenuitem,languae}=useProduct()
-
+    const [loading,setLoading]=useState(false)
     const { t } = useTranslation();
     const [color,setColor]= useState("#ebe5e5");
     const [hoverId,SetHoverId]=useState({})
 
     useEffect(()=>{
         window.scrollTo(0, 0);
-
+        const reclam2respins=axios.get("http://tumanyanadmin.weflex.am/api/slider_two")
+        reclam2respins.then(res=>setHomePageReclam2(res.data))
+            .catch(err=>console.log(err))
+        setLoading(true)
     },[])
 
 
@@ -100,22 +104,30 @@ const hoverItem=(id)=>{
                 }
 
             </div>
-            <div className={css.rec2}>
-                {
-                    Reclam2.map(({id,images})=>{
 
-                        return(
-                            <div key={id}  className={css.itemreclam2}>
-                                <img src={images} alt=""/>
+            {loading &&
+            <>
+            <div className={css.rec2}>
+
+                {
+                    homepageReclam2.map(({id, image}) => {
+
+                        return (
+                            <div key={id} className={css.itemreclam2}>
+                                <img src={process.env.REACT_APP_IMG_URL+"/slider/"+image} alt=""/>
                             </div>
                         )
                     })
                 }
 
             </div>
+
             <div className={css.mobileversinsld2}>
-               <HomeSlider2/>
+               <HomeSlider2 homepageReclam2={homepageReclam2}/>
             </div>
+                </>
+                }
+
             <div className={css.aboutblock}>
                  <div className={css.aboutglobal}>
 

@@ -535,13 +535,92 @@ position: absolute;
   }
   .mobilecontn{
     width: get-vw(375px,375);
-    height:get-vw(910px,375);
+    height:get-vw(910px,450);
     background-color: #252223;
-    //position: absolute;
+    position: absolute;
     top:get-vw(-900px,375);
     bottom: 0;
+    display: flex;
+    flex-direction: column;
     z-index: 26!important;
     padding-top: get-vw(40px,375);
+    .menubarmobile{
+      width: get-vw(335px,375);
+      height: get-vw(579px,450);
+      border: 1px solid red;
+      margin-top: get-vw(5px,450);
+      display: flex;
+      flex-direction: column;
+      .linkmenu{
+        margin-left:get-vw(0px, 375) ;
+        height: get-vw(23px,450);
+        margin-top: get-vw(50px,450);
+
+        p{
+          text-decoration: none;
+          font-family: Mardoto-Medium;
+          font-style:normal;
+          font-weight: 500;
+          font-size: get-vw(20px, 375);
+          line-height: get-vw(23px,375 );
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #13AD54;
+          cursor: pointer;
+
+          &:hover{
+            color: #EB2F2F;
+          }
+        }
+      }
+      .menumixin{
+        width: get-vw(135px,375);
+        height: get-vw(305px,450);
+        border: 1px solid red;
+        margin-top: get-vw(16px,450);
+        display: flex;
+        flex-direction: column;
+        a{
+          min-width: max-content;
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(20px,375);
+          line-height: get-vw(23px,375);
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          margin-top: get-vw(24px,450);
+        }
+      }
+      .loginicon{
+        width: get-vw(26px,375);
+        height: get-vw(26px,450);
+        border: 1px solid red;
+        margin-top: get-vw(100px,450);
+      }
+      .changelanguagemobile{
+        width: get-vw(154px,375);
+        height: get-vw(25px,450);
+        border: 1px solid red;
+        margin-top: get-vw(40px,450);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2{
+          font-family: Manrope;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 25px;
+          text-align: center;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #BFB7B6;
+        }
+
+      }
+    }
   }
   .masnajuxmobile{
     max-width: min-content;

@@ -439,70 +439,56 @@
     }
   }
   .page1stepsfooterborder{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(1px,1920);
-    border-top: 1px solid  #EFEFEF;
-    margin-top: get-vw(100px,1920);
+    width: get-vw(375px,375);
+    min-height: get-vw(1px,375);
+    border-top: get-vw(1px,375) solid  #EFEFEF;
+    margin-top: get-vw(60px,375);
 
   }
   .page1stepsfooter{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(342px,1920);
-    margin-top: get-vw(100px,1920);
-    display: flex;
-    flex-direction: column;
+    width: get-vw(375px,375);
+    min-height: get-vw(585px,375);
+    margin-top: get-vw(60px,375);
+
     h1{
-      font-family: Mardoto-Medium;
-      font-style: normal;
-      font-weight: 500;
-      font-size: get-vw(80px,1920);
-      line-height: get-vw(94px,1920);
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: #252223;
+     font-size: get-vw(34px,375);
+      line-height: 120%;
+      margin-left: get-vw(15px,375);
+
     }
   }
   .stepsfoterblok{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(142px,1920);
+    width: get-vw(375px,375);
+    min-height: get-vw(484px,375);
     display: flex;
-    justify-content: space-between;
-    margin-top: get-vw(100px,1920);
-    padding-bottom: get-vw(100px,1920);
+    flex-direction: column;
+    margin-top: get-vw(40px,375);
+    padding-bottom: get-vw(60px,375);
     .itemstep{
-      width: get-vw(350px,1920);
-      height: get-vw(142px,1920);
+      width: get-vw(345px,375);
+      height: get-vw(91px,375);
+      margin-left: get-vw(15px,375);
       .iconandtitle{
-        width: get-vw(168px,1920);
-        height: get-vw(39px,1920);
+        min-width: get-vw(86px,375);
+        height: get-vw(24px,375);
         display: flex;
         justify-content: space-between;
         align-items: center;
         img{
-          width: get-vw(32px,1920);
-          height: get-vw(32px,1920);
-          object-fit: contain;
+          width: get-vw(21px,375);
+          height: get-vw(21px,375);
+          object-fit: cover;
         }
         h1{
-          font-family: Mardoto-Medium;
-          font-style: normal;
-          font-weight: 500;
-          font-size: get-vw(26px,1920);
-          line-height: 150%;
-          letter-spacing: -0.04em;
-          text-transform: uppercase;
-          color: #13AD54;
+          font-size: get-vw(18px,375);
+          line-height: 120%;
+          margin-left: get-vw(15px,375);
+
         }
       }
       p{
-        font-family: Montserrat-Regular;
-        font-style: normal;
-        font-weight: normal;
-        font-size: get-vw(21px,1920);
-        line-height: 160%;
-        letter-spacing: -0.02em;
-        color: #252223;
-        margin-top: get-vw(35px,1920);
+       font-size: get-vw(16px,375);
+       margin-top: get-vw(16px,375);
       }
     }
   }

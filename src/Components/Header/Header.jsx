@@ -19,6 +19,8 @@ import i18next from 'i18next';
 import {useSelector} from "react-redux";
 import iconmenu from "../../images/icons/iconmobilemenu.svg"
 import iconclose from "../../images/icons/closebtniconmobilemenu.svg"
+import {isAuthRoutes, isOuthFooter} from "../routes";
+import {useSlider} from "../Providers/SliderProvider";
 
 
 const Header = () => {
@@ -35,7 +37,7 @@ const Header = () => {
     const [inputborder, setInputborder] = useState(false)
     const [languagess, setLanguage] = useState(1)
     const [menuiconClik,setMenuIconClik]=useState(false)
-
+    const {languae}=useProduct()
    
     const handleClickSelect = () => {
         setSelectIcon(!selecticon)
@@ -61,6 +63,8 @@ const Header = () => {
 
     const home = () => {
         window.scrollTo(0, 0);
+        window.scroll(0,0);
+
     }
     const ScrlMenu = () => {
         if (history.location.pathname === "/" || history.location.pathname === "/home") {
@@ -133,7 +137,7 @@ const ChangeMobileMenu =()=>{
 }
 
 const mobilemenustyle ={
-        position:menuiconClik ? "relative" : "absolute",
+        position:menuiconClik && !sowAdress ? "fixed" : "absolute",
         top:menuiconClik && "16.5vw",
         transition: "all 0.9s",
 }
@@ -284,6 +288,51 @@ const mobilemenustyle ={
                         <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelect} />
                         <p  className={css.masnajuxnamemobile} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
                         {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelect} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
+                    </div>
+                    <div className={css.menubarmobile}>
+                        <div className={css.linkmenu}>
+                            <p onClick={ScrlMenu}>{t("menuscrol")}</p>
+                        </div>
+                        <div className={css.menumixin}>
+
+                                {
+                                    isOuthFooter.map((item)=>{
+
+                                        return(
+                                            <>
+                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact key={item.id} to={item.path}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
+                                            </>
+                                            )
+                                    })
+                                }
+                                {
+                                    isAuthRoutes.map((item)=>{
+                                        return(
+                                            <NavLink onClick={ChangeMobileMenu} exact key={item.id} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                        )
+                                    })
+                                }
+                        </div>
+                        <div className={css.loginicon}>
+
+                        </div>
+                        <div className={css.changelanguagemobile}>
+                            {
+                                languages.map(lang=>{
+                                    return(
+                                        <h2
+                                            key={lang.id}
+                                            style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium"}}
+                                            onClick={() => changeLanguag(lang.id, lang.name)}
+                                        >
+                                            {lang.name}
+                                        </h2>
+                                    )
+                                })
+
+                            }
+
+                        </div>
                     </div>
                     {sowAdress &&
                     <div className={css.adressblokmobile}>

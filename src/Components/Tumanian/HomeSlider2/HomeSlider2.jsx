@@ -21,9 +21,9 @@ import { useSlider } from "../../Providers/SliderProvider";
 SwiperCore.use([Autoplay,Pagination,Navigation]);
 
 
-const  HomeSlider2= () =>{
+const  HomeSlider2= ({homepageReclam2}) =>{
 
-    const {Reclam2} =useSlider()
+
 
     return (
         <>
@@ -35,12 +35,12 @@ const  HomeSlider2= () =>{
                 "clickable": true,
 
             }} speed={1000}  navigation={false} className="mySwiper">
-                {Reclam2.map(({id,images})=>{
+                {homepageReclam2.map(({id,image})=>{
                     return(
                         <>
                             <SwiperSlide key={id}>
                                 <div className="slideritem" style={{
-                                    backgroundImage: `url(${images})`
+                                    backgroundImage: `url(${process.env.REACT_APP_IMG_URL+"/slider/"+image})`
 
                                 }}
                                 >

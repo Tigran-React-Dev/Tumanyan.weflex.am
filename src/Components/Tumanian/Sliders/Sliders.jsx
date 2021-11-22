@@ -48,7 +48,7 @@ const  TumanianSlider= () =>{
   "clickable": true,
   
 }} speed={1000}  navigation={false} className="mySwiper">
-        {console.log(sliderHome1)}
+
         {loadong && sliderHome1.map(({id,description,descriptionEN,image,descriptionRU,button_name,button_nameEN,button_nameRU,url})=>{
             return(
                 <>

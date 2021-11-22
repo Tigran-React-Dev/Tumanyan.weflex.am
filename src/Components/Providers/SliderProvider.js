@@ -21,6 +21,9 @@ const SliderProvider =({children})=>{
     const [menejments,setMenejmentdata]=useState([])
     const [aboutDataone,setAboutDataone]=useState([])
     const [sliderHome1,setSliderHome1]=useState([])
+    const [homepageReclam2,setHomePageReclam2]=useState([])
+
+
     const Reclam = [
         {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
         {id:2,images:rec2,description:"Food truck"},
@@ -42,6 +45,7 @@ const SliderProvider =({children})=>{
         "Գլխավոր օֆիս":"0040, ՀՀ, ք․ Երևան  Թումանյան փ. 32",
         "Տնօրենի գրասենյակ":"+374 91 12-34-56"
     }
+
     const sliders=[
         {id:1,imagis:sld1,description:"Հավի M չափի շաուրմա", },
         {id:2,imagis:sld1,description:"Հավի M չափի շաուրմա", price:"1000"},
@@ -51,10 +55,10 @@ const SliderProvider =({children})=>{
 
 
 
-    const Reclam2 =[
-        {id:1,images:rec3},
-        {id:2,images:rec4},
-    ];
+    // const Reclam2 =[
+    //     {id:1,images:rec3},
+    //     {id:2,images:rec4},
+    // ];
 
     const aboutinfo={
         title:"Մեր մասին",
@@ -169,13 +173,21 @@ const [jobs ,SetJobs]=useState(jobsData)
      ////FoodTRUCK-------DATA///////
 
     const FoodTruck=[
-        {id:1,title:"Շաուրմայի փառատոն",date:"10/12/2021",image:[foodtrack1,foodtrack1,],information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
+        {id:1,
+            title:"Շաուրմայի փառատոն",
+            date:"10/12/2021",
+            image:[foodtrack1,foodtrack1],
+            information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
                 "\n" +
                 "2013 թվականին Արաբկիր վարչական շրջանում՝ Կոմիտաս 50/50 հասցեում, բացվեց \"Թումանյան Շաուրմա\"-ի երկրորդ մասնաճյուղը:\n" +
                 "\n" +
                 "2015 թվականին Թումանյան 32 հասցեում գործող մասնաճյուղի երկրորդ հարկում բացվեց \"Գրանդ Բուֆֆե\"-ն, որտեղ մատուցվում են աղցաններ:"
         },
-        {id:2,title:"Շաուրմայի փառատոն",date:"10/12/2021",image:[foodtrack1,foodtrack1,],information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
+        {id:2,
+            title:"Շաուրմայի փառատոն"
+            ,date:"10/12/2021",
+            image:[foodtrack1,foodtrack1,],
+            information:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում: Կարճ ժամանակ անց, դառնալով երևանցիների սիրելի վայրը, առաջ եկավ ընդլայնվելու անհրաժեշտություն:\n" +
                 "\n" +
                 "2013 թվականին Արաբկիր վարչական շրջանում՝ Կոմիտաս 50/50 հասցեում, բացվեց \"Թումանյան Շաուրմա\"-ի երկրորդ մասնաճյուղը:\n" +
                 "\n" +
@@ -283,7 +295,8 @@ const [jobs ,SetJobs]=useState(jobsData)
         sliderHome1,
         setSliderHome1,
         Reclam,
-        Reclam2,
+        homepageReclam2,
+        setHomePageReclam2,
         aboutinfo,
         aboutStep,
         jobs,
