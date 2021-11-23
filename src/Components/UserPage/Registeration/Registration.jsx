@@ -73,7 +73,7 @@ const Registration = () => {
                 required
                 />
                 <Input
-                    style={{border:border}}
+                    // style={{border:border}}
                     cn="inputrgister"
                     type="password"
                     placeholder="Կրկնել գաղտնաբառը"

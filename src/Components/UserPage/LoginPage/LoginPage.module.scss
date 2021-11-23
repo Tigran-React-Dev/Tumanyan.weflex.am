@@ -90,3 +90,68 @@
   left: get-vw(570px,1920);
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px){
+  .loginconstructor{
+    width: get-vw(375px,375);
+    min-height: get-vw(150px,375);
+
+    .loginhdr{
+      width: get-vw(375px,375);
+      height: get-vw(150px,375);
+
+      p{
+       font-size: get-vw(26px,375);
+        line-height: 120%;
+        margin-left: get-vw(15px,375);
+        padding-top: get-vw(60px,375);
+      }
+    }
+    .loginuser{
+      width: get-vw(375px,375);
+      height: get-vw(409px,375);
+
+    }
+  }
+  .formcontole{
+    width: get-vw(345px,375);
+    min-height: get-vw(409px,375);
+    position: relative;
+    margin: get-vw(-25px,1920) auto 0px auto;
+    .zabilandzapomnit{
+      width:get-vw(345px,375);
+      height: get-vw(22px,375);
+      margin-top:get-vw(24px,375) ;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .zabilparol{
+        font-size: get-vw(13px,375);
+        line-height: 160%;
+
+      }
+    }
+  }
+  .reglink{
+    width: get-vw(345px,375);
+    height: get-vw(26px,375);
+    margin-top: get-vw(60px,375);
+    p{
+
+      font-size: get-vw(16px,375);
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-left: get-vw(35px,375);
+    }
+    a{
+      font-size: get-vw(16px,375);
+      line-height: get-vw(20px,375);
+      margin-left: get-vw(8px,375);
+
+    }
+  }
+  .passzabil{
+    display: none;
+  }
+}

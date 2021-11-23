@@ -19,7 +19,7 @@ const SendMailurl = () => {
             <div className={css.sendhdr}>
                <p>գաղտնաբառի վերականգնում</p>
             </div>
-             <form className={css.formresetpass} onSubmit={onSubmitform}>
+             <form className={css.formresetpass1} onSubmit={onSubmitform}>
               <p>Մոռացե՞լ եք գաղտնաբառը։ Նշեք Ձեր էլ․ հասցեն, <br/> որին կուղարկվի նոր գաղտնաբառը։</p>
                  <Input
                      cn="zabilinput"

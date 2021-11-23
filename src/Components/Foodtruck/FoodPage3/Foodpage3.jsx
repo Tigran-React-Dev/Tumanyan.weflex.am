@@ -75,7 +75,7 @@ const Foodpage3 = () => {
                 name="name"
                 />
                 <div className={css.gicform}/>
-                <h5>Միջոցառման տվյալներ</h5>
+                <h2>Միջոցառման տվյալներ</h2>
                 <Input
                 cn="inputfoodtruck4"
                 placeholder="Միջոցառման բնույթը (օրինակ՝ ծննդյան տարեդարձ կամ գործնական ընթրիք)*"

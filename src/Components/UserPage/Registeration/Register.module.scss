@@ -77,3 +77,69 @@
     margin-left: get-vw(10px,1920);
   }
 }
+
+@media screen and(max-width: 500px){
+  .registerconstructor{
+    width: get-vw(375px,375);
+    min-height: get-vw(91px,375);
+    background: #FFFFFF;
+    .reghdr{
+      width: get-vw(375px,375);
+      height: get-vw(91px,375);
+
+      p{
+        font-size: get-vw(26px,375);
+        line-height: 120%;
+        margin-left: get-vw(15px,375);
+        padding-top: get-vw(60px,375);
+      }
+    }
+  }
+  .formregister{
+    width: get-vw(345px,375);
+    min-height: get-vw(515px,375);
+    margin-left: get-vw(15px,375);
+    margin-top: get-vw(40px,375);
+
+  }
+  .zabilandzapomnit{
+    width: get-vw(345px,375);
+    height: get-vw(66px,375);
+    margin-top: get-vw(13px,375);
+    display: flex;
+    align-items: flex-start;
+
+    label{
+      font-size: get-vw(13px,375) !important;
+      line-height: 160%!important;
+      letter-spacing: -0.02em;
+      p{
+        height: get-vw(42px,375);
+        width: get-vw(307px,375);
+        margin-top: get-vw(15px,375);
+      }
+
+    }
+  }
+  .footregister{
+    width: get-vw(375px,375);
+    height: get-vw(26px,375);
+    display: flex;
+    margin-top: get-vw(60px,375);
+    padding-bottom: get-vw(60px,375);
+    p{
+     font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-left: get-vw(19px,375);
+
+      min-width: max-content;
+    }
+    a{
+     font-size: get-vw(18px,375);
+      line-height: get-vw(22px,375);
+
+      margin-left: get-vw(8px,375);
+    }
+  }
+
+}

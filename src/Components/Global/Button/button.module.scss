@@ -344,7 +344,22 @@ box-sizing: border-box;
     line-height: get-vw(19px,375 );
      margin-left: get-vw(25px,375);
    }
+  .loginbtn{
+    width: get-vw(345px,375);
+    height: get-vw(57px,375);
+    border: get-vw(1px,375) solid #13AD54;
+    border-radius: get-vw(10px,375);
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    margin-top: get-vw(50px,375);
 
+    &:hover{
+      background: #EB2F2F;
+      color: #FFFFFF;
+      border: get-vw(1px,375) solid #EB2F2F;
+
+    }
+  }
 }
 
 

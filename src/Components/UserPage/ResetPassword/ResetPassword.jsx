@@ -29,7 +29,7 @@ const ResetPassword = () => {
             <div className={css.sendhdr}>
                 <p>գաղտնաբառի վերականգնում</p>
             </div>
-            <form className={css.formresetpass} onSubmit={sendnewpassword}>
+            <form className={css.formresetpass2} onSubmit={sendnewpassword}>
                 <p>խնդրում ենք մուտքագրել նոր գաղտնաբառը</p>
                 <Input
                     cn="zabilinput"

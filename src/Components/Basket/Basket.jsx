@@ -33,7 +33,7 @@ const Basket = () => {
     
     const dispatch =useDispatch()
     const history = useHistory()
-    console.log(items)
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -51,6 +51,58 @@ const Basket = () => {
        {id:4,title:"իդրամ",},
 
    ];
+   const recomentcontroler={
+       width: "30.36458vw",
+       minHeight: "27.55208vw",
+       background: "#F9F9F9",
+       borderRadius: "0.52083vw",
+       marginTopop: "1.30208vw",
+   }
+   const formandrecomentwraper={
+       width: "85.20833vw",
+       minHeight: "5.20833vw",
+       display: "flex",
+       alignItems: "flex-start",
+       marginTop: "0.78125vw",
+   }
+
+
+    // useEffect(()=>{
+
+        // window.addEventListener("scroll", () => {
+        //     if (document.querySelector(".reccontainer")) {
+        //         const elementHeight = document.querySelector(".reccontainer").scrollHeight;
+        //         const scrollTop = document.querySelector(".reccontainer").getBoundingClientRect().top;
+        //         const scrollBottom = document.querySelector(".formandrecomentwraper").getBoundingClientRect().bottom;
+        //         console.log(scrollTop)
+        //         console.log(scrollBottom)
+        //         if ((Math.round(scrollTop) > (elementHeight)) && (Math.round(scrollBottom)  (elementHeight))) {
+        //             //Hide
+        //             // console.log(elementHeight)
+        //             // console.log(scrollTop)
+        //             console.log(true)
+        //             // document.querySelector(".reccontainer").style.position = "absolute";
+        //             // document.querySelector(".reccontainer").style.left = "59vw";
+        //             // document.querySelector(".reccontainer").style.top = "25vw";
+        //         } else {
+        //             //Show
+        //             // console.log(elementHeight)
+        //             // console.log(scrollTop)
+        //             console.log(false)
+        //             // document.querySelector(".reccontainer").style.position = "fixed";
+        //             // document.querySelector(".reccontainer").style.left = "59vw";
+        //             // document.querySelector(".reccontainer").style.top = "25vw";
+        //         }
+        //     }
+        // })
+        // },[])
+
+
+
+
+
+
+
 
     const handleAddProductCard=(obj)=>{
      dispatch(AddproductCard(obj))
@@ -122,7 +174,8 @@ const Basket = () => {
                        ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                        </p>
                        <p className={css.info}>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</p>
-                      <div className={css.formandrecomentwraper}>
+                       {/*className={css.formandrecomentwraper}*/}
+                      <div style={formandrecomentwraper} className="formandrecomentwraper">
                           <div className={css.formcontlorel}>
                               <Input
                                   cn="inputglobalinfo"
@@ -270,21 +323,24 @@ const Basket = () => {
                               />
 
                           </div>
-                          <div className={css.recometntcontrol}>
-                                <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
-                                <div className={css.shiporder}>
-                                    {
-                                        product.filter(i=>i.category=="recoment").map((obj)=>{
+                          <div className="reccontainer" style={recomentcontroler} >
+                              <div className="recomentwraper">
+                                     <div className={css.shiporder}>
+                                      <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
+                                      {
+                                          product.filter(i=>i.category=="recoment").map((obj)=>{
 
-                                            return   (<BasketRecoment
-                                                key={obj.id}
-                                                handleAddProductCard={handleAddProductCard}
+                                              return   (<BasketRecoment
+                                                  key={obj.id}
+                                                  handleAddProductCard={handleAddProductCard}
 
-                                                {...obj}
-                                            />)
-                                        })
-                                    }
-                                   <div className={css.gic2}></div> 
+                                                  {...obj}
+                                              />)
+                                          })
+                                      }
+                                      <div className={css.gic2}></div>
+                                  </div>
+
                                 </div>
                           </div>
                       </div>  
