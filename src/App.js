@@ -87,6 +87,9 @@ function App() {
         top:  sowmenu ? "-1.5vw" : "0",
         transition: "all 0.3s ease-in",
     }
+    const stylefooter={
+        
+    }
 
 
   return (
@@ -97,7 +100,10 @@ function App() {
       <div className="main" style={stylemain}>
 
            <Routes/>
-          <Footer/>
+           <div style={stylefooter}>
+           <Footer/>
+           </div>
+         
        </div>
 
          {sowZapros   && !key  && <div className="modalzapros">

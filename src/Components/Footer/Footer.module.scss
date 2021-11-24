@@ -9,12 +9,14 @@
   min-height:get-vw(565px,1920 ) ;
   display: flex;
   justify-content: center;
+  position: absolute;
 
   .footerblok{
     width: get-vw(1000px,1920 );
     height:get-vw( 565px,1920 );
     background-image: url("../../images/bgfuter.png");
     background-color: #252223;
+    
   }
   .footermenu{
     width: get-vw(746px,1920 );
@@ -51,7 +53,7 @@
   }
   .map{
     width: get-vw(920px,1920 );
-    min-height:get-vw(565px,1920 ) ;
+    height:get-vw(565px,1920 ) ;
   }
 }
 .menu2{

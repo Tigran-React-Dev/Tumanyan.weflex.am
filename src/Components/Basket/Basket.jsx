@@ -25,6 +25,7 @@ const Basket = () => {
     const [paybtnstyle,setPeybtnStyle]=useState(1)
     const [clock,setClock]=useState("Ժամը")
     const [sucsessshop,setSucsessshp]=useState(false)
+    const [count,srtcount]=useState(1)
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const  CardData = useSelector(({ CardReducer  }) => CardReducer)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
@@ -41,8 +42,10 @@ const Basket = () => {
     }, [sucsessshop])
 
     useEffect(()=>{
-        setItemBasketdata(items)
-    },[items])
+        setTimeout(()=>{
+            setItemBasketdata(items)
+        },10)
+    },[count])
 
    const clearnBasketitem=()=>{
       dispatch(ClardnBasket())
@@ -109,6 +112,8 @@ const Basket = () => {
 
     const handleAddProductCard=(obj)=>{
      dispatch(AddproductCard(obj))
+     srtcount(count+1)
+
     }
 
     const SendFormdataCheck =()=>{
