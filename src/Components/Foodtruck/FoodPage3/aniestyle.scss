@@ -10,9 +10,10 @@
 }
 
 .success-checkmark {
-  width: get-vw(86px,1920);
-  height: get-vw(80px,1920);
-  margin: get-vw(25px,1920) auto;
+  width: get-vw(50px,375);
+  height: get-vw(50px,375);
+  margin-top: get-vw(30px,375);
+  margin-left: get-vw(60px,375);
 
   .check-icon {
     width: 80px;

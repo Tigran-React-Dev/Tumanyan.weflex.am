@@ -62,6 +62,34 @@ export const initialState = {
             description:"20գ"
 
         },
+
+        {
+            id:10,
+            title:"Սեվ Թի-Բուրգեր",
+            category:"recoment",
+            image:shaurma,
+            price:[{price:1500,size:"M"}],
+            bonus:0,
+            like:false,
+            description:"Տավարի մսով"
+
+        },
+        {
+            id:11,
+            title:"Բուրգեր",
+            category:"recoment",
+            image:shaurma,
+            price:[{price:1100,size:"M"}],
+            bonus:0,
+            like:false,
+            description:"մսով"
+
+        }
+
+
+
+    ],
+    grandfufet:[
         {
             id:6,
             title:"վեգան",
@@ -81,8 +109,8 @@ export const initialState = {
                 {id:8,ingredient:"Լոլիկ",quantity:"50 գ"},
                 {id:9,ingredient:"Լոլիկ",quantity:"50 գ"},
                 {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
-             ]
-          },
+            ]
+        },
         {
             id:7,
             title:"ավելուկով",
@@ -137,31 +165,6 @@ export const initialState = {
                 {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
             ]
         },
-        {
-            id:10,
-            title:"Սեվ Թի-Բուրգեր",
-            category:"recoment",
-            image:shaurma,
-            price:[{price:1500,size:"M"}],
-            bonus:0,
-            like:false,
-            description:"Տավարի մսով"
-
-        },
-        {
-            id:11,
-            title:"Բուրգեր",
-            category:"recoment",
-            image:shaurma,
-            price:[{price:1100,size:"M"}],
-            bonus:0,
-            like:false,
-            description:"մսով"
-
-        }
-
-
-
     ],
     recoment:[
 

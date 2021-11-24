@@ -281,3 +281,212 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .pages3container{
+    width: get-vw(375px,375);
+    min-height: get-vw(230px,375);
+    padding-bottom: get-vw(0px,375);
+
+    .page3hdr{
+      width: get-vw(345px,375);
+      height: get-vw(230px,375);
+
+      margin-left: get-vw(0px,375);
+      margin-top: get-vw(60px,375);
+     p{
+        font-size: get-vw(18px,375);
+        line-height: 120%;
+      }
+      img{
+        width: get-vw(327px,375);
+        height: get-vw(100px,375);
+        margin-top: get-vw(60px,375);
+        margin-left: get-vw(0px,375);
+      }
+    }
+  }
+  .sendinfoblok{
+    width: get-vw(375px,375);
+    min-height: get-vw(800px,375);
+    margin-left: get-vw(-20px,375);
+    border-radius: get-vw(0px,375);
+    margin-top: get-vw(80px,375);
+    form{
+      width: get-vw(375px,345);
+      min-height: get-vw(1130px,375);
+      margin-left: get-vw(30px,375);
+
+      h4{
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        margin-top: get-vw(60px,375);
+        margin-left: get-vw(15px,375);
+
+      }
+      .phoneandemail,.dataamdfriend{
+        width: get-vw(345px,375);
+        height: get-vw(143px,375);
+        display: flex;
+        flex-direction: column;
+        margin-top: get-vw(0px,375);
+      }
+      .gicform{
+       display: none;
+      }
+      h2{
+       display: none;
+      }
+      .datainput{
+        width:get-vw(345px,375) ;
+        height: get-vw(64px,375);
+        border: get-vw(1px,375) solid #DFDFDF;
+        border-radius: get-vw(10px,375);
+        margin-top: get-vw(15px,375);
+        margin-left: get-vw(15px,375);
+        display: flex;
+        justify-content: space-between;
+        p{
+         font-size: get-vw(16px,375);
+          line-height: 160%;
+          margin-top: get-vw(19px,375);
+          margin-left: get-vw(15px,375);
+        }
+        img{
+          width: get-vw(12px,375);
+          height: get-vw(15px,375);
+          object-fit: cover;
+          margin-top: get-vw(24px,375);
+          margin-right: get-vw(25px,375);
+
+        }
+      }
+    }
+  }
+  .calenarmodals{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: get-vw(375px,375);
+    height: 100vh;
+    z-index: 10;
+  }
+  .modalwraper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: get-vw(375px,375);
+    height: 100vh;
+    z-index: 6;
+  }
+  .calenadar{
+    width: get-vw(345px,375);
+    min-height: get-vw(369px,375);
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 5px rgba(3, 142, 62, 0.2);
+    border-radius: get-vw(10px,375);
+    left: 0;
+    top: get-vw(69px,375);
+    z-index: 9;
+  }
+  .textmaseges{
+    width: get-vw(345px,375);
+    height: get-vw(130px,375);
+    border: get-vw(1px,375) solid #DFDFDF;
+    border-radius: get-vw(10px,375);
+    margin-top: get-vw(15px,375);
+    padding: get-vw(19px,375) get-vw(15px,375);
+    font-size: get-vw(16px,375);
+    line-height: 160%;
+    margin-left: get-vw(15px,375);
+
+  }
+
+
+  .checkandlable1{
+    width: get-vw(345px,375);
+    height: get-vw(42px,375);
+    display: flex;
+     margin-left: get-vw(20px,375);
+    label{
+      width: get-vw(345px,375);
+      height: get-vw(42px,375);
+      display: flex;
+      align-items: center;
+      margin-top: get-vw(30px,375);
+      h6{
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+       margin-left: get-vw(16px,375);
+        min-width: unset;
+        width: get-vw(255px,375);
+        cursor: pointer;
+        margin-top: get-vw(20px,375);
+        a{
+          font-size: get-vw(16px,375);
+          line-height: 160%;
+          letter-spacing: -0.02em;
+          color: #13AD54;
+
+
+        }
+
+      }
+    }
+
+    .ckekckdiv4{
+
+      width: get-vw(16px,375 );
+      height: get-vw(16px,375 );
+      border: get-vw(1px,375) solid #BFB7B6;
+      border-radius: get-vw(3px, 375);
+      display: flex;
+      align-items: center;
+
+      img{
+        width: get-vw(12px, 375);
+        height: get-vw(9px,375 );
+        margin-top: get-vw(0px,375 );
+        margin-left: get-vw(2px,375 );
+      }
+    }
+
+    h1{
+
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(18px,1920);
+      line-height: get-vw(22px,1920);
+      letter-spacing: -0.02em;
+      color: #252223;
+    }
+  }
+  .Footdatasentafter{
+    width: get-vw(375px,375);
+    height: get-vw(543px,375);
+    margin-left: get-vw(0px,375);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .statustitle{
+      width: get-vw(345px,345);
+      height: get-vw(66px,375);
+      font-size: get-vw(18px,375);
+      line-height: 160%;
+      margin: get-vw(90px,375) 0px get-vw(40px,375) get-vw(-28px,375);
+    }
+    .trucklogos{
+      width: get-vw(326px,375);
+      height: get-vw(100px,375);
+      margin-left: get-vw(0px,1920);
+
+    }
+  }
+}
+

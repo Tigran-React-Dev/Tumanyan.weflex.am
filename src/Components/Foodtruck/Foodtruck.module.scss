@@ -67,3 +67,66 @@
   margin-top: get-vw(20px,1920);
   position: relative;
 }
+
+
+@media screen and (max-width: 500px) {
+  .foodcontainer{
+    width: get-vw(375px,375);
+    min-height: get-vw(375px,375);
+
+    .foodhdr{
+      width: get-vw(375px,375);
+      height: get-vw(308px,375);
+      background-size: get-vw(375px,375) get-vw(308px,375);
+
+      padding-top: get-vw(133px,375);
+      h1{
+        font-size: get-vw(34px,375);
+        line-height: 120%;
+
+
+      }
+    }
+    .btnfoodmenu{
+      width: get-vw(375px,375);
+      height: get-vw(67px,375);
+      display: flex;
+      overflow: hidden;
+      overflow-x: scroll;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      .btnfood{
+        min-width: max-content;
+        height: get-vw(67px,375);
+        background: #13AD54;
+        box-shadow: inset -2px 0px 0px #FFFFFF;
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size:get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        text-align: center;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        border: none;
+        padding: 0 get-vw(24px,375);
+        cursor: pointer;
+        &:hover{
+          background: #EB2F2F;
+          color: #FFFFFF;
+
+
+        }
+      }
+    }
+  }
+  .foodcontainer2{
+    width: get-vw(1636px,1920);
+    min-height: get-vw(703px,1920);
+    margin-left: get-vw(102px,1920);
+    margin-top: get-vw(20px,1920);
+    position: relative;
+  }
+}

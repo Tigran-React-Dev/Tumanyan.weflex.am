@@ -30,16 +30,19 @@ const Basket = () => {
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const { totalPrice, items } =  CardData
     const {adressCountry,defaultCity} =useProduct()
-    
+    console.log(items)
     const dispatch =useDispatch()
     const history = useHistory()
-
+    const [basketitemdata,setItemBasketdata]=useState(items)
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
     }, [sucsessshop])
 
+    useEffect(()=>{
+        setItemBasketdata(items)
+    },[items])
 
    const clearnBasketitem=()=>{
       dispatch(ClardnBasket())
@@ -68,34 +71,34 @@ const Basket = () => {
 
 
     // useEffect(()=>{
-
-        // window.addEventListener("scroll", () => {
-        //     if (document.querySelector(".reccontainer")) {
-        //         const elementHeight = document.querySelector(".reccontainer").scrollHeight;
-        //         const scrollTop = document.querySelector(".reccontainer").getBoundingClientRect().top;
-        //         const scrollBottom = document.querySelector(".formandrecomentwraper").getBoundingClientRect().bottom;
-        //         console.log(scrollTop)
-        //         console.log(scrollBottom)
-        //         if ((Math.round(scrollTop) > (elementHeight)) && (Math.round(scrollBottom)  (elementHeight))) {
-        //             //Hide
-        //             // console.log(elementHeight)
-        //             // console.log(scrollTop)
-        //             console.log(true)
-        //             // document.querySelector(".reccontainer").style.position = "absolute";
-        //             // document.querySelector(".reccontainer").style.left = "59vw";
-        //             // document.querySelector(".reccontainer").style.top = "25vw";
-        //         } else {
-        //             //Show
-        //             // console.log(elementHeight)
-        //             // console.log(scrollTop)
-        //             console.log(false)
-        //             // document.querySelector(".reccontainer").style.position = "fixed";
-        //             // document.querySelector(".reccontainer").style.left = "59vw";
-        //             // document.querySelector(".reccontainer").style.top = "25vw";
-        //         }
-        //     }
-        // })
-        // },[])
+    //
+    //     window.addEventListener("scroll", () => {
+    //         if (document.querySelector(".reccontainer")) {
+    //             const elementHeight = document.querySelector(".reccontainer").scrollHeight;
+    //             const scrollTop = document.querySelector(".reccontainer").getBoundingClientRect().top;
+    //             const scrollBottom = document.querySelector(".reccontainer").getBoundingClientRect().bottom;
+    //             console.log(scrollTop)
+    //             console.log(scrollBottom)
+    //             if ((Math.round(scrollTop) > (elementHeight))) {
+    //                 //Hide
+    //                 console.log(elementHeight)
+    //                 console.log(scrollTop)
+    //                 // console.log(true)
+    //                 // document.querySelector(".reccontainer").style.position = "absolute";
+    //                 // document.querySelector(".reccontainer").style.left = "59vw";
+    //                 // document.querySelector(".reccontainer").style.top = "25vw";
+    //             } else {
+    //                 //Show
+    //                 console.log(elementHeight)
+    //                 console.log(scrollTop)
+    //                 // console.log(false)
+    //                 document.querySelector(".reccontainer").style.position = "fixed";
+    //                 document.querySelector(".reccontainer").style.left = "59vw";
+    //                 document.querySelector(".reccontainer").style.top = "20vw";
+    //             }
+    //         }
+    //     })
+    //     },[])
 
 
 
@@ -142,7 +145,7 @@ const Basket = () => {
 
                 <div className={css.itemBasket}>
                     {
-                        items.length && items.map((obj)=>{
+                        items.length && basketitemdata.map((obj)=>{
 
                             return(
                                 <Basketitem

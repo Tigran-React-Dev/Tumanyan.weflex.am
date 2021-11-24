@@ -15,7 +15,7 @@ const GrantBuffet = () => {
 
     const history = useHistory()
     const {grandBufeData} =useProduct()
-    const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
+    const grandfufet = useSelector(({ ProductReducer  }) => ProductReducer.grandfufet)
     const {id} = useParams()
     const dispatch=useDispatch()
     const [activeMenuStyle,setActiveMenuStyle]=useState({1:true})
@@ -64,7 +64,7 @@ const GrantBuffet = () => {
             </div>
             <div className={css.bufetitemblok}>
                 {
-                    product.filter(e=>e.category===id).map((obj)=>{
+                    grandfufet.filter(e=>e.category===id).map((obj)=>{
                         return(
                             <ProductBlok
                               key={obj.id}

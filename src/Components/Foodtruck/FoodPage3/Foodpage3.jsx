@@ -35,7 +35,9 @@ const Foodpage3 = () => {
         setSucsesDataSend(true)
     }
     useEffect(()=>{
-        window.scrollTo(0, 400);
+       if(sucsessDataSend){
+           window.scrollTo(0, 400);
+       }
 
     },[sucsessDataSend])
 

@@ -27,7 +27,7 @@ const ShowModal =(itemWindow)=>{
                                  index % 3 ===0 ? <div
                                      key={elem.id}
                                          className={css.bigitem}
-                                         style={{float:(index===0 || index===6) ? "left" : "right",
+                                         style={{float:(index===0 || index===6 || index===12) ? "left" : "right",
                                              background:`url(${elem.image[0]})`
                                          }}
                                       onClick={()=>ShowModal(elem)}
@@ -39,7 +39,7 @@ const ShowModal =(itemWindow)=>{
                                  </div>
                                      :
                                   <div key={elem.id} className={css.smollitem} style={{marginTop:  "2.211764705882355vw",
-                                      marginLeft:(index===1 || index===2 || index==7 || index==8  ) ? "2.0vw" : (index===5 || index===11 || index==17 || index==23  ) ? "2.0vw" : null,
+                                      marginLeft:(index===1 || index===2 || index==7 || index==8 || index==13 || index==14 ) ? "2.0vw" : (index===5 || index===11 || index==17 || index==23  ) ? "2.0vw" : null,
                                       backgroundImage:`url(${elem.image[0]})`
                                   }} 
                                   onClick={()=>ShowModal(elem)}

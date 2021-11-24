@@ -11,8 +11,9 @@ export default class Calendar extends React.Component {
 
     static defaultProps = {
         date: new Date(),
-        years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,2021,2022],
-        monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,2021,2022,2023],
+        monthNames: ['Հունվար', 'Փետրվար', 'Մարտ', 'Ապրիլ', 'Մայիս', 'Հունիս', 'Հուլիս', 'Օգոստոս', 'Սեպտեմբեր', 'Հոկտեմբեր', 'Նոյեմբեր', 'Դեկտեմբեր'],
+        // monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         weekDayNames: ['երկ', 'երք', 'չրք', 'հնգ' , 'ուրբ', 'շբթ', 'կիր'],
 
     };
@@ -67,7 +68,7 @@ export default class Calendar extends React.Component {
     render() {
         const { years, monthNames, weekDayNames } = this.props;
         const { currentDate, selectedDate } = this.state;
-        console.log(this.props);
+
         const monthData = calendar.getMonthData(this.year, this.month);
 
         return (

@@ -31,12 +31,12 @@ export const CardReducer = (state = initialState, action) => {
 
 
                 })
-debugger
+              debugger
                 if(files.length===0){
                     arr1.push(action.payload)
                 }else{
                     state.items.forEach(el=>{
-                        if(el.title==files[0].title && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length ){
+                        if(el.title==files[0].title && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length && el.itionalitem?.[0]?.product===files[0].itionalitem?.[0]?.product){
                             el.price+=action.payload.price
                             el.count+=action.payload.count
                         }
@@ -116,19 +116,17 @@ debugger
 
         }
         case DELETE_PRODUCT_TO_CARD :{
-             const newresetdata=[];
+
 
             const filterone = state.items.filter((e)=>e._id!==action.payload)
-            filterone.forEach(e=>{
-                newresetdata.push(e)
-            })
-            debugger
-            const totalPrice = getTotalPrice(newresetdata)
+
+
+            const totalPrice = getTotalPrice(filterone)
 
 
             const local ={
-                ...state,
-                items:newresetdata,
+
+                items:filterone,
                 totalPrice
             }
 
@@ -137,8 +135,7 @@ debugger
             sessionStorage.setItem("card",JSON.stringify(local))
 
             return {
-                ...state,
-                items: newresetdata,
+               items: filterone,
                 totalPrice
             }
 

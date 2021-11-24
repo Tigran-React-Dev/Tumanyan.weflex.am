@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import css from "./Foodtruck.module.scss";
 import Button from "../Global/Button/Button";
 import FoodPage1 from "./FoodPage1/FoodPage1";
@@ -11,7 +11,7 @@ import Foodpage3 from "./FoodPage3/Foodpage3";
 const Foodtruck = ({history}) => {
     const {foodTruckdata}=useSlider()
    const [activeMenu,setACtivemenu]=useState(1)
-
+    const ref=useRef(null)
     useEffect(()=>{
         window.scrollTo(0, 0);
 
@@ -25,7 +25,21 @@ const Foodtruck = ({history}) => {
 
 
     const ChangeActiveMenu =(btninfo)=>{
+        switch (btninfo.id){
+            case 1 :
+                ref.current.scrollLeft=0;
+                break
+            case 2 :
+                ref.current.scrollLeft=100;
+                break
+            case 3 :
+                ref.current.scrollLeft=210;
+                break
+            default :
+                break
+        }
        setACtivemenu(btninfo.id)
+
     }
 
 
@@ -35,7 +49,7 @@ const Foodtruck = ({history}) => {
              <div className={css.foodhdr}>
                      <h1>Food truck</h1>
              </div>
-             <div className={css.btnfoodmenu}>
+             <div className={css.btnfoodmenu} ref={ref}>
                  {
                      btnFoodTruck.map((elem)=>{
 
