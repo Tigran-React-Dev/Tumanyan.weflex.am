@@ -122,3 +122,106 @@
 
   display: flex;
 }
+
+
+
+
+@media screen and (max-width: 500px) {
+  .foodpage1containeritem{
+    width: get-vw(345px,375);
+    min-height: get-vw(425px,375);
+    margin-top: get-vw(40px,375);
+    margin-left: get-vw(0px,375);
+    overflow: unset;
+    display: flex;
+    flex-direction: column;
+
+    .bigitem{
+      width: get-vw(315px,345) !important;
+      height: get-vw(315px,345)!important;
+      border-radius: get-vw(10px,345);
+      vertical-align: unset;
+      margin-top: get-vw(20px,345);
+
+      overflow: unset;
+      position: unset;
+      background-repeat: no-repeat !important;
+      background-size:contain !important;
+      cursor: pointer;
+      margin-left: get-vw(-5px,375);
+
+
+    }
+    .smollitem{
+      width: get-vw(315px,345);
+      height: get-vw(315px,345);
+      border-radius: get-vw(10px,345);
+      margin-left: get-vw(-5px,375)!important;
+      margin-top: get-vw(20px,375)!important;
+      overflow: unset;
+      float: unset;
+      vertical-align: unset;
+
+    }
+
+  }
+  .itemcontroler{
+    width: get-vw(315px,345);
+    height: get-vw(315px,345) !important;
+    display: inline-block;
+    position: absolute;
+    border-radius: get-vw(10px,345);
+    z-index: 0;
+    &:hover{
+      background: #13AD54 !important;
+      z-index: 30;
+      opacity: 0.8;
+    }
+
+  }
+  .dateitem{
+    font-size: get-vw(14px,375);
+    line-height: 150%;
+    margin-top: get-vw(271px,375);
+    margin-left: get-vw(15px,375);
+  }
+  .itemtitle{
+   font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    margin-top: get-vw(18px,375);
+    margin-left: get-vw(15px,375);
+  }
+
+  .itemcontroler2{
+    width: get-vw(315px,345);
+    height: get-vw(315px,345) !important;
+    display: inline-block;
+    position: absolute;
+    border-radius: get-vw(10px,345);
+    z-index: 0;
+    &:hover{
+      background: #13AD54 !important;
+      z-index: 30;
+      opacity: 0.8;
+    }
+
+  }
+  .dateitem2{
+    font-size: get-vw(14px,375);
+    line-height: 150%;
+    margin-top: get-vw(271px,375);
+    margin-left: get-vw(15px,375);
+  }
+  .itemtitle2{
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    margin-top: get-vw(18px,375);
+    margin-left: get-vw(15px,375);
+  }
+  .foterfood{
+    height: get-vw(147px,375);
+    width: get-vw(345px,345);
+
+    display: flex;
+  }
+}

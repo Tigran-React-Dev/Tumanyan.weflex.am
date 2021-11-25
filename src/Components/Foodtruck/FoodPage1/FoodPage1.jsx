@@ -58,7 +58,9 @@ const ShowModal =(itemWindow)=>{
                  })
              }
              <div className={css.foterfood}>
-                <Button title="տեսնել ավելին" cn="btnreadmore2"/>
+                <Button
+                    title="տեսնել ավելին"
+                    cn="btnreadmore2"/>
              </div>
          </div>
     );

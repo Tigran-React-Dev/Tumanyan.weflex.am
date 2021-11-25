@@ -9,13 +9,19 @@
   min-height:get-vw(565px,1920 ) ;
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: relative;
+  background-color: #FFFFFF;
+
 
   .footerblok{
     width: get-vw(1000px,1920 );
     height:get-vw( 565px,1920 );
     background-image: url("../../images/bgfuter.png");
     background-color: #252223;
+    position: absolute;
+    top: 1.6vw;
+    left: 0;
+    right: 0;
     
   }
   .footermenu{
@@ -52,8 +58,12 @@
     }
   }
   .map{
+    background-color: #FFFFFF;
     width: get-vw(920px,1920 );
     height:get-vw(565px,1920 ) ;
+    position: absolute;
+    top: 1.6vw;
+    left: get-vw(960px,1920);
   }
 }
 .menu2{

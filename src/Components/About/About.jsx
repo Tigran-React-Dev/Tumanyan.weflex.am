@@ -17,9 +17,9 @@ const About =()=>{
     const {aboutDataone,menejments,setMenejmentdata,setAboutDataone}=useSlider()
     const [loading,setLoading]=useState(false)
   const btnTitle=[
-      {id:1,name:"պատմություն"},
-      {id:2,name:"հիմնադիրներ"},
-      {id:3,name:"մենեջմենթ"},
+      {id:1,name:"պատմություն",nameRU:"",nameENG:"",},
+      {id:2,name:"հիմնադիրներ",nameRU:"",nameENG:"",},
+      {id:3,name:"մենեջմենթ",nameRU:"",nameENG:"",},
 ]
 
     useEffect(()=>{
@@ -68,14 +68,14 @@ const About =()=>{
         <div className={css.aboutcontainer}>
             <div className={css.abouthdr}>
                <div className={css.abouttitle}>
-                     <h1>Մենք</h1>
+                     <h1>{languae=="ՀԱՅ" ? "Մենք" : languae=="ENG" ?  "We": languae=="РУС" ? "Мы" : null}</h1>
                       <p>շատ ուրախ, կրեատիվ թիմն ենք, և մեր մոտ կարող եք համտեսել ամենահամով շաուրման։</p>
                </div>
                 <div className={css.aboutteam}/>
          </div>
             <div className={css.btnblok} ref={ref}>
                 {
-                    btnTitle.map(({id,name},index)=>{
+                    btnTitle.map(({id,name,nameRU,nameENG},index)=>{
                         return <button
                         key={id}
                         className={css.btnmenuabout}
@@ -84,7 +84,7 @@ const About =()=>{
                             boxShadow:activeMneuStyle===id && "inset -1px 0px 0px",
                             color:activeMneuStyle===id && "#13AD54"
                         }}
-                        >{name}
+                        >{languae=="ՀԱՅ" ? name : languae=="ENG" ?  nameENG: languae=="РУС" ? nameRU : null}
                         </button>
 
 

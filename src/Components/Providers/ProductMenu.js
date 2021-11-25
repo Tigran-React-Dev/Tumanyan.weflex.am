@@ -58,7 +58,7 @@ const ProductProvider =({children})=>{
             {id:6,title:"կոմբո",category:"կոմբո",images:shaurma,imagesbig:shaurmabig},
             {id:7,title:"մանկական",category:"մանկական",images:shaurma,imagesbig:shaurmabig},
             {id:8,title:"ըմպելիքներ",category:"ըմպելիքներ",images:shaurma,imagesbig:shaurmabig},
-            {id:9,title:"սոուսներ",category:"սոուսներ",images:shaurma,imagesbig:shaurmabig},
+
 
         ]
         const data =mecdata.find((i)=>i.id===1);

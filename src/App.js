@@ -3,7 +3,6 @@ import './App.scss';
 import {Switch,Route,Link,useLocation,Redirect} from "react-router-dom";
 import Header from "./Components/Header/Header"
 import Routes from "./Components/Routes/Routes"
-
 import {useState,useEffect} from "react";
 import Button from "./Components/Global/Button/Button";
 import {useProduct} from "./Components/Providers/ProductMenu";
@@ -18,9 +17,6 @@ import axios from "axios";
 function App() {
 
     const CardDeda= useSelector(({CardReducer})=>CardReducer)
-
-    
-
     const key = sessionStorage.getItem("key")
     const dispath=useDispatch()
     const [sowZapros ,setSowZapros]=useState(true)
@@ -29,6 +25,7 @@ function App() {
     const history = useLocation()
     const [loading,setloading]=useState(false)
     const [sowmenu, setSoumenu] = useState(false)
+
     useEffect(()=>{
 
     },[])
@@ -58,10 +55,7 @@ function App() {
          window.scrollTo(0, 0);
 
     },[])
-
-
-
-    if(history.pathname==="/"){
+   if(history.pathname==="/"){
         return <Redirect to={HOME_PAGE}/>
     }
 
@@ -95,18 +89,15 @@ function App() {
   return (
     <>
      {loading ? <div>
-
-         <Header/>
+           <Header/>
       <div className="main" style={stylemain}>
-
            <Routes/>
            <div style={stylefooter}>
            <Footer/>
            </div>
          
        </div>
-
-         {sowZapros   && !key  && <div className="modalzapros">
+          {sowZapros   && !key  && <div className="modalzapros">
              <div className="wraper" onClick={()=>setSowZapros(!sowZapros)} />
                  <div className="zapros" onClick={(e)=>e.stopPropagation()}>
                      <div className="closewindow" onClick={CloseWinzapros}>
@@ -121,11 +112,7 @@ function App() {
                              mecdata.map(({id,name,sup})=>{
                                  return (
                                       <Button
-                                       // style={{backgroundColor:bgcolor===id ?
-                                       //  "#13AD54" :"#FFFFFF",
-                                       //  color:bgcolor===id ? "#FFFFFF" :"#13AD54",
-                                       //     boxShadow:bgcolor===id ?  "none" :" 1px 1px 5px rgba(3, 142, 62, 0.2)"}}
-                                         cn={bgcolor===id ? "zaprosbuuton2" : "zaprosbuuton"  }
+                                        cn={bgcolor===id ? "zaprosbuuton2" : "zaprosbuuton"  }
                                          key={id} 
                                          title={`${name}`} onClick={()=>Clickcountry(sup,name,id)}/>
                                         )

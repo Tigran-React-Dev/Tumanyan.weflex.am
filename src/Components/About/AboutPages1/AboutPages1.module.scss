@@ -27,9 +27,24 @@
        width: get-vw(740px,1920);
        height: get-vw(390px,1920);
 
-       img{
-         width: get-vw(498px,1920);
-         height: get-vw(178px,1920);
+       h1{
+         font-family: Mardoto;
+         font-style: normal;
+         font-weight: 500;
+         font-size: get-vw(150px,1920);
+         line-height: get-vw(176px,1920);
+         letter-spacing: -0.04em;
+         text-transform: uppercase;
+
+         /* Gray for filling */
+
+         color: #F9F9F9;
+
+         /* Green */
+         -webkit-text-stroke-width: 1px;
+         -webkit-text-stroke-color:  #13AD54;
+
+         box-sizing: border-box;
          margin-top: get-vw(100px,1920);
          margin-left: get-vw(100px,1920);
          object-fit: contain;
@@ -245,10 +260,10 @@
     width: get-vw(350px,1920);
     height: get-vw(142px,1920);
     .iconandtitle{
-      width: get-vw(168px,1920);
+      min-width: max-content;
       height: get-vw(39px,1920);
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
       img{
         width: get-vw(32px,1920);
@@ -256,6 +271,8 @@
         object-fit: contain;
       }
       h1{
+        min-width: max-content;
+        margin-left: get-vw(30px,1920);
         font-family: Mardoto-Medium;
         font-style: normal;
         font-weight: 500;
@@ -302,9 +319,24 @@
         height: get-vw(201px,375);
         display: flex;
         flex-direction: column;
-        img{
-          width: get-vw(257px,375);
-          height: get-vw(96px,375);
+        h1{
+          font-family: Mardoto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(80px,375);
+          line-height: 120%;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+
+          /* Gray for filling */
+
+          color: #F9F9F9;
+
+          /* Green */
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color:  #13AD54;
+
+          box-sizing: border-box;
           margin-top: get-vw(60px,375);
           margin-left: get-vw(15px,375);
           object-fit: contain;
@@ -469,10 +501,10 @@
       height: get-vw(91px,375);
       margin-left: get-vw(15px,375);
       .iconandtitle{
-        min-width: get-vw(86px,375);
+        min-width: max-content;
         height: get-vw(24px,375);
         display: flex;
-        justify-content: space-between;
+
         align-items: center;
         img{
           width: get-vw(21px,375);

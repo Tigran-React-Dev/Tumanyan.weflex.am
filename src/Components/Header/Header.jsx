@@ -36,6 +36,7 @@ const Header = () => {
     const [adresses, setAdress] = useState("")
     const [inputborder, setInputborder] = useState(false)
     const [languagess, setLanguage] = useState(1)
+    const [mobileLanguageStyle,setMobileLanguageStyle]=useState(1)
     const [menuiconClik,setMenuIconClik]=useState(false)
     const {languae}=useProduct()
    
@@ -58,12 +59,13 @@ const Header = () => {
             changeLang(language)
             i18next.changeLanguage(language)
          }
+        setMobileLanguageStyle(id)
 
     }
 
     const home = () => {
         window.scrollTo(0, 0);
-        window.scroll(0,0);
+
 
     }
     const ScrlMenu = () => {
@@ -134,6 +136,10 @@ const Header = () => {
 
 const ChangeMobileMenu =()=>{
     setMenuIconClik(!menuiconClik)
+    if(menuiconClik){
+        window.scrollTo(0, 0);
+    }
+
 }
 
 const mobilemenustyle ={
@@ -207,7 +213,7 @@ const mobilemenustyle ={
                                 {languages.map(itm => {
                                     return (languagess !== itm.id &&
                                         <li
-                                            style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium"}}
+                                            style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium",}}
                                             key={itm.id}
                                             onClick={() => changeLanguag(itm.id, itm.name)}
                                         >{itm.name}
@@ -314,19 +320,19 @@ const mobilemenustyle ={
                                 }
                         </div>
                         <div className={css.loginicon}>
-
+                            <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={log} alt="" /></NavLink>
                         </div>
                         <div className={css.changelanguagemobile}>
                             {
                                 languages.map(lang=>{
                                     return(
-                                        <h2
+                                        <h6
                                             key={lang.id}
-                                            style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium"}}
+                                            style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium",color:mobileLanguageStyle==lang.id && "#13AD54"}}
                                             onClick={() => changeLanguag(lang.id, lang.name)}
                                         >
                                             {lang.name}
-                                        </h2>
+                                        </h6>
                                     )
                                 })
 

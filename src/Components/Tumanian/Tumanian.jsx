@@ -87,7 +87,7 @@ const hoverItem=(id)=>{
                 {
                      activSub.map((item,index)=>{
                          
-                        if(item.category!=="սոուսներ"){
+
                             return(
                                 <div className={css.menuitem}  key={item.id} style={{
                                   backgroundColor:( hoverId[index] ? `${color}`   : " #EFEFEF" ),
@@ -97,7 +97,7 @@ const hoverItem=(id)=>{
                                     <img src={item.images} alt="" style={{  opacity:( hoverId[index] ? "0.4"   : "1"  )}}/>
                                 </div>
                                )
-                        }
+
                         
                     })
                         
