@@ -164,15 +164,22 @@
 }
 
 @media  screen and (max-width:500px){
+  body{
+    scrollbar-width: none;
+    
+  }
   .footer{
     width:get-vw(375px,375 ) ;
     min-height:get-vw(535px,375 ) ;
     display: flex;
     justify-content: center;
     overflow-x: hidden!important;
+    position: relative;
     .footerblok{
       width: get-vw(375px,375 );
       height:get-vw( 535px,375 );
+      position: absolute;
+      top: get-vw(0px,375 );
 
     }
     .footermenu{

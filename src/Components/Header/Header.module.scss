@@ -545,7 +545,7 @@ position: absolute;
   }
   .mobilecontn{
     width: get-vw(375px,375);
-    height:get-vw(910px,460);
+    height:get-vw(910px,375);
     background-color: #252223;
     position: absolute;
     top:get-vw(-900px,375);
@@ -553,17 +553,18 @@ position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 26!important;
-    padding-top: get-vw(40px,460);
+    padding-top: get-vw(40px,500);
     .menubarmobile{
       width: get-vw(335px,375);
-      height: get-vw(579px,460);
-      margin-top: get-vw(5px,460);
+      height: get-vw(579px,500);
+      margin-top: get-vw(5px,500);
+      margin-left: get-vw(15px,375 );
       display: flex;
       flex-direction: column;
       .linkmenu{
         margin-left:get-vw(0px, 375) ;
-        height: get-vw(23px,460);
-        margin-top: get-vw(50px,460);
+        height: get-vw(23px,500);
+        margin-top: get-vw(50px,500);
 
         p{
           text-decoration: none;
@@ -583,10 +584,10 @@ position: absolute;
         }
       }
       .menumixin{
-
+        // margin-left: get-vw(15px,375 );
         width: get-vw(135px,375);
-        height: get-vw(305px,460);
-        margin-top: get-vw(16px,460);
+        height: get-vw(305px,500);
+        margin-top: get-vw(16px,500);
         display: flex;
         flex-direction: column;
         a{
@@ -599,21 +600,21 @@ position: absolute;
           letter-spacing: -0.04em;
           text-transform: uppercase;
           color: #FFFFFF;
-          margin-top: get-vw(24px,460);
+          margin-top: get-vw(24px,500);
         }
       }
       .loginicon{
         width: get-vw(26px,375);
-        height: get-vw(30px,460);
-        margin-top: get-vw(100px,460);
+        height: get-vw(30px,500);
+        margin-top: get-vw(120px,500);
         .loginh{
           width: get-vw(26px,375);
-          height: get-vw(30px,480);
+          height: get-vw(30px,500);
           img{
             width: get-vw(26px,375);
-            height: get-vw(30px,460);
+            height: get-vw(30px,500);
             margin-left: get-vw(0px,375 );
-            margin-top: get-vw(0px,460);
+            margin-top: get-vw(0px,500);
 
           }
 
@@ -622,9 +623,9 @@ position: absolute;
       .changelanguagemobile{
         display: block;
         width: get-vw(154px,375);
-        height: get-vw(25px,460);
+        height: get-vw(25px,500);
 
-        margin-top: get-vw(25px,460);
+        margin-top: get-vw(45px,500);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -646,13 +647,13 @@ position: absolute;
   }
   .masnajuxmobile{
     max-width: min-content!important;
-    height: get-vw(26px, 375);
+    height: get-vw(26px, 400);
     margin-left: get-vw(15px, 375);
     border-bottom:  get-vw(1px,375) dashed rgba(255, 255, 255, 0.3);
 
     .masnajuxwrapermobile{
       min-width: get-vw(150px, 375);
-      height: get-vw(20px,375 );
+      height: get-vw(20px,400 );
       display: flex;
       align-items: center;
 
@@ -660,12 +661,12 @@ position: absolute;
       // z-index: 32;
       .adresiconmobile{
         width: get-vw(24px,375);
-        height: get-vw(24px,375);
+        height: get-vw(24px,400);
         cursor: pointer;
       }
       .slaqmobile{
         width: get-vw(14px, 375);
-        height: get-vw(14px, 375);
+        height: get-vw(14px, 400);
         margin-left: get-vw(10px,375 );
         //margin-bottom: get-vw(2px,1920);
         cursor: pointer;
@@ -724,7 +725,7 @@ position: absolute;
     border-radius: get-vw(10px,375);
     position: absolute !important;
     left: get-vw(15px, 375);
-    top: 18vw;
+    top: 17vw;
     display: flex;
     flex-direction: column;
     position: fixed;

@@ -295,7 +295,8 @@ const mobilemenustyle ={
                         <p  className={css.masnajuxnamemobile} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
                         {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelect} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
                     </div>
-                    <div className={css.menubarmobile}>
+                </div>
+                <div className={css.menubarmobile}>
                         <div className={css.linkmenu}>
                             <p onClick={ScrlMenu}>{t("menuscrol")}</p>
                         </div>
@@ -381,10 +382,6 @@ const mobilemenustyle ={
                             </p>
                         </div>
                     </div>}
-
-
-                </div>
-
             </div>
 
 
