@@ -44,3 +44,40 @@
   align-items: center;
 }
 
+@media screen and (max-width: 500px){
+  .bonucess{
+    width: get-vw(345px,375);
+    min-height: get-vw(283px,375);
+    margin-left: get-vw(15px,375 );
+
+  }
+  .divprice{
+    display: flex;
+    margin-top: get-vw(60px,375);
+    align-items: center;
+
+  }
+  .titlebns{
+
+    font-size: get-vw(16px,375);
+    line-height: 160%;
+
+
+  }
+  .tokosprice{
+    font-family: Montserrat-Medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size:get-vw( 16px,375);
+    line-height: 160%;
+
+    margin-left: get-vw(24px,375);
+  }
+  .divprice2{
+    display: flex;
+    margin-top: get-vw(24px,375);
+    align-items: center;
+  }
+
+
+}

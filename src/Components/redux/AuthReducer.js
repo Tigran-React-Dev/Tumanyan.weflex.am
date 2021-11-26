@@ -10,7 +10,7 @@ import {
 export const initialstate={
     user:{
         name:"Անահիտ",
-        lastname:"",
+        lastname:"Համբարձումյան",
         phoneNumber:"91 12-34-56",
         email:"anahit@gmail.com"
     },

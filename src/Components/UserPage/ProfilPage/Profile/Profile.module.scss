@@ -170,4 +170,172 @@
    }
 }
 
+.resetuserinfobtnmobile{
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .userinfoblok1{
+    width: get-vw(345px,375);
+    height: get-vw(791px,375);
+
+    border-right: 0 solid #EFEFEF;;
+    margin-top: get-vw(60px,375);
+    .titleinfo{
+      font-size: get-vw(16px,375);
+      line-height: get-vw(19px,375);
+
+    }
+    form{
+      width: get-vw(345px,375);
+      height: get-vw(693px,375);
+      margin-top: get-vw(30px,375);
+      border-bottom: get-vw(1px,375) solid #EFEFEF;
+    }
+  }
+  .newcheckbpx{
+    width: get-vw(345px,375);
+    height: get-vw(66px,375);
+    margin-top: get-vw(24px,375);
+    display: flex;
+    align-items: flex-start;
+
+    label {
+      font-size: get-vw(13px, 375) !important;
+      line-height: 160% !important;
+      letter-spacing: -0.02em;
+
+      p {
+        height: get-vw(42px, 375);
+        width: get-vw(307px, 375);
+        margin-top: get-vw(15px, 375);
+      }
+    }
+  }
+  .resetpass{
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    margin-top: get-vw(60px,375);
+    padding-bottom: get-vw(30px,375);
+  }
+  .passresetdiv{
+    width: get-vw(345px,375);
+    position: relative;
+  }
+  .sowicon{
+    width: get-vw(16px,375);
+    height: get-vw(11px,375);
+    position: absolute;
+    top: get-vw(25px,375);
+    left: get-vw(325px,375);
+    cursor: pointer;
+
+  }
+  .sowicon2{
+    width: get-vw(16px,375);
+    height: get-vw(11px,375);
+    position: absolute;
+    top: get-vw(90px,375);
+    left: get-vw(325px,375);
+    cursor: pointer;
+  }
+  .resetuserinfobtn{
+    display: none;
+  }
+
+  .userinfoblok2{
+    width: get-vw(345px,375);
+    min-height: get-vw(419px,375);
+    margin-top: get-vw(-60px,375);
+  }
+  .useradrss{
+    width: get-vw(345px,375);
+    height: get-vw(246px,375);
+    margin-left: get-vw(0px,1375);
+    margin-top: get-vw(60px,375);
+
+  }
+  .adresshdr{
+    width: get-vw(345px,375);
+    height: get-vw(19px,375);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p{
+      font-size: get-vw(16px,375);
+      line-height: get-vw(19px,375);
+
+    }
+    img{
+      width: get-vw(13px,375);
+      height: get-vw(16px,375);
+      cursor: pointer;
+    }
+  }
+  .domandbuild{
+    width: get-vw(345px,375);
+    min-height: get-vw(128px,375);
+    display: flex;
+    margin-top: get-vw(30px,1920);
+    flex-direction: column;
+    align-items: unset;
+  }
+  .divadress{
+    width: get-vw(345px,375);
+    height: get-vw(64px,375);
+    background: #FFFFFF;
+    border: none;
+    border-bottom: get-vw(1px,375) solid #DFDFDF;
+    box-sizing: border-box;
+    border-radius: get-vw(0px,375);
+    margin-top: get-vw(30px,375);
+    padding-top: get-vw(19px,375);
+    p{
+      font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-top: get-vw(0px,375);
+      margin-left: get-vw(0px,375);
+    }
+  }
+  .dom,.build{
+    width: get-vw(345px,375);
+    height: get-vw(65px,375);
+    border: get-vw(0px,375) solid #DFDFDF;
+    border-bottom: get-vw(1px,375) solid #DFDFDF;
+    box-sizing: border-box;
+    padding-top: get-vw(19px,375);
+    border-radius: get-vw(0px,375);
+    p{
+      font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-top: get-vw(0px,375);
+      margin-left: get-vw(0px,375);
+    }
+  }
+  .addnewadresbtn{
+    font-size: get-vw(16px,375);
+    line-height: 160%;
+    margin-left: get-vw(0px,375);
+    margin-top: get-vw(60px,375);
+    cursor: pointer;
+  }
+  .windownewAdres{
+    width: get-vw(345px,375);
+    height: get-vw(246px,375);
+    margin-left: get-vw(0px,375);
+    margin-top: get-vw(62px,375);
+
+    p{
+      font-size: get-vw(16px,375 );
+      line-height: get-vw(19px,375 );
+
+    }
+  }
+.resetuserinfobtnmobile{
+  display: block;
+  padding-bottom: get-vw(60px,375);
+}
+
+}
 

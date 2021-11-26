@@ -46,7 +46,7 @@ const hoverItem=(id)=>{
 
    }
     const OpenMenu =(item)=>{
-      history.push(`/home/${item.category}`)
+      history.push(`/home/${item.id}`)
         setactiveMenuitem(item)
         
 

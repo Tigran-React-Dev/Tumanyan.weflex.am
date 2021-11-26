@@ -130,3 +130,114 @@
   color: #252223;
   margin-top: get-vw(20px,1920);
 }
+@media screen and (max-width: 500px){
+
+  .oredersitem{
+    width: get-vw(345px,375);
+    min-height: get-vw(182px,375);
+    margin-left: get-vw(0px,375);
+    margin-top: get-vw(60px,375);
+    padding-bottom: get-vw(60px,375);
+    position: relative;
+  }
+  .imagessmoll{
+    width: get-vw(230px,375);
+    min-height: get-vw(50px,375);
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .orderimgdiv{
+    width: get-vw(50px,375);
+    height: get-vw(50px,375);
+    margin-top: get-vw(24px,375);
+
+    position: relative;
+    .imgitem{
+      width: get-vw(50px,375);
+      height: get-vw(50px,375);
+      object-fit: contain;
+    }
+    .countitemx{
+      width: get-vw(22px,375);
+      height:get-vw( 22px,375);
+      border: get-vw(1px,375) solid #FFFFFF;
+      border-radius: get-vw(70px,375);
+      position: absolute;
+      top: 0;
+      left: get-vw(30px,375);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p{
+        font-family: Montserrat-Regular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: get-vw(12px,375);
+        line-height: 150%;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+      }
+    }
+  }
+  .btnanime{
+    width: get-vw(30px,375);
+    height: get-vw(30px,375);
+    background: #EFEFEF;
+    border-radius: get-vw(70px,375);
+    position: absolute;
+    top: get-vw(25px,375);
+    left: get-vw(215px,375);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(14px,375);
+      line-height: 150%;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #BFB7B6;
+
+    }
+  }
+  .priceandaddcardblok{
+    width: get-vw(345px,375);
+    height: get-vw(42px,375);
+    border-radius: get-vw( 6.25px,375);
+    margin-top: get-vw(24px,375);
+    padding: get-vw(20px,375) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+      font-size: get-vw(16px,375);
+      line-height:get-vw( 19px,375);
+      margin-left: get-vw(15px,375);
+      margin-top: 0;
+    }
+    img{
+      width: get-vw(32px,375);
+      height: get-vw(32px,375);
+      margin-right: get-vw(15px,375);
+
+    }
+  }
+  .dastacupit{
+    position: absolute;
+    top: get-vw(19px,375);
+    left: get-vw(283px,375);
+    font-size: get-vw(14px,375);
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    color: #BFB7B6;
+
+  }
+  .descriptionorder{
+    font-size: get-vw(14px,375);
+    line-height: 150%;
+    margin-top: get-vw(24px,375);
+  }
+}

@@ -366,7 +366,7 @@
         margin-left: get-vw(15px,375);
         margin-top: get-vw(15px,375);
         outline:none ;
-        margin-top: get-vw(15px,375);
+
 
         &::placeholder{
             color: #BFB7B6;
@@ -387,6 +387,55 @@
         margin-top: get-vw(60px,375);
 
         &::placeholder{
+            color: #BFB7B6;
+        }
+    }
+    .inputuserinfo{
+        width: get-vw(345px,375);
+        height: get-vw(64px,375);
+        outline: none;
+        border: none;
+        border-bottom: get-vw(1px,375) solid  #DFDFDF;
+        border-radius: get-vw(0px,375);
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+        padding: 0 get-vw(0px,375);
+        margin-top: get-vw(0px,375);
+        &::placeholder{
+
+            color: #BFB7B6;
+        }
+    }
+    .inputuseraress{
+        width: get-vw(345px,375);
+        height: get-vw(64px,375);
+        outline: none;
+        border: none;
+        border-bottom: get-vw(1px,375) solid  #DFDFDF;
+        border-radius: get-vw(0px,375);
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+        padding: 0 get-vw(0px,375);
+        margin-top: get-vw(0px,375);
+        &::placeholder{
+
+            color: #BFB7B6;
+        }
+    }
+    .inputbuildandaparamet{
+        width: get-vw(345px,375);
+        height: get-vw(64px,375);
+        outline: none;
+        border: none;
+        border-bottom: get-vw(1px,375) solid  #DFDFDF;
+        border-radius: get-vw(0px,375);
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+        padding: 0 get-vw(0px,375);
+        //margin-top: get-vw(-20px,375);
+
+        &::placeholder{
+
             color: #BFB7B6;
         }
     }

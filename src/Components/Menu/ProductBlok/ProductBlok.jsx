@@ -13,6 +13,11 @@ import {LikedProduct} from "../../redux/Action/ProductAction";
 
 const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,image, price, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
+
+
+
+
+    const [prices,setPrices]=useState([])
     const [itempricesitog, setpricesItog] = useState(price[0].price)
     const [activeprice, setactivprice] = useState(price[0].price)
     const [count, setCount] = useState(1)
@@ -22,6 +27,9 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
     const [priceItional,setPriceItional]=useState(0)
     const [itionalitem,setItionalitem]=useState(itional)
     const dispath=useDispatch()
+
+
+
     const  AddTolike=()=>{
 
         dispath(LikedProduct(id,category,like))

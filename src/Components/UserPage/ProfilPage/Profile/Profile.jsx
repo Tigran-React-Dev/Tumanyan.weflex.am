@@ -63,7 +63,7 @@ const Profile = ({user,userAdress}) => {
             setNewAdress({
                 adress:"",
                 bulding:"",
-                 apartment:"",
+                apartment:"",
             })
             setnewAdresswin(!newAdreswin)
         }
@@ -188,7 +188,14 @@ const Profile = ({user,userAdress}) => {
                              onClick={()=>settypeinput2("password")}/>}
 
                 </div>
-                     <Button cn="btnprofil" title="պահպանել փոփոխությունները" onClick={SendData}/>
+                <div className={css.resetuserinfobtn}>
+                    <Button
+                        cn="btnprofil"
+                        title="պահպանել փոփոխությունները"
+                        onClick={SendData}
+                    />
+                </div>
+
 
 
             </form>
@@ -340,7 +347,13 @@ const Profile = ({user,userAdress}) => {
 
              </div>}
                <p className={css.addnewadresbtn} onClick={SowaddnewAdressWindow}>Ավելացնել հասցե</p>
-
+             <div className={css.resetuserinfobtnmobile}>
+                 <Button
+                     cn="btnprofil"
+                     title="պահպանել փոփոխությունները"
+                     onClick={SendData}
+                 />
+             </div>
          </div>
         </>
     );

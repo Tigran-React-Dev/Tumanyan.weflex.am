@@ -9,7 +9,10 @@ const Bonuces = () => {
 
             <div className={css.divprice}><p className={css.titlebns}></p>Կուտակված՝<p className={css.tokosprice}>30%</p></div>
             <div className={css.divprice2}><p className={css.titlebns}></p>Գումարային՝<p className={css.tokosprice}>2500 ֏</p></div>
-            <Button cn="bonucebtn" title="վճարել բոնուսներով"/>
+            <Button
+                cn="bonucebtn"
+                title="վճարել բոնուսներով"
+            />
         </div>
     );
 };

@@ -19,20 +19,26 @@ const Menu = ({ history }) => {
     const { activSub,activeMenuitem, setactiveMenuitem ,itionaldata,setItionaldata} = useProduct()
     const { id } = useParams();
     const [loader, setloader] = useState(true)
+    const [loader2, setloader2] = useState(true)
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
     const dispatch =useDispatch()
 
 
-    
+    useEffect(()=>{
+        if(id==1){
+
+        }
+
+    },[id])
 
 
 
     useEffect(() => {
 
         if (activSub.length !== 0) {
-            let act = activSub.find(i => i.title == id)
+            let act = activSub.find(i => i.id == id)
             setactiveMenuitem(act)
             setloader(false)
         }
@@ -57,15 +63,14 @@ const Menu = ({ history }) => {
 
 
 
-    const changeProductCategory = (category) => {
-        const activedatas = activSub.find(i => i.category === category)
+    const changeProductCategory = (category,id) => {
+        const activedatas = activSub.find(i => i.id === id)
         setactiveMenuitem(activedatas)
-        history.push(`/home/${category}`)
+        history.push(`/home/${id}`)
         window.scrollTo(0, 400)
     }
 
-//style={{ color: item.title === id ? "#FFFFFF" : "#BFB7B6"}}
-    //style={{ backgroundColor: item.title === id ? "#13AD54" : "#EFEFEF" ,border:item.title === id ? "none" : "1px solid #BFB7B6"}}
+
     return (
         <>
             {loader ?
@@ -79,37 +84,37 @@ const Menu = ({ history }) => {
 
                         return (
                             <div
-                                className={item.title === id ? css.btncategory : css.btncategory2}
-                                key={item.id} onClick={() => changeProductCategory(item.category)}
+                                className={item.id == id ? css.btncategory : css.btncategory2}
+                                key={item.id} onClick={() => changeProductCategory(item.category,item.id)}
                                 >
-                                <p className={item.title === id ? css.menuname : css.menuname2} >{item.title}</p>
+                                <p className={item.id == id ? css.menuname : css.menuname2} >{item.title}</p>
                             </div>
                         )
                     })
                     }
 
                 </div>
-                <div className={css.categoryitemblok}>
-                     {
-                         product.filter(i=>i.category===id).map((obj)=>{
+                    {loader2 && <div className={css.categoryitemblok}>
+                        {
+                            product.map((obj) => {
 
-                        return   (<ProductBlok
-                             key={obj.id}
-                             itionaldata={itionaldata}
-                             setItionaldata={setItionaldata}
-                             SendobjtoLikecategory={SendobjtoLikecategory}
-                             handleAddProductCard={handleAddProductCard}
-                             handleonlyproduct={handleonlyproduct}
-                            {...obj}
-                            />)
-                         })
-                     }
-                </div>
+                                return (<ProductBlok
+                                    key={obj.id}
+                                    itionaldata={itionaldata}
+                                    setItionaldata={setItionaldata}
+                                    SendobjtoLikecategory={SendobjtoLikecategory}
+                                    handleAddProductCard={handleAddProductCard}
+                                    handleonlyproduct={handleonlyproduct}
+                                    {...obj}
+                                />)
+                            })
+                        }
+                    </div>}
               <div className={css.recoment}>
                   <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
                   <div className={css.recomconstruct}>
                       {
-                          product.filter(i=>i.category=="recoment").map((obj)=>{
+                          recoment.map((obj)=>{
 
                               return   (<ProductBlok
                                   key={obj.id}
@@ -130,8 +135,7 @@ const Menu = ({ history }) => {
                         <p className={css.Saucestitle}>Սոուսներ</p>
                         {
                             product.filter(i=>i.category==="սոուսներ").map((obj)=>{
-
-                                return   (<ProductBlok
+                               return   (<ProductBlok
                                     key={obj.id}
                                     itionaldata={itionaldata}
                                     setItionaldata={setItionaldata}

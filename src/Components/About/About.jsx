@@ -8,7 +8,7 @@ import axios from "axios";
 import {useProduct} from "../Providers/ProductMenu";
 import AboutPages1 from "./AboutPages1/AboutPages1";
 
-const About =()=>{
+const About =({history})=>{
     const [activeMneuStyle,setAactiveMenuStyle]=useState(1)
     const [hoveritemStyle,setHoverItemStyle]=useState({})
     const { t } = useTranslation();
@@ -17,11 +17,14 @@ const About =()=>{
     const {aboutDataone,menejments,setMenejmentdata,setAboutDataone}=useSlider()
     const [loading,setLoading]=useState(false)
   const btnTitle=[
-      {id:1,name:"պատմություն",nameRU:"",nameENG:"",},
-      {id:2,name:"հիմնադիրներ",nameRU:"",nameENG:"",},
-      {id:3,name:"մենեջմենթ",nameRU:"",nameENG:"",},
+      {id:1,name:"պատմություն",nameRU:"История",nameENG:" History",},
+      {id:2,name:"հիմնադիրներ",nameRU:" Основатели",nameENG:"Founders",},
+      {id:3,name:"մենեջմենթ",nameRU:"Менеджмент",nameENG:"Management",},
 ]
+    useEffect(()=>{
+        window.scrollTo(0, 0);
 
+    },[history])
     useEffect(()=>{
 
         const respons=axios.get(process.env.REACT_APP_API_URL + "/about_management", )
