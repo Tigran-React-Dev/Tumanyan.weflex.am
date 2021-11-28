@@ -32,7 +32,7 @@ const [show,setShow]=useState({})
     return (
         <>
         {!show[_id] && <div className={css.basketelement}>
-        {<img className={css.productpicturent} src={image} alt=""/>}
+        {<img className={css.productpicturent} src={process.env.REACT_APP_IMG_URL + image} alt=""/>}
         <div className={css.titleanddescription}>
             <p className={css.titleproduct}>{title}</p>
             <p className={css.description}>{itionalitem != undefined ? itionalitem.map(i => <span

@@ -114,7 +114,7 @@ const hoverItem=(id)=>{
 
                         return (
                             <div key={id} className={css.itemreclam2}>
-                                <img src={process.env.REACT_APP_IMG_URL+"/slider/"+image} alt=""/>
+                                <img src={process.env.REACT_APP_IMG_URL+image} alt=""/>
                             </div>
                         )
                     })

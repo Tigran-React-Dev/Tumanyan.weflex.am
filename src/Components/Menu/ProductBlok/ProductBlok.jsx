@@ -11,18 +11,18 @@ import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 
-const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,image, price, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,category_id, ingredients,image, prices, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
 
 
 
 
-    const [prices,setPrices]=useState([])
-    const [itempricesitog, setpricesItog] = useState(price[0].price)
-    const [activeprice, setactivprice] = useState(price[0].price)
+    
+    const [itempricesitog, setpricesItog] = useState(prices[0].price)
+    const [activeprice, setactivprice] = useState(prices[0].price)
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
-    const [size, setActivsize] = useState("1")
+    const [size, setActivsize] = useState(prices[0].sizes.size)
     const [sowlichniproductmodal,setsowproductmodal]=useState(false);
     const [priceItional,setPriceItional]=useState(0)
     const [itionalitem,setItionalitem]=useState(itional)
@@ -37,12 +37,12 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
         const likeobj={
             id,
             _id:Date.now(),
-            title,
+            name,
             image,
             category,
             itional,
             bonus,
-            price,
+            prices,
             description,
             like:true
         }
@@ -54,14 +54,14 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
         const newProductcard = {
              id,
             _id:Date.now(),
-            title,
+            name,
             image,
             category,
             itionalitem,
             bonus,
-            priceitem:price,
-            price: bonus ? (itempricesitog - (itempricesitog / 100 * bonus)) +priceItional: itempricesitog+priceItional,
-            size: price.length===3 ? size==1 ? "M" : size==2 ? "L" : size==3 ? "XL" : null : price.length===2 ? size==1 ? "1 բ" : size==2 ? "2 բ"  : null : false,
+            priceitem:prices,
+            price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus)): itempricesitog),
+            size: prices.length===1 ? 1 : size,
             count,
             ingredients,
             description,
@@ -125,24 +125,24 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
 
     return (
         <div className={css.productItem}>
-            {price.length==2 ? <div className={css.imgblok}><img src={image} alt=""/></div> : <img src={image} alt=""/>  }
+            {prices.length==2 ? <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div> : <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>  }
             {bonus > 0 && <div className={css.akcia}>
                 <p>-{bonus}%</p>
             </div>}
             <div className={css.titleanlike}>
-                <p>{title}</p>
+                <p>{name}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id,category)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id,category)}/>}
             </div>
-            {price.length===3 ?  <div className={css.sizeproduct}>
+            {prices.length>1 &&  <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
                     {
-                        price.map(({id, size, price}, index) => {
+                        prices.map(({id, sizes, price}, index) => {
                             return <li
                                 key={index}
-                                onClick={() => changeSizeAndprice(price, index+1, size)}
+                                onClick={() => changeSizeAndprice(price, index+1, sizes.size)}
                                 className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
                             >
-                                { size==1 ? "M" : size==2 ? "L" : size==3 ? "XL" : null}
+                                {sizes.size}
 
                             </li>
 
@@ -150,37 +150,20 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
                         }
                         </ul>
                         </div>
-                       :
-                price.length===2 ?  <div className={css.sizeproduct}>
-                    <ul className={css.sizeitem}>
-                        {
-                            price.map(({id, size, price}, index) => {
-                                return <li
-                                    key={index}
-                                    onClick={() => changeSizeAndprice(price, index+1, size)}
-                                    className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
-                                >
-                                    { size==1 ? "1 բ" : size==2 ? "2 բ"  : null}
-
-                                </li>
-
-                            })
-                        }
-                    </ul>
-                </div> : null
+                      
                        }
                     <div className={css.addlichniproduct}>
                         {description ?
                             <p className={css.descript}>{description}</p>
                             :
                             <>
-                            {price?.length===3 ?
+                            {prices?.length===3 ?
                                 <div className={css.addlichni} onClick={AddlichniyProduct}>
                                     <p>Ավելացնել</p>
                                     <div className={css.kechup}/>
                                 </div>
                              :
-                                price?.length===2 ?
+                             prices?.length===2 ?
                                     <div className={css.addlichni} onClick={AddlichniyProduct}>
                                         <p>Բաղադրիչներ</p>
 
@@ -203,7 +186,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, title, ingredients,ima
                     </div>
                     <div className={css.priceandaddcat}>
                         <div className={css.pricecontayner}>
-                            <p>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : itempricesitog+priceItional}&nbsp;֏</p>
+                            <p>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : itempricesitog}&nbsp;֏</p>
                             <del className={css.hinprice}>{bonus ? `${activeprice}   ֏` : null} </del>
                         </div>
 

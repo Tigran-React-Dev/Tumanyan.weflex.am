@@ -9,6 +9,7 @@ import ProductBlok from "./ProductBlok/ProductBlok";
 import {ProductReducer} from "../redux/ProductReducer";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
+import { LoadProductData } from "../redux/Action/ProductAction";
 
 
 
@@ -19,7 +20,7 @@ const Menu = ({ history }) => {
     const { activSub,activeMenuitem, setactiveMenuitem ,itionaldata,setItionaldata} = useProduct()
     const { id } = useParams();
     const [loader, setloader] = useState(true)
-    const [loader2, setloader2] = useState(true)
+    const [loader2, setloader2] = useState(false)
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
@@ -27,11 +28,10 @@ const Menu = ({ history }) => {
 
 
     useEffect(()=>{
-        if(id==1){
-
-        }
-
-    },[id])
+       
+        dispatch(LoadProductData())
+        setloader2(true)
+    },[product])
 
 
 
@@ -100,6 +100,8 @@ const Menu = ({ history }) => {
 
                                 return (<ProductBlok
                                     key={obj.id}
+                                    like={false}
+                                    bonus={null}
                                     itionaldata={itionaldata}
                                     setItionaldata={setItionaldata}
                                     SendobjtoLikecategory={SendobjtoLikecategory}
@@ -112,7 +114,7 @@ const Menu = ({ history }) => {
                     </div>}
               <div className={css.recoment}>
                   <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
-                  <div className={css.recomconstruct}>
+                  {/* <div className={css.recomconstruct}>
                       {
                           recoment.map((obj)=>{
 
@@ -127,11 +129,11 @@ const Menu = ({ history }) => {
                               />)
                           })
                       }
-                    </div>
+                    </div> */}
 
               </div>
 
-                    {id==="Արագ սնունդ"? <div className={css.Sauces}>
+                    {/* {id==="Արագ սնունդ"? <div className={css.Sauces}>
                         <p className={css.Saucestitle}>Սոուսներ</p>
                         {
                             product.filter(i=>i.category==="սոուսներ").map((obj)=>{
@@ -146,7 +148,7 @@ const Menu = ({ history }) => {
                                 />)
                             })
                         }
-                    </div> :  null}
+                    </div> :  null} */}
 
 
 

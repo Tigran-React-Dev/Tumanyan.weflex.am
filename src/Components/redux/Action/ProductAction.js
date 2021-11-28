@@ -19,7 +19,7 @@ export const LikedProduct=(id,category,like)=>{
 
 export const LoadProductData=()=>{
     return async dispatch => {
-        const response = await axios.get(``)
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/product`)
 
         dispatch({
             type: LOAD_DATA,

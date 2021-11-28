@@ -194,7 +194,10 @@ export const ProductReducer =(state=initialState,action)=>{
 
     switch (action.type) {
         case LOAD_DATA:{
-
+          return{
+              ...state,
+              product:action.payload.data
+          }
         }
 
 

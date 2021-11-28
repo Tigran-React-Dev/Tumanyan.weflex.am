@@ -27,7 +27,7 @@ export const CardReducer = (state = initialState, action) => {
                 arr1.push(action.payload)
              }else{
                 let files= state.items.filter((e)=>{
-                    return (e.title===action.payload.title && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.product===action.payload.itionalitem?.[0]?.product )
+                    return (e.name===action.payload.name && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.product===action.payload.itionalitem?.[0]?.product )
 
 
                 })
@@ -36,7 +36,7 @@ export const CardReducer = (state = initialState, action) => {
                     arr1.push(action.payload)
                 }else{
                     state.items.forEach(el=>{
-                        if(el.title==files[0].title && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length && el.itionalitem?.[0]?.product===files[0].itionalitem?.[0]?.product){
+                        if(el.name==files[0].name && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length && el.itionalitem?.[0]?.product===files[0].itionalitem?.[0]?.product){
                             el.price+=action.payload.price
                             el.count+=action.payload.count
                         }
@@ -145,13 +145,13 @@ export const CardReducer = (state = initialState, action) => {
        if(action.payload.count>0){
            state.items.forEach(elem=>{
                if(elem._id===action.payload._id){
-                   debugger
+                   
                    const filprice= elem.priceitem.find(e=>e.size==elem.size)
                    if(filprice){
-                       elem.price+=filprice.price;
+                       elem.price+=+filprice.price;
                        elem.count+=1
                     }else{
-                       elem.price+=elem.priceitem[0].price;
+                       elem.price+=+elem.priceitem[0].price;
                        elem.count+=1
                    }
 
@@ -175,10 +175,10 @@ export const CardReducer = (state = initialState, action) => {
                     if(elem._id===action.payload._id){
                         const filprice= elem.priceitem.find(e=>e.size=elem.size)
                         if(filprice){
-                            elem.price-=filprice.price;
+                            elem.price-=+filprice.price;
                             elem.count-=1
                         }else{
-                            elem.price-=elem.priceitem[0].price;
+                            elem.price-=+elem.priceitem[0].price;
                             elem.count-=1
                         }
 

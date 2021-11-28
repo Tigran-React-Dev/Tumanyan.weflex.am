@@ -29,7 +29,7 @@ const About =({history})=>{
 
         const respons=axios.get(process.env.REACT_APP_API_URL + "/about_management", )
         respons.then(res=> {
-
+               console.log(res)
              setMenejmentdata(res.data)
 
         }).catch(err=>console.log(err))
@@ -112,7 +112,7 @@ const About =({history})=>{
                                              className={css.itemabout}
 
                                         >
-                                            <img src={process.env.REACT_APP_IMG_URL+"/about/"+image} alt=""/>
+                                            <img src={process.env.REACT_APP_IMG_URL+image} alt=""/>
                                            <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
                                             <h6>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h6>
                                             {
@@ -140,7 +140,7 @@ const About =({history})=>{
                                             className={css.itemmenejment}
 
                                         >
-                                            <img src={process.env.REACT_APP_IMG_URL+"/about/" + image} alt=""/>
+                                            <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
                                             <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
                                             <h2>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h2>
                                             <h6>{email}</h6>
