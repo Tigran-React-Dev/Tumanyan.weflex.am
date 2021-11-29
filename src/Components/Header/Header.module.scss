@@ -656,10 +656,7 @@ position: absolute;
       height: get-vw(20px,400 );
       display: flex;
       align-items: center;
-
-      // position: relative;
-      // z-index: 32;
-      .adresiconmobile{
+     .adresiconmobile{
         width: get-vw(24px,375);
         height: get-vw(24px,400);
         cursor: pointer;
@@ -668,7 +665,6 @@ position: absolute;
         width: get-vw(14px, 375);
         height: get-vw(14px, 400);
         margin-left: get-vw(10px,375 );
-        //margin-bottom: get-vw(2px,1920);
         cursor: pointer;
       }
 
@@ -687,8 +683,7 @@ position: absolute;
         cursor: pointer;
         z-index: 32;
         margin-left: get-vw(10px,375 );
-
-      }
+       }
 
     }
 
@@ -828,5 +823,61 @@ position: absolute;
     padding-bottom: get-vw(15px,375);
 
   }
+
+  .basketclick{
+    width:get-vw(166px,375);
+    max-width: get-vw(166px,375);
+    height: get-vw(44px,375);
+    margin-top: get-vw(26px,375);
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    position: fixed;
+    top: get-vw(715px,460);
+    left: get-vw(190px,375);
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+  }
+
+
+  .corzina{
+    min-width:min-content;
+    max-width: get-vw(140px, 375);
+    height:get-vw( 44px,375 );
+    background: #13AD54;
+    border-radius: get-vw(70px, 375);
+    display: flex;
+    padding: get-vw(0px,375) get-vw(14px,375 );
+
+
+    p{
+      min-width: max-content;
+      max-width: get-vw(150px, 375);
+      height:get-vw(23px, 375) ;
+      text-decoration: none;
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(20px, 375);
+      line-height: get-vw(23px,375 );
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-top: get-vw(12px,375 );
+
+
+    }
+    img{
+      width: get-vw(17px,375 );
+      height: get-vw(16px,375 );
+      margin-left: get-vw(10px,375 );
+      margin-top: get-vw(14px,375 );
+
+
+    }
+
+  }
+
 
 }

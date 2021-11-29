@@ -21,6 +21,9 @@ const Jobs =()=>{
     const {jobs}=useSlider();
     const history =useHistory()
 
+
+
+
     useEffect(()=>{
         window.scrollTo(0, 0);
 
@@ -176,7 +179,7 @@ const Jobs =()=>{
                                   fileRef.current.click();
                               }}
                           >
-                              <h2>Կցել ռեզյումե</h2>
+                              <h3>Կցել ռեզյումե</h3>
                               <h6>max. 4 MB PDF, DOC, DOCX</h6>
 
                           </button>

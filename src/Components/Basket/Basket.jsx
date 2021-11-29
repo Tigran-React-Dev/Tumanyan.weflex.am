@@ -141,7 +141,7 @@ const Basket = () => {
                    <p className={css.basketstatus}>ձեր զամբյուղն առայժմ դատարկ է։</p>
                    <div className={css.btndiv}>
                        <button className={css.btnpushmenu} onClick={()=> {
-                           history.push("/home/շաուրմա");
+                           history.push("/home/1");
                      }}>վերդառնալ մենյու</button>
                    </div>
                </>

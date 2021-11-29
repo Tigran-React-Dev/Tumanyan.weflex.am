@@ -288,6 +288,13 @@ const mobilemenustyle ={
 
 
             </div>
+            <div className={css.basketclick}>
+                <NavLink
+                    to={BASKET_PAGE}
+                    exact>
+                    <div className={css.corzina}><p>{totalprice}  ֏</p><img src={gumar} alt="" /></div>
+                </NavLink>
+            </div>
             <div style={mobilemenustyle} className={css.mobilecontn}  >
                 <div className={css.masnajuxmobile}  >
                     <div className={css.masnajuxwrapermobile} >
@@ -296,6 +303,7 @@ const mobilemenustyle ={
                         {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelect} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
                     </div>
                 </div>
+
                 <div className={css.menubarmobile}>
                         <div className={css.linkmenu}>
                             <p onClick={ScrlMenu}>{t("menuscrol")}</p>

@@ -40,7 +40,7 @@ const  HomeSlider2= ({homepageReclam2}) =>{
                         <>
                             <SwiperSlide key={id}>
                                 <div className="slideritem" style={{
-                                    backgroundImage: `url(${process.env.REACT_APP_IMG_URL+"/slider/"+image})`
+                                    backgroundImage: `url(${process.env.REACT_APP_IMG_URL+image})`
 
                                 }}
                                 >

@@ -74,6 +74,7 @@
     margin-left: get-vw(186px,1920) ;
     margin-top: get-vw(82px,1920);
   }
+
   .minuspluscount{
     width: get-vw(90px,1920);
     height: get-vw(24px,1920) ;
@@ -89,6 +90,11 @@
       object-fit: cover;
     }
     .onminus{
+      width: get-vw(13px,1920);
+      height: get-vw(3px,1920);
+      object-fit: cover;
+    }
+    .onminus2{
       width: get-vw(13px,1920);
       height: get-vw(3px,1920);
       object-fit: cover;
@@ -139,5 +145,135 @@
      &:hover{
        filter: invert(74%) sepia(86%) saturate(5651%) hue-rotate(115deg) brightness(95%) contrast(85%);
      }
+  }
+}
+.ondeletmobile{
+  display: none;
+}
+@media screen and (max-width: 500px){
+  .basketelement{
+    width: get-vw(345px,345 );
+    min-height: get-vw(108px,375 );
+    border-top: 1px solid #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .productpicturent{
+      display: none;
+    }
+    .titleanddescription{
+      width: get-vw(345px,375);
+      min-height: get-vw(19px,375);
+      max-height: get-vw(19px,375);
+      margin-top: get-vw(20px,375);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .titleproduct{
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        margin-left: get-vw(15px,375);
+      }
+      .description{
+        width: get-vw(210px,375);
+        min-height:get-vw(21px,375);
+        max-height: min-content;
+        display: flex;
+        flex-wrap: wrap;
+        width: get-vw(420px,1920);
+        overflow: hidden;
+        font-family: Montserrat arm;
+        font-style: normal;
+        font-weight: normal;
+        font-size: get-vw(18px,1920);
+        line-height: 150%;
+        letter-spacing: -0.02em;
+        color: #BFB7B6;
+        margin-left: get-vw(101px,1920);
+        margin-top: get-vw(15px,1920);
+        span{
+          padding-left: get-vw(4px,1920);
+        }
+      }
+
+
+
+    }
+    .size{
+      width: get-vw(22px,375);
+      min-width: max-content;
+      font-size: get-vw(14px,375);
+      line-height: 150%;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-left: get-vw(15px,375) ;
+      margin-top: get-vw(12px,375);
+    }
+    .minuspluscount{
+      width: get-vw(85px,375);
+      height: get-vw(19px,375) ;
+      margin-left: get-vw(270px,375);
+      margin-top: get-vw(-20px,375);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .pluscaunt{
+        width: get-vw(13px,375);
+        height: get-vw(13px,375);
+        object-fit: cover;
+      }
+      .onminus{
+        display: none;
+      }
+      .onminus2{
+        display:block ;
+        width: get-vw(13px,375);
+        height: get-vw(3px,375);
+        object-fit: cover;
+      }
+      .ondeletmobile{
+        display: block;
+        width: get-vw(16px,375);
+        height: get-vw(16px,375);
+        object-fit: cover;
+      }
+      img{
+        cursor: pointer;
+      }
+      span{
+        p{
+          font-family: Montserrat-Medium;
+          font-style: normal;
+          font-weight: normal;
+          font-size: get-vw(16px,375);
+          line-height:get-vw(24px,375);
+          letter-spacing: -0.04em;
+          color: #252223;
+        }
+
+      }
+
+    }
+    .price{
+      min-width: get-vw(110px,375);
+      max-width: get-vw(190px,375);
+      position: absolute;
+      margin-top: get-vw(0px,375);
+      margin-left: get-vw(0px,375);
+      left: get-vw(250px,375);
+      top: get-vw(7px,375);
+      display: flex;
+      justify-content: flex-end;
+      p{
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        color: #13AD54;
+
+      }
+    }
+    .dltbtn {
+      display: none;
+    }
   }
 }

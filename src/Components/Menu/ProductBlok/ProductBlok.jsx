@@ -11,21 +11,24 @@ import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 
-const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,category_id, ingredients,image, prices, bonus,itional,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,category_id, ingredients,image, prices, bonus,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
 
 
-
-
-    
     const [itempricesitog, setpricesItog] = useState(prices[0].price)
     const [activeprice, setactivprice] = useState(prices[0].price)
+    const [size, setActivsize] = useState(prices[0].sizes.size)
+
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
-    const [size, setActivsize] = useState(prices[0].sizes.size)
+
     const [sowlichniproductmodal,setsowproductmodal]=useState(false);
+
     const [priceItional,setPriceItional]=useState(0)
-    const [itionalitem,setItionalitem]=useState(itional)
+    const [itionalitem,setItionalitem]=useState([])
+
+
+
     const dispath=useDispatch()
 
 
@@ -40,7 +43,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
             name,
             image,
             category,
-            itional,
+            itionalitem,
             bonus,
             prices,
             description,
@@ -55,6 +58,8 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
              id,
             _id:Date.now(),
             name,
+            nameRU,
+            nameEN,
             image,
             category,
             itionalitem,
@@ -74,32 +79,32 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
 
         }else{
             handleAddProductCard(newProductcard)
-            if(categor =="շաուրմա"){
-                setItionalitem([])
-                const reset = itionaldata[id].map((e)=>{
-                    if(e.isChecked==true){
-
-                        return {...e,isChecked:false}
-                    }
-                    return e
-                })
-                setItionaldata({
-                    ...itionaldata,
-                    [id]:[...reset]
-                })
-            }
+            // if(categor =="շաուրմա"){
+            //     setItionalitem([])
+            //     const reset = itionaldata[id].map((e)=>{
+            //         if(e.isChecked==true){
+            //
+            //             return {...e,isChecked:false}
+            //         }
+            //         return e
+            //     })
+            //     setItionaldata({
+            //         ...itionaldata,
+            //         [id]:[...reset]
+            //     })
+            // }
 
         }
 
 
     }
-
+    // plus prododuct count function
     const onPlus =()=>{
         setpricesItog((count + 1) * activeprice)
         setCount(count + 1)
     }
 
-
+    // minus prododuct count function
     const onMinus = () => {
         if (count >= 2) {
             setpricesItog((count - 1) * activeprice)
@@ -107,7 +112,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
         }
 
     }
-
+     // response newprice obj id and product size to chenjing initial value
     const changeSizeAndprice = (newprice, id, size) => {
         setactivprice(newprice)
         setpricesItog(newprice)
@@ -116,6 +121,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
         setActivsize(size)
     }
 
+    // show window adds product
 
     const AddlichniyProduct=()=>{
         setsowproductmodal(!sowlichniproductmodal)

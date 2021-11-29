@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import css from "./Menu.module.scss";
 import { isAuthRoutes } from "../../routes";
-import { NavLink } from "react-router-dom";
+import {NavLink, useHistory, useParams} from "react-router-dom";
 import { useProduct } from "../../Providers/ProductMenu";
 
 
@@ -10,6 +10,13 @@ const Menu =()=>{
 
     const {languae}=useProduct()
     const [activestyle,setActiveStyle]=useState(null)
+    const history=useHistory()
+
+       useEffect(()=>{
+        if(history.location.pathname=="/home"){
+            setActiveStyle(null)
+        }
+       },[history.location.pathname])
 
 
     return(

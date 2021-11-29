@@ -439,5 +439,36 @@
             color: #BFB7B6;
         }
     }
+    .jobinput{
+        width: get-vw(345px,375);
+        height: get-vw(64px,375);
+        border: get-vw(1px,375) solid #DFDFDF;
+        border-radius: get-vw(10px,375);
+        font-size:get-vw( 16px,375);
+        line-height: 160%;
+        padding: 0 get-vw(15px,375);
+        outline:none ;
+        margin-top: get-vw(15px,375);
+        margin-left: get-vw(15px,375);
+        &::placeholder{
+            color: #BFB7B6;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+    .promoinput{
+        font-size: get-vw(16px,375);
+        line-height:get-vw( 19px,375);
+        width: get-vw(290px,375 );
+        padding: 0 get-vw(5px,375 );
+        margin-left: get-vw(15px,275 );
+        &::placeholder{
+
+            color: #BFB7B6;
+        }
+    }
 }
 
