@@ -321,6 +321,7 @@
   width: get-vw(1052px,1920 );
   min-height: get-vw(326px,1920);
   hr{
+    width: get-vw(890px,1920 );
     border: 1px solid #EFEFEF;
     margin-top: get-vw(50px,1920);
   }
@@ -507,12 +508,19 @@
   margin-top: get-vw(50px,1920);
   border: 1px solid #EFEFEF;
 }
-
+.mobileformtitle{
+  display: none;
+}
+.checkdiv{
+  hr{
+    display: none;
+  }
+}
 
 @media screen  and (max-width: 500px){
   .Basketconstructor{
     width: get-vw(375px,375);
-    min-height: get-vw(297px,375);
+    min-height: get-vw(397px,375);
     .bskhdr{
       width: get-vw(375px,375);
       height: get-vw(130px,375);
@@ -691,52 +699,81 @@
     }
   }
   .constrctorformandrecoment{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(291px,1920);
+    width: get-vw(375px,375);
+    min-height: get-vw(1773px,375);
     //display: flex;
     //flex-direction: column;
     //justify-content: center;
     .formtitle{
-      font-family: Mardoto-Medium;
-      font-style: normal;
-      font-weight: 500;
-      font-size: get-vw(26px, 1920);
-      line-height: get-vw(30px,1920 );
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: #13AD54;
-      margin-top: get-vw(150px,1920 );
+      display: none;
     }
     .info{
-      font-family: Mardoto-Medium;
-      font-style: normal;
-      font-weight: 500;
-      font-size: get-vw(18px,1920 );
-      line-height: get-vw(21px,1920);
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: #252223;
-      margin-top: get-vw(50px,1920 );
+      display: none;
     }
+    .mobileformtitle{
+      display: block;
+      p{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(18px, 375);
+        line-height: 120%;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #13AD54;
+        margin-top: get-vw(60px,375 );
+        margin-left: get-vw(15px,375);
+      }
+      h6{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(16px,375 );
+        line-height: get-vw(19px,375);
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #252223;
+        margin-top: get-vw(30px,375 );
+        margin-left: get-vw(15px,375);
+        padding-bottom: get-vw(30px,375);
+      }
+    }
+
+
+
+
     .formandrecomentwraper{
-      width: get-vw(1636px,1920);
-      min-height: get-vw(100px,1920);
+      width: get-vw(375px,375);
+      min-height: get-vw(100px,375);
       display: flex;
-      align-items: flex-start;
-      margin-top: get-vw(15px,1920 );
+      flex-direction: column-reverse;
+      margin-top: get-vw(0px,375 );
       .formcontlorel{
-        width: get-vw(1052px,1920 );
-        min-height: get-vw(100px,1920);
-        padding-bottom: get-vw(100px,1920);
+        width: get-vw(375px,375 );
+        min-height: get-vw(100px,375);
+        padding-bottom: get-vw(60px,375);
+        .checkdiv{
+          margin-top: get-vw(24px,375);
+          margin-left: get-vw(15px,375);
+          p{
+            margin-top: get-vw(10px,375);
+          }
+          hr{
+            display: block;
+            width: get-vw(345px,375);
+            height: get-vw(1px,375);
+            background-color:#EFEFEF;
+            margin-top: get-vw(60px,375);
+          }
+        }
 
       }
       .recometntcontrol{
-        width: get-vw(583px,1920 );
-        min-height: get-vw(529px,1920);
-        background: #F9F9F9;
-        border-radius: get-vw(10px, 1920);
-
-        margin-top: get-vw(25px,1920);
+        width: get-vw(375px,375 );
+        height: get-vw(226px,226);
+        background: #13AD54;
+        border-radius: get-vw(0px, 375);
+         margin-top: get-vw(0px,375);
 
       }
     }
@@ -745,119 +782,110 @@
     font-family: Mardoto-Medium;
     font-style: normal;
     font-weight: 500;
-    font-size: get-vw(18px,1920);
-    line-height:get-vw( 21px,1920);
+    font-size: get-vw(16px,375);
+    line-height:get-vw( 19px,375);
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #252223;
-    margin-top: get-vw(101px,1920);
+    margin-top: get-vw(60px,375);
+    margin-left: get-vw(15px,375);
 
   }
   .popupbutton{
-    width: get-vw(890px,1920);
-    height: get-vw(75px,1920);
+    width: get-vw(345px,375);
+    height: get-vw(57px,375);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: get-vw(50px,1920);
+    margin-top: get-vw(30px,375);
+    margin-left: get-vw(15px,375);
+
   }
   .renderadressinput{
-    width: get-vw(1052px,1920 );
-    min-height: get-vw(326px,1920);
+    width: get-vw(375px,375 );
+    min-height: get-vw(192px,375);
+    margin-top: get-vw(30px,375);
     hr{
+
+      width: get-vw(345px,375);
+      margin-left: get-vw(15px,375);
       border: 1px solid #EFEFEF;
-      margin-top: get-vw(50px,1920);
+      margin-top: get-vw(60px,375);
     }
   }
   .adresscityortoradress{
-    width: get-vw(1052px,1920 );
-    min-height: get-vw(436px,1920);
+    width: get-vw(345px,375 );
+    min-height: get-vw(436px,375);
   }
   .domandkey{
-    width: get-vw(429px,1920);
-    height: get-vw(75px,1920);
+    width: get-vw(345px,375);
+    height: get-vw(128px,375);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    margin-left: get-vw(15px,375);
   }
   .peytitle{
-    font-family: Mardoto-Medium;
-    font-style: normal;
-    font-weight: 500;
-    font-size:get-vw( 18px,1920);
-    line-height: get-vw(21px,1920);
+   font-size:get-vw( 16px,375);
+    line-height: get-vw(19px,375);
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #252223;
-
-  }
+    margin-left: get-vw(15px,375);
+    margin-top: get-vw(60px,375);
+   }
   .paymedodsbtn{
-    width: get-vw(890px,1920);
-    height: get-vw(175px,1920);
+    width: get-vw(345px,375);
+    height: get-vw(138px,375);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: get-vw(50px,1920);
+    margin-top: get-vw(30px,375);
+    margin-left: get-vw(15px,375);
   }
   .zdachi{
-    width: get-vw(433px,1920);
-    height:get-vw( 75px,1920);
-    background: #FFFFFF;
-    border: 1px solid #DFDFDF;
-    box-sizing: border-box;
-    border-radius: get-vw(10px,1920);
-    margin-top: get-vw(50px,1920);
+    width: get-vw(345px,375);
+    height:get-vw( 64px,375);
+    border: get-vw(1px,375) solid #DFDFDF;
+    border-radius: get-vw(10px,375);
+    margin-top: get-vw(30px,375);
+    margin-left: get-vw(15px,375);
     display: flex;
     .zdachittitle1,zdachittitle2{
       font-family: Montserrat-Regular;
       font-style: normal;
       font-weight: normal;
-      font-size: get-vw(18px,1920);
-      line-height: get-vw(22px,1920);
+      font-size: get-vw(16px,375);
+      line-height: 160%;
       letter-spacing: -0.02em;
       color: #252223;
-      margin-top: get-vw(27px,1920);
-      margin-left: get-vw(25px,1920);
+      margin-top: get-vw(19px,375);
+      margin-left: get-vw(15px,375);
     }
   }
   .adresstitle{
-    font-family: Montserrat-Regular;
-    font-style: normal;
-    font-weight: normal;
-    font-size: get-vw(18px,1920);
-    line-height: get-vw(22px,1920);
-    letter-spacing: -0.02em;
-    color: #252223;
-    box-sizing: border-box;
-    padding-top: get-vw(50px,1920);
+    display: none;
   }
   .adresselement{
-    width: get-vw(690px,1920);
-    height: get-vw(65px,1920);
+    width: get-vw(345px,375);
+    min-height: get-vw(340px,375);
     display: flex;
-    flex-wrap: wrap;
-    margin-left: get-vw(-40px,1920);
+    flex-direction: column;
+    margin-left: get-vw(15px,375);
+
     .itermadresandicon{
       min-width: max-content;
       display: flex;
-      margin-left: get-vw(40px,1920);
-      margin-top: get-vw(43px,1920);
+      margin-left: get-vw(0px,375)!important;
+      margin-top: get-vw(30px,375);
       img{
-        width: get-vw(24px,1920);
-        height: get-vw(24px,1920);
+        width: get-vw(24px,375);
+        height: get-vw(24px,375);
       }
       p{
-        font-family: Mardoto-Medium;
-        font-style: normal;
-        font-weight: 500;
-        font-size: get-vw(18px,1920);
-        line-height: get-vw(21px,1920);
-        letter-spacing: -0.04em;
-        text-transform: uppercase;
-        color: #252223;
-        cursor: pointer;
-        margin-left: get-vw(10px,1920);
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        margin-left: get-vw(0px,375);
         &:hover{
           color: #13AD54;
         }
@@ -866,86 +894,55 @@
     }
   }
   .clock{
-    width: get-vw(204px,1920);
-    height:get-vw( 75px,1920);
-    background: #FFFFFF;
-    border: get-vw(1px,1920) solid #DFDFDF;
-    box-sizing: border-box;
-    border-radius:get-vw( 10px,1920);
-    margin-top: get-vw(101px,1920);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    width: get-vw(345px,375);
+    height:get-vw( 64px,375);
+    border: get-vw(1px,375) solid #DFDFDF;
+    border-radius:get-vw( 10px,375);
+    margin-top: get-vw(30px,375);
+    margin-left:get-vw(15px,375) ;
+
     p{
-      width: get-vw(140px,1920);
-      font-family: Montserrat-Regular;
-      font-style: normal;
-      font-weight: normal;
-      font-size: get-vw(18px,1920);
-      line-height:get-vw( 22px,1920);
-      letter-spacing: -0.02em;
-      color: #BFB7B6;
-      margin-left: get-vw(25px,1920);
+      width: get-vw(290px,375);
+     font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-left: get-vw(15px,375);
 
       img{
-        width: get-vw(11px,1920);
-        height: get-vw(15px,1920);
+        width: get-vw(11px,375);
+        height: get-vw(15px,375);
       }
     }
   }
   .itonalItemcard{
-    font-family: Mardoto-Medium;
-    font-style: normal;
-    font-weight: 500;
-    font-size: get-vw(18px,1920);
-    line-height:get-vw( 21px,1920);
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: #252223;
-    margin: get-vw(40px,1920) get-vw(40px,1920);
+    display: none;
 
   }
   .shiporder{
     width: get-vw(724px,1920);
     min-height: get-vw(429px,1920);
     .gic2{
-      width: get-vw(503px,1920);
-      height: get-vw(1px,1920 );
-      background-color:#BFB7B6 ;
-      margin-left: get-vw(41px,1920 );
+      display: none;
 
     }
   }
   .checkbasket{
-    width: get-vw(86px,1920);
-    height: get-vw(86px,1920);
+    width: get-vw(50px,375);
+    height: get-vw(50px,375);
   }
   .statussok{
-    font-family: Mardoto-Medium;
-    font-style: normal;
-    font-weight: 500;
-    font-size: get-vw(24px,1920);
-    line-height:get-vw( 28px,1920);
-    text-align: center;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    margin-top: get-vw(50px,1920);
-    color: #252223;
+
+    font-size: get-vw(16px,375);
+    line-height:get-vw( 19px,375);
+   margin-top: get-vw(30px,375);
+
   }
   .userADresesblok{
-    width: get-vw(890px,1920);
-    height: get-vw(311px,1920);
+    width: get-vw(375px,375);
+    min-height: get-vw(80px,375);
 
   }
   .selectuseradres{
-    font-family: Montserrat-Regular;
-    font-style: normal;
-    font-weight: normal;
-    font-size: get-vw(18px,1920);
-    line-height:get-vw( 22px,1920);
-    letter-spacing: -0.02em;
-    color: #252223;
-    margin-top: get-vw(50px,1920);
+    display: none;
   }
   .hradres{
     margin-top: get-vw(50px,1920);

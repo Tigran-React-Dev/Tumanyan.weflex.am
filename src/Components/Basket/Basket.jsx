@@ -18,7 +18,7 @@ import seltb from "../../images/icons/seltb.png"
 import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import checketbasket from "../../images/icons/checkedbasket.png"
 import {SaveorderUser} from "../redux/Action/AuthACtion";
-import ProductBlok from "../Menu/ProductBlok/ProductBlok";
+
 
 const Basket = () => {
     const [showdetalis,setSowdetalis]=useState(1)
@@ -31,7 +31,6 @@ const Basket = () => {
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const { totalPrice, items } =  CardData
     const {adressCountry,defaultCity} =useProduct()
-    console.log(items)
     const dispatch =useDispatch()
     const history = useHistory()
     const [basketitemdata,setItemBasketdata]=useState(items)
@@ -58,11 +57,11 @@ const Basket = () => {
 
    ];
    const recomentcontroler={
-       width: "30.36458vw",
-       minHeight: "27.55208vw",
-       background: "#F9F9F9",
-       borderRadius: "0.52083vw",
-       marginTopop: "1.30208vw",
+       // width: "30.36458vw",
+       // minHeight: "27.55208vw",
+       // background: "#F9F9F9",
+       // borderRadius: "0.52083vw",
+       // marginTopop: "1.30208vw",
    }
    const formandrecomentwraper={
        width: "85.20833vw",
@@ -72,45 +71,7 @@ const Basket = () => {
        marginTop: "0.78125vw",
    }
 
-
-    // useEffect(()=>{
-    //
-    //     window.addEventListener("scroll", () => {
-    //         if (document.querySelector(".reccontainer")) {
-    //             const elementHeight = document.querySelector(".reccontainer").scrollHeight;
-    //             const scrollTop = document.querySelector(".reccontainer").getBoundingClientRect().top;
-    //             const scrollBottom = document.querySelector(".reccontainer").getBoundingClientRect().bottom;
-    //             console.log(scrollTop)
-    //             console.log(scrollBottom)
-    //             if ((Math.round(scrollTop) > (elementHeight))) {
-    //                 //Hide
-    //                 console.log(elementHeight)
-    //                 console.log(scrollTop)
-    //                 // console.log(true)
-    //                 // document.querySelector(".reccontainer").style.position = "absolute";
-    //                 // document.querySelector(".reccontainer").style.left = "59vw";
-    //                 // document.querySelector(".reccontainer").style.top = "25vw";
-    //             } else {
-    //                 //Show
-    //                 console.log(elementHeight)
-    //                 console.log(scrollTop)
-    //                 // console.log(false)
-    //                 document.querySelector(".reccontainer").style.position = "fixed";
-    //                 document.querySelector(".reccontainer").style.left = "59vw";
-    //                 document.querySelector(".reccontainer").style.top = "20vw";
-    //             }
-    //         }
-    //     })
-    //     },[])
-
-
-
-
-
-
-
-
-    const handleAddProductCard=(obj)=>{
+  const handleAddProductCard=(obj)=>{
      dispatch(AddproductCard(obj))
      srtcount(count+1)
 
@@ -123,11 +84,26 @@ const Basket = () => {
     }
 
     const [checket,setchecked]=useState(false)
-    
     const hantletargetclick =()=>{
-       
-        setchecked(!checket)
+       setchecked(!checket)
       }
+
+     // _____changeInputWalue____
+
+    const [user,setUser]=useState({
+        name:"",
+        lastname:"",
+        phone:"374",
+        email:"",
+    })
+    const {name,lastname,phone,email}=user;
+
+   const OnchangeInputofRegister =(e)=>{
+       setUser({
+           ...user,
+           [e.target.name]:e.target.value,
+       })
+   }
 
 
     return (
@@ -162,7 +138,9 @@ const Basket = () => {
                     }
                     <div className={css.promokodandbonusblok}>
                        <div className={css.promoblok}>
-                          <Input cn="promoinput" placeholder="պրոմոկոդ"/>
+                          <Input
+                              cn="promoinput"
+                              placeholder="պրոմոկոդ"/>
                           <img src={btnbsk} alt="" />
                        </div>
                         <div className={css.bonuss}>
@@ -183,31 +161,56 @@ const Basket = () => {
                        </p>
                        <p className={css.info}>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</p>
                        {/*className={css.formandrecomentwraper}*/}
-                      <div style={formandrecomentwraper} className="formandrecomentwraper">
+                      <div style={formandrecomentwraper} className={css.formandrecomentwraper}>
+
                           <div className={css.formcontlorel}>
+                              <div className={css.mobileformtitle}>
+                                  <p>
+                                      ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
+                                  </p>
+                                  <h6>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</h6>
+                              </div>
                               <Input
                                   cn="inputglobalinfo"
                                   placeholder="Անուն*"
+                                  type="text"
+                                  onChange={OnchangeInputofRegister}
+                                  name="name"
                               />
                               <Input
                                   cn="inputglobalinfo"
                                   placeholder="Ազգանուն"
+                                  type="text"
+                                  onChange={OnchangeInputofRegister}
+                                  name="lastname"
                               />
                               <Input
                               cn="inputglobalinfo"
                               placeholder="Հեռախոսահամար*"
+                              type="number"
+                              maxlength="12"
+                              value={phone}
+                              onChange={OnchangeInputofRegister}
+                              name="phone"
                               />
                               <Input
                               cn="inputglobalinfo"
                               placeholder="էլեկտրոնային հասցե*"
+                              type="email"
+                              onChange={OnchangeInputofRegister}
+                              name="email"
                               />
-                               <Check
-                                   cn="newsinfo"
-                                   lableinfo="Ստանալ ակցիաների, նորությունների մասին ծանուցումներ"
-                                   id="newcheket"
-                                   onClick={hantletargetclick}
-                                   isChecked={checket}
-                               />
+                              <div className={css.checkdiv}>
+                                  <Check
+                                      cn="newsinfo"
+                                      lableinfo="Ստանալ ակցիաների, նորությունների մասին ծանուցումներ"
+                                      id="newcheket"
+                                      onClick={hantletargetclick}
+                                      isChecked={checket}
+                                  />
+                                  <hr/>
+                              </div>
+
                                <p className={css.shipment}>առաքում</p>
                               <div className={css.popupbutton}>
                                    <Button
@@ -331,8 +334,8 @@ const Basket = () => {
                               />
 
                           </div>
-                          <div className="reccontainer" style={recomentcontroler} >
-                              <div className="recomentwraper">
+                          <div className={css.recomentcontroler} style={recomentcontroler} >
+                              <div className={css.recometntcontrol}>
                                      <div className={css.shiporder}>
                                       <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
                                       {

@@ -435,6 +435,36 @@ box-sizing: border-box;
     margin-top: get-vw(60px,375);
     margin-left: get-vw(15px,375);
   }
+  .btnPopupshop{
+    width: get-vw(160px,375);
+    height: get-vw(57px,375);
+    border: get-vw(1px,375) solid #BFB7B6;
+    border-radius:get-vw( 10px,375);
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #BFB7B6;
+    cursor: pointer;
+    &:hover{
+      box-shadow: none;
+      border: 1px solid #13AD54;
+      color: #13AD54;
+    }
+  }
+  .btnokpey{
+    width: get-vw(345px,375);
+    height: get-vw(57px,375);
+    background: #13AD54;
+    border: get-vw(1px,375) solid #13AD54;
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    border-radius: get-vw(10px,375);
+    cursor: pointer;
+    margin-top: get-vw(24px,375);
+    margin-left: get-vw(15px,375);
+  }
 }
 
 

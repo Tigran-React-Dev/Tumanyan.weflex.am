@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./Project.module.scss"
 import {useSlider} from "../Providers/SliderProvider";
 import arow from "../../images/icons/Arrow.png"
@@ -13,7 +13,10 @@ const Projects = () => {
     const {project,activeProjectdata,setActiveProjectdata}=useSlider()
     const [anime,setanime]=useState(true)
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
 
+    },[history])
 
     const addtoprojectpage =(activdata)=>{
         // console.log(activdata)

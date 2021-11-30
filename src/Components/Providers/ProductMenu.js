@@ -27,10 +27,10 @@ const ProductProvider =({children})=>{
            id:2,
            name:"ծաղկաձոր",
            sup:[
-               {id:1,title:"շաուրմա",category:"շաուրմա",images:shaurma,imagesbig:shaurmabig},
-               {id:2,title:"Արագ սնունդ",category:"Արագ սնունդ",images:shaurma,imagesbig:shaurmabig},
-               {id:3,title:"Խորոված",category:"Խորոված",images:shaurma,imagesbig:shaurmabig},
-               {id:4,title:"աղցան",category:"աղցան",images:shaurma,imagesbig:shaurmabig},
+                {id:1,title:"շաուրմա",category:"շաուրմա",images:shaurma,imagesbig:shaurmabig},
+               // {id:2,title:"Արագ սնունդ",category:"Արագ սնունդ",images:shaurma,imagesbig:shaurmabig},
+               // {id:3,title:"Խորոված",category:"Խորոված",images:shaurma,imagesbig:shaurmabig},
+               // {id:4,title:"աղցան",category:"աղցան",images:shaurma,imagesbig:shaurmabig},
                ]
        }
    ];
