@@ -66,7 +66,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             itionalitem,
             bonus,
             priceitem:prices,
-            price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus)): itempricesitog),
+            price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)),
             size: prices.length===1 ? 1 : size,
             count,
             ingredients,
@@ -192,7 +192,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                     </div>
                     <div className={css.priceandaddcat}>
                         <div className={css.pricecontayner}>
-                            <p>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : itempricesitog}&nbsp;֏</p>
+                            <p>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)}&nbsp;֏</p>
                             <del className={css.hinprice}>{bonus ? `${activeprice}   ֏` : null} </del>
                         </div>
 
@@ -200,8 +200,9 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                     </div>
                     {sowlichniproductmodal &&
                     <ItionalProduct
-                        ingredients={ingredients}
+                        setItionaldataitem={setItionaldataitem}
                         itionaldataitem={itionaldataitem}
+                        ingredients={ingredients}
                         AddlichniyProduct={AddlichniyProduct}
                         priceItional={priceItional}
                         setPriceItional={setPriceItional}

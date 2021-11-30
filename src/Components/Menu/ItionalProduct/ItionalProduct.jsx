@@ -6,38 +6,44 @@ import css from "./ItionalProduct.module.scss";
 
 
 
-const ItionalProduct =({itionaldataitem,ingredients,AddlichniyProduct,priceItional, setPriceItional,itionalitem,setItionalitem,})=>{
+const ItionalProduct =({itionaldataitem,setItionaldataitem,ingredients,AddlichniyProduct,priceItional, setPriceItional,itionalitem,setItionalitem,})=>{
 
 
-    console.log(itionaldataitem)
-    const onchangecheck=(nevobj,ids)=>{
+    
+    const onchangecheck=(nevobj,id)=>{
  
-        // const newobj1=itionaldata[ids].map((elem)=>{
-        //     if(elem.id===nevobj.id){
-        //           return nevobj
-        //     }
-        //     return elem
-        //  })
-        //
-        //   const filt = newobj1.filter((e)=>e.id===nevobj.id)
-        //
-        //   if(filt[0].isChecked){
-        //     const prices=+filt[0].price
-        //          setPriceItional(priceItional+prices)
-        //         setItionalitem([...itionalitem,filt[0]])
-        //   }else{
-        //     const prices=+filt[0].price
-        //        setPriceItional(priceItional-prices)
-        //         const newitional=itionalitem.filter((e)=>e.id !==filt[0].id)
-        //         setItionalitem([...newitional])
-        //   }
-        //
-        //
-        //
-        // setItionaldata({
-        //     ...itionaldata,
-        //     [ids]:[...newobj1]
-        // })
+    const filtr1=itionaldataitem.filter(fil=>fil.id==id)
+    const newdata=filtr1[0].adds.map(elem=>{
+         if(elem.id==nevobj.id){
+            return nevobj
+
+         }
+         return elem
+     })
+    itionaldataitem.forEach(element => {
+            if(element.id==id){
+               
+                element.adds=newdata
+                
+            }
+            return element
+        });
+        setItionaldataitem([...itionaldataitem])
+
+   const filt = newdata.filter((e)=>e.id===nevobj.id)
+       
+          if(filt[0].isChecked){
+            const prices=+(+filt[0].price)
+           
+                setPriceItional(priceItional+prices)
+                setItionalitem([...itionalitem,filt[0]])
+          }else{
+            const prices=+(+filt[0].price)
+               setPriceItional(priceItional-prices)
+                const newitional=itionalitem.filter((e)=>e.id !==filt[0].id)
+                setItionalitem([...newitional])
+          }
+        
     }
 
 
@@ -46,25 +52,36 @@ const ItionalProduct =({itionaldataitem,ingredients,AddlichniyProduct,priceItion
         <div className={css.itionalwraper}>
           <div className={css.itionalwrraper} onClick={AddlichniyProduct}/>
            <div className={css.itionalcategory} >
-               {
-                   itionaldataitem.map(e=>{
-                       return(
-                           <div>
-                               <p>{e.name}</p>
-                               {
-                                   e.adds.map(el=>{
+              <div className={css.overfloscrol}>
+              {
 
-                                       return(
-                                           <div>
-                                               {el.name}
-                                           </div>
-                                       )
-                                   })
-                               }
-                           </div>
-                       )
-                   })
-               }
+            itionaldataitem.map(e=>{
+                     return(
+               <div>
+                <div className={css.banjarexen}>
+                 <p>{e.name}</p>
+                </div>
+               <div >
+              {
+                e.adds.map(el=>{
+                  return(
+                        <div>
+                           <CheckBox  cn="Checkboxitional" {...el} onchangecheck={(e)=>onchangecheck({
+                               ...el,
+                               isChecked:e.target.checked,
+                           },el.name_id)}/>
+                        </div>
+                     )
+                    })
+              }
+               </div>
+            
+        </div>
+    )
+})
+}         
+              </div>
+               
                {/*{ingredients===undefined ?*/}
                {/*    <>*/}
                {/*    <div className={css.banjarexen}>*/}

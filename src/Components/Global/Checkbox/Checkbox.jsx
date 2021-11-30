@@ -5,15 +5,6 @@ import checkt from "../../../images/icons/chechkoriginal.png"
 export const CheckBox = props => {
 
 
-//     const [check,setcheck]=useState({})
-
-// const onhandleclick =(id)=>{
-//     setcheck(prevState =>({
-//         ...prevState,
-//         [id]:!check[id]
-//     }))
-// }
-// console.log(check);
     
     return (
         <>
@@ -38,7 +29,7 @@ export const CheckBox = props => {
                    }}>
 
                    </div>
-                    <p className={css.product}>{props.product}</p>
+                    <p className={css.product}>{props.name}</p>
                     <p className={css.price}>{+props.price !==0 && props.price + " ֏"}</p>  </label>
         </>
        )

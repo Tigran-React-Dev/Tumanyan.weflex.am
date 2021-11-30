@@ -47,13 +47,14 @@
         letter-spacing: -0.04em;
         text-transform: uppercase;
         color: #252223; 
-        margin-top: get-vw(20px,1920 );
+        margin-top: get-vw(10px,1920 );
         margin-left: get-vw(20px,1920 );
     }
 }
 .overfloscrol{
     width: get-vw(358px,1920 );
     height: get-vw(287px, 1920);
+    margin-top: get-vw(20px,1920 );
     overflow: scroll;
     overflow-x: hidden;
     &::-webkit-scrollbar {
