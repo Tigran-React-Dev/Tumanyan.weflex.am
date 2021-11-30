@@ -11,9 +11,10 @@ import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 
-const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,category_id, ingredients,image, prices, bonus,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
-
+    console.log(id)
+    const [itionaldataitem,setItionaldataitem]=useState(names)
 
     const [itempricesitog, setpricesItog] = useState(prices[0].price)
     const [activeprice, setactivprice] = useState(prices[0].price)
@@ -181,8 +182,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
                         }
 
                         <div className={css.addcountproduct}>
-
-                            <div className={css.addcount}>
+                             <div className={css.addcount}>
                                 <img src={minus} alt="" className={css.minus} onClick={onMinus}/>
                                 <div><p>{count}</p></div>
                                 <img src={plus} alt="" className={css.plus} onClick={onPlus}/>
@@ -201,14 +201,13 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
                     {sowlichniproductmodal &&
                     <ItionalProduct
                         ingredients={ingredients}
-                        idkey={id}
+                        itionaldataitem={itionaldataitem}
                         AddlichniyProduct={AddlichniyProduct}
                         priceItional={priceItional}
                         setPriceItional={setPriceItional}
                         itionalitem={itionalitem}
                         setItionalitem={setItionalitem}
-                        itionaldata={itionaldata}
-                        setItionaldata={setItionaldata}
+
 
                     />
                     }

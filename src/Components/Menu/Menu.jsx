@@ -31,7 +31,7 @@ const Menu = ({ history }) => {
        
         dispatch(LoadProductData())
         setloader2(true)
-    },[product])
+    },[])
 
 
 

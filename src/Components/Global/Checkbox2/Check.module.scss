@@ -63,6 +63,8 @@ input[type=checkbox] {
   font-size:get-vw(18px,1920);
   line-height: 150%;
   margin-left: get-vw(15px,1920 ) !important;
+
+  min-width: unset;
   text-transform: none!important;
   letter-spacing: -0.02em;
   color: #000000;
@@ -89,6 +91,7 @@ input[type=checkbox] {
   }
 
   .ckekckdiv {
+    min-width:get-vw(16px, 375)!important; ;
     width: get-vw(16px, 375)!important;
     height: get-vw(16px, 375);
     background-size: get-vw(12px, 375) get-vw(9px, 375);
@@ -102,10 +105,11 @@ input[type=checkbox] {
   .container{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     margin-top: get-vw(15px,375 );
     p{
-      width: max-content;
+      width: unset;
       display: inline-block;
       font-family: Montserrat-Regular;
 
@@ -125,6 +129,7 @@ input[type=checkbox] {
     right: 1.59vw;
   }
   .textstyle{
+    width: unset;
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;

@@ -65,7 +65,8 @@ function App() {
     }
 
     const changeScrol = (e) => {
-        if (window.scrollY >= 150) {
+        var width = window.innerWidth;
+        if (window.scrollY >= 150 && width > 500) {
             setSoumenu(true)
         } else {
             setSoumenu(false)
