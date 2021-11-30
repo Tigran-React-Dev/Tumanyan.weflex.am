@@ -133,7 +133,7 @@ const ProductBlok = ({id,like,itionaldata,setItionaldata, name,nameRU,nameEN,cat
         <div className={css.productItem}>
             {prices.length==2 ? <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div> : <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>  }
             {bonus > 0 && <div className={css.akcia}>
-                <p>-{bonus}%</p>
+                <p>-{+bonus}%</p>
             </div>}
             <div className={css.titleanlike}>
                 <p>{name}</p>
