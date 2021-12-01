@@ -11,10 +11,10 @@ import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 
-const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,category,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
-    console.log(id)
-    const [itionaldataitem,setItionaldataitem]=useState(names)
+
+
 
     const [itempricesitog, setpricesItog] = useState(prices[0].price)
     const [activeprice, setactivprice] = useState(prices[0].price)
@@ -23,11 +23,13 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
 
-    const [sowlichniproductmodal,setsowproductmodal]=useState(false);
 
+    // Connect ItionalItem
+
+    const [itionaldataitem,setItionaldataitem]=useState(names)
     const [priceItional,setPriceItional]=useState(0)
     const [itionalitem,setItionalitem]=useState([])
-
+    const [sowlichniproductmodal,setsowproductmodal]=useState(false);
 
 
     const dispath=useDispatch()
@@ -36,14 +38,13 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
 
     const  AddTolike=()=>{
 
-        dispath(LikedProduct(id,category,like))
+        dispath(LikedProduct(id,like))
 
         const likeobj={
             id,
             _id:Date.now(),
             name,
             image,
-            category,
             itionalitem,
             bonus,
             prices,
@@ -62,7 +63,6 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             nameRU,
             nameEN,
             image,
-            category,
             itionalitem,
             bonus,
             priceitem:prices,
@@ -73,32 +73,19 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             description,
             like
         }
+        // if(categor !="շաուրմա" && categor !="աղցաններ" && categor !="ապուրներ" && categor !="խավարտներ" && categor !="տաք ուտեստներ" && categor !="սուրճ, թեյ" && categor !="կարկանդակներ" && categor !="ըմպելիքներ" && categor !="այլ"  ){
+        //     handleAddProductCard(newProductcard)
+        //
+        // }else{
 
-
-        if(categor !="շաուրմա" && categor !="աղցաններ" && categor !="ապուրներ" && categor !="խավարտներ" && categor !="տաք ուտեստներ" && categor !="սուրճ, թեյ" && categor !="կարկանդակներ" && categor !="ըմպելիքներ" && categor !="այլ"  ){
             handleAddProductCard(newProductcard)
-
-        }else{
-            handleAddProductCard(newProductcard)
-            // if(categor =="շաուրմա"){
-            //     setItionalitem([])
-            //     const reset = itionaldata[id].map((e)=>{
-            //         if(e.isChecked==true){
-            //
-            //             return {...e,isChecked:false}
-            //         }
-            //         return e
-            //     })
-            //     setItionaldata({
-            //         ...itionaldata,
-            //         [id]:[...reset]
-            //     })
-            // }
-
-        }
-
-
+            setItionaldataitem([...names])
+            setItionalitem([])
     }
+
+
+
+
     // plus prododuct count function
     const onPlus =()=>{
         setpricesItog((count + 1) * activeprice)
@@ -138,7 +125,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             </div>}
             <div className={css.titleanlike}>
                 <p>{name}</p>
-                {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id,category)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id,category)}/>}
+                {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
             {prices.length>1 &&  <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
@@ -196,23 +183,21 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                             <del className={css.hinprice}>{bonus ? `${activeprice}   ֏` : null} </del>
                         </div>
 
-                        <img src={btn1} alt="" onClick={()=>addtoCart(category)}/>
+                        <img src={btn1} alt="" onClick={()=>addtoCart()}/>
                     </div>
                     {sowlichniproductmodal &&
                     <ItionalProduct
-                        setItionaldataitem={setItionaldataitem}
                         itionaldataitem={itionaldataitem}
-                        ingredients={ingredients}
-                        AddlichniyProduct={AddlichniyProduct}
-                        priceItional={priceItional}
-                        setPriceItional={setPriceItional}
+                        setItionaldataitem={setItionaldataitem}
                         itionalitem={itionalitem}
                         setItionalitem={setItionalitem}
-
-
-                    />
+                        priceItional={priceItional}
+                        setPriceItional={setPriceItional}
+                        ingredients={ingredients}
+                        AddlichniyProduct={AddlichniyProduct}
+                        />
                     }
-            </div>
+                  </div>
                 )
             }
 

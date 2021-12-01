@@ -38,7 +38,8 @@
 .banjarexen{
     width: get-vw(379px,1920);
     height: get-vw(20px,1920);
-    p{
+   padding: get-vw(20px,1920) get-vw(0px,1920);
+    h2{
         font-family: Mardoto-Medium;
         font-style: normal;
         font-weight: 500;
@@ -47,19 +48,19 @@
         letter-spacing: -0.04em;
         text-transform: uppercase;
         color: #252223; 
-        margin-top: get-vw(10px,1920 );
+
         margin-left: get-vw(20px,1920 );
     }
 }
 .overfloscrol{
     width: get-vw(358px,1920 );
-    height: get-vw(287px, 1920);
-    margin-top: get-vw(20px,1920 );
+    height: get-vw(340px, 1920);
+    margin-top: get-vw(0px,1920 );
     overflow: scroll;
     overflow-x: hidden;
     &::-webkit-scrollbar {
         width: 1px;
-        height: get-vw(260px,1920 );
+
       }
     &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px grey; 
@@ -70,7 +71,10 @@
         border-radius: 10px;
         width: get-vw(69px,1920 );
       }
-
+  &::-webkit-scrollbar-button {
+    width: 2px; //for horizontal scrollbar
+    height: 10px; //for vertical scrollbar
+  }
   form{
     width: get-vw(358px,1920 );
     height: get-vw(287px, 1920);

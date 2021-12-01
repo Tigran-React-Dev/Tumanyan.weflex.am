@@ -106,13 +106,10 @@
          height: get-vw(600px,1920 );
          border-radius: get-vw(10px, 1920);
          &:hover{
-
            cursor: pointer;
            transform: matrix(-1, 0, 0, 1, 0, 0);
-
+          }
          }
-
-       }
        h4{
          font-family: Montserrat-Regular;
          font-style: normal;

@@ -24,10 +24,7 @@ export const CheckBox = props => {
                    <div className={css.ckekckdiv} style={{ 
                        backgroundColor:props.isChecked && "#13AD54",border: props.isChecked && "1px solid #13AD54",
                        backgroundImage:props.isChecked && `url(${checkt})`
-
-
-                   }}>
-
+                     }}>
                    </div>
                     <p className={css.product}>{props.name}</p>
                     <p className={css.price}>{+props.price !==0 && props.price + " ֏"}</p>  </label>

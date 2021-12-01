@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { useParams } from "react-router";
 import css from "./Menu.module.scss";
-
 import { useProduct } from "../Providers/ProductMenu";
 import { NavLink } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -17,7 +16,7 @@ import { LoadProductData } from "../redux/Action/ProductAction";
 const Menu = ({ history }) => {
 
     
-    const { activSub,activeMenuitem, setactiveMenuitem ,itionaldata,setItionaldata} = useProduct()
+    const { activSub,activeMenuitem, setactiveMenuitem} = useProduct()
     const { id } = useParams();
     const [loader, setloader] = useState(true)
     const [loader2, setloader2] = useState(false)
@@ -25,7 +24,7 @@ const Menu = ({ history }) => {
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
     const dispatch =useDispatch()
-
+    const ref =useRef(null)
 
     useEffect(()=>{
        
@@ -36,8 +35,7 @@ const Menu = ({ history }) => {
 
 
     useEffect(() => {
-
-        if (activSub.length !== 0) {
+       if (activSub.length !== 0) {
             let act = activSub.find(i => i.id == id)
             setactiveMenuitem(act)
             setloader(false)
@@ -63,11 +61,39 @@ const Menu = ({ history }) => {
 
 
 
-    const changeProductCategory = (category,id) => {
+    const changeProductCategory = (category,id,index) => {
+        switch (index){
+            case 0 :
+                ref.current.scrollLeft=0;
+                break
+            case 1 :
+                ref.current.scrollLeft=50;
+                break
+            case 2 :
+                ref.current.scrollLeft=150;
+                break
+            case 3 :
+                ref.current.scrollLeft=250;
+                break
+            case 4 :
+                ref.current.scrollLeft=400;
+                break
+            case 5 :
+                ref.current.scrollLeft=550;
+                break
+            case 6 :
+                ref.current.scrollLeft=680;
+                break
+            case 7 :
+                ref.current.scrollLeft=750;
+                break
+            default :
+                break
+        }
         const activedatas = activSub.find(i => i.id === id)
         setactiveMenuitem(activedatas)
         history.push(`/home/${id}`)
-        window.scrollTo(0, 400)
+        window.scrollTo(0, 300)
     }
 
 
@@ -79,13 +105,13 @@ const Menu = ({ history }) => {
                     <img src={activeMenuitem.imagesbig} alt="" />
                     <h1>{activeMenuitem.title}</h1>
                 </div>
-                <div className={css.category}>
-                    {activSub.map((item) => {
+                <div className={css.category} ref={ref}>
+                    {activSub.map((item,index) => {
 
                         return (
                             <div
                                 className={item.id == id ? css.btncategory : css.btncategory2}
-                                key={item.id} onClick={() => changeProductCategory(item.category,item.id)}
+                                key={item.id} onClick={() => changeProductCategory(item.category,item.id,index)}
                                 >
                                 <p className={item.id == id ? css.menuname : css.menuname2} >{item.title}</p>
                             </div>
@@ -101,9 +127,6 @@ const Menu = ({ history }) => {
                                 return (<ProductBlok
                                     key={obj.id}
                                     like={false}
-                                    bonus={null}
-                                    itionaldata={itionaldata}
-                                    setItionaldata={setItionaldata}
                                     SendobjtoLikecategory={SendobjtoLikecategory}
                                     handleAddProductCard={handleAddProductCard}
                                     handleonlyproduct={handleonlyproduct}
@@ -112,16 +135,14 @@ const Menu = ({ history }) => {
                             })
                         }
                     </div>}
-              <div className={css.recoment}>
-                  <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
-                  {/* <div className={css.recomconstruct}>
-                      {
+                  <div className={css.recoment}>
+                    <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
+                     {/* <div className={css.recomconstruct}>
+                       {
                           recoment.map((obj)=>{
 
                               return   (<ProductBlok
                                   key={obj.id}
-                                  itionaldata={itionaldata}
-                                  setItionaldata={setItionaldata}
                                   SendobjtoLikecategory={SendobjtoLikecategory}
                                   handleAddProductCard={handleAddProductCard}
                                   handleonlyproduct={handleonlyproduct}
@@ -139,8 +160,6 @@ const Menu = ({ history }) => {
                             product.filter(i=>i.category==="սոուսներ").map((obj)=>{
                                return   (<ProductBlok
                                     key={obj.id}
-                                    itionaldata={itionaldata}
-                                    setItionaldata={setItionaldata}
                                     SendobjtoLikecategory={SendobjtoLikecategory}
                                     handleAddProductCard={handleAddProductCard}
                                     handleonlyproduct={handleonlyproduct}

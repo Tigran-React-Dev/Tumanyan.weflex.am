@@ -70,29 +70,6 @@ const ProductProvider =({children})=>{
 
     }
 
-
-  
-      const itionalProduct=[
-        {id:1,product:"Սոխ",price:"0",type:"Բանջարեղեն",isChecked:false},
-        {id:2,product:"Կծու բիբար",price:"0",type:"Բանջարեղեն",isChecked:false},
-        {id:3,product:"Կարտոֆիլ",price:"0",type:"Բանջարեղեն",isChecked:false},
-        {id:4,product:"Լոլիկ",price:"0",type:"Բանջարեղեն",isChecked:false},
-        {id:5,product:"Կանաչի",price:"0",type:"Բանջարեղեն",isChecked:false},
-        {id:6,product:"Մայոնեզ",price:"20",type:"Սոուսներ",isChecked:false},
-        {id:7,product:"Սխտոր",price:"20",type:"Սոուսներ",isChecked:false},
-        {id:8,product:"Կետչուպ",price:"20",type:"Սոուսներ",isChecked:false},
-
-       ];
-
-     const ityonalcopy={
-         1:[...itionalProduct],
-         2:[...itionalProduct],
-         3:[...itionalProduct],
-         4:[...itionalProduct],
-     }
-
-      const [itionaldata,setItionaldata]=useState(ityonalcopy)
-
     const GrandBufeeMenu=[
         {id:1,title:"աղցաններ",category:"աղցաններ"},
         {id:2,title:"ապուրներ",category:"ապուրներ"},
@@ -135,8 +112,6 @@ const ProductProvider =({children})=>{
         setmecdata,
         mecdata,
         getData,
-        itionaldata,
-        setItionaldata,
         setactiveMenuitem,
         activeMenuitem,
         grandBufeData,

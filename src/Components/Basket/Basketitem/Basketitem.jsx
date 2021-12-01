@@ -32,6 +32,7 @@ const [show,setShow]=useState({})
 
     return (
         <>
+        <>
         {!show[_id] && <div className={css.basketelement}>
         {<img className={css.productpicturent} src={process.env.REACT_APP_IMG_URL + image} alt=""/>}
         <div className={css.titleanddescription}>
@@ -56,11 +57,43 @@ const [show,setShow]=useState({})
             <p>{price} ֏</p>
         </div>
         <img onClick={() => DeleteItems(_id)} className={css.dltbtn} src={dltbtn} alt=""/>
+       </div>
+        }
+           </>
+            {/*MOBILE BASKET ITEM JSX*/}
+            <>
+                {!show[_id] && <div className={css.basketelementmobile}>
+                    <div className={css.titleanddprice}>
+                        <p className={css.titleproductmobile}>{name}</p>
+                        <div className={css.pricemobile}>
+                            <p> {price} ֏</p>
+                        </div>
+                     </div>
+                    <h2 className={css.sizemobile}>{size != undefined ? size : null}</h2>
+                    <div className={css.minuspluscountmobile}>
+                        <p className={css.descriptionmobile}>{itionalitem != undefined ? itionalitem.map(i => <span
+                            key={i.id}>{i.name},</span>) : description != undefined ? description : null} </p>
+                        <div className={css.countminusplus}>
+                            {count ==1 ?
+                                <>
+                                    <img className={css.onminus} src={minus} alt="" onClick={() => onMinusCount(obj)}/>
+                                    <img className={css.ondeletmobile} src={closeiconmobile} alt="" onClick={() => DeleteItems(_id)}/>
+                                </>
+                                :
+                                <img className={css.onminus2} src={minus} alt="" onClick={() => onMinusCount(obj)}/>}
+                            <span><p>{count}</p></span>
+                            <img className={css.pluscaunt} src={plus} alt="" onClick={() => onPlusCount(obj)}/>
+                        </div>
+
+                    </div>
 
 
-    </div>
-     }
-        </>
+
+
+                </div>
+                }
+            </>
+       </>
     );
 };
 

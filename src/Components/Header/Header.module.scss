@@ -474,6 +474,9 @@ position: absolute;
 .menubarmobile{
   display: none;
 }
+.masnajuxmobile{
+  display: none;
+}
 
 
 
@@ -649,6 +652,7 @@ position: absolute;
     }
   }
   .masnajuxmobile{
+    display: block;
     max-width: min-content!important;
     height: get-vw(26px, 400);
     margin-left: get-vw(15px, 375);
@@ -881,6 +885,16 @@ position: absolute;
     }
 
   }
-
+  .up{
+    width: get-vw(50px,375);
+    height: get-vw(50px,375);
+    object-fit: cover;
+    position: fixed;
+    top: get-vw(660px,460);
+    left: get-vw(310px,375);
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+  }
 
 }

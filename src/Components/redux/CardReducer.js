@@ -27,16 +27,14 @@ export const CardReducer = (state = initialState, action) => {
                 arr1.push(action.payload)
              }else{
                 let files= state.items.filter((e)=>{
-                    return (e.name===action.payload.name && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.product===action.payload.itionalitem?.[0]?.product )
+                    return (e.name===action.payload.name && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.name===action.payload.itionalitem?.[0]?.name )
+              })
 
-
-                })
-              debugger
                 if(files.length===0){
                     arr1.push(action.payload)
                 }else{
                     state.items.forEach(el=>{
-                        if(el.name==files[0].name && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length && el.itionalitem?.[0]?.product===files[0].itionalitem?.[0]?.product){
+                        if(el.name==files[0].name && el.size==files[0].size && el.itionalitem?.length == files[0].itionalitem?.length && el.itionalitem?.[0]?.name===files[0].itionalitem?.[0]?.name){
                             el.price+=action.payload.price
                             el.count+=action.payload.count
                         }
@@ -116,22 +114,12 @@ export const CardReducer = (state = initialState, action) => {
 
         }
         case DELETE_PRODUCT_TO_CARD :{
-
-
             const filterone = state.items.filter((e)=>e._id!==action.payload)
-
-
             const totalPrice = getTotalPrice(filterone)
-
-
-            const local ={
-
+             const local ={
                 items:filterone,
                 totalPrice
             }
-
-
-
             sessionStorage.setItem("card",JSON.stringify(local))
 
             return {
@@ -223,17 +211,13 @@ export const CardReducer = (state = initialState, action) => {
                 ...state,
                 totalPrice,
             }
-
-
-            sessionStorage.setItem("card",JSON.stringify(local))
+           sessionStorage.setItem("card",JSON.stringify(local))
 
             return{
                 ...state,
                 totalPrice,
-
+              }
             }
-
-        }
 
      default:
             return state

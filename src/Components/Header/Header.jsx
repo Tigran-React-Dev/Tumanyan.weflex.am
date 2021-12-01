@@ -2,25 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import Input from "../Global/Input/Input";
 import css from "./Header.module.scss"
 import Menu from "./Menu/Menu";
-import {NavLink, Redirect, useHistory, useLocation} from "react-router-dom";
+import {NavLink,useHistory,} from "react-router-dom";
 import {BASKET_PAGE, HOME_PAGE, LOGIN_PAGES, PROFIL_PAGE} from "../urls";
 import logo from "../../images/logo.png";
 import adress from "../../images/icons/select.png";
-import self from "../../images/icons/self.png"
-import selt from "../../images/icons/selt.png"
-import  serch from "../../images/icons/search.png"
+import self from "../../images/icons/self.png";
+import selt from "../../images/icons/selt.png";
+import  serch from "../../images/icons/search.png";
 import gumar from "../../images/icons/gumar.png";
 import phone from "../../images/icons/phone.png"
-import { useProduct } from "../Providers/ProductMenu";
-import verify from "../../images/icons/chosen.png"
+import verify from "../../images/icons/chosen.png";
 import log from "../../images/icons/logins.svg";
+import iconmenu from "../../images/icons/iconmobilemenu.svg";
+import iconclose from "../../images/icons/closebtniconmobilemenu.svg";
+import topbootom from "../../images/icons/up.png";
+import { useProduct } from "../Providers/ProductMenu";
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import {useSelector} from "react-redux";
-import iconmenu from "../../images/icons/iconmobilemenu.svg"
-import iconclose from "../../images/icons/closebtniconmobilemenu.svg"
+import i18next from 'i18next';
 import {isAuthRoutes, isOuthFooter} from "../routes";
-import {useSlider} from "../Providers/SliderProvider";
+
 
 
 const Header = () => {
@@ -39,7 +40,9 @@ const Header = () => {
     const [mobileLanguageStyle,setMobileLanguageStyle]=useState(1)
     const [menuiconClik,setMenuIconClik]=useState(false)
     const {languae}=useProduct()
-   
+    const [hegth,setHegth]=useState(false)
+
+
     const handleClickSelect = () => {
         setSelectIcon(!selecticon)
         setSowAdress(!sowAdress)
@@ -60,7 +63,10 @@ const Header = () => {
             i18next.changeLanguage(language)
          }
         setMobileLanguageStyle(id)
-
+        setMenuIconClik(!menuiconClik)
+        if(menuiconClik){
+            window.scrollTo(0, 0);
+        }
     }
 
     const home = () => {
@@ -73,7 +79,7 @@ const Header = () => {
             window.scrollTo(0, 850);
         }else{
 
-             history.push("/home/շաուրմա")
+             history.push("/home/1")
         }
 
     }
@@ -93,7 +99,11 @@ const Header = () => {
             setSoumenu(false)
         }
 
-
+        if (window.scrollY >= 400) {
+            setHegth(true)
+        } else {
+            setHegth(false)
+        }
     }
     window.addEventListener("scroll", changeScrol)
 
@@ -112,24 +122,20 @@ const Header = () => {
         e.preventDefault()
         setInputborder(!inputborder)
     }
-    const cardStyle = {
 
+    // Style animation open header
+
+    const cardStyle = {
         top:  sowmenu ? "-3.4vw" : "0vw",
         transition: "all 0.3s ease-in",
-        // opacity: sowmenu ? "0" : "1",
-
-    };
+       };
     const menublogstyle = {
-
         top:  sowmenu ? "-3.3vw" : "0",
         transition: "all 0.3s ease-in",
-
-    }
+      }
     const headerstyle ={
          height: sowmenu ? "64px" : "160px",
-        // bottom :sowmenu ? "-90px" : 0,
-        // transaction:"2s" ,
-    }
+        }
 
 
     // mobileversion js code
@@ -288,6 +294,7 @@ const mobilemenustyle ={
 
 
             </div>
+            <img src={topbootom} alt="" className={css.up} style={{display: hegth  ? "block" : "none"}} onClick={home}/>
             <div className={css.basketclick}>
                 <NavLink
                     to={BASKET_PAGE}
