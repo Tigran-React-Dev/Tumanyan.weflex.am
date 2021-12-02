@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import css from "./Project.module.scss"
 import {useSlider} from "../Providers/SliderProvider";
-import arow from "../../images/icons/Arrow.png"
+import arow from "../../images/icons/Arrow.png";
+import arowgrren from "../../images/icons/Arrowgrrentoprojects.svg"
 import {useHistory} from "react-router-dom";
 import {PROJECT_PAGE, PROJECT_PAGE_INFO} from "../urls";
 import {motion} from "framer-motion";
-import ProjectSlider from './ProjectSlider/ProjectSlider';
 import Button from "../Global/Button/Button";
 const Projects = () => {
    const [hoveritem,sethoveritem]=useState({})
@@ -19,8 +19,6 @@ const Projects = () => {
     },[history])
 
     const addtoprojectpage =(activdata)=>{
-        // console.log(activdata)
-
         setActiveProjectdata(activdata)
         setanime(false)
         setTimeout(()=>{
@@ -62,31 +60,29 @@ const Projects = () => {
          <div className={css.projectContainer}>
            <div className={css.projectitemcontainer}>
                {
-                   project.map((item)=>{
+                   project.map((item,index)=>{
 
                        return(
                            <motion.div
-
-                                animate={hoveritem[item.id] && animationPick(anime)}
-
-                               transition={{ duration: 0.1 }}
+                                animate={hoveritem[index] && animationPick(anime)}
+                                 transition={{ duration: 0.1 }}
                                // variants={animationPick(anime)}
-                               className={css.containerProjectmodal}
-                           >
+                                 className={css.containerProjectmodal}
+                             >
                                <div className={css.controler} key={item.id} onMouseEnter={()=>{
-                                   sethoveritem({[item.id]:!hoveritem[item.id]})
+                                   sethoveritem({[index]:!hoveritem[index]})
                                }}
                                     onMouseLeave={()=>sethoveritem({})}
-                                    style={{ backgroundImage:(hoveritem[item.id] && `url(${item.image})`)}}
+                                    style={{ backgroundImage:(hoveritem[index] && `url(${item.image})`)}}
 
                                >
                                    <div className={css.ptojectitem} onClick={()=>addtoprojectpage(item)}>
-                                       <h5 style={{color:hoveritem[item.id] && "#FFFFFF"}}>{item.date}</h5>
+                                       <h6 style={{color:hoveritem[index] && "#FFFFFF"}}>{item.date}</h6>
                                        <div className={css.titleanddescription}>
-                                           <h2 style={{color:hoveritem[item.id] && "#FFFFFF"}}>{item.title}</h2>
-                                           <p style={{color:hoveritem[item.id] && "#FFFFFF"}}>Երկու տող նախագծի մասին․ {item.description}</p>
+                                           <h2 style={{color:hoveritem[index] && "#FFFFFF"}}>{item.title}</h2>
+                                           <p style={{color:hoveritem[index] && "#FFFFFF"}}>Երկու տող նախագծի մասին․ {item.description}</p>
                                        </div>
-                                       <img src={arow} alt="" style={{filter:hoveritem[item.id] && "invert(100%) sepia(1%) saturate(5489%) hue-rotate(0deg) brightness(180%) contrast(100%)"}}/>
+                                       <img src={arowgrren} className={css.arowgreen} alt="" style={{filter:hoveritem[index] && "invert(110%) sepia(100%) saturate(2%) hue-rotate(275deg) brightness(114%) contrast(121%)"}}/>
                                    </div>
                                </div>
                            </motion.div>

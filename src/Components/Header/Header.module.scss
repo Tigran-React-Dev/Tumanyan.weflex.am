@@ -831,21 +831,7 @@ position: absolute;
 
   }
 
-  .basketclick{
-    width:get-vw(166px,375);
-    max-width: get-vw(166px,375);
-    height: get-vw(44px,375);
-    margin-top: get-vw(26px,375);
-    display: flex;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    position: fixed;
-    top: get-vw(715px,460);
-    left: get-vw(190px,375);
-    bottom: 0;
-    right: 0;
-    z-index: 50;
-  }
+
 
 
   .corzina{
@@ -890,11 +876,27 @@ position: absolute;
     height: get-vw(50px,375);
     object-fit: cover;
     position: fixed;
-    top: get-vw(660px,460);
+    top: get-vw(660px,500);
     left: get-vw(310px,375);
     right: 0;
     bottom: 0;
     z-index: 50;
   }
 
+}@media screen and (max-height: 815px) {
+  .basketclick{
+    width:get-vw(166px,815);
+    max-width: get-vw(166px,815);
+    height: get-vw(44px,815);
+    margin-top: get-vw(26px,815);
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    position: fixed;
+    top: get-vw(1260px,815);
+    left: get-vw(610px,815);
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import css from "./Foodpage2.module.scss"
-import auto from "../../../images/product/Pic_Big.png"
+import auto from "../../../images/product/Pic_Big.png";
 import sld1 from "../../../images/product/sldimg1.png";
 import sld2 from "../../../images/product/sldimg2.png"
 import Page2Slider from "./Page2Slider/Page2Slider";
@@ -21,7 +21,7 @@ const FoodPage2 = () => {
         title:"չափեր",
         description:"\"Թումանյան Շաուրմա\"-ն հիմնադրվել է 1998 թվականին: \"Թումանյան Շաուրմա\"-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում, որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր \n" +
             "զբաղեցնում էր բավականին փոքր...",
-    }
+      }
 
     const slideritem=[
         {id:1,image:sld1},{id:1,image:sld2},

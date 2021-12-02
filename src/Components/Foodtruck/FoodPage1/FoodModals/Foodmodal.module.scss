@@ -97,3 +97,86 @@
     height: get-vw(27px,1920);
   }
 }
+@media screen and (max-width: 500px ) {
+
+
+
+
+  .modalcontainer{
+    width: get-vw(375px,375);
+    height:get-vw(915px,480 );
+    position:fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background-image: url("../../../../images/product/bgmodal.png");
+    background-size: contain;
+    z-index: 55;
+  }
+  .containmod{
+    width: get-vw(375px,375);
+    height:get-vw(915px,480 );
+    position:fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+
+  }
+
+
+
+  .modalimgandinfo{
+    width: get-vw(345px,375);
+    height: get-vw(815px,480);
+    position: absolute;
+    z-index: 40;
+    left: get-vw(15px,375);
+    top: get-vw(161px,480);
+     display: flex;
+    flex-direction: column;
+
+    .sliderfood{
+      width: get-vw(320px,375);
+      height: get-vw(250px,480);
+      position: relative;
+      z-index: 50;
+    }
+    .infoslider{
+      width: get-vw(345px,375 );
+      min-height: get-vw(250px,480);
+      margin-left: get-vw(0px,375 );
+      overflow: hidden;
+      overflow-y: scroll;
+      margin-top: get-vw(60px,480);
+
+      h2{
+       font-size: get-vw(18px,375);
+        line-height: 120%;
+
+      }
+      h3{
+       font-size: get-vw(14px,375);
+        line-height: 150%;
+       margin-top: get-vw(24px,375);
+      }
+      p{
+        width: get-vw(345px,375);
+        min-height: get-vw(200px,375);
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+
+      }
+    }
+  }
+  .closebtn{
+    width: get-vw(375px,375);
+    height: get-vw(27px,375);
+    margin-left: get-vw(308px,375);
+    margin-top: get-vw(74px,480);
+    cursor: pointer;
+    img{
+      width: get-vw(27px,375);
+      height: get-vw(27px,480);
+    }
+  }
+}

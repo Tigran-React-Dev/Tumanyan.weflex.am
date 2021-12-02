@@ -141,6 +141,7 @@ const hoverItem=(id)=>{
                                          <div>
                                              <p className={css.circlenumber}>{item.id}</p>
                                          </div>
+
                                          <p className={css.stepname}>{languae=="ՀԱՅ" ? item.stepARM : languae=="ENG" ? item.stepENG : languae=="РУС" ? item.stepRUS : null}</p>
                                      </div>
                                  )

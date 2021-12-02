@@ -61,6 +61,8 @@ const ProductProvider =({children})=>{
 
 
         ]
+
+
         const data =mecdata.find((i)=>i.id===1);
 
         data.sup=nyu

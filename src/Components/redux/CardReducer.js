@@ -48,13 +48,12 @@ export const CardReducer = (state = initialState, action) => {
             ]
 
             const totalPrice = getTotalPrice(newArr)
-       const local ={
+          const local ={
               ...state,
               items:newArr,
               totalPrice
-          }  
-     
-            sessionStorage.setItem("card",JSON.stringify(local))
+            }
+           localStorage.setItem("card",JSON.stringify(local))
        return {
                  ...state,
                  items: newArr,
@@ -68,11 +67,9 @@ export const CardReducer = (state = initialState, action) => {
             const arrayy=[];
             if (!state.items.length) {
                 arrayy.push(action.payload)
-
-            }else{
+             }else{
                 const fol= state.items.filter((i)=>i.title===action.payload.title )
-               
-                if(!fol.length){
+                 if(!fol.length){
                     arrayy.push(action.payload)  
                 }else{
                     state.items.forEach(elem=>{
@@ -97,14 +94,13 @@ export const CardReducer = (state = initialState, action) => {
                 totalPrice
             }
 
-            sessionStorage.setItem("card",JSON.stringify(local))
+            localStorage.setItem("card",JSON.stringify(local))
           return {
                    ...state,
                    items: newar,
                    totalPrice,
               }
-
-        }
+         }
         case ADD_PRODUCT_CARD_LOCAL :{
        return{
                ...state,
@@ -120,7 +116,7 @@ export const CardReducer = (state = initialState, action) => {
                 items:filterone,
                 totalPrice
             }
-            sessionStorage.setItem("card",JSON.stringify(local))
+            localStorage.setItem("card",JSON.stringify(local))
 
             return {
                items: filterone,
@@ -175,17 +171,11 @@ export const CardReducer = (state = initialState, action) => {
                 })
             }else{
                 const filtertu = state.items.filter((e)=>e._id!==action.payload)
-
-                filtertu.forEach(e=>{
+                 filtertu.forEach(e=>{
                     minusdata.push(e)
                 })
             }
-
-
-
             const totalPrice = getTotalPrice(state.items)
-
-
             return {
                 ...state,
                 items: minusdata.length ? minusdata : [...state.items],
@@ -194,9 +184,7 @@ export const CardReducer = (state = initialState, action) => {
 
         }
         case CLEARN_BASKET:{
-
-            sessionStorage.removeItem("card")
-            
+           localStorage.removeItem("card")
             return{
               ...state,
               items:[],
@@ -204,14 +192,13 @@ export const CardReducer = (state = initialState, action) => {
             }
         }
         case ADD_OLD_CHECK_TOBASKET:{
-
             state.items=[...state.items,...action.payload]
             const totalPrice = getTotalPrice(state.items)
             const local ={
                 ...state,
                 totalPrice,
             }
-           sessionStorage.setItem("card",JSON.stringify(local))
+            localStorage.setItem("card",JSON.stringify(local))
 
             return{
                 ...state,

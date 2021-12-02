@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import css from "./CheckBox.module.scss";
 import checkt from "../../../images/icons/chechkoriginal.png"
+import {useProduct} from "../../Providers/ProductMenu";
 
 export const CheckBox = props => {
 
-
+const {languae}=useProduct()
     
     return (
         <>
@@ -26,7 +27,7 @@ export const CheckBox = props => {
                        backgroundImage:props.isChecked && `url(${checkt})`
                      }}>
                    </div>
-                    <p className={css.product}>{props.name}</p>
+                    <p className={css.product}>{languae=="ՀԱՅ" ? props.name : languae=="ENG" ? props.nameEN : languae=="РУС" ? props.nameRU : null}</p>
                     <p className={css.price}>{+props.price !==0 && props.price + " ֏"}</p>  </label>
         </>
        )

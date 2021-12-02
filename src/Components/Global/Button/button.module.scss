@@ -465,6 +465,16 @@ box-sizing: border-box;
     margin-top: get-vw(24px,375);
     margin-left: get-vw(15px,375);
   }
+  .btnreadmore{
+    width: get-vw(345px,375);
+    height:get-vw(57px,375);
+    border: get-vw(1px,375) solid #BFB7B6;
+    border-radius: get-vw(10px,375);
+    font-size: get-vw(16px,375);
+    line-height: get-vw(19px,375);
+    margin-left: get-vw(15px,375);
+    margin-top: get-vw(30px,375);
+  }
 }
 
 

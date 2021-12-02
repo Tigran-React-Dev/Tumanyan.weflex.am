@@ -32,12 +32,14 @@ function App() {
 
 
   useEffect(()=>{
-    getData()
-  },[])
+
+     getData()
+
+   },[])
 
 
   useEffect(() => {
-     const item = JSON.parse(sessionStorage.getItem("card"))
+     const item = JSON.parse(localStorage.getItem("card"))
    if(item){
       dispath(loadLocalCard(item))
     }

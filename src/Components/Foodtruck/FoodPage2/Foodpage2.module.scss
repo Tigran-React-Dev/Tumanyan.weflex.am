@@ -191,10 +191,11 @@
     margin-top: get-vw(60px,375);
     margin-left: get-vw(0px,375);
     margin-left: get-vw(-5px,375);
+
     iframe{
       width: get-vw(345px,375);
       height: get-vw(250px,375);
-
+      padding-bottom: get-vw(60px,375);
     }
   }
 

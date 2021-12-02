@@ -6,7 +6,7 @@ import css from "./ItionalProduct.module.scss";
 
 const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, AddlichniyProduct, priceItional, setPriceItional, itionalitem, setItionalitem,}) => {
 
-
+    const {languae}=useProduct()
     const onchangecheck = (nevobj, id) => {
 
         const filtr1 = itionaldataitem.filter(fil => fil.id == id)
@@ -53,7 +53,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, Addli
                             return (
                                 <div>
                                     <div className={css.banjarexen}>
-                                        <h2>{e.name}</h2>
+                                        <h2 style={{}}>{languae=="ՀԱՅ" ? e.name : languae=="ENG" ? e.nameEN : languae=="РУС" ? e.nameRU : null}</h2>
                                     </div>
                                     <div>
                                         {

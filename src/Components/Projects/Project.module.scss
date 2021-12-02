@@ -13,6 +13,7 @@
     font-family: Mardoto-Medium;
     font-style: normal;
     font-weight: 500;
+
     font-size: get-vw(80px,1920);
     line-height: get-vw(94px,1920);
     letter-spacing: -0.04em;
@@ -57,18 +58,17 @@
 .ptojectitem{
   width: get-vw(1636px,1920);
   height: get-vw(391px,1920);
-
   margin-left: get-vw(142px,1920);
   padding-top: get-vw(110px,1920);
   display: flex;
-  h5{
+  h6{
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;
     font-size: get-vw(21px,1920);
     line-height: 160%;
     letter-spacing: -0.02em;
-    color: #252223;
+    color: #13AD54;
     //margin-top: get-vw(110px,1920);
   }
   .titleanddescription{
@@ -85,7 +85,7 @@
       line-height: get-vw(70px,1920);
       letter-spacing: -0.04em;
       text-transform: uppercase;
-      color: #252223;
+      color: #13AD54;
     }
     p{
       font-family: Montserrat-Regular;
@@ -95,6 +95,7 @@
       line-height: 160%;
       letter-spacing: -0.02em;
       color: #252223;
+      margin-top: get-vw(30px,1920);
 
     }
 
@@ -114,4 +115,103 @@
 .containerProjectmodal{
   width: get-vw(1920px,1920);
   min-height: get-vw(391px,1920);
+}
+
+
+@media screen and (max-width: 500px) {
+  .projecthdr{
+    width: get-vw(375px,375);
+    height: get-vw(151px,375);
+    padding-top: get-vw(60px,375);
+    .projrcttitle{
+      font-size:get-vw(26px,375);
+      line-height:120%;
+      margin-left: get-vw(15px,375);
+
+    }
+  }
+  .projectContainer{
+    width: get-vw(375px,375);
+    min-height: get-vw(331px,375);
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .projectitemcontainer{
+      width: get-vw(345px,375);
+      min-height: get-vw(331px,375);
+      display: flex;
+      flex-direction: column;
+
+
+    }
+
+  }
+  .controler{
+    width: get-vw(375px,375);
+    height: get-vw(331px,375);
+    box-shadow: 0px -1px 0px #C4C4C4, 0px 1px 0px #C4C4C4;
+    cursor: pointer;
+    transition: all 2s;
+    -moz-transition: all 2s; /* Firefox Support */
+    -webkit-transition: all 2s; /* Chrome and Safari Support */
+    -o-transition: all 2s; /* Opera Support */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .ptojectitem{
+    width: get-vw(345px,375);
+    height: get-vw(331px,375);
+    margin-left: get-vw(15px,375);
+    padding-top: get-vw(0px,375);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    h6{
+      font-size: get-vw(13px,375);
+      line-height: 160%;
+      margin-top: get-vw(40px,375);
+    }
+    .titleanddescription{
+      width: get-vw(345px,375);
+      min-height: get-vw(22px,375);
+      display: flex;
+      flex-direction: column;
+      margin-left: get-vw(0px,375);
+      margin-top: get-vw(60px,375);
+      h2{
+        font-size: get-vw(18px,375);
+        line-height: 120%;
+
+      }
+      p{
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+
+        margin-top: get-vw(24px,375);
+
+      }
+
+    }
+    img{
+      width: get-vw(45px,375);
+      height: get-vw(16px,375);
+      object-fit: cover;
+      margin-left: get-vw(0px,375);
+      margin-top: get-vw(0px,375);
+      position: absolute;
+      top: get-vw(42px,375);
+      left: get-vw(285px,375);
+    }
+  }
+  .fotproject{
+    width: get-vw(375px,375);
+    height: get-vw(148px,375);
+  }
+  .containerProjectmodal{
+    width: get-vw(375px,375);
+    min-height: get-vw(331px,375);
+  }
 }

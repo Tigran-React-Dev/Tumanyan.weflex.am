@@ -70,10 +70,10 @@ export const initialState = {
     grandfufet:[
         {
             id:6,
-            title:"վեգան",
+            name:"վեգան",
             category:"աղցաններ",
             image:vegan,
-            price:[{size:"1",price:480},{size: "2",price: 600}],
+            prices:[{price:480,sizes:{size:"1"}},{price:480,sizes:{size:"2"}}],
             bonus:0,
             like:false,
             ingredients:[
@@ -89,60 +89,7 @@ export const initialState = {
                 {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
             ]
         },
-        {
-            id:7,
-            title:"ավելուկով",
-            category:"աղցաններ",
-            image:vegan,
-            price:[{size:"1",price:480},{size: "2",price: 600}],
-            bonus:0,
-            like:false,
-            ingredients:[
-                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
-                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
-                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
-                {id:4,ingredient:"Հավ",quantity:"150 գ"},
-                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
-                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
-                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
-            ]
-        },
-        {
-            id:8,
-            title:"հավով",
-            category:"աղցաններ",
-            image:vegan,
-            price:[{size:"1",price:480},{size: "2",price: 600}],
-            bonus:0,
-            like:false,
-            ingredients:[
-                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
-                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
-                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
-                {id:4,ingredient:"Հավ",quantity:"150 գ"},
-                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
-                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
-                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
-            ]
-        },
-        {
-            id:9,
-            title:"բորշ",
-            category:"աղցաններ",
-            image:vegan,
-            price:[{size:"1",price:480},{size: "2",price: 600}],
-            bonus:0,
-            like:false,
-            ingredients:[
-                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
-                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
-                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
-                {id:4,ingredient:"Հավ",quantity:"150 գ"},
-                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
-                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
-                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
-            ]
-        },
+
     ],
     recoment:[
         {

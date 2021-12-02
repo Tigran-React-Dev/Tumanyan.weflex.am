@@ -10,6 +10,7 @@ import lik from "../../../images/icons/like.svg";
 import liked from "../../../images/icons/likedis.svg"
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
+import {useProduct} from "../../Providers/ProductMenu";
 
 const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
@@ -33,7 +34,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
 
 
     const dispath=useDispatch()
-
+    const {languae} =useProduct()
 
 
     const  AddTolike=()=>{
@@ -117,6 +118,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
     }
 
 
+
     return (
         <div className={css.productItem}>
             {prices.length==2 ? <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div> : <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>  }
@@ -124,7 +126,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                 <p>-{+bonus}%</p>
             </div>}
             <div className={css.titleanlike}>
-                <p>{name}</p>
+                <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
             {prices.length>1 &&  <div className={css.sizeproduct}>
