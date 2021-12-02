@@ -830,7 +830,21 @@ position: absolute;
     padding-bottom: get-vw(15px,375);
 
   }
-
+  .basketclick{
+    width:get-vw(166px,815);
+    max-width: get-vw(166px,815);
+    height: get-vw(44px,815);
+    margin-top: get-vw(26px,815);
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    position: fixed;
+    top: get-vw(1220px,815);
+    left: get-vw(615px,815);
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+  }
 
 
 
@@ -884,19 +898,5 @@ position: absolute;
   }
 
 }@media screen and (max-height: 815px) {
-  .basketclick{
-    width:get-vw(166px,815);
-    max-width: get-vw(166px,815);
-    height: get-vw(44px,815);
-    margin-top: get-vw(26px,815);
-    display: flex;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    position: fixed;
-    top: get-vw(1260px,815);
-    left: get-vw(610px,815);
-    bottom: 0;
-    right: 0;
-    z-index: 50;
-  }
+
 }

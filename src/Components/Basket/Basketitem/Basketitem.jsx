@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import css from "./Basketitem.module.scss";
 import minus from "../../../images/icons/Minus.svg"
 import plus  from "../../../images/icons/Plus.svg"
@@ -21,12 +21,14 @@ const [show,setShow]=useState({})
 
     }
 
-    const onPlusCount = (obj) => {
+    const onPlusCount  =useCallback((obj) => {
         dispatch(OnplusCount(obj))
-    }
-    const onMinusCount = (obj) => {
+     },[])
+
+
+    const onMinusCount = useCallback((obj) => {
         dispatch(OnMinusCount(obj))
-    }
+    },[obj])
 
 
 
@@ -39,8 +41,7 @@ const [show,setShow]=useState({})
             <p className={css.titleproduct}>{name}</p>
             <p className={css.description}>{itionalitem != undefined ? itionalitem.map(i => <span
                 key={i.id}>{i.name},</span>) : description != undefined ? description : null} </p>
-
-        </div>
+         </div>
         <h2 className={css.size}>{size != undefined ? size : null}</h2>
         <div className={css.minuspluscount}>
             {count ==1 ?

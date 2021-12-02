@@ -294,7 +294,7 @@ const mobilemenustyle ={
 
 
             </div>
-            <img src={topbootom} alt="" className={css.up} style={{display: hegth  ? "block" : "none"}} onClick={home}/>
+            <img src={topbootom} alt="" className={css.up} style={{display: (hegth && !menuiconClik)  ? "block" : "none"}} onClick={home}/>
             <div className={css.basketclick}>
                 <NavLink
                     to={BASKET_PAGE}
