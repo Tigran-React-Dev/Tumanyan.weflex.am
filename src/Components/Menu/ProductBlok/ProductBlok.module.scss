@@ -376,7 +376,8 @@ color: #BFB7B6;
     margin-top: get-vw(30px,375);
     margin-right: get-vw(0px,375);
     .sizeitem{
-      width:  get-vw(168px,375);
+      min-width: get-vw(118px,375);
+      max-width:  get-vw(168px,375);
       height: get-vw(24px,375);
       display: flex;
       justify-content: space-between;
@@ -441,8 +442,8 @@ color: #BFB7B6;
       width: get-vw(83px,375);
       height: get-vw(24px,375);
       .minus{
-        width: get-vw(12px,375);
-        height: get-vw(2px,375);
+        width: get-vw(15px,375);
+        height: get-vw(3px,375);
         object-fit: contain;
       }
       .plus{
@@ -473,6 +474,7 @@ color: #BFB7B6;
 
   }
   .descript{
+    min-width: max-content;
     font-size: get-vw(16px, 375);
     line-height: get-vw(20px,375 );
     }

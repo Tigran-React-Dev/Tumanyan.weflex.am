@@ -1,13 +1,11 @@
 import React, {useState,Memo} from "react";
 import css from "./ProductBlok.module.scss";
-
-import btn1 from "../../../images/icons/btn1.svg"
-import kecup from "../../../images/icons/kechup.svg"
+import btn1 from "../../../images/icons/btn1.svg";
 import minus from "../../../images/icons/Minus.svg";
-import plus from "../../../images/icons/Plus.svg"
-import ItionalProduct from "../ItionalProduct/ItionalProduct";
+import plus from "../../../images/icons/Plus.svg";
 import lik from "../../../images/icons/like.svg";
 import liked from "../../../images/icons/likedis.svg"
+import ItionalProduct from "../ItionalProduct/ItionalProduct";
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
@@ -55,7 +53,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
         SendobjtoLikecategory(likeobj)
     }
 
-    const addtoCart = (categor) => {
+    const addtoCart = () => {
 
         const newProductcard = {
              id,
@@ -74,14 +72,13 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             description,
             like
         }
-        // if(categor !="շաուրմա" && categor !="աղցաններ" && categor !="ապուրներ" && categor !="խավարտներ" && categor !="տաք ուտեստներ" && categor !="սուրճ, թեյ" && categor !="կարկանդակներ" && categor !="ըմպելիքներ" && categor !="այլ"  ){
-        //     handleAddProductCard(newProductcard)
-        //
-        // }else{
+        //coll function send object to redux reducer and product add to Card
 
-            handleAddProductCard(newProductcard)
-            setItionaldataitem([...names])
-            setItionalitem([])
+        handleAddProductCard(newProductcard)
+            if(itionaldataitem.length){
+                setItionaldataitem([...names])
+                setItionalitem([])
+            }
     }
 
 
@@ -99,8 +96,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             setpricesItog((count - 1) * activeprice)
             setCount(count - 1)
         }
-
-    }
+      }
      // response newprice obj id and product size to chenjing initial value
     const changeSizeAndprice = (newprice, id, size) => {
         setactivprice(newprice)
@@ -111,17 +107,19 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
     }
 
     // show window adds product
-
     const AddlichniyProduct=()=>{
         setsowproductmodal(!sowlichniproductmodal)
-
-    }
+      }
 
 
 
     return (
         <div className={css.productItem}>
-            {prices.length==2 ? <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div> : <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>  }
+            {prices.length==2 ?
+                <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div>
+                  :
+                <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
+            }
             {bonus > 0 && <div className={css.akcia}>
                 <p>-{+bonus}%</p>
             </div>}
@@ -169,7 +167,6 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                             }
                             </>
                         }
-
                         <div className={css.addcountproduct}>
                              <div className={css.addcount}>
                                 <img src={minus} alt="" className={css.minus} onClick={onMinus}/>

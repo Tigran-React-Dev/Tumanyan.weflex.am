@@ -16,19 +16,22 @@ import { LoadProductData } from "../redux/Action/ProductAction";
 const Menu = ({ history }) => {
 
     
-    const { activSub,activeMenuitem, setactiveMenuitem} = useProduct()
+    const {activSub,activeMenuitem, setactiveMenuitem,languae} = useProduct()
     const { id } = useParams();
+    const dispatch =useDispatch()
+    const ref =useRef(null)
     const [loader, setloader] = useState(true)
     const [loader2, setloader2] = useState(false)
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
-    const dispatch =useDispatch()
-    const ref =useRef(null)
+    const [advances,setadvances]=useState([])
+
+
+
 
     useEffect(()=>{
-       
-        dispatch(LoadProductData())
+       dispatch(LoadProductData())
         setloader2(true)
     },[])
 
@@ -45,8 +48,7 @@ const Menu = ({ history }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-
-    }, [])
+     }, [])
 
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
@@ -61,7 +63,7 @@ const Menu = ({ history }) => {
 
 
 
-    const changeProductCategory = (category,id,index) => {
+    const changeProductCategory = (item,index) => {
         switch (index){
             case 0 :
                 ref.current.scrollLeft=0;
@@ -90,9 +92,9 @@ const Menu = ({ history }) => {
             default :
                 break
         }
-        const activedatas = activSub.find(i => i.id === id)
-        setactiveMenuitem(activedatas)
-        history.push(`/home/${id}`)
+       // const activedatas = activSub.find(i => i.id == item.id)
+        setactiveMenuitem(item)
+        history.push(`/home/${item.id}`)
         window.scrollTo(0, 300)
     }
 
@@ -102,27 +104,28 @@ const Menu = ({ history }) => {
             {loader ?
                 <h1>loading</h1> : <div className={css.contanier}>
                 <div className={css.menuimagesandtitle}>
-                    <img src={activeMenuitem.imagesbig} alt="" />
-                    <h1>{activeMenuitem.title}</h1>
+                    <img src={process.env.REACT_APP_IMG_URL+activeMenuitem.bigImage} alt="" />
+                    <h1>{languae=="ՀԱՅ" ? activeMenuitem.name : languae=="ENG" ? activeMenuitem.nameEN : languae=="РУС" ? activeMenuitem.nameRU : null}</h1>
                 </div>
                 <div className={css.category} ref={ref}>
                     {activSub.map((item,index) => {
-
-                        return (
+                      return (
                             <div
                                 className={item.id == id ? css.btncategory : css.btncategory2}
-                                key={item.id} onClick={() => changeProductCategory(item.category,item.id,index)}
+                                key={item.id} onClick={() => changeProductCategory(item)}
                                 >
-                                <p className={item.id == id ? css.menuname : css.menuname2} >{item.title}</p>
+                                <p className={item.id == id ? css.menuname : css.menuname2} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
                             </div>
                         )
                     })
                     }
 
                 </div>
-                    {loader2 && <div className={css.categoryitemblok}>
+                    {loader2 &&
+                    <>
+                    <div className={css.categoryitemblok}>
                         {
-                            product.map((obj) => {
+                            product.filter(fil=>fil.category_id==id).map((obj) => {
 
                                 return (<ProductBlok
                                     key={obj.id}
@@ -134,40 +137,42 @@ const Menu = ({ history }) => {
                                 />)
                             })
                         }
-                    </div>}
-                  <div className={css.recoment}>
+                    </div>
+                    <div className={css.recoment}>
                     <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
-                     {/* <div className={css.recomconstruct}>
-                       {
-                          recoment.map((obj)=>{
+                      <div className={css.recomconstruct}>
+                        { product.filter(fil=>fil.category.advices.length).map((obj) => {
 
-                              return   (<ProductBlok
-                                  key={obj.id}
-                                  SendobjtoLikecategory={SendobjtoLikecategory}
-                                  handleAddProductCard={handleAddProductCard}
-                                  handleonlyproduct={handleonlyproduct}
-                                  {...obj}
-                              />)
-                          })
-                      }
-                    </div> */}
+                            return (<ProductBlok
+                                key={obj.id}
+                                like={false}
+                                SendobjtoLikecategory={SendobjtoLikecategory}
+                                handleAddProductCard={handleAddProductCard}
+                                handleonlyproduct={handleonlyproduct}
+                                {...obj}
+                            />)
+                        })
+                        }
+                    </div>
 
               </div>
+                    </>
+                    }
 
-                    {/* {id==="Արագ սնունդ"? <div className={css.Sauces}>
+                     <div className={css.Sauces}>
                         <p className={css.Saucestitle}>Սոուսներ</p>
-                        {
-                            product.filter(i=>i.category==="սոուսներ").map((obj)=>{
-                               return   (<ProductBlok
-                                    key={obj.id}
-                                    SendobjtoLikecategory={SendobjtoLikecategory}
-                                    handleAddProductCard={handleAddProductCard}
-                                    handleonlyproduct={handleonlyproduct}
-                                    {...obj}
-                                />)
-                            })
-                        }
-                    </div> :  null} */}
+                        {/*{*/}
+                        {/*    product.filter(i=>i.category==="սոուսներ").map((obj)=>{*/}
+                        {/*       return   (<ProductBlok*/}
+                        {/*            key={obj.id}*/}
+                        {/*            SendobjtoLikecategory={SendobjtoLikecategory}*/}
+                        {/*            handleAddProductCard={handleAddProductCard}*/}
+                        {/*            handleonlyproduct={handleonlyproduct}*/}
+                        {/*            {...obj}*/}
+                        {/*        />)*/}
+                        {/*    })*/}
+                        {/*}*/}
+                    </div>
 
 
 

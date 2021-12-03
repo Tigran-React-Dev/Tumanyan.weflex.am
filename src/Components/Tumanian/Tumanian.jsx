@@ -48,9 +48,7 @@ const hoverItem=(id)=>{
     const OpenMenu =(item)=>{
       history.push(`/home/${item.id}`)
         setactiveMenuitem(item)
-        
-
-    }
+     }
  
     return(
         <div className={css.home} >
@@ -59,12 +57,10 @@ const hoverItem=(id)=>{
             </div>
 
             <div className={css.reclams}>
-                {
-                    Reclam.map(({id,images,description})=>{
+                {Reclam.map(({id,images,description})=>{
                         return(
                             <>
-                            {
-                                id===1 ? <NavLink to={"/աղցաններ"}> <div className={css.wraperreclam} key={id}>
+                            {id===1 ? <NavLink to={"/աղցաններ"}> <div className={css.wraperreclam} key={id}>
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />
@@ -84,24 +80,17 @@ const hoverItem=(id)=>{
 
             </div>
             <div className={css.menu}>
-                {
-                     activSub.map((item,index)=>{
-                         
-
-                            return(
-                                <div className={css.menuitem}  key={item.id} style={{
+                {activSub.map((item,index)=>{
+                         return(
+                                <div className={css.menuitem}  key={index} style={{
                                   backgroundColor:( hoverId[index] ? `${color}`   : " #EFEFEF" ),
-  //onClick={()=>OpenMenu()}
-                              }} onMouseEnter={()=>hoverItem(index)} onMouseLeave={()=>hoverItem(null)} onClick={()=>OpenMenu(item)}>
-                                    <p style={{ color:( hoverId[index] ? "#FFFFFF"   : "#252223" )}}>{item.title}</p>
-                                    <img src={item.images} alt="" style={{  opacity:( hoverId[index] ? "0.4"   : "1"  )}}/>
+                               }} onMouseEnter={()=>hoverItem(index)} onMouseLeave={()=>hoverItem(null)} onClick={()=>OpenMenu(item)}>
+                                    <p style={{ color:( hoverId[index] ? "#FFFFFF"   : "#252223" )}}>{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
+                                    <img src={process.env.REACT_APP_IMG_URL+item.smallImage} alt="" style={{  opacity:( hoverId[index] ? "0.4"   : "1"  )}}/>
                                 </div>
                                )
-
-                        
-                    })
-                        
-                }
+                               })
+                 }
 
             </div>
 

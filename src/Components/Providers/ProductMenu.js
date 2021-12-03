@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState} from "react";
 import shaurma from "../../images/product/shaurma.png"
 import shaurmabig from "../../images/product/bigshaurma.png"
+import axios from "axios";
 const ProductContext = createContext({});
 
 
@@ -49,25 +50,16 @@ const ProductProvider =({children})=>{
 
     const getData=()=>{
 
-        const nyu= [
-            {id:1,title:"շաուրմա",category:"շաուրմա",images:shaurma,imagesbig:shaurmabig},
-            {id:2,title:"Արագ սնունդ",category:"Արագ սնունդ",images:shaurma,imagesbig:shaurmabig},
-            {id:3,title:"Խորոված",category:"Խորոված",images:shaurma,imagesbig:shaurmabig},
-            {id:4,title:"աղցան",category:"աղցան",images:shaurma,imagesbig:shaurmabig},
-            {id:5,title:"քաբաբ, իքիբիր",category:"քաբաբ, իքիբիր",images:shaurma,imagesbig:shaurmabig},
-            {id:6,title:"կոմբո",category:"կոմբո",images:shaurma,imagesbig:shaurmabig},
-            {id:7,title:"մանկական",category:"մանկական",images:shaurma,imagesbig:shaurmabig},
-            {id:8,title:"ըմպելիքներ",category:"ըմպելիքներ",images:shaurma,imagesbig:shaurmabig},
+     const responsmenu=axios.get(process.env.REACT_APP_API_URL + `/category`)
+
+        responsmenu.then(res=>{
+            const dataone =mecdata.find((i)=>i.id===1);
+            dataone.sup=res.data
+            setmecdata([...mecdata])
+            setActivSub([...dataone.sup])
+         }).catch(err=>console.log(err))
 
 
-        ]
-
-
-        const data =mecdata.find((i)=>i.id===1);
-
-        data.sup=nyu
-        setmecdata([...mecdata])
-        setActivSub([...data.sup])
 
 
     }

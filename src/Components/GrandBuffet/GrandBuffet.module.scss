@@ -20,7 +20,7 @@
     background-position: center;
     background-repeat: no-repeat;
     h1{
-      font-family: Mardoto;
+      font-family: Mardoto-Medium;
       font-style: normal;
       font-weight: 500;
       font-size: get-vw(80px,1920);
@@ -76,4 +76,68 @@
   height: get-vw(275px,1920);
   margin-left: get-vw(142px,1920);
   display: flex;
+}
+
+
+
+
+@media screen and (max-width: 500px){
+
+
+  .grandebufecontantainer{
+    width: get-vw(375px,375);
+    min-height: get-vw(308px,375);
+    .grandbufeHdr{
+      width: get-vw(375px,375);
+      height: get-vw(308px,375);
+      background-size: cover;
+      h1{
+        font-size: get-vw(34px,375);
+        line-height: 120%;
+        margin-top: get-vw(133px,375);
+
+      }
+    }
+    .menuconsreuctor{
+      height: get-vw(109px,375);
+      width: get-vw(345px,375);
+      margin-left: get-vw(0px,375);
+      display: flex;
+      overflow: hidden;
+      overflow-x:scroll ;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      .itemmenu{
+        width: unset;
+        max-width: min-content;
+        height: get-vw(49px,375);
+        border: get-vw(1px,375) solid #BFB7B6;
+        border-radius: get-vw(10px,375);
+        margin-left: get-vw(15px,375);
+        margin-top: get-vw(60px,375);
+        p{
+          min-width: max-content;
+          font-size: get-vw(16px,375);
+          line-height: get-vw(19px,375);
+          margin-top: get-vw(0px,375);
+          padding: get-vw(15px,375) get-vw(15px,375);
+        }
+      }
+    }
+  }
+  .bufetitemblok{
+    width: get-vw(375px,375);
+    min-height: get-vw(0px,375);
+    display: flex;
+     flex-direction: column;
+    margin-left: get-vw(0px,375);
+
+  }
+  .grandbufefooter{
+    width: get-vw(345px,375);
+    height: get-vw(148px,375);
+    margin-left: get-vw(15px,375);
+    display: flex;
+  }
 }

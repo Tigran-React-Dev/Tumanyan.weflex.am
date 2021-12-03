@@ -485,6 +485,7 @@ position: absolute;
 
 
 @media  screen and (max-width:500px){
+
   .headerContainer{
     display: none;
   }
@@ -590,7 +591,6 @@ position: absolute;
         }
       }
       .menumixin{
-        // margin-left: get-vw(15px,375 );
         width: get-vw(135px,375);
         height: get-vw(305px,500);
         margin-top: get-vw(16px,500);
@@ -621,16 +621,13 @@ position: absolute;
             height: get-vw(30px,500);
             margin-left: get-vw(0px,375 );
             margin-top: get-vw(0px,500);
-
           }
-
-        }
+         }
       }
       .changelanguagemobile{
         display: block;
         width: get-vw(154px,375);
         height: get-vw(25px,500);
-
         margin-top: get-vw(45px,500);
         display: flex;
         justify-content: space-between;
@@ -845,10 +842,7 @@ position: absolute;
     right: 0;
     z-index: 50;
   }
-
-
-
-  .corzina{
+.corzina{
     min-width:min-content;
     max-width: get-vw(140px, 375);
     height:get-vw( 44px,375 );
@@ -856,9 +850,7 @@ position: absolute;
     border-radius: get-vw(70px, 375);
     display: flex;
     padding: get-vw(0px,375) get-vw(14px,375 );
-
-
-    p{
+   p{
       min-width: max-content;
       max-width: get-vw(150px, 375);
       height:get-vw(23px, 375) ;
@@ -872,19 +864,14 @@ position: absolute;
       text-transform: uppercase;
       color: #FFFFFF;
       margin-top: get-vw(12px,375 );
-
-
     }
     img{
       width: get-vw(17px,375 );
       height: get-vw(16px,375 );
       margin-left: get-vw(10px,375 );
       margin-top: get-vw(14px,375 );
-
-
-    }
-
-  }
+      }
+     }
   .up{
     width: get-vw(50px,375);
     height: get-vw(50px,375);
@@ -896,7 +883,5 @@ position: absolute;
     bottom: 0;
     z-index: 50;
   }
-
-}@media screen and (max-height: 815px) {
 
 }

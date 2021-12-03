@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import css from "./GrandBuffet.module.scss"
 import {useHistory, useParams} from "react-router-dom";
 import {useProduct} from "../Providers/ProductMenu";
@@ -17,6 +17,7 @@ const GrantBuffet = () => {
     const {grandBufeData} =useProduct()
     const grandfufet = useSelector(({ ProductReducer  }) => ProductReducer.grandfufet)
     const {id} = useParams()
+    const ref=useRef(null)
     const dispatch=useDispatch()
     const [activeMenuStyle,setActiveMenuStyle]=useState({1:true})
 
@@ -25,7 +26,38 @@ const GrantBuffet = () => {
      },[history])
 
 
-    const ChangeStyleAndCategory =(menu)=>{
+    const ChangeStyleAndCategory =(menu,index)=>{
+        switch (index){
+            case 0 :
+                ref.current.scrollLeft=0;
+                break
+            case 1 :
+                ref.current.scrollLeft=50;
+                break
+            case 2 :
+                ref.current.scrollLeft=150;
+                break
+            case 3 :
+                ref.current.scrollLeft=290;
+                break
+            case 4 :
+                ref.current.scrollLeft=440;
+                break
+            case 5 :
+                ref.current.scrollLeft=590;
+                break
+            case 6 :
+                ref.current.scrollLeft=800;
+                break
+            case 7 :
+                ref.current.scrollLeft=1000;
+                break
+            case 8 :
+                ref.current.scrollLeft=1200;
+                break
+            default :
+                break
+        }
         setActiveMenuStyle({[menu.id]:!activeMenuStyle[menu.id]})
         history.push(`/${menu.category}`)
     }
@@ -44,14 +76,14 @@ const GrantBuffet = () => {
             <div className={css.grandbufeHdr}>
                  <h1>grand buffet</h1>
             </div>
-            <div className={css.menuconsreuctor}>
+            <div className={css.menuconsreuctor} ref={ref}>
                 {
-                    grandBufeData.map((elem)=>{
+                    grandBufeData.map((elem,index)=>{
                         return(
                             <div
                                 className={css.itemmenu}
                                 key={elem.id}
-                                onClick={()=>ChangeStyleAndCategory(elem)}
+                                onClick={()=>ChangeStyleAndCategory(elem,index)}
                                 style={{background:activeMenuStyle[elem.id] && "#13AD54",border:activeMenuStyle[elem.id] && "none"}}
                             >
                                 <p style={{color:activeMenuStyle[elem.id] && "#FFFFFF" }}>{elem.title}</p>

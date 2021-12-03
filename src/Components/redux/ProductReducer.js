@@ -73,7 +73,7 @@ export const initialState = {
             name:"վեգան",
             category:"աղցաններ",
             image:vegan,
-            prices:[{price:480,sizes:{size:"1"}},{price:480,sizes:{size:"2"}}],
+            prices:[{price:480,sizes:{size:"1"}},{price:500,sizes:{size:"2"}}],
             bonus:0,
             like:false,
             ingredients:[

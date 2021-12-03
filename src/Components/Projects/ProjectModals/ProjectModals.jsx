@@ -51,7 +51,7 @@ const ProjectModals = () => {
                 className={css.containerProjectmodal}
               >
                 {
-                    project.filter(e=>e.id==1).map((product)=>{
+                    project.filter(e=>e.id==id).map((product)=>{
                         return(
                             <>
                                 <div className={css.container2}
@@ -104,7 +104,7 @@ const ProjectModals = () => {
                                     </div>
                                 </div>
                                 <div className={css.youtoobevideo}>
-                                    <iframe  src="https://www.youtube.com/embed/T1iXsT-wOZ0"
+                                    <iframe  src={product.video}
                                             title="YouTube video player" frameBorder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen></iframe>

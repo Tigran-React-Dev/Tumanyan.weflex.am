@@ -260,9 +260,7 @@
 
 
   }
-
-
-  .category{
+ .category{
     width:get-vw(375px, 375);
     height: get-vw(110px,375);
     display: flex;
@@ -274,16 +272,13 @@
     &::-webkit-scrollbar{
       display: none;
     }
-
-
-    .btncategory{
+  .btncategory{
       height: get-vw(49px,375);
       border: get-vw(1px ,375)solid #13AD54;
       border-radius: get-vw(10px, 375);
       margin-left: get-vw(15px,375 );
       cursor: pointer;
-
-      .menuname{
+    .menuname{
         font-size: get-vw(16px, 375);
         line-height: get-vw(19px,375 );
         text-align: center;
