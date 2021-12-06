@@ -8,6 +8,7 @@ import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import {BiJoystickButton} from "react-icons/all";
 import Button from "../Global/Button/Button";
+import { LoadProductData } from '../redux/Action/ProductAction';
 
 
 const GrantBuffet = () => {
@@ -16,15 +17,22 @@ const GrantBuffet = () => {
     const history = useHistory()
     const {grandBufeData} =useProduct()
     const grandfufet = useSelector(({ ProductReducer  }) => ProductReducer.grandfufet)
+    const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const {id} = useParams()
     const ref=useRef(null)
     const dispatch=useDispatch()
     const [activeMenuStyle,setActiveMenuStyle]=useState({1:true})
-
+    const [loader2, setloader2] = useState(false)
+    const [pagintion,setpagination]=useState(7)
      useEffect(()=>{
          window.scrollTo(0, 0);
      },[history])
 
+     useEffect(()=>{
+        dispatch(LoadProductData())
+         setloader2(true)
+
+    },[])
 
     const ChangeStyleAndCategory =(menu,index)=>{
         switch (index){
@@ -94,23 +102,23 @@ const GrantBuffet = () => {
                     })
                 }
             </div>
-            <div className={css.bufetitemblok}>
+            {loader2 && <div className={css.bufetitemblok}>
                 {
-                    grandfufet.filter(e=>e.category===id).map((obj)=>{
+                     grandfufet.filter(e=>e.category===id).map((obj,index)=>{
                         return(
-                            <ProductBlok
-                              key={obj.id}
-                              SendobjtoLikecategory={SendobjtoLikecategory}
-                              handleAddProductCard={handleAddProductCard}
-                              handleonlyproduct={handleonlyproduct}
-                              {...obj}
-                            />
+                            index<=pagintion && <ProductBlok
+                            key={obj.id}
+                            SendobjtoLikecategory={SendobjtoLikecategory}
+                            handleAddProductCard={handleAddProductCard}
+                            handleonlyproduct={handleonlyproduct}
+                            {...obj}
+                          />
                         )
                     })
                 }
-            </div>
+            </div>}
             <div className={css.grandbufefooter}>
-                <Button title="տեսնել ավելին" cn="btnreadmore2"/>
+                <Button title="տեսնել ավելին" cn="btnreadmore2" onClick={()=>setpagination(pagintion+8)}/>
             </div>
         </div>
     );

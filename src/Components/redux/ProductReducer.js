@@ -89,6 +89,70 @@ export const initialState = {
                 {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
             ]
         },
+        {
+            id:6,
+            name:"վեգան",
+            category:"աղցաններ",
+            image:vegan,
+            prices:[{price:480,sizes:{size:"1"}},{price:500,sizes:{size:"2"}}],
+            bonus:0,
+            like:false,
+            ingredients:[
+                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
+                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
+                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
+                {id:4,ingredient:"Հավ",quantity:"150 գ"},
+                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
+                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:8,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:9,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
+            ]
+        },
+        {
+            id:6,
+            name:"վեգան",
+            category:"աղցաններ",
+            image:vegan,
+            prices:[{price:480,sizes:{size:"1"}},{price:500,sizes:{size:"2"}}],
+            bonus:0,
+            like:false,
+            ingredients:[
+                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
+                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
+                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
+                {id:4,ingredient:"Հավ",quantity:"150 գ"},
+                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
+                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:8,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:9,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
+            ]
+        },
+        {
+            id:6,
+            name:"վեգան",
+            category:"աղցաններ",
+            image:vegan,
+            prices:[{price:480,sizes:{size:"1"}},{price:500,sizes:{size:"2"}}],
+            bonus:0,
+            like:false,
+            ingredients:[
+                {id:1,ingredient:"Սոխ",quantity:"50 գ"},
+                {id:2,ingredient:"Կծու բիբար",quantity:"50 գ"},
+                {id:3,ingredient:"Կարտոֆիլ",quantity:"20 գ"},
+                {id:4,ingredient:"Հավ",quantity:"150 գ"},
+                {id:5,ingredient:"Կանաչի",quantity:"250 գ"},
+                {id:6,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:7,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:8,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:9,ingredient:"Լոլիկ",quantity:"50 գ"},
+                {id:10,ingredient:"Լոլիկ",quantity:"50 գ"},
+            ]
+        },
+
 
     ],
     recoment:[
