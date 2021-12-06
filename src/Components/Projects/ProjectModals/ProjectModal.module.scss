@@ -293,111 +293,62 @@
     }
   }
   .sliderblok{
-    width: get-vw(1636px,1920);
-    height: get-vw(783px,1920);
-    margin-left: get-vw(142px,1920);
+    width: get-vw(345px,375);
+    height: get-vw(250px,375);
+    margin-left: get-vw(15px,375);
     display: flex;
     align-items: flex-start;
   }
   .blokinfo2{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(770px,1920);
-    margin-left: get-vw(142px,1920);
-    background: #ffffff;
-    display: flex;
-  }
+    width: get-vw(345px,375);
+    min-height: get-vw(368px,375);
+    margin-left: get-vw(15px,375);
+    margin-top: get-vw(60px,375);
+    }
   .blokinfotext{
-    width: get-vw(914px,1920);
-    height: get-vw(486px,1920);
+    width: get-vw(345px,375);
+    min-height: get-vw(368px,375);
     display: flex;
     flex-direction: column;
     .storaket{
-      width: get-vw(148px,1920);
-      height: get-vw(131px,1920);
+      width: get-vw(104px,375);
+      min-height: get-vw(104px,375);
 
     }
     .text2{
-      width: get-vw(890px,1920);
-      height: get-vw(176px,1920);
-      font-family: Montserrat-Medium;
-      font-style: normal;
-      font-weight: 500;
-      font-size: get-vw(26px,1920);
-      line-height: 170%;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: #252223;
-      margin-top: get-vw(60px,1920);
+      width: get-vw(345px,375);
+      min-height: get-vw(156px,375);
+      font-size: get-vw(16px,375);
+      line-height: 160%;
+      margin-top: get-vw(20px,375);
     }
     h4{
-      font-family: Mardoto-Medium;
-      font-style: normal;
-      font-weight: 500;
-      font-size: get-vw(21px,1920);
-      line-height: get-vw(25px,1920);
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: #000000;
-      margin-top: get-vw(50px,1920);
+      font-size: get-vw(16px,375);
+      line-height: get-vw(19px,375);
+      margin-top: get-vw(40px,375);
     }
     h6{
-      font-family: Montserrat-Regular;
-      font-style: normal;
-      font-weight: normal;
-      font-size: get-vw(21px,1920);
-      line-height: 160%;
-      letter-spacing: -0.02em;
-      color: #252223;
-      margin-top: get-vw(10px,1920);
+     font-size: get-vw(14px,375);
+      line-height: 150%;
+      margin-top: get-vw(8px,375);
     }
   }
   .positionimageblok{
-    width: get-vw(685px,1920);
-    height: get-vw(611px,1920);
+   display: none;
+  }
 
-    margin-left: get-vw(60px,1920);
-    position: relative;
-  }
-  .bigimg{
-    width: get-vw(565px,1920);
-    height: get-vw(565px,1920);
-    border-radius: get-vw(14.9077px,1920);
-    background-color: #26B462;
-    background-image: url("../../../images/product/bgprojrctbigburger.png");
-    background-size: contain;
-    margin-left: get-vw(121px,1920);
-    img{
-      width: get-vw(565px,1920);
-      height: get-vw(379px,1920);
-      margin-top: get-vw(93px,1920);
-    }
-
-  }
-  .smolimg{
-    width: get-vw(240px,1920);
-    height: get-vw(240px,1920);
-    position: absolute;
-    background-color: #EC3737;
-    background-image: url("../../../images/product/bgprojrctbigburger.png");
-    background-size: contain;
-    top: get-vw(371px,1920);
-    border-radius: get-vw(14.9077px,1920);
-    img{
-      width: get-vw(239px,1920);
-      height: get-vw(160px,1920);
-      margin-top: get-vw(39px,1920);
-    }
-  }
   .youtoobevideo{
-    width: get-vw(1636px,1920);
-    height: get-vw(1020px,1920);
+    width: get-vw(375px,375);
+    height: get-vw(250px,375);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: get-vw(60px,375);
+    padding-bottom: get-vw(60px,375);
     iframe{
-      width: get-vw(1636px,1920);
-      height: get-vw(920px,1920);
-      margin-left: get-vw(142px,1920);
+      width: get-vw(345px,375);
+      height: get-vw(250px,375);
+      margin-left: get-vw(15px,375);
     }
   }
 

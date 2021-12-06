@@ -129,15 +129,20 @@ export const CardReducer = (state = initialState, action) => {
        if(action.payload.count>0){
            state.items.forEach(elem=>{
                if(elem._id===action.payload._id){
-                   
-                   const filprice= elem.priceitem.find(e=>e.size==elem.size)
-                   if(filprice){
-                       elem.price+=+filprice.price;
+                   if(typeof (elem.priceitem)=="string"){
+                       elem.price+=+elem.priceitem;
                        elem.count+=1
-                    }else{
-                       elem.price+=+elem.priceitem[0].price;
-                       elem.count+=1
+                   }else{
+                       const filprice= elem.priceitem.find(e=>e.size==elem.size)
+                       if(filprice){
+                           elem.price+=+filprice.price;
+                           elem.count+=1
+                       }else{
+                           elem.price+=+elem.priceitem[0].price;
+                           elem.count+=1
+                       }
                    }
+
 
                }
 
@@ -157,14 +162,20 @@ export const CardReducer = (state = initialState, action) => {
             if(action.payload.count>1){
                 state.items.forEach(elem=>{
                     if(elem._id===action.payload._id){
-                        const filprice= elem.priceitem.find(e=>e.size=elem.size)
-                        if(filprice){
-                            elem.price-=+filprice.price;
+                        if(typeof (elem.priceitem)=="string"){
+                            elem.price-=+elem.priceitem;
                             elem.count-=1
                         }else{
-                            elem.price-=+elem.priceitem[0].price;
-                            elem.count-=1
+                            const filprice= elem.priceitem.find(e=>e.size==elem.size)
+                            if(filprice){
+                                elem.price+=+filprice.price;
+                                elem.count+=1
+                            }else{
+                                elem.price+=+elem.priceitem[0].price;
+                                elem.count+=1
+                            }
                         }
+
 
                     }
 

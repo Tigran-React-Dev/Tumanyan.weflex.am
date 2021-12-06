@@ -26,16 +26,11 @@ function App() {
     const [loading,setloading]=useState(false)
     const [sowmenu, setSoumenu] = useState(false)
 
-    useEffect(()=>{
-
-    },[])
 
 
   useEffect(()=>{
-
-     getData()
-
-   },[])
+      getData()
+    },[])
 
 
   useEffect(() => {
@@ -54,6 +49,7 @@ function App() {
     }
     
     useEffect(()=>{
+
          window.scrollTo(0, 0);
 
     },[])

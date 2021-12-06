@@ -15,9 +15,9 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
 
 
 
-    const [itempricesitog, setpricesItog] = useState(prices[0].price)
-    const [activeprice, setactivprice] = useState(prices[0].price)
-    const [size, setActivsize] = useState(prices[0].sizes.size)
+    const [itempricesitog, setpricesItog] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
+    const [activeprice, setactivprice] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
+    const [size, setActivsize] = useState(typeof (prices)=="string" ?  undefined : prices?.[0]?.sizes.size)
 
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
@@ -66,16 +66,16 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             bonus,
             priceitem:prices,
             price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)),
-            size: prices.length===1 ? 1 : size,
+            size: prices.length===1 ? undefined : size,
             count,
             ingredients,
-            description,
+            description:description!=null ? description : null,
             like
         }
         //coll function send object to redux reducer and product add to Card
 
         handleAddProductCard(newProductcard)
-            if(itionaldataitem.length){
+            if(itionaldataitem !=undefined){
                 setItionaldataitem([...names])
                 setItionalitem([])
             }
@@ -127,7 +127,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                 <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
-            {prices.length>1 &&  <div className={css.sizeproduct}>
+            {(prices.length>1 &&  typeof(prices)!="string") && <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
                     {
                         prices.map(({id, sizes, price}, index) => {

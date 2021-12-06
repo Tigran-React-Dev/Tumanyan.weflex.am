@@ -48,46 +48,46 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, Addli
         <div className={css.itionalwraper}>
             <div className={css.itionalwrraper} onClick={AddlichniyProduct}/>
             <div className={css.itionalcategory}>
-                <div className={css.overfloscrol}>
+                {ingredients === undefined ?  <div className={css.overfloscrol}>
                     {itionaldataitem.map(e => {
-                            return (
-                                <div>
-                                    <div className={css.banjarexen}>
-                                        <h2 style={{}}>{languae=="ՀԱՅ" ? e.name : languae=="ENG" ? e.nameEN : languae=="РУС" ? e.nameRU : null}</h2>
-                                    </div>
-                                    <div>
-                                        {
-                                            e.adds.map(el => {
-                                                return (
-                                                    <div>
-                                                        <CheckBox cn="Checkboxitional" {...el}
-                                                                  onchangecheck={(e) => onchangecheck({
-                                                                      ...el,
-                                                                      isChecked: e.target.checked,
-                                                                  }, el.name_id)}/>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-
+                        return (
+                            <div>
+                                <div className={css.banjarexen}>
+                                    <h2 style={{}}>{languae == "ՀԱՅ" ? e.name : languae == "ENG" ? e.nameEN : languae == "РУС" ? e.nameRU : null}</h2>
                                 </div>
-                            )
-                        })
+                                <div>
+                                    {
+                                        e.adds.map(el => {
+                                            return (
+                                                <div>
+                                                    <CheckBox cn="Checkboxitional" {...el}
+                                                              onchangecheck={(e) => onchangecheck({
+                                                                  ...el,
+                                                                  isChecked: e.target.checked,
+                                                              }, el.name_id)}/>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+
+                            </div>
+                        )
+                    })
                     }
                 </div>
-                {/*<div className={css.ingredentsblok}>*/}
+                    :
+                    <div className={css.ingredentsblok}>{
+                    ingredients.map(({id, ingredient, quantity}, i) => {
+                    return <div key={id} className={css.igraditem}
+                    style={{marginTop: i == 0 ? "0px" : " 1.01vw"}}>
+                    <p>{ingredient}</p><p>{quantity}</p>
+                    </div>
+                })
+                }
 
-                {/*        {*/}
-                {/*            ingredients.map(({id,ingredient,quantity},i)=>{*/}
-                {/*                return <div key={id} className={css.igraditem} style={{marginTop:i==0 ? "0px" : " 1.01vw"}}>*/}
-                {/*                    <p>{ingredient}</p><p>{quantity}</p>*/}
-                {/*                </div>*/}
-                {/*            })*/}
-                {/*        }*/}
+                    </div>}
 
-                {/*</div>*/}
-                {/*}*/}
             </div>
         </div>
     )

@@ -79,7 +79,7 @@ const Header = () => {
             window.scrollTo(0, 850);
         }else{
 
-             history.push("/home/1")
+             history.push("/home/19")
         }
 
     }

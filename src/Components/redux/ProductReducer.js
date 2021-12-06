@@ -1,6 +1,6 @@
 import shaurma from "../../images/product/Shaurma 1.png";
 import vegan from "../../images/product/vegan.png"
-import {LIKE_PRODUCT, LOAD_DATA} from "./Action/ProductAction";
+import {LIKE_PRODUCT, LOAD_DATA, LOAD_GRAND_BUFET_DATA} from "./Action/ProductAction";
 
 
 export const initialState = {
@@ -145,6 +145,12 @@ export const ProductReducer =(state=initialState,action)=>{
               ...state,
               product:action.payload.data
           }
+        }
+        case LOAD_GRAND_BUFET_DATA:{
+            return {
+                ...state,
+                grandfufet: action.payload.data
+            }
         }
 
 

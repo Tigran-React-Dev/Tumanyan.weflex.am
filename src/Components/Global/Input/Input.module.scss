@@ -7,8 +7,6 @@
 
 
 .searchInput{
-    
-    
     outline: none;
     background-color: #F9F9F9;
     border: none;
@@ -19,8 +17,9 @@
     line-height: 22px;
     color: #252223;
     letter-spacing: -0.02em;
-    margin-left: get-vw(13px,1920 );
+     margin-left: get-vw(13px,1920 );
      width: get-vw(289px, 1920);
+    height: get-vw(20px,1920);
      border-radius: get-vw(20px,1920 );
      margin-top: get-vw(-2px,1920 );
     cursor:pointer;

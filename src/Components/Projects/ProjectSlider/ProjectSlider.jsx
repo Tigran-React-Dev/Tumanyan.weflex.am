@@ -28,7 +28,7 @@ const  ProjectSlider= ({data}) =>{
     return (
         <>
             <Swiper spaceBetween={0}  centeredSlides={true} loop={true} autoplay={{
-                "delay": 6000,
+                "delay": 9000,
                 "disableOnInteraction": false,
 
             }} pagination={{

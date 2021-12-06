@@ -2,13 +2,14 @@ import React, {useEffect, useRef, useState} from "react";
 import { useParams } from "react-router";
 import css from "./Menu.module.scss";
 import { useProduct } from "../Providers/ProductMenu";
-import { NavLink } from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import ProductBlok from "./ProductBlok/ProductBlok";
 import {ProductReducer} from "../redux/ProductReducer";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import { LoadProductData } from "../redux/Action/ProductAction";
+import {HOME_PAGE} from "../urls";
 
 
 
@@ -30,14 +31,18 @@ const Menu = ({ history }) => {
 
 
 
+
+
+
+
     useEffect(()=>{
-       dispatch(LoadProductData())
-        setloader2(true)
+        dispatch(LoadProductData())
+         setloader2(true)
+
     },[])
 
 
-
-    useEffect(() => {
+useEffect(() => {
        if (activSub.length !== 0) {
             let act = activSub.find(i => i.id == id)
             setactiveMenuitem(act)
@@ -45,6 +50,8 @@ const Menu = ({ history }) => {
         }
 
     }, [activSub])
+
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -104,8 +111,8 @@ const Menu = ({ history }) => {
             {loader ?
                 <h1>loading</h1> : <div className={css.contanier}>
                 <div className={css.menuimagesandtitle}>
-                    <img src={process.env.REACT_APP_IMG_URL+activeMenuitem.bigImage} alt="" />
-                    <h1>{languae=="ՀԱՅ" ? activeMenuitem.name : languae=="ENG" ? activeMenuitem.nameEN : languae=="РУС" ? activeMenuitem.nameRU : null}</h1>
+                    <img src={process.env.REACT_APP_IMG_URL+activeMenuitem?.bigImage} alt="" />
+                    <h1>{languae=="ՀԱՅ" ? activeMenuitem?.name : languae=="ENG" ? activeMenuitem?.nameEN : languae=="РУС" ? activeMenuitem?.nameRU : null}</h1>
                 </div>
                 <div className={css.category} ref={ref}>
                     {activSub.map((item,index) => {
@@ -125,7 +132,7 @@ const Menu = ({ history }) => {
                     <>
                     <div className={css.categoryitemblok}>
                         {
-                            product.filter(fil=>fil.category_id==id).map((obj) => {
+                            product.filter(fil=>fil.id==id)[0]?.products.map((obj) => {
 
                                 return (<ProductBlok
                                     key={obj.id}
@@ -141,38 +148,42 @@ const Menu = ({ history }) => {
                     <div className={css.recoment}>
                     <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
                       <div className={css.recomconstruct}>
-                        { product.filter(fil=>fil.category.advices.length).map((obj) => {
+                          {
+                              product.filter(fil=>fil.id==id)[0]?.advices?.map((obj) => {
 
-                            return (<ProductBlok
-                                key={obj.id}
-                                like={false}
-                                SendobjtoLikecategory={SendobjtoLikecategory}
-                                handleAddProductCard={handleAddProductCard}
-                                handleonlyproduct={handleonlyproduct}
-                                {...obj}
-                            />)
-                        })
-                        }
+                                  return (<ProductBlok
+                                      key={obj.product.id}
+                                      like={false}
+                                      SendobjtoLikecategory={SendobjtoLikecategory}
+                                      handleAddProductCard={handleAddProductCard}
+                                      handleonlyproduct={handleonlyproduct}
+                                      {...obj.product}
+                                  />)
+                              })
+                          }
                     </div>
 
               </div>
                     </>
                     }
-
-                     <div className={css.Sauces}>
+                    {id==20 && <div className={css.Sauces}>
                         <p className={css.Saucestitle}>Սոուսներ</p>
-                        {/*{*/}
-                        {/*    product.filter(i=>i.category==="սոուսներ").map((obj)=>{*/}
-                        {/*       return   (<ProductBlok*/}
-                        {/*            key={obj.id}*/}
-                        {/*            SendobjtoLikecategory={SendobjtoLikecategory}*/}
-                        {/*            handleAddProductCard={handleAddProductCard}*/}
-                        {/*            handleonlyproduct={handleonlyproduct}*/}
-                        {/*            {...obj}*/}
-                        {/*        />)*/}
-                        {/*    })*/}
-                        {/*}*/}
-                    </div>
+                        <div className={css.sousesblog}>
+                            {product.filter(fil=>fil.id==id)[0]?.souses.map((obj) => {
+
+                                return (<ProductBlok
+                                    key={obj.id}
+                                    like={false}
+                                    SendobjtoLikecategory={SendobjtoLikecategory}
+                                    handleAddProductCard={handleAddProductCard}
+                                    handleonlyproduct={handleonlyproduct}
+                                    {...obj}
+                                />)
+                            })
+                            }
+                        </div>
+
+                    </div>}
 
 
 
