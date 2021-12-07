@@ -4,7 +4,7 @@ import {useProduct} from "../../Providers/ProductMenu";
 import css from "./ItionalProduct.module.scss";
 
 
-const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, AddlichniyProduct, priceItional, setPriceItional, itionalitem, setItionalitem,}) => {
+const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, AddlichniyProduct, priceItional, setPriceItional, itionalitem, setItionalitem,}) => {
 
     const {languae}=useProduct()
     const onchangecheck = (nevobj, id) => {
@@ -48,7 +48,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, Addli
         <div className={css.itionalwraper}>
             <div className={css.itionalwrraper} onClick={AddlichniyProduct}/>
             <div className={css.itionalcategory}>
-                {ingredients === undefined ?  <div className={css.overfloscrol}>
+                {add_buffets === undefined ?  <div className={css.overfloscrol}>
                     {itionaldataitem.map(e => {
                         return (
                             <div>
@@ -77,11 +77,11 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, ingredients, Addli
                     }
                 </div>
                     :
-                    <div className={css.ingredentsblok}>{
-                    ingredients.map(({id, ingredient, quantity}, i) => {
-                    return <div key={id} className={css.igraditem}
-                    style={{marginTop: i == 0 ? "0px" : " 1.01vw"}}>
-                    <p>{ingredient}</p><p>{quantity}</p>
+                    <div className={css.ingredentsblok}>
+                        {add_buffets.map(({id, name, amount}, i) => {
+                           return <div key={id} className={css.igraditem}
+                           style={{marginTop: i == 0 ? "0px" : " 1.01vw"}}>
+                           <p>{name}</p><p>{amount}</p>
                     </div>
                 })
                 }

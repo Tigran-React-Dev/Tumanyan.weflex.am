@@ -29,23 +29,31 @@ export const loadLocalCard =(itm)=>{
         payload:itm
     }
 }
-export const DeleteItemCard =(id)=>{
+export const DeleteItemCard =(id,)=>{
     return {
         type: DELETE_PRODUCT_TO_CARD,
         payload:id
     }
 }
 
-export const OnplusCount = (obj)=>{
+export const OnplusCount = (obj,bonus)=>{
+
  return {
      type: ON_PLUS,
-     payload: obj,
+     payload: {
+          obj,
+         bonus
+     },
+
  }
 }
-export const OnMinusCount = (obj)=>{
+export const OnMinusCount = (obj,bonus)=>{
     return {
         type: ON_MINUS,
-        payload: obj,
+        payload: {
+             obj,
+            bonus
+    },
     }
 }
 

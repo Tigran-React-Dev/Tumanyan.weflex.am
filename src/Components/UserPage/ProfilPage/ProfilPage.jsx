@@ -8,6 +8,8 @@ import {NavLink} from "react-router-dom";
 import vxod from "../../../images/icons/logins.svg"
 import Bonuces from "./Bonuces/Bonuces";
 const ProfilPage = () => {
+
+
     const user = useSelector(({AuthReducer})=>AuthReducer.user)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const saveOrders = useSelector(({AuthReducer})=>AuthReducer.userorders)
@@ -25,7 +27,7 @@ const ProfilPage = () => {
         setactiveMenu(id)
     }
 
-
+    console.log(userAdress)
     return (
         <div className={css.ProfilPagescontroler}>
            <div className={css.profilhdr}>

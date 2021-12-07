@@ -37,7 +37,10 @@ const Profile = ({user,userAdress}) => {
      const {adress,bulding,apartment}=newAdress
 
 
+
+
     const handleChangeinput = e =>{
+
         setUserinfo({
             ...users,
             [e.target.name]:e.target.value

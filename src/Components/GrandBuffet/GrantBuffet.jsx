@@ -8,7 +8,8 @@ import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import {BiJoystickButton} from "react-icons/all";
 import Button from "../Global/Button/Button";
-import { LoadProductData } from '../redux/Action/ProductAction';
+import {LoadGrandBufetData, LoadProductData} from '../redux/Action/ProductAction';
+import ProductBlokGrand from "./ProductBlok/ProductBlokGrand";
 
 
 const GrantBuffet = () => {
@@ -28,8 +29,10 @@ const GrantBuffet = () => {
          window.scrollTo(0, 0);
      },[history])
 
+
+
      useEffect(()=>{
-        dispatch(LoadProductData())
+        dispatch(LoadGrandBufetData())
          setloader2(true)
 
     },[])
@@ -67,7 +70,7 @@ const GrantBuffet = () => {
                 break
         }
         setActiveMenuStyle({[menu.id]:!activeMenuStyle[menu.id]})
-        history.push(`/${menu.category}`)
+        history.push(`/${menu.id}`)
     }
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
@@ -84,9 +87,11 @@ const GrantBuffet = () => {
             <div className={css.grandbufeHdr}>
                  <h1>grand buffet</h1>
             </div>
+            {loader2 &&
+            <>
             <div className={css.menuconsreuctor} ref={ref}>
                 {
-                    grandBufeData.map((elem,index)=>{
+                    grandfufet.map((elem,index)=>{
                         return(
                             <div
                                 className={css.itemmenu}
@@ -94,7 +99,7 @@ const GrantBuffet = () => {
                                 onClick={()=>ChangeStyleAndCategory(elem,index)}
                                 style={{background:activeMenuStyle[elem.id] && "#13AD54",border:activeMenuStyle[elem.id] && "none"}}
                             >
-                                <p style={{color:activeMenuStyle[elem.id] && "#FFFFFF" }}>{elem.title}</p>
+                                <p style={{color:activeMenuStyle[elem.id] && "#FFFFFF" }}>{elem.name}</p>
 
                             </div>
 
@@ -102,11 +107,12 @@ const GrantBuffet = () => {
                     })
                 }
             </div>
-            {loader2 && <div className={css.bufetitemblok}>
+            <div className={css.bufetitemblok}>
                 {
-                     grandfufet.filter(e=>e.category===id).map((obj,index)=>{
+                    grandfufet.filter(fil=>fil.id==id)[0]?.product_buffets.map((obj,index)=>{
                         return(
-                            index<=pagintion && <ProductBlok
+                            index<=pagintion &&
+                            <ProductBlokGrand
                             key={obj.id}
                             SendobjtoLikecategory={SendobjtoLikecategory}
                             handleAddProductCard={handleAddProductCard}
@@ -116,9 +122,15 @@ const GrantBuffet = () => {
                         )
                     })
                 }
-            </div>}
+
+            </div>
+            </>
+            }
             <div className={css.grandbufefooter}>
-                <Button title="տեսնել ավելին" cn="btnreadmore2" onClick={()=>setpagination(pagintion+8)}/>
+                <Button
+                    title="տեսնել ավելին"
+                    cn="btnreadmore2"
+                    onClick={()=>setpagination(pagintion+8)}/>
             </div>
         </div>
     );

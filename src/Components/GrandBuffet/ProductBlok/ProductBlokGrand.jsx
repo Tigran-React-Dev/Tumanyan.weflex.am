@@ -1,23 +1,24 @@
 import React, {useState,Memo} from "react";
-import css from "./ProductBlok.module.scss";
+import css from "./ProductBlokGrand.module.scss";
 import btn1 from "../../../images/icons/btn1.svg";
 import minus from "../../../images/icons/Minus.svg";
 import plus from "../../../images/icons/Plus.svg";
 import lik from "../../../images/icons/like.svg";
 import liked from "../../../images/icons/likedis.svg"
-import ItionalProduct from "../ItionalProduct/ItionalProduct";
+
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
+import ItionalProduct from "../../Menu/ItionalProduct/ItionalProduct";
 
-const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
 
 
 
 
-    const [itempricesitog, setpricesItog] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
-    const [activeprice, setactivprice] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
-    const [size, setActivsize] = useState(typeof (prices)=="string" ?  undefined : prices?.[0]?.sizes.size)
+    const [itempricesitog, setpricesItog] = useState(price_buffets?.[0]?.price)
+    const [activeprice, setactivprice] = useState(price_buffets?.[0]?.price)
+    const [size, setActivsize] = useState(price_buffets?.[0]?.size_buffets.size)
 
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
@@ -34,7 +35,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
     const dispath=useDispatch()
     const {languae} =useProduct()
 
-
+    
     const  AddTolike=()=>{
 
         dispath(LikedProduct(id,like))
@@ -46,7 +47,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             image,
             itionalitem,
             bonus,
-            prices,
+            price_buffets,
             description,
             like:true
         }
@@ -64,11 +65,10 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
             image,
             itionalitem,
             bonus,
-            priceitem:prices,
+            priceitem:[{price:price_buffets[0]?.price,sizes:{size:price_buffets[0]?.size_buffets?.size}},{price:price_buffets[1]?.price,sizes:{size:price_buffets[1]?.size_buffets?.size}}],
             price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)),
-            size: prices.length===1 ? undefined : size,
+            size: price_buffets.length===1 ? undefined : size,
             count,
-            ingredients,
             description:description!=null ? description : null,
             like
         }
@@ -115,7 +115,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
 
     return (
         <div className={css.productItem}>
-            {prices.length==2 ?
+            {price_buffets.length==2 ?
                 <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div>
                   :
                 <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
@@ -127,16 +127,16 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                 <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
-            {(prices.length>1 &&  typeof(prices)!="string") && <div className={css.sizeproduct}>
+            {price_buffets.length>1  && <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
                     {
-                        prices.map(({id, sizes, price}, index) => {
+                        price_buffets.map(({id, size_buffets, price}, index) => {
                             return <li
                                 key={index}
-                                onClick={() => changeSizeAndprice(price, index+1, sizes.size)}
+                                onClick={() => changeSizeAndprice(price, index+1, size_buffets.size)}
                                 className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
                             >
-                                {sizes.size}
+                                {size_buffets.size}
 
                             </li>
 
@@ -151,13 +151,13 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                             <p className={css.descript}>{description}</p>
                             :
                             <>
-                            {prices?.length===3 ?
+                            {price_buffets?.length===3 ?
                                 <div className={css.addlichni} onClick={AddlichniyProduct}>
                                     <p>Ավելացնել</p>
                                     <div className={css.kechup}/>
                                 </div>
                              :
-                             prices?.length===2 ?
+                                price_buffets?.length===2 ?
                                     <div className={css.addlichni} onClick={AddlichniyProduct}>
                                         <p>Բաղադրիչներ</p>
 
@@ -192,7 +192,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                         setItionalitem={setItionalitem}
                         priceItional={priceItional}
                         setPriceItional={setPriceItional}
-                        ingredients={ingredients}
+                        add_buffets={add_buffets}
                         AddlichniyProduct={AddlichniyProduct}
                         />
                     }
@@ -200,4 +200,4 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                 )
             }
 
-            export default React.memo(ProductBlok);
+            export default React.memo(ProductBlokGrand);

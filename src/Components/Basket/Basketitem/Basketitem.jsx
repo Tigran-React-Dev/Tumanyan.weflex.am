@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 
 const Basketitem = ({obj}) => {
  const dispatch = useDispatch()
-const {id,name,image, itionalitem,description,price,size,count,_id,category} =obj
+const {id,name,image, itionalitem,description,price,size,count,_id,category,bonus} =obj
 const [show,setShow]=useState({})
 
     const DeleteItems =(_id)=>{
@@ -21,17 +21,16 @@ const [show,setShow]=useState({})
 
     }
 
-    const onPlusCount  =useCallback((obj) => {
-        dispatch(OnplusCount(obj))
-     },[])
+    const onPlusCount =((obj,bonus) => {
+        dispatch(OnplusCount(obj,bonus))
+     })
 
 
-    const onMinusCount = useCallback((obj) => {
-        dispatch(OnMinusCount(obj))
-    },[obj])
+    const onMinusCount = ((obj,bonus) => {
+        dispatch(OnMinusCount(obj,bonus))
+    })
 
-   console.log(description)
-    console.log(itionalitem)
+
 
     return (
         <>
@@ -81,9 +80,9 @@ const [show,setShow]=useState({})
                                     <img className={css.ondeletmobile} src={closeiconmobile} alt="" onClick={() => DeleteItems(_id)}/>
                                 </>
                                 :
-                                <img className={css.onminus2} src={minus} alt="" onClick={() => onMinusCount(obj)}/>}
+                                <img className={css.onminus2} src={minus} alt="" onClick={() => onMinusCount(obj,bonus)}/>}
                             <span><p>{count}</p></span>
-                            <img className={css.pluscaunt} src={plus} alt="" onClick={() => onPlusCount(obj)}/>
+                            <img className={css.pluscaunt} src={plus} alt="" onClick={() => onPlusCount(obj,bonus)}/>
                         </div>
 
                     </div>

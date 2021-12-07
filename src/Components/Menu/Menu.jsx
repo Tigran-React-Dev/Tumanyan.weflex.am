@@ -119,7 +119,7 @@ useEffect(() => {
                       return (
                             <div
                                 className={item.id == id ? css.btncategory : css.btncategory2}
-                                key={item.id} onClick={() => changeProductCategory(item)}
+                                key={item.id} onClick={() => changeProductCategory(item,index)}
                                 >
                                 <p className={item.id == id ? css.menuname : css.menuname2} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
                             </div>

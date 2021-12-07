@@ -126,19 +126,23 @@ export const CardReducer = (state = initialState, action) => {
           }
         case ON_PLUS:{
 
-       if(action.payload.count>0){
+       if(action.payload.obj.count>0){
            state.items.forEach(elem=>{
-               if(elem._id===action.payload._id){
+               if(elem._id===action.payload.obj._id){
                    if(typeof (elem.priceitem)=="string"){
                        elem.price+=+elem.priceitem;
                        elem.count+=1
                    }else{
-                       const filprice= elem.priceitem.find(e=>e.size==elem.size)
+                       const filprice= elem.priceitem.find(e=>e.sizes.size==elem.size)
+
                        if(filprice){
-                           elem.price+=+filprice.price;
+
+                           let plusPrice=(action.payload.obj.bonus !=null) ? (+filprice.price-(+filprice.price/100 *+action.payload.obj.bonus))  : +filprice.price;
+                           elem.price+=plusPrice;
                            elem.count+=1
                        }else{
-                           elem.price+=+elem.priceitem[0].price;
+                           let plusPrice=(action.payload.obj.bonus !=null) ? (+filprice.price-(+elem.priceitem[0].price/100*action.payload.obj.bonus) ) : +elem.priceitem[0].price;
+                           elem.price+=plusPrice;
                            elem.count+=1
                        }
                    }
@@ -159,20 +163,23 @@ export const CardReducer = (state = initialState, action) => {
         case ON_MINUS:{
             const minusdata=[]
 
-            if(action.payload.count>1){
+            if(action.payload.obj.count>1){
                 state.items.forEach(elem=>{
-                    if(elem._id===action.payload._id){
+                    if(elem._id===action.payload.obj._id){
                         if(typeof (elem.priceitem)=="string"){
                             elem.price-=+elem.priceitem;
                             elem.count-=1
                         }else{
-                            const filprice= elem.priceitem.find(e=>e.size==elem.size)
+                            const filprice= elem.priceitem.find(e=>e.sizes.size==elem.size)
                             if(filprice){
-                                elem.price+=+filprice.price;
-                                elem.count+=1
+
+                                let plusPrice=(action.payload.obj.bonus !=null) ? (+filprice.price-(+filprice.price/100 *+action.payload.obj.bonus))  : +filprice.price;
+                                elem.price-=plusPrice;
+                                elem.count-=1
                             }else{
-                                elem.price+=+elem.priceitem[0].price;
-                                elem.count+=1
+                                let plusPrice=(action.payload.obj.bonus !=null) ? (+filprice.price-(+elem.priceitem[0].price/100*action.payload.obj.bonus) ) : +elem.priceitem[0].price;
+                                elem.price-=plusPrice;
+                                elem.count-=1
                             }
                         }
 

@@ -30,7 +30,7 @@ export const LoadProductData=()=>{
 
 export const LoadGrandBufetData=()=>{
     return async dispatch => {
-        const response = await axios.get(process.env.REACT_APP_API_URL + `/category`)
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/category_buffet`)
 
         dispatch({
             type: LOAD_GRAND_BUFET_DATA,

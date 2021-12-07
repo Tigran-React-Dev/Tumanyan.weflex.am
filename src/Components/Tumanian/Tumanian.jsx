@@ -60,7 +60,7 @@ const hoverItem=(id)=>{
                 {Reclam.map(({id,images,description})=>{
                         return(
                             <>
-                            {id===1 ? <NavLink to={"/աղցաններ"}> <div className={css.wraperreclam} key={id}>
+                            {id===1 ? <NavLink to={"/1"}> <div className={css.wraperreclam} key={id}>
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />

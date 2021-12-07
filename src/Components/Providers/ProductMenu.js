@@ -29,9 +29,7 @@ const ProductProvider =({children})=>{
            name:"ծաղկաձոր",
            sup:[
                 {id:1,title:"շաուրմա",category:"շաուրմա",images:shaurma,imagesbig:shaurmabig},
-               // {id:2,title:"Արագ սնունդ",category:"Արագ սնունդ",images:shaurma,imagesbig:shaurmabig},
-               // {id:3,title:"Խորոված",category:"Խորոված",images:shaurma,imagesbig:shaurmabig},
-               // {id:4,title:"աղցան",category:"աղցան",images:shaurma,imagesbig:shaurmabig},
+
                ]
        }
    ];
@@ -54,7 +52,10 @@ const ProductProvider =({children})=>{
 
         responsmenu.then(res=>{
             const dataone =mecdata.find((i)=>i.id===1);
-            dataone.sup=res.data
+            const datatoo =mecdata.find((i)=>i.id===2);
+
+            dataone.sup=res.data.filter(e=>e.city_id==1)
+            datatoo.sup=res.data.filter(e=>e.city_id==2)
             setmecdata([...mecdata])
             setActivSub([...dataone.sup])
          }).catch(err=>console.log(err))

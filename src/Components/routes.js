@@ -78,7 +78,7 @@ export const isOuthFooter =[
         nameՀԱՅ:"Գրանդ բուֆֆե",
         nameENG:"Գրանդ բուֆֆե",
         nameРУС: "Գրանդ բուֆֆե",
-        path:"/աղցաններ",
+        path:"/1",
     },{
         id:10,
         component:Tumanian,

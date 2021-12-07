@@ -35,7 +35,7 @@ const [sowinfo,setsowinfo]=useState(false)
                             return(
                                 <>
                                     {i<=counts && <div className={css.orderimgdiv}>
-                                        <img className={css.imgitem} src={item.image} alt=""/>
+                                        <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
                                         {item.count > 1 ? <div className={css.countitemx}>
                                                 <p>x{item.count}</p>
                                             </div>
@@ -49,7 +49,7 @@ const [sowinfo,setsowinfo]=useState(false)
                             return(
                                 <>
                                     {i<=counts && <div className={css.orderimgdiv}>
-                                        <img className={css.imgitem} src={item.image} alt=""/>
+                                        <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
                                         {item.count > 1 ? <div className={css.countitemx}>
                                                 <p>x{item.count}</p>
                                             </div>
@@ -74,7 +74,7 @@ const [sowinfo,setsowinfo]=useState(false)
                               return(
                                   <>
                                       {
-  (index<=itionallength && (e.description ? `${e.title} (${e.description}),` : !e.description ? `${e.title} (${e.size}), ` :null ))
+  (index<=itionallength && (e.description ? `${e.name} (${e.description}),` : !e.description ? `${e.name} (${e.size}), ` :null ))
 
                                       }
                                   </>
@@ -83,7 +83,7 @@ const [sowinfo,setsowinfo]=useState(false)
                               return(
                                   <>
                                       {
-                                          (index<=itionallength && e.description ? `${e.title} (${e.description}),` : !e.description ? `${e.title} (${e.size}), ` :null )
+                                          (index<=itionallength && e.description ? `${e.name} (${e.description}),` : !e.description ? `${e.name} (${e.size}), ` :null )
 
                                       }
                                   </>
