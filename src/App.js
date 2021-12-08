@@ -16,11 +16,11 @@ import axios from "axios";
 
 function App() {
 
-    const CardDeda= useSelector(({CardReducer})=>CardReducer)
+
     const key = sessionStorage.getItem("key")
     const dispath=useDispatch()
     const [sowZapros ,setSowZapros]=useState(true)
-    const {mecdata,ChangeACtivSup,setDefaultSity,getData} =useProduct()
+    const {menuCategorup,ChangeACtivSup,setDefaultSity,getData} =useProduct()
     const [bgcolor,setBgcolor]=useState(null)
     const history = useLocation()
     const [loading,setloading]=useState(false)
@@ -108,7 +108,7 @@ function App() {
                       
                      <div className="butonns">
                          {
-                             mecdata.map(({id,name,sup})=>{
+                             menuCategorup.map(({id,name,sup})=>{
                                  return (
                                       <Button
                                         cn={bgcolor===id ? "zaprosbuuton2" : "zaprosbuuton"  }

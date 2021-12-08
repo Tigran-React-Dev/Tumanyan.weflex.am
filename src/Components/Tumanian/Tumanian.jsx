@@ -25,10 +25,13 @@ const Tumanian =({history})=>{
 
     useEffect(()=>{
         window.scrollTo(0, 0);
-        const reclam2respins=axios.get("http://tumanyanadmin.weflex.am/api/slider_two")
-        reclam2respins.then(res=>setHomePageReclam2(res.data))
+        const reclam2respins=axios.get(process.env.REACT_APP_API_URL+"/slider_two")
+        reclam2respins.then(res=> {
+            setHomePageReclam2(res.data)
+            setLoading(true)
+        })
             .catch(err=>console.log(err))
-        setLoading(true)
+
     },[])
 
 
@@ -46,7 +49,7 @@ const hoverItem=(id)=>{
 
    }
     const OpenMenu =(item)=>{
-      history.push(`/home/${item.id}`)
+      history.push(`/home/${item.name}`)
         setactiveMenuitem(item)
      }
  

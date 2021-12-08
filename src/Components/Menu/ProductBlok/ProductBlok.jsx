@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
 
-const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients,image, prices, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, prices, bonus,description,descriptionRU,descriptionEN,handleAddProductCard,SendobjtoLikecategory}) => {
 
 
 
@@ -148,7 +148,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,category_id,names, ingredients
                        }
                     <div className={css.addlichniproduct}>
                         {description ?
-                            <p className={css.descript}>{description}</p>
+                            <p className={css.descript}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
                             :
                             <>
                             {prices?.length===3 ?

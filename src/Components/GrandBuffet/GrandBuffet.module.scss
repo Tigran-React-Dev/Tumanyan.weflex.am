@@ -65,10 +65,10 @@
 .bufetitemblok{
   width: get-vw(1679px,1920);
   min-height: get-vw(613px,1920);
-
   display: flex;
   flex-wrap: wrap;
   margin-left: get-vw(102px,1920);
+  padding-bottom: get-vw(60px,1920);
 
 }
 .grandbufefooter{
@@ -132,6 +132,7 @@
     display: flex;
      flex-direction: column;
     margin-left: get-vw(0px,375);
+    padding-bottom: get-vw(60px,375);
 
   }
   .grandbufefooter{

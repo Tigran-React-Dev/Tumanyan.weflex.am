@@ -16,13 +16,13 @@ const GrantBuffet = () => {
 
 
     const history = useHistory()
-    const {grandBufeData} =useProduct()
+    const {languae} =useProduct()
     const grandfufet = useSelector(({ ProductReducer  }) => ProductReducer.grandfufet)
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const {id} = useParams()
     const ref=useRef(null)
     const dispatch=useDispatch()
-    const [activeMenuStyle,setActiveMenuStyle]=useState({1:true})
+    const [activeMenuStyle,setActiveMenuStyle]=useState({0:true})
     const [loader2, setloader2] = useState(false)
     const [pagintion,setpagination]=useState(7)
      useEffect(()=>{
@@ -69,8 +69,8 @@ const GrantBuffet = () => {
             default :
                 break
         }
-        setActiveMenuStyle({[menu.id]:!activeMenuStyle[menu.id]})
-        history.push(`/${menu.id}`)
+        setActiveMenuStyle({[index]:!activeMenuStyle[index]})
+        history.push(`/${menu.name}`)
     }
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
@@ -97,9 +97,9 @@ const GrantBuffet = () => {
                                 className={css.itemmenu}
                                 key={elem.id}
                                 onClick={()=>ChangeStyleAndCategory(elem,index)}
-                                style={{background:activeMenuStyle[elem.id] && "#13AD54",border:activeMenuStyle[elem.id] && "none"}}
+                                style={{background:activeMenuStyle[index] && "#13AD54",border:activeMenuStyle[index] && "none"}}
                             >
-                                <p style={{color:activeMenuStyle[elem.id] && "#FFFFFF" }}>{elem.name}</p>
+                                <p style={{color:activeMenuStyle[index] && "#FFFFFF" }}>{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</p>
 
                             </div>
 
@@ -109,7 +109,7 @@ const GrantBuffet = () => {
             </div>
             <div className={css.bufetitemblok}>
                 {
-                    grandfufet.filter(fil=>fil.id==id)[0]?.product_buffets.map((obj,index)=>{
+                    grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.map((obj,index)=>{
                         return(
                             index<=pagintion &&
                             <ProductBlokGrand
@@ -126,12 +126,12 @@ const GrantBuffet = () => {
             </div>
             </>
             }
-            <div className={css.grandbufefooter}>
+            {grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.length>8 && <div className={css.grandbufefooter}>
                 <Button
                     title="տեսնել ավելին"
                     cn="btnreadmore2"
-                    onClick={()=>setpagination(pagintion+8)}/>
-            </div>
+                    onClick={() => setpagination(pagintion + 8)}/>
+            </div>}
         </div>
     );
 };

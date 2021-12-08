@@ -44,7 +44,7 @@ const Menu = ({ history }) => {
 
 useEffect(() => {
        if (activSub.length !== 0) {
-            let act = activSub.find(i => i.id == id)
+            let act = activSub.find(i => i.name == id)
             setactiveMenuitem(act)
             setloader(false)
         }
@@ -101,7 +101,7 @@ useEffect(() => {
         }
        // const activedatas = activSub.find(i => i.id == item.id)
         setactiveMenuitem(item)
-        history.push(`/home/${item.id}`)
+        history.push(`/home/${item.name}`)
         window.scrollTo(0, 300)
     }
 
@@ -118,10 +118,10 @@ useEffect(() => {
                     {activSub.map((item,index) => {
                       return (
                             <div
-                                className={item.id == id ? css.btncategory : css.btncategory2}
+                                className={item.name == id ? css.btncategory : css.btncategory2}
                                 key={item.id} onClick={() => changeProductCategory(item,index)}
                                 >
-                                <p className={item.id == id ? css.menuname : css.menuname2} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
+                                <p className={item.name == id ? css.menuname : css.menuname2} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
                             </div>
                         )
                     })
@@ -132,7 +132,7 @@ useEffect(() => {
                     <>
                     <div className={css.categoryitemblok}>
                         {
-                            product.filter(fil=>fil.id==id)[0]?.products.map((obj) => {
+                            product.filter(fil=>fil.name==id)[0]?.products.map((obj) => {
 
                                 return (<ProductBlok
                                     key={obj.id}
@@ -149,7 +149,7 @@ useEffect(() => {
                     <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
                       <div className={css.recomconstruct}>
                           {
-                              product.filter(fil=>fil.id==id)[0]?.advices?.map((obj) => {
+                              product.filter(fil=>fil.name==id)[0]?.advices?.map((obj) => {
 
                                   return (<ProductBlok
                                       key={obj.product.id}
@@ -169,7 +169,7 @@ useEffect(() => {
                     {id==20 && <div className={css.Sauces}>
                         <p className={css.Saucestitle}>Սոուսներ</p>
                         <div className={css.sousesblog}>
-                            {product.filter(fil=>fil.id==id)[0]?.souses.map((obj) => {
+                            {product.filter(fil=>fil.name==id)[0]?.souses.map((obj) => {
 
                                 return (<ProductBlok
                                     key={obj.id}

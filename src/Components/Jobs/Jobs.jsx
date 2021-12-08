@@ -7,9 +7,9 @@ import sala from "../../images/icons/selta.png"
 import {useSlider} from "../Providers/SliderProvider";
 import Button from "../Global/Button/Button";
 import Input from "../Global/Input/Input";
-import Check from "../Global/Checkbox2/Check";
 import {NavLink, useHistory} from "react-router-dom";
 import checkt from "../../images/icons/chechkoriginal.png"
+import axios from "axios";
 
 const Jobs =()=>{
     const [sowblok,setsowblock]=useState(null)
@@ -17,13 +17,47 @@ const Jobs =()=>{
     const [activeSelect,Setactiveselect]=useState("Թափուր աշխատատեղեր")
     const [sowselectPopup,setSowSelectPopup] =useState(false)
     const [checkeds,setCheckeds]=useState(false)
+    const [loading,setLoading]=useState(false)
     const fileRef = useRef()
-    const {jobs}=useSlider();
+    const {jobs,SetJobs}=useSlider();
     const history =useHistory()
 
 
 
 
+    const [JobsData,setJobsData]=useState({
+        jobCategory:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : null,
+        fullname:"",
+        phone:"",
+        email:"",
+        message:"",
+        rezume:"",
+        sucsses_check:checkeds
+    })
+    const {fullname,phone,email,message,rezume,sucsses_check}=JobsData
+
+    const OnchangeData =(e)=>{
+        setJobsData({
+            ...JobsData,
+            [e.target.name] : e.target.value,
+        })
+    }
+
+
+    useEffect(()=>{
+       const resjob=axios.get(process.env.REACT_APP_API_URL+"/job")
+        resjob.then((res)=>{
+            SetJobs(res.data)
+            setLoading(true)
+        }).catch(err=>{
+            console.log(err)
+        })
+
+    },[])
+    const SubmitJobData =(e)=>{
+        e.preventDefault()
+        console.log(JobsData)
+    }
     useEffect(()=>{
         window.scrollTo(0, 0);
 
@@ -42,15 +76,25 @@ const Jobs =()=>{
         setSowSelectPopup(!sowselectPopup)
     }
     const JobsItemClick =(jobitem)=>{
-        Setactiveselect(jobitem.jobcategory)
+        Setactiveselect(jobitem.free_job)
         setSowSelectPopup(!sowselectPopup)
+        setJobsData({
+            ...JobsData,
+            jobCategory:jobitem.free_job,
+        })
+
     }
     const Apllytojob =(sendAplly)=>{
         Setactiveselect(sendAplly)
         window.scrollTo(0, 1400);
     }
     const hantletargetclick =()=>{
+
         setCheckeds(!checkeds)
+        setJobsData({
+            ...JobsData,
+            sucsses_check:!checkeds,
+        })
     }
 
 
@@ -69,64 +113,65 @@ const Jobs =()=>{
              <div className={css.jobslist}>
                     <p className={css.tapur}>Թափուր աշխատատեղեր</p>
                     <hr/>
-                   <div className={css.itemjob}>
-                       {
-                           jobs.map((itm)=>{
-                               return(
-                                   <>
-                                   <div
-                                       className={css.jobblok}
-                                       key={itm.id}
-                                       onClick={()=>SowJobsTutorial(itm)}
-                                   >
-                                       <h2>{itm.jobcategory}</h2>
-                                       <h3><img src={cordinat} alt=""/><p>{itm.adress}</p></h3>
-                                       <h4>{itm.date}</h4>
-                                       {sowblok===itm.id ? <img className={css.slaqnerqev} src={sala} alt=""/>  : <img className={css.slaqnerqev} src={salb} alt=""/>}
+                 {loading && <div className={css.itemjob}>
+                     {
+                         jobs.map((itm) => {
+                             return (
+                                 <>
+                                     <div
+                                         className={css.jobblok}
+                                         key={itm.id}
+                                         onClick={() => SowJobsTutorial(itm)}
+                                     >
+                                         <h2>{itm.free_job}</h2>
+                                         <h3><img src={cordinat} alt=""/><p>{itm.address}</p></h3>
+                                         <h4>{itm.date}</h4>
+                                         {sowblok === itm.id ? <img className={css.slaqnerqev} src={sala} alt=""/> :
+                                             <img className={css.slaqnerqev} src={salb} alt=""/>}
 
-                                   </div>
-                                       {sowblok===itm.id ?
-                                           <div className={css.tutorialwraper}>
-                                               <div className={css.wraper1}>
-                                                   <p>Ձեր փորձը՝</p>
-                                                   <ul>
-                                                       {
-                                                           activjobTutorial.practica.map((elem,index)=>{
-                                                               return <li key={index}>- {elem}</li>
-                                                           })
-                                                       }
-                                                   </ul>
-                                               </div>
-                                               <div className={css.wrapper2}>
-                                                   <p>Ձեր հմտությունները՝</p>
-                                                   <ul>
-                                                       {
-                                                           activjobTutorial.skills.map((elem,index)=>{
-                                                               return <li key={index}>- {elem}</li>
-                                                           })
-                                                       }
-                                                   </ul>
-                                               </div>
-                                                <Button
-                                                    cn="btnselectjob"
-                                                    title="դիմել"
-                                                    onClick={()=>Apllytojob(activjobTutorial.jobcategory)}
-                                                />
+                                     </div>
+                                     {sowblok === itm.id ?
+                                         <div className={css.tutorialwraper}>
+                                             <div className={css.wraper1}>
+                                                 <p>Ձեր փորձը՝</p>
+                                                 <ul>
+                                                     {
+                                                         activjobTutorial.experiences.map((elem, index) => {
+                                                             return <li key={index}>- {elem.experience}</li>
+                                                         })
+                                                     }
+                                                 </ul>
+                                             </div>
+                                             <div className={css.wrapper2}>
+                                                 <p>Ձեր հմտությունները՝</p>
+                                                 <ul>
+                                                     {
+                                                         activjobTutorial.skills.map((elem, index) => {
+                                                             return <li key={index}>- {elem.skill}</li>
+                                                         })
+                                                     }
+                                                 </ul>
+                                             </div>
+                                             <Button
+                                                 cn="btnselectjob"
+                                                 title="դիմել"
+                                                 onClick={() => Apllytojob(activjobTutorial.jobcategory)}
+                                             />
 
-                                          </div> : null}
-                                   </>
-                               )
-                           })
-                       }
+                                         </div> : null}
+                                 </>
+                             )
+                         })
+                     }
 
-                   </div>
+                 </div>}
                 <div className={css.hayt}>
                   <div className={css.haytwraper}>
                              <h2>դիմում հայտ</h2>
                              <p>Թողեք ձեր կոնտակտային տվյալները,
                                  և մեր աշխատակիցը հնարավորինս
                                  շուտ կկապվի Ձեզ հետ։</p>
-                      <form>
+                      <form onSubmit={SubmitJobData}>
                             <div className={css.selectjob1} onClick={ShowSelectWindow}>
                                 <h3>{activeSelect}</h3>
                                 {!sowselectPopup ? <img src={salb} alt=""/> : <img src={sala} alt=""/>}
@@ -135,17 +180,17 @@ const Jobs =()=>{
                            <div className={css.popupgeneral}>
                               <div className={css.selwraper} />
                                <div className={css.selectdiv}>
-                                   <ul>
+                                   {loading && <ul>
                                        {
-                                           jobs.map((item)=>{
-                                               return(
-                                                   <li key={item.id} onClick={()=>JobsItemClick(item)}>
-                                                       {item.jobcategory}
+                                           jobs.map((item) => {
+                                               return (
+                                                   <li key={item.id} onClick={() => JobsItemClick(item)}>
+                                                       {item.free_job}
                                                    </li>
                                                )
                                            })
                                        }
-                                   </ul>
+                                   </ul>}
 
                                </div>
 
@@ -155,21 +200,37 @@ const Jobs =()=>{
                               cn="jobinput"
                               placeholder="Անուն Ազգանուն*"
                               type="text"
+                              name="fullname"
+                              value={fullname}
+                              required={true}
+                              onChange={OnchangeData}
                           />
                           <Input
                               cn="jobinput"
                               placeholder="Հեռախոսահամար*"
                               type="number"
+                              name="phone"
+                              value={phone}
+                              required={true}
+                              onChange={OnchangeData}
                           />
                           <Input
                               cn="jobinput"
                               placeholder="էլեկտրոնային հասցե*"
                               type="email"
+                              name="email"
+                              value={email}
+                              required={true}
+                              onChange={OnchangeData}
                           />
 
                           <textarea
                               className={css.areatext}
                               placeholder="Ուղեկցող նամակ"
+                              name="message"
+                              value={message}
+                              required={true}
+                              onChange={OnchangeData}
                           ></textarea>
 
                           <button
@@ -183,14 +244,20 @@ const Jobs =()=>{
                               <h6>max. 4 MB PDF, DOC, DOCX</h6>
 
                           </button>
-                          <input type="file" name="file" ref={fileRef} style={{display:"none"}}/>
+                          <input type="file" name="rezume" onChange={(e)=>{
+                              setJobsData({
+                                  ...JobsData,
+                                  [e.target.name]:e.target.files[0]
+                              })
+                          }} ref={fileRef} style={{display:"none"}}/>
                            <div className={css.checkandlable}>
                                <input
                                    className={css.checkbox1}
                                    type="checkbox"
                                    onClick={hantletargetclick}
-                                   isChecked={checkeds}
+                                   checked={checkeds}
                                    id="okinfo"
+
                                />
                                <label htmlFor="okinfo">
                                    <div className={css.ckekckdiv2} style={{
@@ -205,6 +272,7 @@ const Jobs =()=>{
                         <Button
                           cn="btnjob2"
                           title="ուղարկել"
+
                         />
 
                       </form>

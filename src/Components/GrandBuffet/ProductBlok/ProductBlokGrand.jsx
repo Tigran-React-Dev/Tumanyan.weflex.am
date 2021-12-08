@@ -11,7 +11,7 @@ import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
 import ItionalProduct from "../../Menu/ItionalProduct/ItionalProduct";
 
-const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,handleAddProductCard,handleonlyproduct,SendobjtoLikecategory}) => {
+const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard,SendobjtoLikecategory}) => {
 
 
 
@@ -148,7 +148,7 @@ const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, 
                        }
                     <div className={css.addlichniproduct}>
                         {description ?
-                            <p className={css.descript}>{description}</p>
+                            <p className={css.descript}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
                             :
                             <>
                             {price_buffets?.length===3 ?

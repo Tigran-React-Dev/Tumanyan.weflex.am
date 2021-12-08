@@ -21,12 +21,13 @@ import { useTranslation } from 'react-i18next';
 import {useSelector} from "react-redux";
 import i18next from 'i18next';
 import {isAuthRoutes, isOuthFooter} from "../routes";
+import axios from "axios";
 
 
 
 const Header = () => {
     const  totalprice = useSelector(({ CardReducer  }) => CardReducer.totalPrice)
-    const { adressCountry, activSub, activeCityname, setactiveCityname, setActivSub,mecdata, changeLang,language, defaultCity, setDefaultSity } = useProduct()
+    const { adressCountry,setAdressCountry,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
     const { t } = useTranslation();
     const history = useHistory()
     const [selecticon, setSelectIcon] = useState(true)
@@ -39,9 +40,20 @@ const Header = () => {
     const [languagess, setLanguage] = useState(1)
     const [mobileLanguageStyle,setMobileLanguageStyle]=useState(1)
     const [menuiconClik,setMenuIconClik]=useState(false)
-    const {languae}=useProduct()
+    const [loading,setLoading]=useState(false)
     const [hegth,setHegth]=useState(false)
 
+
+
+    useEffect(()=>{
+        const responsAdress = axios.get(process.env.REACT_APP_API_URL + "/address")
+           responsAdress.then((res)=>{
+               setAdressCountry(res.data)
+               setLoading(true)
+           }).catch(err=>{
+               console.log(err)
+           })
+    },[])
 
     const handleClickSelect = () => {
         setSelectIcon(!selecticon)
@@ -79,27 +91,26 @@ const Header = () => {
             window.scrollTo(0, 850);
         }else{
 
-             history.push("/home/19")
+             history.push("/home/Shaurma")
         }
 
     }
 
     const showactiveAdress = (id, adress, city) => {
-
         setActiveAdress({ [id]: !adressactive[id] })
         setAdress(adress)
-        const activDaata2 =mecdata.find((itm) => itm.name === city)
-       setActivSub(activDaata2.sup)
+        const activDaata2 =menuCategorup.find((itm) => itm.name.toLowerCase() == city.toLowerCase())
+        setActivSub(activDaata2.sup)
         // setSowAdress(!sowAdress)
     }
-    const changeScrol = (e) => {
+     const changeScrol = (e) => {
         if (window.scrollY >= 150) {
             setSoumenu(true)
         } else {
             setSoumenu(false)
         }
 
-        if (window.scrollY >= 400) {
+        if (window.scrollY >= 600) {
             setHegth(true)
         } else {
             setHegth(false)
@@ -112,7 +123,7 @@ const Header = () => {
     const changeMenu = () => {
         setDefaultSity(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
         setactiveCityname(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
-
+        window.scrollTo(0, 0);
     }
     const changeborderinput = (key) => {
         key ? setInputborder(key) : setInputborder(!inputborder)
@@ -207,10 +218,10 @@ const mobilemenustyle ={
                              </NavLink>
                          </div>
                         <ul className={css.activeLanguage}>
-                            {languages.map(itm => {
+                            {languages.map((itm,index) => {
                                 return (languagess === itm.id &&
                                     <li className={css.activlang}
-                                        key={itm.id}
+                                        key={index}
                                         onClick={() => changeLanguag(itm.id)}
                                     >{itm.name}
                                     </li>)
@@ -232,7 +243,7 @@ const mobilemenustyle ={
 
                     </div>
                 </div>
-                {sowAdress &&
+                {sowAdress && loading &&
                 <div className={css.adressblok}>
                     <div className={css.adresswraper} onClick={()=>setSowAdress(!sowAdress)}/>
                     <div style={{ top: sowmenu ? "3.9vw" : "7.5vw" }} className={css.adresses} >
@@ -240,9 +251,9 @@ const mobilemenustyle ={
                             {activSub.length &&
                                 adressCountry.map((item) => {
                                     return (
-                                        defaultCity === item.city &&
+                                        defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
                                         <div key={item.id}
-                                             onClick={() => showactiveAdress(item.id, item.adress, item.city)}
+                                             onClick={() => showactiveAdress(item.id, item.address, item.city.name)}
                                              style={{
                                                  background: adressactive[item.id] ?
                                                      "#13AD54" : "#FFFFFF",
@@ -254,8 +265,8 @@ const mobilemenustyle ={
                                                 display: adressactive[item.id] ?
                                                     "block" : "none",
                                             }} />
-                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{item.title}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{item.adress}</p>
+                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
                                             <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
                                         </div>
                                     )
@@ -268,7 +279,7 @@ const mobilemenustyle ={
                         <p
                             className={css.select_menu}
                             onClick={changeMenu}>{defaultCity === "Երեվան" ?
-                            t("adressadd1") : defaultCity === "ծաղկաձոր" ?
+                            t("adressadd1") : defaultCity === "Ծաղկաձոր" ?
                                 t("adressadd2") :  t("adressadd2")}
                         </p>
                     </div>
@@ -340,10 +351,10 @@ const mobilemenustyle ={
                         </div>
                         <div className={css.changelanguagemobile}>
                             {
-                                languages.map(lang=>{
+                                languages.map((lang,i)=>{
                                     return(
                                         <h6
-                                            key={lang.id}
+                                            key={i}
                                             style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium",color:mobileLanguageStyle==lang.id && "#13AD54"}}
                                             onClick={() => changeLanguag(lang.id, lang.name)}
                                         >
@@ -356,7 +367,7 @@ const mobilemenustyle ={
 
                         </div>
                     </div>
-                    {sowAdress &&
+                    {sowAdress && loading &&
                     <div className={css.adressblokmobile}>
                         <div className={css.adresswraper} onClick={()=>setSowAdress(!sowAdress)}/>
                         <div  className={css.adresses} onClick={(e)=>e.stopPropagation()} >
@@ -364,9 +375,9 @@ const mobilemenustyle ={
                                 {activSub.length &&
                                 adressCountry.map((item) => {
                                     return (
-                                        defaultCity === item.city &&
+                                        defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
                                         <div key={item.id}
-                                             onClick={() => showactiveAdress(item.id, item.adress, item.city)}
+                                             onClick={() => showactiveAdress(item.id, item.adress, item.city.name)}
                                              style={{
                                                  background: adressactive[item.id] ?
                                                      "#13AD54" : "#FFFFFF",
@@ -378,8 +389,8 @@ const mobilemenustyle ={
                                                 display: adressactive[item.id] ?
                                                     "block" : "none",
                                             }} />
-                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{item.title}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{item.adress}</p>
+                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
                                             <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
                                         </div>
                                     )
