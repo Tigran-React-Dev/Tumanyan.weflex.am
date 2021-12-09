@@ -29,7 +29,7 @@ const [show,setShow]=useState({})
     const onMinusCount = ((obj,bonus) => {
         dispatch(OnMinusCount(obj,bonus))
     })
-
+    console.log(itionalitem)
 
 
     return (
@@ -72,7 +72,8 @@ const [show,setShow]=useState({})
                      </div>
                     <h2 className={css.sizemobile}>{size != undefined ? size : null}</h2>
                     <div className={css.minuspluscountmobile}>
-                        <p className={css.descriptionmobile}>{description !=null  ? <span>{description}</span> : null} </p>
+                        <p className={css.descriptionmobile}>{description !=null  ? <span>{description}</span> :
+                            itionalitem !=undefined ? itionalitem.map(e=><span>{e.name}, </span>) : null} </p>
                         <div className={css.countminusplus}>
                             {count ==1 ?
                                 <>

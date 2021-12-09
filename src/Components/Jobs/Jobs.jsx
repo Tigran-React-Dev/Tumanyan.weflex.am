@@ -17,6 +17,7 @@ const Jobs =()=>{
     const [activeSelect,Setactiveselect]=useState("Թափուր աշխատատեղեր")
     const [sowselectPopup,setSowSelectPopup] =useState(false)
     const [checkeds,setCheckeds]=useState(false)
+    const [filename,setFileName]=useState(null)
     const [loading,setLoading]=useState(false)
     const fileRef = useRef()
     const {jobs,SetJobs}=useSlider();
@@ -24,17 +25,18 @@ const Jobs =()=>{
 
 
 
+    const [errors,setErrors]=useState({})
 
     const [JobsData,setJobsData]=useState({
-        jobCategory:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : null,
-        fullname:"",
+        free_job:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : null,
+        full_name:"",
         phone:"",
         email:"",
         message:"",
-        rezume:"",
-        sucsses_check:checkeds
+        resume:"",
+        success_check:"true"
     })
-    const {fullname,phone,email,message,rezume,sucsses_check}=JobsData
+    const {free_job, full_name, phone, email, message, resume, success_check}=JobsData
 
     const OnchangeData =(e)=>{
         setJobsData({
@@ -54,9 +56,50 @@ const Jobs =()=>{
         })
 
     },[])
+
+    const SendRezumeMail = async (formdata)=>{
+
+        const config={
+            Headers:{
+                'Content-Type':'application/json'
+            }
+        }
+
+
+        debugger
+
+        try {
+            const res = await axios.post("http://tumanyanadmin.weflex.am/api/addApply_Job" ,JSON.stringify(formdata),config )
+            console.log(res)
+        }catch (error){
+
+            setErrors(error)
+        }
+
+
+    }
+
+
     const SubmitJobData =(e)=>{
         e.preventDefault()
-        console.log(JobsData)
+        console.log({free_job, full_name, phone, email, message, resume, success_check,})
+        // const res  =axios.post(process.env.REACT_APP_API_URL +"/addApply_Job" , )
+        // res.then(respons=>{
+        //     console.log(respons)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+
+
+        SendRezumeMail({
+            free_job, full_name, phone, email, message, resume, success_check
+
+        })
+        if(Object.keys(errors).length===0){
+            console.log("success")
+        }else{
+            console.log(errors)
+        }
     }
     useEffect(()=>{
         window.scrollTo(0, 0);
@@ -80,7 +123,7 @@ const Jobs =()=>{
         setSowSelectPopup(!sowselectPopup)
         setJobsData({
             ...JobsData,
-            jobCategory:jobitem.free_job,
+            free_job:jobitem.free_job,
         })
 
     }
@@ -93,7 +136,7 @@ const Jobs =()=>{
         setCheckeds(!checkeds)
         setJobsData({
             ...JobsData,
-            sucsses_check:!checkeds,
+            success_check:!checkeds,
         })
     }
 
@@ -197,31 +240,34 @@ const Jobs =()=>{
 
                            </div>
                           }
+                          <h6>{errors && errors.full_name}</h6>
                           <Input
                               cn="jobinput"
                               placeholder="Անուն Ազգանուն*"
                               type="text"
-                              name="fullname"
-                              value={fullname}
+                              name="full_name"
+                              value={full_name}
                               required={true}
                               onChange={OnchangeData}
                           />
+                          <h6>{errors && errors.phone}</h6>
                           <Input
                               cn="jobinput"
                               placeholder="Հեռախոսահամար*"
                               type="number"
                               name="phone"
                               value={phone}
-                              required={true}
+
                               onChange={OnchangeData}
                           />
+                          <h6>{errors && errors.full_name}</h6>
                           <Input
                               cn="jobinput"
                               placeholder="էլեկտրոնային հասցե*"
-                              type="email"
+                              type="text"
                               name="email"
                               value={email}
-                              required={true}
+
                               onChange={OnchangeData}
                           />
 
@@ -242,14 +288,16 @@ const Jobs =()=>{
                               }}
                           >
                               <h3>Կցել ռեզյումե</h3>
-                              <h6>max. 4 MB PDF, DOC, DOCX</h6>
+                              <h6>{filename ? filename : "max. 4 MB PDF, DOC, DOCX"}</h6>
 
                           </button>
-                          <input type="file" name="rezume" onChange={(e)=>{
+                          <input type="file" name="resume" accept=".pdf,.doc,.docx" onChange={(e)=>{
                               setJobsData({
                                   ...JobsData,
                                   [e.target.name]:e.target.files[0]
+
                               })
+                              setFileName(e.target.files[0].name)
                           }} ref={fileRef} style={{display:"none"}}/>
                            <div className={css.checkandlable}>
                                <input
@@ -262,10 +310,9 @@ const Jobs =()=>{
                                />
                                <label htmlFor="okinfo">
                                    <div className={css.ckekckdiv2} style={{
-                                       backgroundColor:checkeds && "#13AD54",border: checkeds && "1px solid #13AD54"
+                                       backgroundColor:checkeds && "#13AD54",border: checkeds && "1px solid #13AD54",
+                                       backgroundImage:checkeds && `url(${checkt})`
                                    }}>
-                                       {checkeds && <img  src={checkt} alt="" /> }
-
                                    </div>
                                    <h4>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h4>
                                    </label>

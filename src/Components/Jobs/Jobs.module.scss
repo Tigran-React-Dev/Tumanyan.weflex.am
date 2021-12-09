@@ -464,18 +464,14 @@ min-height: get-vw(75px,1920);
     width: get-vw(27px,1920 );
     height: get-vw(27px,1920 );
     background: #F9F9F9;
-     cursor: pointer;
-    border: 1px solid #BFB7B6;
+    background-size: get-vw(20px,1920) get-vw(15px,1920);
+    background-repeat: no-repeat;
+    background-position: get-vw(2px,1920) get-vw(5px,1920);
+    cursor: pointer;
+    border: get-vw(1px,1920) solid #BFB7B6;
     box-sizing: border-box;
     border-radius: get-vw(5px, 1920);
 
-
-    img{
-      width: get-vw(20px, 1920);
-      height: get-vw(15px,1920 );
-      margin-top: get-vw(5.5px,1920 );
-      margin-left: get-vw(3.0px,1920 );
-    }
   }
 
   h1{
@@ -829,22 +825,18 @@ min-height: get-vw(75px,1920);
          }
     }
    .ckekckdiv2{
-      width: get-vw(16px,375 );
-      height: get-vw(16px,375 );
+      width: get-vw(27px,375 );
+      height: get-vw(27px,375 );
       background: #F9F9F9;
-      cursor: pointer;
+      background-size: get-vw(20px,375) get-vw(15px,375);
+      background-repeat: no-repeat;
+      background-position: get-vw(4px,375) get-vw(4px,375);
       border: get-vw(1px,375) solid #BFB7B6;
       box-sizing: border-box;
       border-radius: get-vw(3px, 375);
       display: flex;
       align-items: center;
 
-      img{
-        width: get-vw(12px, 375);
-        height: get-vw(9px,375 );
-        margin-top: get-vw(2px,375 );
-        margin-left: get-vw(1px,375 );
-      }
     }
 
     h1{
