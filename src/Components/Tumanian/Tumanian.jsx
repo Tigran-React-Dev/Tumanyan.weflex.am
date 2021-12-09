@@ -55,6 +55,9 @@ const hoverItem=(id)=>{
  
     return(
         <div className={css.home} >
+            {/* <div className={css.blsckhd}>
+                             
+            </div> */}
             <div className={css.slider}>
                 <TumanianSlider/>
             </div>

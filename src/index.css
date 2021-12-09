@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #FFFFFF;
   padding-top: -30px;
+  
   /*cursor: url("./images/product/spitak burger.png");*/
 }
 
@@ -22,7 +23,7 @@ code {
   list-style: none;
   text-decoration: none!important;
 
-
+ 
 }
 
 p{
@@ -37,7 +38,8 @@ html{
 
 
 .main {
-  margin-top: 6.4vw;
+  margin-top: 7.0vw;
+
 
 }
 @media  screen and (max-width:450px){

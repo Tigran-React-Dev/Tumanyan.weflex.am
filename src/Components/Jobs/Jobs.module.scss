@@ -310,6 +310,18 @@
     }
   }
 }
+.error{
+          font-family: Montserrat-Regular;
+          font-style: normal;
+          font-weight: normal;
+          font-size: get-vw(14px,1920);
+          line-height: get-vw(16px,1920);
+          letter-spacing: -0.02em;
+          color:red;
+          margin-top: get-vw(50px,1920);
+          margin-left: get-vw(0px,1920);
+          cursor: pointer;
+}
 .popupgeneral{
   position: absolute;
   width: get-vw(1920px,1920);

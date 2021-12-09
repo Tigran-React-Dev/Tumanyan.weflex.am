@@ -110,7 +110,7 @@ const Header = () => {
             setSoumenu(false)
         }
 
-        if (window.scrollY >= 600) {
+        if (window.scrollY >= 500) {
             setHegth(true)
         } else {
             setHegth(false)
@@ -137,13 +137,18 @@ const Header = () => {
     // Style animation open header
 
     const cardStyle = {
+
         top:  sowmenu ? "-3.4vw" : "0vw",
         transition: "all 0.3s ease-in",
-       };
+        // opacity: sowmenu ? "0" : "1",
+
+    };
     const menublogstyle = {
+
         top:  sowmenu ? "-3.3vw" : "0",
         transition: "all 0.3s ease-in",
-      }
+
+    }
     const headerstyle ={
          height: sowmenu ? "64px" : "160px",
         }

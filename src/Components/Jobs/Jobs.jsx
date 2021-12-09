@@ -24,9 +24,9 @@ const Jobs =()=>{
     const history =useHistory()
 
 
-
+    const [sucsesdata,setSucses]=useState(false)
     const [errors,setErrors]=useState({})
-
+    console.log(errors);
     const [JobsData,setJobsData]=useState({
         free_job:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : null,
         full_name:"",
@@ -34,7 +34,7 @@ const Jobs =()=>{
         email:"",
         message:"",
         resume:"",
-        success_check:"true"
+        success_check:checkeds
     })
     const {free_job, full_name, phone, email, message, resume, success_check}=JobsData
 
@@ -56,50 +56,43 @@ const Jobs =()=>{
         })
 
     },[])
-
-    const SendRezumeMail = async (formdata)=>{
-
-        const config={
-            Headers:{
-                'Content-Type':'application/json'
-            }
-        }
-
-
-        debugger
-
+    const handleSubmit = async () => {
+         console.log({free_job, full_name, phone, email, message, resume, success_check,})
+        // store the states in the form data
+        const loginFormData = new FormData();
+        loginFormData.append("free_job", free_job)
+        loginFormData.append("full_name", full_name)
+        loginFormData.append("phone", phone)
+        loginFormData.append("email", email)
+        loginFormData.append("message", message)
+        loginFormData.append("resume", resume)
+        loginFormData.append("success_check",success_check)
+        
         try {
-            const res = await axios.post("http://tumanyanadmin.weflex.am/api/addApply_Job" ,JSON.stringify(formdata),config )
-            console.log(res)
-        }catch (error){
-
-            setErrors(error)
+          // make axios post request
+          const response = await axios({
+            method: "post",
+            url: "http://tumanyanadmin.weflex.am/api/addApply_Job",
+            data: loginFormData,
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+          if(Object.keys(response.data).length==10){
+            setSucses(true)
+            setErrors({})
+          }else{
+            setErrors(response.data);
+          }
+          
+        } catch(error) {
+          console.log(error)
         }
+      }
 
-
-    }
-
-
+    
     const SubmitJobData =(e)=>{
         e.preventDefault()
-        console.log({free_job, full_name, phone, email, message, resume, success_check,})
-        // const res  =axios.post(process.env.REACT_APP_API_URL +"/addApply_Job" , )
-        // res.then(respons=>{
-        //     console.log(respons)
-        // }).catch(err=>{
-        //     console.log(err)
-        // })
-
-
-        SendRezumeMail({
-            free_job, full_name, phone, email, message, resume, success_check
-
-        })
-        if(Object.keys(errors).length===0){
-            console.log("success")
-        }else{
-            console.log(errors)
-        }
+        handleSubmit()
+        
     }
     useEffect(()=>{
         window.scrollTo(0, 0);
@@ -240,15 +233,15 @@ const Jobs =()=>{
 
                            </div>
                           }
-                          <h6>{errors && errors.full_name}</h6>
+                          
                           <Input
                               cn="jobinput"
                               placeholder="Անուն Ազգանուն*"
                               type="text"
                               name="full_name"
                               value={full_name}
-                              required={true}
                               onChange={OnchangeData}
+                              style={{border:errors.full_name && "1px solid red"}}
                           />
                           <h6>{errors && errors.phone}</h6>
                           <Input
@@ -257,7 +250,7 @@ const Jobs =()=>{
                               type="number"
                               name="phone"
                               value={phone}
-
+                              style={{border:errors.phone && "1px solid red"}}
                               onChange={OnchangeData}
                           />
                           <h6>{errors && errors.full_name}</h6>
@@ -267,7 +260,7 @@ const Jobs =()=>{
                               type="text"
                               name="email"
                               value={email}
-
+                              style={{border:errors.email ?  "1px solid red" : null}}
                               onChange={OnchangeData}
                           />
 
@@ -276,7 +269,7 @@ const Jobs =()=>{
                               placeholder="Ուղեկցող նամակ"
                               name="message"
                               value={message}
-                              required={true}
+                              style={{border:errors.message && "1px solid red"}}
                               onChange={OnchangeData}
                           ></textarea>
 
@@ -317,12 +310,13 @@ const Jobs =()=>{
                                    <h4>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h4>
                                    </label>
                            </div>
+                           <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
                         <Button
                           cn="btnjob2"
                           title="ուղարկել"
 
                         />
-
+                       <h6>{sucsesdata && "sucsess" }</h6>
                       </form>
                   </div>
                 </div>

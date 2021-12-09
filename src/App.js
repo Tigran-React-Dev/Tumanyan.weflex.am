@@ -76,10 +76,11 @@ function App() {
 
 
     const stylemain={
-        position:sowmenu ? "relative" : "absolute",
-        top:  sowmenu ? "-1.5vw" : "0",
+        position:sowmenu ? "absolute" : "absolute",
+        top:  sowmenu ? "-1.5vw" : "0vw",
         transition: "all 0.3s ease-in",
     }
+
     const stylefooter={
         
     }
