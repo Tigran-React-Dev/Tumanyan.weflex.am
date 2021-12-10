@@ -32,11 +32,13 @@ const ProductProvider =({children})=>{
      const responsmenu=axios.get(process.env.REACT_APP_API_URL + `/category`)
        responsmenu.then(res=>{
             const sityone="Երեվան";
+
             const sityty="Ծաղկաձոր";
             const dataone =menuCategorup.find((i)=>i.id===1);
             const datatoo =menuCategorup.find((i)=>i.id===2);
-            dataone.sup=res.data.filter(e=>e.city.name.toLowerCase()==sityone.toLowerCase())
+            dataone.sup=res.data.filter(e=>e.city.name.toLowerCase().includes(sityone.toLowerCase()))
             datatoo.sup=res.data.filter(e=>e.city.name.toLowerCase()==sityty.toLowerCase())
+            debugger
             setMenuCategrup([...menuCategorup])
             setActivSub([...dataone.sup])
          }).catch(err=>console.log(err))

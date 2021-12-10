@@ -232,11 +232,11 @@ const mobilemenustyle ={
                                     </li>)
                             })}
                             {languagemodal && <div className={css.langmodal}>
-                                {languages.map(itm => {
+                                {languages.map((itm,index) => {
                                     return (languagess !== itm.id &&
                                         <li
                                             style={{fontFamily:language==="ՀԱՅ" ? "Manrope-Medium" : "Mardoto-Medium",}}
-                                            key={itm.id}
+                                            key={index}
                                             onClick={() => changeLanguag(itm.id, itm.name)}
                                         >{itm.name}
                                         </li>)
@@ -254,10 +254,10 @@ const mobilemenustyle ={
                     <div style={{ top: sowmenu ? "3.9vw" : "7.5vw" }} className={css.adresses} >
                         <div className={css.adresstop} >
                             {activSub.length &&
-                                adressCountry.map((item) => {
+                                adressCountry.map((item,index) => {
                                     return (
                                         defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
-                                        <div key={item.id}
+                                        <div key={index}
                                              onClick={() => showactiveAdress(item.id, item.address, item.city.name)}
                                              style={{
                                                  background: adressactive[item.id] ?
@@ -334,19 +334,19 @@ const mobilemenustyle ={
                         <div className={css.menumixin}>
 
                                 {
-                                    isOuthFooter.map((item)=>{
+                                    isOuthFooter.map((item,index)=>{
 
                                         return(
-                                            <>
-                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact key={item.id} to={item.path}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
-                                            </>
+                                            <React.Fragment key={index}>
+                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact to={item.path}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
+                                            </React.Fragment>
                                             )
                                     })
                                 }
                                 {
-                                    isAuthRoutes.map((item)=>{
+                                    isAuthRoutes.map((item,index)=>{
                                         return(
-                                            <NavLink onClick={ChangeMobileMenu} exact key={item.id} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                            <NavLink onClick={ChangeMobileMenu} exact key={index} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
                                         )
                                     })
                                 }
@@ -378,10 +378,10 @@ const mobilemenustyle ={
                         <div  className={css.adresses} onClick={(e)=>e.stopPropagation()} >
                             <div className={css.adresstop} >
                                 {activSub.length &&
-                                adressCountry.map((item) => {
+                                adressCountry.map((item,index) => {
                                     return (
                                         defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
-                                        <div key={item.id}
+                                        <div key={index}
                                              onClick={() => showactiveAdress(item.id, item.adress, item.city.name)}
                                              style={{
                                                  background: adressactive[item.id] ?

@@ -21,17 +21,50 @@ const Foodpage3 = () => {
     const [sucsessDataSend,setSucsesDataSend]=useState(false)
 
 
+    // change input value and data send axiox request
+
+    const [FoodtrackData,setFoodtruckdata]=useState({
+        name:"",
+        phone:"",
+        email:"",
+        company_name:"",
+        example:"",
+        adress:"",
+        guests_count:"",
+        date:"",
+        message:"",
+        succses_check:"",
+    })
+
+
+const {name,phone,email,company_name,example,adress,guests_count,date,message,succses_check}=FoodtrackData
+
+const handleChangeInput=(e)=>{
+    setFoodtruckdata({
+        ...FoodtrackData,
+        [e.target.name]:e.target.value
+    })
+}
     const CalendarModalControler=()=>{
         setOpenCalendarModal(!openCalendarModal)
     }
     const handleDateChange =(data)=>{
         setCalendarvalue(data)
+        setFoodtruckdata({
+            ...FoodtrackData,
+            date: data.toLocaleDateString()
+        })
     }
     const hantletargetclick =()=>{
         setCheckeds(!checkeds)
+        setFoodtruckdata({
+            ...FoodtrackData,
+            succses_check: !checkeds,
+        })
     }
     const SubmitData =(e)=>{
         e.preventDefault()
+        console.log(FoodtrackData)
         setSucsesDataSend(true)
     }
     useEffect(()=>{
@@ -58,41 +91,62 @@ const Foodpage3 = () => {
                 cn="inputfoodtruck"
                 placeholder="Անուն*"
                 name="name"
+                type="text"
+                value={name}
+                onChange={handleChangeInput}
                 />
                 <div className={css.phoneandemail}>
                 <Input
                 cn="inputfoodtruck2"
                 placeholder="Հեռախոսահամար*"
-                name="name"
+                name="phone"
+                type="number"
+                value={phone}
+                onChange={handleChangeInput}
                 />
                 <Input
                 cn="inputfoodtruck2"
                 placeholder="էլեկտրոնային հասցե*"
-                name="name"
+                name="email"
+                type="text"
+                value={email}
+                onChange={handleChangeInput}
                 />
                 </div>
                 <Input
                 cn="inputfoodtruck3"
                 placeholder="Կազմակերպություն"
-                name="name"
+                name="company_name"
+                type="text"
+                value={company_name}
+                onChange={handleChangeInput}
                 />
                 <div className={css.gicform}/>
                 <h2>Միջոցառման տվյալներ</h2>
                 <Input
                 cn="inputfoodtruck4"
                 placeholder="Միջոցառման բնույթը (օրինակ՝ ծննդյան տարեդարձ կամ գործնական ընթրիք)*"
-                name="name"
+                name="example"
+                type="text"
+                value={example}
+                onChange={handleChangeInput}
                 />
                 <Input
                 cn="inputfoodtruck3"
                 placeholder="Հասցե*"
-                name="name"
+                name="adress"
+                type="text"
+                value={adress}
+                onChange={handleChangeInput}
                 />
                 <div className={css.dataamdfriend}>
                 <Input
                 cn="inputfoodtruck2"
                 placeholder="Հյուրերի քանակ"
-                name="name"
+                name="guests_count"
+                type="text"
+                value={guests_count}
+                onChange={handleChangeInput}
                 />
                 <div className={css.datainput} onClick={CalendarModalControler}>
                 <p>{calendarvalue==="Ամսաթիվ*" ? calendarvalue : calendarvalue.toLocaleDateString()}</p>
@@ -108,10 +162,15 @@ const Foodpage3 = () => {
 
                 </div>
                 <textarea
-                className={css.textmaseges}
-                placeholder="Ուղեկցող նամակ">
+                  className={css.textmaseges}
+                  placeholder="Ուղեկցող նամակ"
+                  name="message"
+                  type="text"
+                  value={message}
+                  onChange={handleChangeInput}
+                />
 
-                </textarea>
+
                 <div className={css.checkandlable1}>
                 <input
                 className={css.checkbox1}
@@ -122,11 +181,10 @@ const Foodpage3 = () => {
                 />
                 <label htmlFor="okinfo">
                 <div className={css.ckekckdiv4} style={{
-                backgroundColor:checkeds && "#13AD54",border: checkeds && "1px solid #13AD54"
+                backgroundColor:checkeds && "#13AD54",border: checkeds && "1px solid #13AD54",
+                backgroundImage:checkeds && `url(${checkt})`
             }}>
-            {checkeds ? <img  src={checkt} alt="" /> : null}
-
-                </div>
+               </div>
                 <h6>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h6>
                 </label>
                 </div>

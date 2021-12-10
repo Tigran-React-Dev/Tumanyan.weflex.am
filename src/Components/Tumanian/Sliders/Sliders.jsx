@@ -51,8 +51,8 @@ const  TumanianSlider= () =>{
 
         {loadong && sliderHome1.map(({id,description,descriptionEN,image,descriptionRU,button_name,button_nameEN,button_nameRU,url})=>{
             return(
-                <>
-                     <SwiperSlide key={id}>
+
+                     <SwiperSlide key={Math.random()}>
                         <div className="slideritem" style={{
                             backgroundImage: `url(${process.env.REACT_APP_IMG_URL + image})`
 
@@ -64,7 +64,7 @@ const  TumanianSlider= () =>{
 
                     </SwiperSlide>
 
-          </>
+
             )
         })
 

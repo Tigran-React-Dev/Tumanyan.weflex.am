@@ -612,15 +612,18 @@ min-height: get-vw(75px,1920);
   }
   .tutorialwraper{
     width: get-vw(375px,375);
-    min-height: get-vw(678px,375);
+    min-height: get-vw(100px,375);
     display: flex;
     flex-direction: column;
 
+
     .wraper1{
       width: get-vw(375px,375);
-      min-height: get-vw(181px,375);
+      min-height: get-vw(21px,375);
+      margin-top: get-vw(30px,375);
       display: flex;
       flex-direction: column;
+
       p{
         width: get-vw(345px,375);
         font-size:get-vw( 14px,375);
@@ -631,13 +634,14 @@ min-height: get-vw(75px,1920);
       }
       ul{
         width: get-vw(345px,375);
-        min-height: get-vw(145px,375);
+        min-height: get-vw(21px,375);
         margin-left: get-vw(15px,375);
-        margin-top: get-vw(15px,375);
+        margin-top: get-vw(5px,375);
+        justify-content: unset;
         li{
           font-size: get-vw(14px,375);
           line-height: 150%;
-
+          margin-top: get-vw(10px,375);
         }
       }
     }
@@ -645,28 +649,30 @@ min-height: get-vw(75px,1920);
   }
   .wrapper2{
     width: get-vw(375px,375);
-    min-height: get-vw(380px,375);
+    min-height: get-vw(21px,375);
     display: flex;
     flex-direction: column;
-    margin-top: get-vw(30px,375);
+    margin-top: get-vw(50px,375);
     p{
       width: get-vw(345px,375);
      font-size:get-vw( 14px,375);
       line-height: 150%;
       margin-left: get-vw(15px,375);
-      margin-top: get-vw(15px,375);
+      margin-top: get-vw(5px,375);
 
     }
     ul{
       width: get-vw(375px,375);
-      min-height: get-vw(344px,375);
+      min-height: get-vw(21px,375);
       margin-left: get-vw(15px,375);
-      margin-top: get-vw(15px,375);
+      margin-top: get-vw(5px,375);
+      justify-content: unset;
+      padding-bottom: get-vw(100px,374);
       li{
         min-width: auto;
         font-size: get-vw(14px,375);
         line-height: 150%;
-
+        margin-top: get-vw(10px,375);
       }
     }
 

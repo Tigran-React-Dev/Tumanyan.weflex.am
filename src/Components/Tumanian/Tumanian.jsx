@@ -65,8 +65,8 @@ const hoverItem=(id)=>{
             <div className={css.reclams}>
                 {Reclam.map(({id,images,description})=>{
                         return(
-                            <>
-                            {id===1 ? <NavLink to={"/1"}> <div className={css.wraperreclam} key={id}>
+                            <React.Fragment key={id}>
+                            {id===1 ? <NavLink to={"/1"}> <div className={css.wraperreclam} >
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />
@@ -79,7 +79,7 @@ const hoverItem=(id)=>{
                                         <h2 className={css.rectitle2}>{description}</h2>
                                     </div></NavLink>
                             }
-                           </>
+                           </React.Fragment>
                         )
                     })
                 }

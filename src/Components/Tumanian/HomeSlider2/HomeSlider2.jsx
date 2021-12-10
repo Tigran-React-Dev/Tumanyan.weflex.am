@@ -37,8 +37,7 @@ const  HomeSlider2= ({homepageReclam2}) =>{
             }} speed={1000}  navigation={false} className="mySwiper">
                 {homepageReclam2.map(({id,image})=>{
                     return(
-                        <>
-                            <SwiperSlide key={id}>
+                            <SwiperSlide key={Math.random()}>
                                 <div className="slideritem" style={{
                                     backgroundImage: `url(${process.env.REACT_APP_IMG_URL+image})`
 
@@ -49,7 +48,7 @@ const  HomeSlider2= ({homepageReclam2}) =>{
 
                             </SwiperSlide>
 
-                        </>
+
                     )
                 })
 

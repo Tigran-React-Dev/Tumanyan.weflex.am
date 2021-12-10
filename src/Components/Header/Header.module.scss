@@ -552,7 +552,7 @@
   }
   .mobilecontn{
     width: get-vw(375px,375);
-    height:get-vw(910px,375);
+    height:get-vw(1200px,500);
     background-color: #252223;
     position: absolute;
     top:get-vw(-900px,375);
@@ -560,18 +560,18 @@
     display: flex;
     flex-direction: column;
     z-index: 26!important;
-    padding-top: get-vw(40px,500);
+    padding-top: get-vw(45px,800);
     .menubarmobile{
       width: get-vw(335px,375);
-      height: get-vw(579px,500);
-      margin-top: get-vw(5px,500);
+      height: get-vw(950px,815);
+      margin-top: get-vw(5px,815);
       margin-left: get-vw(15px,375 );
       display: flex;
       flex-direction: column;
       .linkmenu{
         margin-left:get-vw(0px, 375) ;
-        height: get-vw(23px,500);
-        margin-top: get-vw(50px,500);
+        height: get-vw(23px,800);
+        margin-top: get-vw(60px,800);
 
         p{
           text-decoration: none;
@@ -592,8 +592,8 @@
       }
       .menumixin{
         width: get-vw(135px,375);
-        height: get-vw(305px,500);
-        margin-top: get-vw(16px,500);
+        height: get-vw(305px,800);
+        margin-top: get-vw(40px,800);
         display: flex;
         flex-direction: column;
         a{
@@ -606,21 +606,21 @@
           letter-spacing: -0.04em;
           text-transform: uppercase;
           color: #FFFFFF;
-          margin-top: get-vw(24px,500);
+          margin-top: get-vw(24px,800);
         }
       }
       .loginicon{
         width: get-vw(26px,375);
-        height: get-vw(30px,500);
-        margin-top: get-vw(120px,500);
+        height: get-vw(30px,800);
+        margin-top: get-vw(260px,800);
         .loginh{
           width: get-vw(26px,375);
           height: get-vw(30px,500);
           img{
             width: get-vw(26px,375);
-            height: get-vw(30px,500);
+            height: get-vw(30px,375);
             margin-left: get-vw(0px,375 );
-            margin-top: get-vw(0px,500);
+            margin-top: get-vw(0px,800);
           }
          }
       }
@@ -831,12 +831,12 @@
     width:get-vw(166px,815);
     max-width: get-vw(166px,815);
     height: get-vw(44px,815);
-    margin-top: get-vw(26px,815);
+    margin-top: get-vw(0px,815);
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
     position: fixed;
-    top: get-vw(1220px,815);
+    top: get-vw(1150px,815);
     left: get-vw(615px,815);
     bottom: 0;
     right: 0;
@@ -877,7 +877,7 @@
     height: get-vw(50px,375);
     object-fit: cover;
     position: fixed;
-    top: get-vw(660px,500);
+    top: get-vw(610px,500);
     left: get-vw(310px,375);
     right: 0;
     bottom: 0;

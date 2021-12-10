@@ -26,9 +26,9 @@ const Jobs =()=>{
 
     const [sucsesdata,setSucses]=useState(false)
     const [errors,setErrors]=useState({})
-    console.log(errors);
+
     const [JobsData,setJobsData]=useState({
-        free_job:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : null,
+        free_job:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : "",
         full_name:"",
         phone:"",
         email:"",
@@ -57,7 +57,7 @@ const Jobs =()=>{
 
     },[])
     const handleSubmit = async () => {
-         console.log({free_job, full_name, phone, email, message, resume, success_check,})
+
         // store the states in the form data
         const loginFormData = new FormData();
         loginFormData.append("free_job", free_job)
@@ -72,15 +72,17 @@ const Jobs =()=>{
           // make axios post request
           const response = await axios({
             method: "post",
-            url: "http://tumanyanadmin.weflex.am/api/addApply_Job",
+            url: process.env.REACT_APP_API_URL+"/addApply_Job",
             data: loginFormData,
             headers: { "Content-Type": "multipart/form-data" },
           });
-          if(Object.keys(response.data).length==10){
+
+          if(response.data == "success"){
             setSucses(true)
             setErrors({})
           }else{
             setErrors(response.data);
+
           }
           
         } catch(error) {
@@ -92,6 +94,7 @@ const Jobs =()=>{
     const SubmitJobData =(e)=>{
         e.preventDefault()
         handleSubmit()
+        console.log(JobsData)
         
     }
     useEffect(()=>{
@@ -209,7 +212,7 @@ const Jobs =()=>{
                                  և մեր աշխատակիցը հնարավորինս
                                  շուտ կկապվի Ձեզ հետ։</p>
                       <form onSubmit={SubmitJobData}>
-                            <div className={css.selectjob1} onClick={ShowSelectWindow}>
+                            <div className={css.selectjob1} onClick={ShowSelectWindow} style={{border:errors.free_job && "1px solid red"}}>
                                 <h3>{activeSelect}</h3>
                                 {!sowselectPopup ? <img src={salb} alt=""/> : <img src={sala} alt=""/>}
                             </div>
@@ -243,7 +246,7 @@ const Jobs =()=>{
                               onChange={OnchangeData}
                               style={{border:errors.full_name && "1px solid red"}}
                           />
-                          <h6>{errors && errors.phone}</h6>
+
                           <Input
                               cn="jobinput"
                               placeholder="Հեռախոսահամար*"
@@ -253,7 +256,7 @@ const Jobs =()=>{
                               style={{border:errors.phone && "1px solid red"}}
                               onChange={OnchangeData}
                           />
-                          <h6>{errors && errors.full_name}</h6>
+
                           <Input
                               cn="jobinput"
                               placeholder="էլեկտրոնային հասցե*"
@@ -275,6 +278,7 @@ const Jobs =()=>{
 
                           <button
                               className={css.filebtn}
+                              style={{border:errors.resume && "1px dashed red"}}
                               onClick={(e)=>{
                                   e.preventDefault()
                                   fileRef.current.click();

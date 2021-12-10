@@ -25,7 +25,7 @@ const Menu =()=>{
               {isAuthRoutes.map((item,i)=>{
                         
                   return(
-                   <li key={item.id}>
+                   <li key={i}>
                         
                        <NavLink style={{color:activestyle===i && "#BFB7B6"}} onClick={()=>setActiveStyle(i)}  to={item.path} exact >{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
                    </li>
