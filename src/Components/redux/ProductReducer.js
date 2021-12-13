@@ -4,17 +4,10 @@ import {LIKE_PRODUCT, LOAD_DATA, LOAD_GRAND_BUFET_DATA} from "./Action/ProductAc
 
 
 export const initialState = {
-
     product:[],
     recoment:[],
     grandfufet:[],
-
-
-
-
-
-
-}
+  }
 
 
 

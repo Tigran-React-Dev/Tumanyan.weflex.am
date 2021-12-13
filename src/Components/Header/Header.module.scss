@@ -9,7 +9,7 @@
 .headerContainer{
     position: fixed;
     width: get-vw(1920px, 1920);
-    height: get-vw(160px,1920 );
+    height: get-vw(96px,1920 );
     top: 0px;
     bottom: 0;
     left: 0;
@@ -477,7 +477,9 @@
 .masnajuxmobile{
   display: none;
 }
-
+.basketclick{
+  display: none;
+}
 
 
 
@@ -495,7 +497,6 @@
     width: get-vw(375px,375);
     height: get-vw(62px,375);
     background-color:  #252223;
-    display: block;
     position: fixed;
     top: 0px;
     bottom: 0;
@@ -555,6 +556,10 @@
     height:get-vw(1200px,500);
     background-color: #252223;
     position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
     top:get-vw(-900px,375);
     bottom: 0;
     display: flex;
@@ -651,6 +656,8 @@
   .masnajuxmobile{
     display: block;
     max-width: min-content!important;
+    min-width: max-content;
+
     height: get-vw(26px, 400);
     margin-left: get-vw(15px, 375);
     border-bottom:  get-vw(1px,375) dashed rgba(255, 255, 255, 0.3);
@@ -828,23 +835,24 @@
 
   }
   .basketclick{
-    width:get-vw(166px,815);
-    max-width: get-vw(166px,815);
+    display: block;
+    width:get-vw(166px,375);
+    max-width: get-vw(375px,375);
     height: get-vw(44px,815);
     margin-top: get-vw(0px,815);
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
     position: fixed;
-    top: get-vw(1150px,815);
-    left: get-vw(615px,815);
+    top: get-vw(1100px,815);
+    left: get-vw(200px,375);
     bottom: 0;
     right: 0;
     z-index: 50;
   }
 .corzina{
     min-width:min-content;
-    max-width: get-vw(140px, 375);
+    max-width: get-vw(375px, 375);
     height:get-vw( 44px,375 );
     background: #13AD54;
     border-radius: get-vw(70px, 375);
@@ -852,7 +860,7 @@
     padding: get-vw(0px,375) get-vw(14px,375 );
    p{
       min-width: max-content;
-      max-width: get-vw(150px, 375);
+      max-width: get-vw(250px, 375);
       height:get-vw(23px, 375) ;
       text-decoration: none;
       font-family: Mardoto-Medium;
@@ -869,6 +877,7 @@
       width: get-vw(17px,375 );
       height: get-vw(16px,375 );
       margin-left: get-vw(10px,375 );
+      padding-left: get-vw(0px,375);
       margin-top: get-vw(14px,375 );
       }
      }

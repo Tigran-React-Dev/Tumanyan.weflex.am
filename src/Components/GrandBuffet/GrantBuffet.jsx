@@ -70,7 +70,7 @@ const GrantBuffet = () => {
                 break
         }
         setActiveMenuStyle({[index]:!activeMenuStyle[index]})
-        history.push(`/${menu.name}`)
+        history.push(`/grandBuffe/${menu.name}`)
     }
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))

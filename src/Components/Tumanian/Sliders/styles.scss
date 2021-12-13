@@ -113,7 +113,7 @@ h5{
   width: get-vw(160px,1920 );
   height:get-vw(60px, 1920);
   background: #13AD54;
-  border-radius: 10px;
+  border-radius: get-vw(10px,1920);
   cursor: pointer;
   border: none;
   z-index: 50;

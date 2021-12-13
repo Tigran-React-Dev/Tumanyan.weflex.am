@@ -38,7 +38,7 @@ const ProductProvider =({children})=>{
             const datatoo =menuCategorup.find((i)=>i.id===2);
             dataone.sup=res.data.filter(e=>e.city.name.toLowerCase().includes(sityone.toLowerCase()))
             datatoo.sup=res.data.filter(e=>e.city.name.toLowerCase()==sityty.toLowerCase())
-            debugger
+
             setMenuCategrup([...menuCategorup])
             setActivSub([...dataone.sup])
          }).catch(err=>console.log(err))

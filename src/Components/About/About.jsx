@@ -35,16 +35,10 @@ const About =({history})=>{
         }).catch(err=>console.log(err))
         const respons2=axios.get(process.env.REACT_APP_API_URL + "/about_founder", )
         respons2.then(res=> {
-
-            setAboutDataone(res.data)
-
+           setAboutDataone(res.data)
         }).catch(err=>console.log(err))
-
-
-
-        setLoading(true)
-
-    },[])
+         setLoading(true)
+        },[])
 
   const changestyleandscrolingmenu =(id,i)=>{
         switch (i){

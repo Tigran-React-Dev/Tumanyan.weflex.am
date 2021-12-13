@@ -165,9 +165,12 @@ const ChangeMobileMenu =()=>{
 }
 
 const mobilemenustyle ={
-        position:menuiconClik && !sowAdress ? "fixed" : "absolute",
-        top:menuiconClik && "16.5vw",
-        transition: "all 0.9s",
+         position:menuiconClik && !sowAdress ? "fixed" : "absolute",
+         left:menuiconClik && 0,
+         bottom:menuiconClik && 0,
+         right:menuiconClik && 0,
+         top:menuiconClik && "16.5vw",
+         transition: "all 0.9s",
 }
 
    

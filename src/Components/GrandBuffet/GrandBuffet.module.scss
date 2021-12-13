@@ -111,6 +111,7 @@
       .itemmenu{
         width: unset;
         max-width: min-content;
+        min-width: max-content;
         height: get-vw(49px,375);
         border: get-vw(1px,375) solid #BFB7B6;
         border-radius: get-vw(10px,375);
@@ -121,7 +122,7 @@
           font-size: get-vw(16px,375);
           line-height: get-vw(19px,375);
           margin-top: get-vw(0px,375);
-          padding: get-vw(15px,375) get-vw(15px,375);
+          padding: get-vw(15px,375) get-vw(15px,375) !important;
         }
       }
     }

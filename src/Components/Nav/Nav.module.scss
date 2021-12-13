@@ -1,0 +1,50 @@
+//@function get-vw($size, $width){
+//  $vw-context: $width * 0.01 * 1px;
+//  @return $size / $vw-context * 1vw;
+//  @return $size;
+//}
+//
+//
+//
+//
+//
+//.header {
+//  width: get-vw(1920px, 1920);
+//  height: get-vw(64px,1920 );
+//  display: flex;
+//  position: fixed;
+//  top: 0px;
+//  bottom: 0;
+//  left: 0;
+//  right: 0;
+//  z-index: 32;
+//  align-items: center;
+//  background-color: white;
+//  //transition: all 1s, opacity 2s;
+//
+//  .serch{
+//    width: get-vw(345px,1920 );
+//    height: get-vw(36px,1920 );
+//    background: #F9F9F9;
+//    border-radius: get-vw(70px,1920 );
+//    margin-left: get-vw(303px,1920 );
+//    cursor: pointer;
+//    &:hover{
+//      border: 1px solid #13AD54;
+//    }
+//    form img{
+//      width: get-vw(25px,1920 );
+//      height: get-vw(25px,1920 );
+//      cursor: pointer;
+//      margin-left: get-vw(13px,1920 );
+//      margin-top: get-vw(0px,1920 );
+//    }
+//    form{
+//      display: flex;
+//      align-items: center;
+//      width: get-vw(345px,1920 );
+//      height: get-vw(36px,1920 );
+//
+//    }
+//  }
+//}

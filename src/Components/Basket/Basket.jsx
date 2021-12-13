@@ -282,13 +282,13 @@ const Basket = () => {
                                       <p className={css.adresstitle}>Ընտրեք մասնաճյուղը՝</p>
                                        <div className={css.adresselement}>
                                            {
-                                               adressCountry.map(({id,adress,city})=>{
+                                               adressCountry.map((item)=>{
                                                    return(
-                                                       defaultCity===city &&
-                                                       <div key={id} className={css.itermadresandicon}
-                                                            style={{marginLeft:id===5  && "3.33vw",marginRight:id===3  && "1.2vw"}}>
+                                                       defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
+                                                       <div key={item.id} className={css.itermadresandicon}
+                                                            style={{marginLeft:item.id===5  && "3.33vw",marginRight:item.id===3  && "1.2vw"}}>
                                                            <img src={adressicon} alt=""/>
-                                                           <p>{adress}</p>
+                                                           <p>{item.address}</p>
                                                        </div>
                                                    )
                                                })
