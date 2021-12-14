@@ -68,6 +68,15 @@
     margin-top: get-vw(30px,1920);
   }
 }
+.displayoff{
+  width: get-vw(1636px,1920);
+  min-height: get-vw(361px,1920);
+  margin-left: get-vw(142px,1920);
+  hr{
+    border: 1px solid #EFEFEF;
+    margin-top: get-vw(30px,1920);
+  }
+}
 .tapur{
   font-family: Mardoto-Medium;
   font-style: normal;
@@ -496,6 +505,113 @@ min-height: get-vw(75px,1920);
     color: #252223;
   }
 }
+
+
+.succsesswraper{
+  width: get-vw(1920px,1920);
+  height: 100vh;
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: rgba(49,49,49,0.8);
+  z-index: 30;
+}
+.closewrapper{
+  width: get-vw(1920px,1920);
+  height: get-vw(1920px,1920);
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 16;
+}
+.succsess{
+  width: get-vw(910px,1920);
+  height: get-vw(523px,1920);
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: get-vw(10px,1920);
+  left:get-vw(505px, 1920);
+  top:get-vw(268px,1920 );
+  display: flex;
+  flex-direction: column;
+  z-index:25;
+  align-items: center;
+}
+.close{
+  width: get-vw(910px,1920);
+  height: get-vw(37px,1920);
+  position: relative;
+  img{
+    width: get-vw(37px,1920);
+    height: get-vw(37px,1920);
+    position: absolute;
+    left:get-vw(925px,1920 );
+    cursor: pointer;
+  }
+
+}
+.succsesimg{
+  width: get-vw(86px,1920);
+  height: get-vw(86px,1920);
+  margin: get-vw(43px,1920)  auto;
+
+}
+.thenk{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: bold;
+  font-size: get-vw(24px,1920);
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+   color: #252223;
+
+
+}
+.thenk_one{
+  margin-top: get-vw(50px,1920);
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: bold;
+  font-size: get-vw(24px,1920);
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #252223;
+}
+.btnpushmenu{
+  background: #13AD54;
+  border: get-vw(1px,1920) solid #13AD54;
+  box-sizing: border-box;
+  border-radius: get-vw(10px,1920);
+  width: get-vw(400px,1920);
+  height: get-vw(75px,1920);
+  margin-left: get-vw(0px,1920);
+  margin-top: get-vw(80px,1920);
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: bold;
+  font-size: get-vw(20px,1920);
+  line-height: get-vw(23px,1920);
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+  &:hover{
+    background: #EB2F2F;
+    color: #FFFFFF;
+    border: 1px solid #EB2F2F;
+  }
+}
+.succsessmobile{
+  display: none;
+}
 @media screen and (max-width:500px ) {
   .jobscontainer{
     width: get-vw(375px,375);
@@ -549,6 +665,9 @@ min-height: get-vw(75px,1920);
       border: get-vw(1px,375) solid #EFEFEF;
       margin-top: get-vw(30px,375);
     }
+  }
+  .displayoff{
+    display: none;
   }
   .tapur{
    font-size: get-vw(16px,375);
@@ -867,6 +986,73 @@ min-height: get-vw(75px,1920);
       color: #252223;
     }
   }
+  .succsessmobile{
+    display: block;
+    width: get-vw(375px,375);
+    height: get-vw(423px,375);
+    background-color: #ffffff;
+    .close{
+     display: none;
+     }
+    .succsesimg{
+      width: get-vw(50px,375);
+      height: get-vw(50px,375);
+     margin-left: get-vw(162px,375);
+      margin-top: get-vw(60px,375);
+
+    }
+    .thenk{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: bold;
+      font-size: get-vw(18px,375);
+      line-height: 120%;
+      text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
 
 
+    }
+    .thenk_one{
+      margin-top: get-vw(30px,375);
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: bold;
+      font-size: get-vw(18px,375);
+      line-height: 120%;
+      text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+    }
+    .btnpushmenu{
+      background: #13AD54;
+      border: get-vw(1px,1375) solid #13AD54;
+      box-sizing: border-box;
+      border-radius: get-vw(10px,375);
+      width: get-vw(345px,375);
+      height: get-vw(57px,375);
+      margin-left: get-vw(15px,375);
+      margin-top: get-vw(60px,375);
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: bold;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(19px,375);
+      text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      cursor: pointer;
+      &:hover{
+        background: #EB2F2F;
+        color: #FFFFFF;
+        border: get-vw(1px,375) solid #EB2F2F;
+      }
+    }
+  }
+.succsesswraper{
+  display: none;
+}
 }

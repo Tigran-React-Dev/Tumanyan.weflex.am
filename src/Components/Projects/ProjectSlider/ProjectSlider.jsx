@@ -38,15 +38,12 @@ const  ProjectSlider= ({data}) =>{
                 {data.map(({id,image})=>{
                     return(
                         <>
-                            <SwiperSlide key={id}>
+                            <SwiperSlide key={Math.random()}>
                                 <div className="slideritem1" style={{
-                                    backgroundImage: `url(${image})`,
+                                    backgroundImage: `url(${process.env.REACT_APP_IMG_URL+image})`,
 
                                 }}
-                                >
-
-                                </div>
-
+                                />
                             </SwiperSlide>
 
                         </>

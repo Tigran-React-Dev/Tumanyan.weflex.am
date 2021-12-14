@@ -3,7 +3,9 @@ import css from "./Jobs.module.scss";
 import axjik from "../../images/axjik.png";
 import cordinat from "../../images/icons/select.png"
 import salb from "../../images/icons/seltb.png";
-import sala from "../../images/icons/selta.png"
+import sala from "../../images/icons/selta.png";
+import closebtn from "../../images/icons/close.png";
+import succsessimg from "../../images/icons/checkedbasket.png";
 import {useSlider} from "../Providers/SliderProvider";
 import Button from "../Global/Button/Button";
 import Input from "../Global/Input/Input";
@@ -80,6 +82,7 @@ const Jobs =()=>{
           if(response.data == "success"){
             setSucses(true)
             setErrors({})
+              window.scrollTo(0, 400);
           }else{
             setErrors(response.data);
 
@@ -94,7 +97,8 @@ const Jobs =()=>{
     const SubmitJobData =(e)=>{
         e.preventDefault()
         handleSubmit()
-        console.log(JobsData)
+
+
         
     }
     useEffect(()=>{
@@ -150,7 +154,19 @@ const Jobs =()=>{
                     <img src={axjik} alt=""/>
                 </div>
             </div>
-             <div className={css.jobslist}>
+             {sucsesdata && <div className={css.succsessmobile}>
+                 <div className={css.close}><img src={closebtn} alt="" onClick={() => setSucses(!sucsesdata)}/></div>
+                 <img src={succsessimg} alt="" className={css.succsesimg}/>
+                 <h3 className={css.thenk_one}>Շնորհակալություն։</h3>
+                 <h3 className={css.thenk}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
+                 <button className={css.btnpushmenu} onClick={() => {
+
+                     history.push("/home/Shaurma");
+
+                 }}>վերդառնալ մենյու
+                 </button>
+             </div>}
+             <div className={sucsesdata ? css.displayoff : css.jobslist}>
                     <p className={css.tapur}>Թափուր աշխատատեղեր</p>
                     <hr/>
                  {loading && <div className={css.itemjob}>
@@ -320,12 +336,26 @@ const Jobs =()=>{
                           title="ուղարկել"
 
                         />
-                       <h6>{sucsesdata && "sucsess" }</h6>
+
                       </form>
                   </div>
                 </div>
 
              </div>
+
+             {sucsesdata && <div className={css.succsesswraper}>
+                 <div className={css.closewrapper} onClick={()=>setSucses(!sucsesdata)}/>
+                 <div className={css.succsess}>
+                     <div className={css.close}><img src={closebtn} alt="" onClick={()=>setSucses(!sucsesdata)}/></div>
+                     <img src={succsessimg} alt="" className={css.succsesimg}/>
+                     <h3 className={css.thenk_one}>Շնորհակալություն։</h3>
+                     <h3 className={css.thenk}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
+                     <button className={css.btnpushmenu} onClick={()=> {
+
+                         history.push("/home/Shaurma");
+                     }}>վերդառնալ մենյու</button>
+                 </div>
+             </div>}
         </div>
     )
 }

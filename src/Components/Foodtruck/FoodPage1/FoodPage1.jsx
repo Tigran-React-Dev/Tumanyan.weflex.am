@@ -1,14 +1,30 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./FoodPage1.module.scss";
 import FoodModals from "./FoodModals/FoodModals";
 import Button from "../../Global/Button/Button";
+import axios from "axios";
 
 
 
-const FoodPage1 = ({foodTruckdata}) => {
+const FoodPage1 = ({foodTruckdata,setFootruckData}) => {
     const [showModal,setShowmodal]=useState(false)
     const [activeModaldata,setACtiveModaldata]=useState({})
     const [displeysetigs,setDisplaySetins]=useState("none")
+    const [loding,setLoading]=useState(false)
+
+    useEffect(()=>{
+        const resFoodtruck =axios.get(process.env.REACT_APP_API_URL+"/food_trucks_list" )
+        resFoodtruck.then((res)=> {
+            setFootruckData(res.data)
+            setLoading(true)
+        })
+            .catch(err=>console.log(err))
+
+    },[])
+
+
+
+
 const ShowModal =(itemWindow)=>{
 
     setShowmodal(!showModal)
@@ -18,8 +34,7 @@ const ShowModal =(itemWindow)=>{
 
     return (
          <div className={css.foodpage1containeritem}>
-             {
-                 foodTruckdata.map((elem,index)=>{
+             {loding && foodTruckdata.map((elem,index)=>{
 
                      return(
                          <>
@@ -28,7 +43,7 @@ const ShowModal =(itemWindow)=>{
                                      key={elem.id}
                                          className={css.bigitem}
                                          style={{float:(index===0 || index===6 || index===12) ? "left" : "right",
-                                             background:`url(${elem.image[0]})`
+                                             background:`url(${process.env.REACT_APP_IMG_URL+elem.image})`
                                          }}
                                       onClick={()=>ShowModal(elem)}
                                      >
@@ -40,7 +55,7 @@ const ShowModal =(itemWindow)=>{
                                      :
                                   <div key={elem.id} className={css.smollitem} style={{marginTop:  "2.211764705882355vw",
                                       marginLeft:(index===1 || index===2 || index==7 || index==8 || index==13 || index==14 ) ? "2.0vw" : (index===5 || index===11 || index==17 || index==23  ) ? "2.0vw" : null,
-                                      backgroundImage:`url(${elem.image[0]})`
+                                      backgroundImage:`url(${process.env.REACT_APP_IMG_URL+elem.image})`
                                   }} 
                                   onClick={()=>ShowModal(elem)}
                                   >

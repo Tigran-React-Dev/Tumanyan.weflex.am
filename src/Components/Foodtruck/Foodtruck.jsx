@@ -9,7 +9,7 @@ import Foodpage3 from "./FoodPage3/Foodpage3";
 
 
 const Foodtruck = ({history}) => {
-    const {foodTruckdata}=useSlider()
+    const {foodTruckdata,setFootruckData}=useSlider()
    const [activeMenu,setACtivemenu]=useState(1)
     const ref=useRef(null)
     useEffect(()=>{
@@ -70,7 +70,7 @@ const Foodtruck = ({history}) => {
              <div className={css.foodcontainer2}>
                  {
                      activeMenu===1 ?
-                         <FoodPage1 foodTruckdata={foodTruckdata} />
+                         <FoodPage1 foodTruckdata={foodTruckdata} setFootruckData={setFootruckData} />
                          :
                     activeMenu===2 ?
                         <FoodPage2/>

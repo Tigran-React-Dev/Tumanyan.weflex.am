@@ -23,15 +23,15 @@ setTimeout(()=>{
         </div>
              {key && <div className={css.modalimgandinfo}>
                  <div className={css.sliderfood}>
-                     <FootSlider sliderdata={data.image}/>
+                     <FootSlider sliderdata={data.food_trucks[0]?.food_sliders}/>
                  </div>
                  <div className={css.infoslider}>
                      <h2>{data.title}</h2>
                      <h3>{data.date}</h3>
-                     <p>{data.information.substring(0, 166)} <br/><br/>
-                         {data.information.substring(167, 281)} <br/><br/>
-                         {data.information.substring(281, 408)} </p>
-
+                     <p>{data.food_trucks[0]?.context} </p>
+                     {/*{data.substring(0, 166)} <br/><br/>*/}
+                     {/*{data.information.substring(167, 281)} <br/><br/>*/}
+                     {/*{data.information.substring(281, 408)}*/}
                  </div>
              </div>}
 

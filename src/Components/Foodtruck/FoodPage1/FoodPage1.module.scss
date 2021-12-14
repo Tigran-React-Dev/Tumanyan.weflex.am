@@ -23,7 +23,7 @@
     position: relative;
     z-index: 15;
     background-repeat: no-repeat !important;
-    background-size:contain !important;
+    background-size:get-vw(798px,1920)  get-vw(798px,1920)!important;
     cursor: pointer;
 
 
@@ -36,7 +36,7 @@
     float: left;
     vertical-align: top;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: get-vw(379px,1920) get-vw(379px,1920) ;
     cursor: pointer;
   }
 
@@ -146,7 +146,7 @@
       overflow: unset;
       position: unset;
       background-repeat: no-repeat !important;
-      background-size:contain !important;
+      background-size:get-vw(315px,345)  get-vw(315px,345)!important;
       cursor: pointer;
       margin-left: get-vw(-5px,375);
 
@@ -161,7 +161,7 @@
       overflow: unset;
       float: unset;
       vertical-align: unset;
-
+      background-size:get-vw(315px,345)  get-vw(315px,345)!important;
     }
 
   }

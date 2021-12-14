@@ -56,7 +56,8 @@
 }
 .blockinfo1{
   width: get-vw(1636px,1920);
-  min-height: get-vw(590px,1920);
+  min-height: get-vw(100px,1920);
+  max-height: get-vw(590px,1920);
   background: #ffffff;
   margin-left: get-vw(142px,1920);
   display: flex;

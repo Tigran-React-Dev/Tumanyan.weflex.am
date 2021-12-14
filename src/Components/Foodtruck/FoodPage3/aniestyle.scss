@@ -10,10 +10,10 @@
 }
 
 .success-checkmark {
-  width: get-vw(50px,375);
-  height: get-vw(50px,375);
-  margin-top: get-vw(30px,375);
-  margin-left: get-vw(60px,375);
+  width: get-vw(50px,1920);
+  height: get-vw(50px,1920);
+  margin-top: get-vw(30px,1920);
+  margin-left: get-vw(380px,1920);
 
   .check-icon {
     width: 80px;
@@ -97,6 +97,15 @@
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  .success-checkmark {
+    width: get-vw(50px, 375);
+    height: get-vw(50px, 375);
+    margin-top: get-vw(30px, 375);
+    margin-left: get-vw(60px, 375);
+  }
+  }
 
 @keyframes rotate-circle {
   0% {

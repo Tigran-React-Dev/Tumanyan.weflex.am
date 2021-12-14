@@ -37,7 +37,7 @@ const  FootSlider= ({sliderdata}) =>{
                 <>
                 <SwiperSlide key={i}>
                   <div className="slideritem5" style={{
-                    backgroundImage: `url(${elem})`
+                    backgroundImage: `url(${process.env.REACT_APP_IMG_URL+elem.image})`
 
                   }}
                        >
