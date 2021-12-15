@@ -12,6 +12,7 @@
   margin-top: get-vw(40px,1920);
   margin-left: get-vw(40px,1920);
   overflow: hidden;
+  padding-bottom: get-vw(100px,1920);
 
   .bigitem{
     width: get-vw(798px,1920);
@@ -135,7 +136,7 @@
     overflow: unset;
     display: flex;
     flex-direction: column;
-
+    padding-bottom: get-vw(60px,375);
     .bigitem{
       width: get-vw(315px,345) !important;
       height: get-vw(315px,345)!important;

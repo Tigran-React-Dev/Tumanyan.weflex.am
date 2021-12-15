@@ -8,13 +8,15 @@ import {PROJECT_PAGE, PROJECT_PAGE_INFO} from "../urls";
 import {motion} from "framer-motion";
 import Button from "../Global/Button/Button";
 import axios from "axios";
+import {useProduct} from "../Providers/ProductMenu";
 const Projects = () => {
    const [hoveritem,sethoveritem]=useState({})
     const history =useHistory()
+    const {languae}=useProduct()
     const {project,setproject,activeProjectdata,setActiveProjectdata}=useSlider()
     const [anime,setanime]=useState(true)
     const [loading, setLoading]=useState(false)
-
+    const [pagintion,setpagination]=useState(3)
 
     useEffect(()=>{
        const resProject =axios.get(process.env.REACT_APP_API_URL +"/projects_list")
@@ -34,10 +36,7 @@ const Projects = () => {
     const addtoprojectpage =(activdata)=>{
         setActiveProjectdata(activdata)
         setanime(false)
-        setTimeout(()=>{
-            history.push(`${PROJECT_PAGE}/${activdata.id}`)
-
-        },1)
+        history.push(`${PROJECT_PAGE}/${activdata.id}`)
 
 
     }
@@ -76,43 +75,48 @@ const Projects = () => {
                      project.map((item, index) => {
 
                          return (
-                             <motion.div
-                                 animate={hoveritem[index] && animationPick(anime)}
-                                 transition={{duration: 0.1}}
-                                 // variants={animationPick(anime)}
-                                 className={css.containerProjectmodal}
+                             <>
+                             {index<=pagintion && <motion.div
+                             animate={hoveritem[index] && animationPick(anime)}
+                             transition={{duration: 0.1}}
+                             // variants={animationPick(anime)}
+                             className={css.containerProjectmodal}
+                         >
+                             <div className={css.controler} key={item.id} onMouseEnter={() => {
+                                 sethoveritem({[index]: !hoveritem[index]})
+                             }}
+                                  onMouseLeave={() => sethoveritem({})}
+                                  style={{backgroundImage: (hoveritem[index] && `url(${process.env.REACT_APP_IMG_URL + item.image})`)}}
+
                              >
-                                 <div className={css.controler} key={item.id} onMouseEnter={() => {
-                                     sethoveritem({[index]: !hoveritem[index]})
-                                 }}
-                                      onMouseLeave={() => sethoveritem({})}
-                                      style={{backgroundImage: (hoveritem[index] && `url(${process.env.REACT_APP_IMG_URL+item.image})`)}}
-
-                                 >
-                                     <div className={css.ptojectitem} onClick={() => addtoprojectpage(item)}>
-                                         <h6 style={{color: hoveritem[index] && "#FFFFFF"}}>{item.date}</h6>
-                                         <div className={css.titleanddescription}>
-                                             <h2 style={{color: hoveritem[index] && "#FFFFFF"}}>{item.title}</h2>
-                                             <p style={{color: hoveritem[index] && "#FFFFFF"}}>Երկու տող նախագծի
-                                                 մասին․ {item.context}</p>
-                                         </div>
-                                         <img src={arowgrren} className={css.arowgreen} alt=""
-                                              style={{filter: hoveritem[index] && "invert(110%) sepia(100%) saturate(2%) hue-rotate(275deg) brightness(114%) contrast(121%)"}}/>
+                                 <div className={css.ptojectitem} onClick={() => addtoprojectpage(item)}>
+                                     <h6 style={{color: hoveritem[index] && "#FFFFFF"}}>{item.date}</h6>
+                                     <div className={css.titleanddescription}>
+                                         <h2 style={{color: hoveritem[index] && "#FFFFFF"}}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</h2>
+                                         <p style={{color: hoveritem[index] && "#FFFFFF"}}>Երկու տող նախագծի
+                                             մասին․ {languae=="ՀԱՅ" ? item.context : languae=="ENG" ? item.contextEN : languae=="РУС" ? item.contextRU : null}</p>
                                      </div>
+                                     <img src={arowgrren} className={css.arowgreen} alt=""
+                                          style={{filter: hoveritem[index] && "invert(110%) sepia(100%) saturate(2%) hue-rotate(275deg) brightness(114%) contrast(121%)"}}/>
                                  </div>
-                             </motion.div>
-
+                             </div>
+                         </motion.div>}
+                             </>
 
                          )
                      })
                  }
              </div>}
-             <div className={css.fotproject}>
-                      <Button
-                          title="տեսնել ավելին"
-                          cn="btnreadmore"
-                      />
-             </div>
+             {loading && project.length>4 && <div className={css.fotproject}>
+                 <Button
+                     title="տեսնել ավելին"
+                     cn="btnreadmore"
+                     onClick={()=> {
+                         setpagination(pagintion + 3)
+                         window.scrollTo(0, 1400);
+                     }}
+                 />
+             </div>}
          </div>
         </>
     );

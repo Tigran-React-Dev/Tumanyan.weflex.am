@@ -29,7 +29,7 @@ const [show,setShow]=useState({})
     const onMinusCount = ((obj,bonus) => {
         dispatch(OnMinusCount(obj,bonus))
     })
-    console.log(itionalitem)
+
 
 
     return (

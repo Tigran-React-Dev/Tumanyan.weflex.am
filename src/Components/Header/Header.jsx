@@ -97,6 +97,7 @@ const Header = () => {
     }
 
     const showactiveAdress = (id, adress, city) => {
+        sessionStorage.setItem("city",city.toLowerCase())
         setActiveAdress({ [id]: !adressactive[id] })
         setAdress(adress)
         const activDaata2 =menuCategorup.find((itm) => itm.name.toLowerCase() == city.toLowerCase())
@@ -121,6 +122,7 @@ const Header = () => {
 
 
     const changeMenu = () => {
+
         setDefaultSity(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
         setactiveCityname(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
         window.scrollTo(0, 0);

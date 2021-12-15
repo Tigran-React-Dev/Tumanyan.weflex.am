@@ -101,7 +101,7 @@
       background: #FFFFFF;
       border: 1px solid #DFDFDF;
       box-sizing: border-box;
-      border-radius: 10px;
+      border-radius: get-vw(10px,1920);
       display: flex;
       cursor: pointer;
       position: relative;
@@ -125,6 +125,17 @@
       }
     }
   }
+}
+.error{
+  font-family: Montserrat-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: get-vw(18px,1920);
+  line-height: get-vw(21px,1920);
+  letter-spacing: -0.02em;
+  color: red;
+  margin-top: get-vw(50px,1920);
+  margin-left: get-vw(0px,1920);
 }
 .calenarmodals{
   position: absolute;

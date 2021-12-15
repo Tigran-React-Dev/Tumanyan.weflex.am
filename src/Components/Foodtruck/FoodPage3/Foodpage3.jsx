@@ -10,6 +10,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import Button from "../../Global/Button/Button";
 import "./aniestyle.scss"
 import {HOME_PAGE} from "../../urls";
+import axios from "axios";
 
 const Foodpage3 = () => {
 
@@ -19,7 +20,7 @@ const Foodpage3 = () => {
     const [openCalendarModal,setOpenCalendarModal]=useState(false)
     const [checkeds,setCheckeds]=useState(false)
     const [sucsessDataSend,setSucsesDataSend]=useState(false)
-
+    const [errors,setErrors]=useState({})
 
     // change input value and data send axiox request
 
@@ -28,16 +29,16 @@ const Foodpage3 = () => {
         phone:"",
         email:"",
         company_name:"",
-        example:"",
-        adress:"",
+        event_type:"",
+        address:"",
         guests_count:"",
         date:"",
         message:"",
-        succses_check:"",
+        success_check:"",
     })
 
 
-const {name,phone,email,company_name,example,adress,guests_count,date,message,succses_check}=FoodtrackData
+const {name,phone,email,company_name,event_type,address,guests_count,date,message,success_check}=FoodtrackData
 
 const handleChangeInput=(e)=>{
     setFoodtruckdata({
@@ -59,14 +60,54 @@ const handleChangeInput=(e)=>{
         setCheckeds(!checkeds)
         setFoodtruckdata({
             ...FoodtrackData,
-            succses_check: !checkeds,
+            success_check: !checkeds,
         })
     }
+
+
+    const handleSubmit = async () => {
+
+        // store the states in the form data
+        const loginFormData = new FormData();
+        loginFormData.append("name", name)
+        loginFormData.append("phone", phone)
+        loginFormData.append("email", email)
+        loginFormData.append("company_name", company_name)
+        loginFormData.append("event_type", event_type)
+        loginFormData.append("address", address)
+        loginFormData.append("guests_count",guests_count)
+        loginFormData.append("date", date)
+        loginFormData.append("message",message)
+        loginFormData.append("success_check",success_check)
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/addFood_Truck_Apply",
+                data: loginFormData,
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            if(response.data == "success"){
+                setSucsesDataSend(true)
+                setErrors({})
+                window.scrollTo(0, 400);
+            }else{
+                setErrors(response.data);
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+
     const SubmitData =(e)=>{
         e.preventDefault()
         console.log(FoodtrackData)
-        setSucsesDataSend(true)
+        handleSubmit()
     }
+
+
     useEffect(()=>{
        if(sucsessDataSend){
            window.scrollTo(0, 400);
@@ -94,6 +135,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={name}
                 onChange={handleChangeInput}
+                style={{border:errors.name && "1px solid red"}}
                 />
                 <div className={css.phoneandemail}>
                 <Input
@@ -103,6 +145,7 @@ const handleChangeInput=(e)=>{
                 type="number"
                 value={phone}
                 onChange={handleChangeInput}
+                style={{border:errors.phone && "1px solid red"}}
                 />
                 <Input
                 cn="inputfoodtruck2"
@@ -111,6 +154,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={email}
                 onChange={handleChangeInput}
+                style={{border:errors.email && "1px solid red"}}
                 />
                 </div>
                 <Input
@@ -120,35 +164,39 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={company_name}
                 onChange={handleChangeInput}
+                style={{border:errors.company_name && "1px solid red"}}
                 />
                 <div className={css.gicform}/>
                 <h2>Միջոցառման տվյալներ</h2>
                 <Input
                 cn="inputfoodtruck4"
                 placeholder="Միջոցառման բնույթը (օրինակ՝ ծննդյան տարեդարձ կամ գործնական ընթրիք)*"
-                name="example"
+                name="event_type"
                 type="text"
-                value={example}
+                value={event_type}
                 onChange={handleChangeInput}
+                style={{border:errors.event_type && "1px solid red"}}
                 />
                 <Input
                 cn="inputfoodtruck3"
                 placeholder="Հասցե*"
-                name="adress"
+                name="address"
                 type="text"
-                value={adress}
+                value={address}
                 onChange={handleChangeInput}
+                style={{border:errors.address && "1px solid red"}}
                 />
                 <div className={css.dataamdfriend}>
                 <Input
                 cn="inputfoodtruck2"
                 placeholder="Հյուրերի քանակ"
                 name="guests_count"
-                type="text"
+                type="number"
                 value={guests_count}
                 onChange={handleChangeInput}
+                style={{border:errors.guests_count && "1px solid red"}}
                 />
-                <div className={css.datainput} onClick={CalendarModalControler}>
+                <div className={css.datainput} onClick={CalendarModalControler} style={{border:errors.date && "1px solid red"}}>
                 <p>{calendarvalue==="Ամսաթիվ*" ? calendarvalue : calendarvalue.toLocaleDateString()}</p>
             {openCalendarModal ? <img src={close} alt=""/> : <img src={open} alt=""/>}
             {openCalendarModal &&
@@ -167,6 +215,7 @@ const handleChangeInput=(e)=>{
                   name="message"
                   type="text"
                   value={message}
+                  style={{border:errors.message && "1px solid red"}}
                   onChange={handleChangeInput}
                 />
 
@@ -184,10 +233,13 @@ const handleChangeInput=(e)=>{
                 backgroundColor:checkeds && "#13AD54",border: checkeds && "1px solid #13AD54",
                 backgroundImage:checkeds && `url(${checkt})`
             }}>
+
                </div>
                 <h6>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h6>
                 </label>
+
                 </div>
+                    <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
                 <Button
                 title="պատվիրել"
                 cn="btnFood"

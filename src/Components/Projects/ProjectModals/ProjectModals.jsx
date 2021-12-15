@@ -10,6 +10,7 @@ import storaket from "../../../images/icons/storaket.png"
 import {PROJECT_PAGE} from "../../urls";
 import axios from "axios";
 import parse from 'html-react-parser';
+import {useProduct} from "../../Providers/ProductMenu";
 const ProjectModals = () => {
 
 
@@ -17,7 +18,7 @@ const ProjectModals = () => {
     const {project,setproject,activeProjectdata,setActiveProjectdata}=useSlider()
     const [index,setindex]=useState(0)
     const [loading,setLoading]=useState(false)
-
+    const {languae}=useProduct()
     useEffect(()=>{
         const resProject =axios.get(process.env.REACT_APP_API_URL +"/projects_list")
         resProject.then(res=>{
@@ -76,7 +77,7 @@ const ProjectModals = () => {
                                         <rect width="30" height="2" transform="matrix(-1 0 0 1 45 7)" fill="white"/>
                                     </svg></NavLink>
                                     <h1 className={css.titleproject2}>
-                                        {product.title}
+                                        {languae=="ՀԱՅ" ? product.title : languae=="ENG" ? product.titleEN : languae=="РУС" ? product.titleRU : null}
                                     </h1>
                                     <p className={css.dateproj}>
                                         {product.date}
@@ -84,16 +85,13 @@ const ProjectModals = () => {
 
                                 </div>
                                 <div className={css.blockinfo1}>
-
-
-                                    <div className={css.textblok}>
+                                     <div className={css.textblok}>
                                         <p>
-                                            {product.projects[0]?.context}
+                                            {languae=="ՀԱՅ" ? product.projects[0]?.context : languae=="ENG" ? product.projects[0]?.contextEN : languae=="РУС" ? product.projects[0]?.contextRU : null}
                                         </p>
                                         <div className={css.burgercount}>
-
                                             <h2>{product.projects[0]?.count}</h2>
-                                            <h4>{product.projects[0]?.type}</h4>
+                                            <h4>{languae=="ՀԱՅ" ? product.projects[0]?.type : languae=="ENG" ? product.projects[0]?.typeEN : languae=="РУС" ? product.projects[0]?.typeRU : null}</h4>
 
                                         </div>
                                     </div>
@@ -105,10 +103,10 @@ const ProjectModals = () => {
                                     <div className={css.blokinfotext}>
                                         <img src={storaket} alt="" className={css.storaket}/>
                                         <p className={css.text2}>
-                                            {product.projects[0]?.information}
+                                            {languae=="ՀԱՅ" ? product.projects[0]?.information : languae=="ENG" ? product.projects[0]?.informationEN : languae=="РУС" ? product.projects[0]?.informationRU : null}
                                         </p>
-                                        <h4>{product.projects[0]?.full_name}</h4>
-                                        <h6>{product.projects[0]?.position}</h6>
+                                        <h4>{languae=="ՀԱՅ" ? product.projects[0]?.full_name: languae=="ENG" ? product.projects[0]?.full_nameEN : languae=="РУС" ? product.projects[0]?.full_nameRU : null}</h4>
+                                        <h6>{languae=="ՀԱՅ" ? product.projects[0]?.position : languae=="ENG" ? product.projects[0]?.positionEN : languae=="РУС" ? product.projects[0]?.positionRU : null}</h6>
                                     </div>
                                     <div className={css.positionimageblok}>
                                        <div className={css.bigimg}>

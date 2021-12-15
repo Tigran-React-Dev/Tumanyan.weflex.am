@@ -1055,4 +1055,16 @@ min-height: get-vw(75px,1920);
 .succsesswraper{
   display: none;
 }
+  .error{
+    font-family: Montserrat-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(14px,375);
+    line-height: get-vw(16px,375);
+    letter-spacing: -0.02em;
+    color:red;
+    margin-top: get-vw(50px,375);
+    margin-left: get-vw(15px,375);
+    cursor: pointer;
+  }
 }

@@ -48,6 +48,26 @@
        
         
       }
+    .error{
+      width: get-vw(890px,1920);
+      height: get-vw(15px,1920);
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      p{
+        min-width: max-content;
+        font-family: Montserrat-Medium;
+        font-style: normal;
+        font-weight: normal;
+        font-size: get-vw(12px,1920);
+        line-height: get-vw(15px,1920);
+        margin-top: get-vw(5px,1920);
+        letter-spacing: -0.02em;
+         color: #EB2F2F;
+      }
+
+    }
     .btndiv2{
       width: get-vw(1625px,1920);
       height: get-vw(175px,1920);
@@ -502,7 +522,7 @@
   line-height:get-vw( 22px,1920);
   letter-spacing: -0.02em;
    color: #252223;
-  margin-top: get-vw(50px,1920);
+  margin-top: get-vw(30px,1920);
 }
 .hradres{
   margin-top: get-vw(50px,1920);

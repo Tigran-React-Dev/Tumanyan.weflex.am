@@ -13,7 +13,6 @@ import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
 import {useProduct} from "../Providers/ProductMenu";
 import adressicon from "../../images/icons/select.png"
-import self from "../../images/icons/self.png"
 import seltb from "../../images/icons/seltb.png"
 import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import checketbasket from "../../images/icons/checkedbasket.png"
@@ -34,18 +33,18 @@ const Basket = () => {
     const dispatch =useDispatch()
     const history = useHistory()
     const [basketitemdata,setItemBasketdata]=useState(items)
-
+    const [errors,seterors]=useState("")
     useEffect(() => {
         window.scrollTo(0, 0);
 
     }, [sucsessshop])
-
+    console.log(CardData)
     useEffect(()=>{
         setTimeout(()=>{
             setItemBasketdata(items)
         },10)
     },[count])
-
+    console.log(errors)
    const clearnBasketitem=()=>{
       dispatch(ClardnBasket())
    }
@@ -103,6 +102,21 @@ const Basket = () => {
            ...user,
            [e.target.name]:e.target.value,
        })
+   }
+
+   const InPlace=()=>{
+       setSowdetalis(2)
+       if(CardData.items.length){
+       const newarr=CardData.items.filter((elem)=>elem.category_buffet_id!=undefined || elem.category_buffet_id!=null )
+          if(newarr.length){
+            seterors("Գրանդ Բուֆֆետից պատվիրելու դեպքում այս տարբերակը չի գործում")
+            setSowdetalis(1)
+          }else{
+              setSowdetalis(2)
+              seterors("")
+          }
+
+       }
    }
 
 
@@ -217,7 +231,10 @@ const Basket = () => {
                                    <Button
                                        cn="btnPopupshop"
                                        title="առաքում"
-                                       onClick={()=>setSowdetalis(1)}
+                                       onClick={()=> {
+                                           seterors("")
+                                           setSowdetalis(1)
+                                       }}
                                        style={{color: showdetalis===1 ?
                                                "#13AD54" : "#BFB7B6" ,
                                            border:showdetalis===1 ?
@@ -227,7 +244,7 @@ const Basket = () => {
                                   <Button
                                       cn="btnPopupshop"
                                       title="տեղում"
-                                      onClick={()=>setSowdetalis(2)}
+                                      onClick={InPlace}
                                       style={{color: showdetalis===2 &&
                                               "#13AD54"  ,
                                           border:showdetalis===2 &&
@@ -236,6 +253,9 @@ const Basket = () => {
 
 
                               </div>
+                              {errors !="" && <div className={css.error}>
+                                  <p>{errors}</p>
+                              </div>}
                               {showdetalis===1 ?
                                   <>
                                   {userAdress.length ?

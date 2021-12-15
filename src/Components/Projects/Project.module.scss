@@ -31,6 +31,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding-bottom: get-vw(80px,1920);
   .projectitemcontainer{
     width: get-vw(1920px,1920);
     min-height: get-vw(391px,1920);
@@ -138,6 +139,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    padding-bottom: get-vw(60px,375);
     .projectitemcontainer{
       width: get-vw(345px,375);
       min-height: get-vw(331px,375);

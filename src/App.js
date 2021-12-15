@@ -20,7 +20,7 @@ function App() {
     const key = sessionStorage.getItem("key")
     const dispath=useDispatch()
     const [sowZapros ,setSowZapros]=useState(true)
-    const {menuCategorup,ChangeACtivSup,setDefaultSity,getData} =useProduct()
+    const {menuCategorup,ChangeACtivSup,setDefaultSity,setactiveCityname,getData} =useProduct()
     const [bgcolor,setBgcolor]=useState(null)
     const history = useLocation()
     const [loading,setloading]=useState(false)
@@ -29,6 +29,9 @@ function App() {
 
 
   useEffect(()=>{
+  let key2 = sessionStorage.getItem("city")
+      setDefaultSity(key2)
+      setactiveCityname(key2)
       getData()
     },[])
 
@@ -43,6 +46,7 @@ function App() {
 }, [])
 
     const Clickcountry =(activdata,name,id)=>{
+        sessionStorage.setItem("city",name.toLowerCase())
         setDefaultSity(name)
         ChangeACtivSup(activdata,name)
         setBgcolor(id)

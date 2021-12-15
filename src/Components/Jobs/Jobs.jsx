@@ -85,10 +85,8 @@ const Jobs =()=>{
               window.scrollTo(0, 400);
           }else{
             setErrors(response.data);
-
           }
-          
-        } catch(error) {
+          } catch(error) {
           console.log(error)
         }
       }

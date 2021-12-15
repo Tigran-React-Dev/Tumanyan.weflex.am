@@ -16,69 +16,69 @@
   margin-left: get-vw(380px,1920);
 
   .check-icon {
-    width: 80px;
-    height: 80px;
+    width: get-vw(80px,1920);
+    height: get-vw(80px,1920);
     position: relative;
     border-radius: 50%;
     box-sizing: content-box;
-    border: 4px solid #4CAF50;
+    border: get-vw(4px,1920) solid #4CAF50;
 
     &::before {
-      top: 3px;
-      left: -2px;
-      width: 30px;
+      top: get-vw(3px,1920);
+      left: get-vw(-2px,1920);
+      width: get-vw(30px,1920);
       transform-origin: 100% 50%;
-      border-radius: 100px 0 0 100px;
+      border-radius: get-vw(100px,1920) 0 0 get-vw(100px,1920);
     }
 
     &::after {
       top: 0;
-      left: 30px;
-      width: 60px;
+      left: get-vw(30px,1920);
+      width: get-vw(60px,1920);
       transform-origin: 0 50%;
-      border-radius: 0 100px 100px 0;
+      border-radius: 0 get-vw(100px,1920) get-vw(100px,1920) 0;
       animation: rotate-circle 4.25s ease-in;
     }
 
     &::before, &::after {
       content: '';
-      height: 100px;
+      height: get-vw(100px,1920);
       position: absolute;
       background: #FFFFFF;
       transform: rotate(-45deg);
     }
 
     .icon-line {
-      height: 5px;
+      height: get-vw(5px,1920);
       background-color: #4CAF50;
       display: block;
-      border-radius: 2px;
+      border-radius: get-vw(2px,1920);
       position: absolute;
       z-index: 10;
 
       &.line-tip {
-        top: 46px;
-        left: 14px;
-        width: 25px;
+        top: get-vw(46px,1920);
+        left: get-vw(14px,1920);
+        width: get-vw(25px,1920);
         transform: rotate(45deg);
         animation: icon-line-tip 0.75s;
       }
 
       &.line-long {
-        top: 38px;
-        right: 8px;
-        width: 47px;
+        top: get-vw(38px,1920);
+        right: get-vw(8px,1920);
+        width: get-vw(47px,1920);
         transform: rotate(-45deg);
         animation: icon-line-long 0.75s;
       }
     }
 
     .icon-circle {
-      top: -4px;
-      left: -4px;
+      top: get-vw(-4px,1920);
+      left: get-vw(-4px,1920);
       z-index: 10;
-      width: 80px;
-      height: 80px;
+      width: get-vw(80px,1920);
+      height: get-vw(80px,1920);
       border-radius: 50%;
       position: absolute;
       box-sizing: content-box;
@@ -86,11 +86,11 @@
     }
 
     .icon-fix {
-      top: 8px;
-      width: 5px;
-      left: 26px;
+      top: get-vw(8px,1920);
+      width: get-vw(5px,1920);
+      left: get-vw(26px,1920);
       z-index: 1;
-      height: 85px;
+      height: get-vw(85px,1920);
       position: absolute;
       transform: rotate(-45deg);
       background-color: #FFFFFF;
@@ -125,50 +125,50 @@
 @keyframes icon-line-tip {
   0% {
     width: 0;
-    left: 1px;
-    top: 19px;
+    left: get-vw(1px,1920);
+    top:get-vw( 19px,1920);
   }
   54% {
     width: 0;
-    left: 1px;
-    top: 19px;
+    left: get-vw(1px,1920);
+    top: get-vw(19px,1920);
   }
   70% {
-    width: 50px;
-    left: -8px;
-    top: 37px;
+    width: get-vw(50px,1920);
+    left: get-vw(-8px,1920);
+    top: get-vw(37px,1920);
   }
   84% {
-    width: 17px;
-    left: 21px;
-    top: 48px;
+    width: get-vw(17px,1920);
+    left: get-vw(21px,1920);
+    top: get-vw(48px,1920);
   }
   100% {
-    width: 25px;
-    left: 14px;
-    top: 45px;
+    width: get-vw(25px,1920);
+    left: get-vw(14px,1920);
+    top: get-vw(45px,1920);
   }
 }
 
 @keyframes icon-line-long {
   0% {
     width: 0;
-    right: 46px;
-    top: 54px;
+    right: get-vw(46px,1920);
+    top: get-vw(54px,1920);
   }
   65% {
     width: 0;
-    right: 46px;
-    top: 54px;
+    right: get-vw(46px,1920);
+    top: get-vw(54px,1920);
   }
   84% {
-    width: 55px;
-    right: 0px;
-    top: 35px;
+    width: get-vw(55px,1920);
+    right: get-vw(0px,1920);
+    top: get-vw(35px,1920);
   }
   100% {
-    width: 47px;
-    right: 8px;
-    top: 38px;
+    width: get-vw(47px,1920);
+    right: get-vw(8px,1920);
+    top: get-vw(38px,1920);
   }
 }

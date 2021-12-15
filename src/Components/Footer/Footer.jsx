@@ -40,10 +40,10 @@ const Footer = () => {
                     </div>
                     
                         <ul className={css.social}>
-                            <li><img src={fb} alt=""/></li>
-                            <li><img src={insta} alt=""/></li>
-                            <li><img src={trip} alt=""/></li>
-                            <li><img src={youtube} alt=""/></li>
+                            <li><a href=" https://www.facebook.com/TumanyanShaurma/" target="_blank"><img src={fb} alt=""/></a></li>
+                            <li><a href=" https://www.instagram.com/tumanyanshaurma/" target="_blank"><img src={insta} alt=""/></a></li>
+                            <li><a href="https://www.tripadvisor.com/Restaurant_Review-g293932-d1100896-Reviews-Tumanyan_Shaurma-Yerevan.html" target="_blank"><img src={trip} alt=""/></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCpAzbtbDMzzYSyyEcnGhGug" target="_blank"><img src={youtube} alt=""/></a></li>
                         </ul>
                     
                 </div>

@@ -11,7 +11,7 @@ import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
 import ItionalProduct from "../../Menu/ItionalProduct/ItionalProduct";
 
-const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard,SendobjtoLikecategory}) => {
+const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard,SendobjtoLikecategory}) => {
 
 
 
@@ -65,6 +65,7 @@ const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, 
             image,
             itionalitem,
             bonus,
+            category_buffet_id,
             priceitem:[{price:price_buffets[0]?.price,sizes:{size:price_buffets[0]?.size_buffets?.size}},{price:price_buffets[1]?.price,sizes:{size:price_buffets[1]?.size_buffets?.size}}],
             price: +(bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)),
             size: price_buffets.length===1 ? undefined : size,
@@ -127,6 +128,7 @@ const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, 
                 <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
+
             {price_buffets.length>1  && <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
                     {
@@ -186,12 +188,6 @@ const ProductBlokGrand = ({id,like,names, name,nameRU,nameEN,add_buffets,image, 
                     </div>
                     {sowlichniproductmodal &&
                     <ItionalProduct
-                        itionaldataitem={itionaldataitem}
-                        setItionaldataitem={setItionaldataitem}
-                        itionalitem={itionalitem}
-                        setItionalitem={setItionalitem}
-                        priceItional={priceItional}
-                        setPriceItional={setPriceItional}
                         add_buffets={add_buffets}
                         AddlichniyProduct={AddlichniyProduct}
                         />
