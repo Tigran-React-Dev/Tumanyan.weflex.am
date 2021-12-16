@@ -30,8 +30,11 @@ function App() {
 
   useEffect(()=>{
   let key2 = sessionStorage.getItem("city")
-      setDefaultSity(key2)
-      setactiveCityname(key2)
+
+      if(key2){
+          setactiveCityname(key2)
+          setDefaultSity(key2)
+      }
       getData()
     },[])
 

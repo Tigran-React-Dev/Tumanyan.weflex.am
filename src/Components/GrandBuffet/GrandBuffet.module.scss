@@ -77,6 +77,22 @@
   margin-left: get-vw(142px,1920);
   display: flex;
 }
+.blokbufet{
+  width: get-vw(1920px,1920);
+  height: get-vw(386px,1920);
+  padding-top: get-vw(100px,1920);
+  p{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(24px,1920);
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+  }
+}
 
 
 
@@ -142,4 +158,26 @@
     margin-left: get-vw(15px,375);
     display: flex;
   }
+
+  .blokbufet{
+    width: get-vw(375px,375);
+    height: get-vw(204px,375);
+    padding-top: get-vw(60px,375);
+    p{
+      width: get-vw(345px,375);
+      height: get-vw(44px,375);
+      margin-left: get-vw(15px,375);
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(18px,375);
+      line-height: 120%;
+      text-align: center;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #252223;
+    }
+  }
+
+
 }

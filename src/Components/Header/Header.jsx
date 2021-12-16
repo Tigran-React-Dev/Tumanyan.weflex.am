@@ -27,7 +27,7 @@ import axios from "axios";
 
 const Header = () => {
     const  totalprice = useSelector(({ CardReducer  }) => CardReducer.totalPrice)
-    const { adressCountry,setAdressCountry,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
+    const { adressCountry,setAdressCountry,activeCityname,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
     const { t } = useTranslation();
     const history = useHistory()
     const [selecticon, setSelectIcon] = useState(true)
@@ -122,9 +122,9 @@ const Header = () => {
 
 
     const changeMenu = () => {
-
-        setDefaultSity(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
-        setactiveCityname(defaultCity === "Երեվան" ? "ծաղկաձոր" : "Երեվան")
+        // sessionStorage.setItem("city",defaultCity == "երեվան" ? "ծաղկաձոր" : "երեվան")
+        setDefaultSity(defaultCity == "երեվան" ? "ծաղկաձոր" : "երեվան")
+        setactiveCityname(defaultCity == "երեվան" ? "ծաղկաձոր" : "երեվան")
         window.scrollTo(0, 0);
     }
     const changeborderinput = (key) => {
@@ -257,6 +257,7 @@ const mobilemenustyle ={
                 <div className={css.adressblok}>
                     <div className={css.adresswraper} onClick={()=>setSowAdress(!sowAdress)}/>
                     <div style={{ top: sowmenu ? "3.9vw" : "7.5vw" }} className={css.adresses} >
+
                         <div className={css.adresstop} >
                             {activSub.length &&
                                 adressCountry.map((item,index) => {
@@ -288,10 +289,13 @@ const mobilemenustyle ={
                         </div>
                         <p
                             className={css.select_menu}
-                            onClick={changeMenu}>{defaultCity === "Երեվան" ?
-                            t("adressadd1") : defaultCity === "Ծաղկաձոր" ?
+                            onClick={changeMenu}>{defaultCity == "երեվան" ?
+                            t("adressadd1") : defaultCity == "ծաղկաձոր" ?
                                 t("adressadd2") :  t("adressadd2")}
                         </p>
+
+                        {defaultCity=="երեվան" &&
+                        <h3 className={css.messagegrandbufe}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</h3>}
                     </div>
                 </div>}
 
@@ -360,8 +364,7 @@ const mobilemenustyle ={
                             <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={log} alt="" /></NavLink>
                         </div>
                         <div className={css.changelanguagemobile}>
-                            {
-                                languages.map((lang,i)=>{
+                            {languages.map((lang,i)=>{
                                     return(
                                         <h6
                                             key={i}
@@ -383,7 +386,7 @@ const mobilemenustyle ={
                         <div  className={css.adresses} onClick={(e)=>e.stopPropagation()} >
                             <div className={css.adresstop} >
                                 {activSub.length &&
-                                adressCountry.map((item,index) => {
+                                 adressCountry.map((item,index) => {
                                     return (
                                         defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
                                         <div key={index}
@@ -412,10 +415,11 @@ const mobilemenustyle ={
                             </div>
                             <p
                                 className={css.select_menu}
-                                onClick={changeMenu}>{defaultCity === "Երեվան" ?
+                                onClick={changeMenu}>{defaultCity === "երեվան" ?
                                 t("adressadd1") : defaultCity === "ծաղկաձոր" ?
                                     t("adressadd2") :  t("adressadd2")}
                             </p>
+                            {defaultCity=="երեվան" &&  <p className={css.messagegrandbufe}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>}
                         </div>
                     </div>}
             </div>

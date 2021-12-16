@@ -449,8 +449,8 @@ box-sizing: border-box;
     cursor: pointer;
     &:hover{
       box-shadow: none;
-      border: 1px solid #13AD54;
-      color: #13AD54;
+      border: get-vw(1px,1920) solid #BFB7B6;
+      color: #BFB7B6;
     }
   }
   .btnokpey{

@@ -63,7 +63,6 @@ input[type=checkbox] {
   font-size:get-vw(18px,1920);
   line-height: 150%;
   margin-left: get-vw(15px,1920 ) !important;
-
   min-width: unset;
   text-transform: none!important;
   letter-spacing: -0.02em;
@@ -97,7 +96,6 @@ input[type=checkbox] {
     background-size: get-vw(12px, 375) get-vw(9px, 375);
     background-repeat: no-repeat;
     background-position: right;
-    /* Gray */
     border: get-vw(1px,375) solid #BFB7B6;
     box-sizing: border-box;
     border-radius: get-vw(3px, 375);
@@ -115,19 +113,7 @@ input[type=checkbox] {
 
     }
   }
-  .price{
-    font-family: Montserrat-Regular;
-    font-style: normal;
-    font-weight: normal;
-    font-size:get-vw(18px,1920);
-    line-height: 150%;
-    margin-left: 0 !important;
-    text-transform: none!important;
-    letter-spacing: -0.02em;
-    color: #000000;
-    position: absolute;
-    right: 1.59vw;
-  }
+
   .textstyle{
     width: unset;
     font-family: Montserrat-Regular;

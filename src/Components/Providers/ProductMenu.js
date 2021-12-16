@@ -7,11 +7,11 @@ const ProductContext = createContext({});
 
 
 const ProductProvider =({children})=>{
-
+    let defaults="Երեվան";
     const [activSub, setActivSub]= useState([])
-    const [activeCityname,setactiveCityname]=useState("Երեվան")
+    const [activeCityname,setactiveCityname]=useState(defaults.toLowerCase())
     const [languae,setLanguage]=useState("ՀԱՅ")
-    const [defaultCity,setDefaultSity]=useState("Երեվան");
+    const [defaultCity,setDefaultSity]=useState(defaults.toLowerCase());
     const [activeMenuitem,setactiveMenuitem]=useState({})
     const [adressCountry,setAdressCountry]=useState([])
     const [menuCategorup,setMenuCategrup] =useState([

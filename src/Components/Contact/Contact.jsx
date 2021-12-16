@@ -25,7 +25,7 @@ const Contact =({history})=>{
                 <div className={css.socseti}>
                     <p className={css.miaceqmez}>միացե՛ք մեզ սոց ցանցերում</p>
                     <div className={css.socitem}>
-                        <a href="https://www.facebook.com/TumanyanShaurma/"><div className={css.fb}>
+                        <a href="https://www.facebook.com/TumanyanShaurma/" target="_blank"><div className={css.fb}>
                             <div className={css.fbbg}>
 
                             </div>
@@ -45,7 +45,7 @@ const Contact =({history})=>{
                             </svg>
 
                         </div></a>
-                        <a href=" https://www.instagram.com/tumanyanshaurma/">
+                        <a href=" https://www.instagram.com/tumanyanshaurma/" target="_blank">
                             <div className={css.insta}>
                                 <div className={css.instabg}>
 
@@ -73,7 +73,7 @@ const Contact =({history})=>{
                                 </svg>
                             </div>
                         </a>
-                        <a href="https://www.tripadvisor.com/Restaurant_Review-g293932-d1100896-Reviews-Tumanyan_Shaurma-Yerevan.html">
+                        <a target="_blank" href="https://www.tripadvisor.com/Restaurant_Review-g293932-d1100896-Reviews-Tumanyan_Shaurma-Yerevan.html">
                             <div className={css.trip}>
                                 <div className={css.tripbg}>
 
@@ -89,7 +89,7 @@ const Contact =({history})=>{
                             </div>
                         </a>
 
-                        <a href="https://www.youtube.com/channel/UCpAzbtbDMzzYSyyEcnGhGug">
+                        <a target="_blank" href="https://www.youtube.com/channel/UCpAzbtbDMzzYSyyEcnGhGug">
                             <div className={css.youtube}>
                                 <div className={css.youtubebg}>
 

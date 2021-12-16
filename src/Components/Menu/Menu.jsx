@@ -5,7 +5,6 @@ import { useProduct } from "../Providers/ProductMenu";
 import {NavLink, Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import ProductBlok from "./ProductBlok/ProductBlok";
-import {ProductReducer} from "../redux/ProductReducer";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import { LoadProductData } from "../redux/Action/ProductAction";
@@ -42,7 +41,7 @@ const Menu = ({ history }) => {
     },[])
 
 
-useEffect(() => {
+    useEffect(() => {
        if (activSub.length !== 0) {
             let act = activSub.find(i => i.name == id)
             setactiveMenuitem(act)
@@ -109,7 +108,7 @@ useEffect(() => {
     return (
         <>
             {loader ?
-                <h1>loading</h1> : <div className={css.contanier}>
+                <h1></h1> : <div className={css.contanier}>
                 <div className={css.menuimagesandtitle}>
                     <img src={process.env.REACT_APP_IMG_URL+activeMenuitem?.bigImage} alt="" />
                     <h1>{languae=="ՀԱՅ" ? activeMenuitem?.name : languae=="ENG" ? activeMenuitem?.nameEN : languae=="РУС" ? activeMenuitem?.nameRU : null}</h1>

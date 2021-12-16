@@ -66,7 +66,7 @@ const hoverItem=(id)=>{
                 {Reclam.map(({id,images,description})=>{
                         return(
                             <React.Fragment key={id}>
-                            {id===1 ? <NavLink to={"/1"}> <div className={css.wraperreclam} >
+                            {id===1 ? <NavLink to={"/grandBuffe/Axcan"}> <div className={css.wraperreclam} >
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />

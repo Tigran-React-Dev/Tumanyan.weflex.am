@@ -23,7 +23,6 @@
     display: flex;
     align-items: center;
     background-color: white;
-   //transition: all 1s, opacity 2s;
     top:0px;
     bottom: 0;
     position: absolute;
@@ -35,7 +34,7 @@
        margin-left: get-vw(303px,1920 );
        cursor: pointer;
          &:hover{
-           border: 1px solid #13AD54;
+           border: get-vw(1px,1920) solid #13AD54;
          }
        form img{
            width: get-vw(25px,1920 );
@@ -337,10 +336,10 @@
   min-width: get-vw(355px ,1920);
   max-width: get-vw(985px ,1920);
   min-height:get-vw(164px,1920);
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: get-vw(15px,1920);
-    margin-top: get-vw(15px,1920);
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: get-vw(15px,1920);
+  margin-top: get-vw(15px,1920);
 
 
 
@@ -357,7 +356,6 @@
   z-index: 33;
   display: flex;
   flex-direction: column;
-  //padding-left: 20px;
   position: relative;
   color: #BFB7B6;
   margin-left: get-vw(25px,1920);
@@ -449,6 +447,18 @@
 }
 .adressblokmobile{
   display: none;
+}
+.messagegrandbufe{
+  font-family: Montserrat-Medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: get-vw(16px,1920);
+  line-height: get-vw(20px,1920);
+  letter-spacing: -0.02em;
+  color: #BFB7B6;
+  margin-left: get-vw(38px,1920);
+  margin-top: get-vw(10px,1920);
+  padding-bottom: get-vw(30px,1920);
 }
 
 
@@ -832,6 +842,20 @@
     margin-top: get-vw(25px,375);
     padding-bottom: get-vw(15px,375);
 
+  }
+  .messagegrandbufe{
+    width: get-vw(315px,375);
+    height: get-vw(48px,375);
+    font-family: Montserrat-Medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(16px,375);
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    color: #BFB7B6;
+    margin-left: get-vw(15px,375);
+    margin-top: get-vw(20px,375);
+    padding-bottom: get-vw(70px,375);
   }
   .basketclick{
     display: block;

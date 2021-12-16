@@ -22,9 +22,11 @@ const GrantBuffet = () => {
     const {id} = useParams()
     const ref=useRef(null)
     const dispatch=useDispatch()
+    let key2 = sessionStorage.getItem("city")
     const [activeMenuStyle,setActiveMenuStyle]=useState({0:true})
     const [loader2, setloader2] = useState(false)
     const [pagintion,setpagination]=useState(7)
+    const [showpage,setShowPage]=useState(true)
      useEffect(()=>{
          window.scrollTo(0, 0);
      },[history])
@@ -32,10 +34,23 @@ const GrantBuffet = () => {
 
 
      useEffect(()=>{
+
         dispatch(LoadGrandBufetData())
          setloader2(true)
 
     },[])
+
+    useEffect(()=>{
+
+        let sityname="Ծաղկաձոր"
+        if(key2){
+            if(key2.toLowerCase()==sityname.toLowerCase()){
+                setShowPage(false)
+            }else{
+                setShowPage(true)
+            }
+        }
+    },[key2])
 
     const ChangeStyleAndCategory =(menu,index)=>{
         switch (index){
@@ -87,7 +102,7 @@ const GrantBuffet = () => {
             <div className={css.grandbufeHdr}>
                  <h1>grand buffet</h1>
             </div>
-            {loader2 &&
+            {loader2 && showpage ?
             <>
             <div className={css.menuconsreuctor} ref={ref}>
                 {
@@ -124,7 +139,12 @@ const GrantBuffet = () => {
                 }
 
             </div>
+
             </>
+                :
+                <div  className={css.blokbufet}>
+                   <p>Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>
+                </div>
             }
             {grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.length>8 && <div className={css.grandbufefooter}>
                 <Button

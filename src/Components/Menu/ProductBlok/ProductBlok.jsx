@@ -76,8 +76,9 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
 
         handleAddProductCard(newProductcard)
             if(itionaldataitem !=undefined){
-                setItionaldataitem([...names])
+                setItionaldataitem(names)
                 setItionalitem([])
+                setPriceItional(0)
             }
     }
 

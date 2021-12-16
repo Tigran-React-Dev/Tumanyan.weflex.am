@@ -1,22 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import {CardReducer} from "../redux/CardReducer";
 import css from "./Basket.module.scss"
 import {useHistory} from "react-router-dom";
 import Basketitem from "./Basketitem/Basketitem";
 import Input from "../Global/Input/Input";
-import btnbsk from "../../images/icons/btnpromo.svg"
-import btndel from "../../images/icons/deletebt.svg"
+import btnbsk from "../../images/icons/btnpromo.svg";
+import btndel from "../../images/icons/deletebt.svg";
+import adressicon from "../../images/icons/select.png"
+import checketbasket from "../../images/icons/checkedbasket.png";
+import seltb from "../../images/icons/seltb.png";
+import salta from "../../images/icons/selta.png";
 import { useDispatch } from 'react-redux';
 import {AddproductCard, AddproductCardonly, ClardnBasket} from '../redux/Action/CardAction';
+import {SaveorderUser} from "../redux/Action/AuthACtion";
+import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
 import {useProduct} from "../Providers/ProductMenu";
-import adressicon from "../../images/icons/select.png"
-import seltb from "../../images/icons/seltb.png"
-import BasketRecoment from "./BasketRecoment/BasketRecoment";
-import checketbasket from "../../images/icons/checkedbasket.png"
-import {SaveorderUser} from "../redux/Action/AuthACtion";
+
+
+
+
+
 
 
 const Basket = () => {
@@ -34,20 +39,24 @@ const Basket = () => {
     const history = useHistory()
     const [basketitemdata,setItemBasketdata]=useState(items)
     const [errors,seterors]=useState("")
+    const [dateSelectShow,setDateSelectShow]=useState(false)
+    const [sitystyle,setSitystyle]=useState(null)
     useEffect(() => {
         window.scrollTo(0, 0);
 
     }, [sucsessshop])
-    console.log(CardData)
+
+
     useEffect(()=>{
         setTimeout(()=>{
             setItemBasketdata(items)
         },10)
     },[count])
-    console.log(errors)
+
    const clearnBasketitem=()=>{
       dispatch(ClardnBasket())
    }
+
    const btnpey=[
        {id:1,title:"կանխիկ",},
        {id:2,title:"pos on delivery",},
@@ -103,6 +112,9 @@ const Basket = () => {
            [e.target.name]:e.target.value,
        })
    }
+   const OpenSelectData =()=>{
+       setDateSelectShow(!dateSelectShow)
+   }
 
    const InPlace=()=>{
        setSowdetalis(2)
@@ -117,6 +129,10 @@ const Basket = () => {
           }
 
        }
+   }
+   const ChangeBranch =(sitydata)=>{
+       setSitystyle(sitydata.address)
+
    }
 
 
@@ -302,22 +318,38 @@ const Basket = () => {
                                       <p className={css.adresstitle}>Ընտրեք մասնաճյուղը՝</p>
                                        <div className={css.adresselement}>
                                            {
-                                               adressCountry.map((item)=>{
+                                               adressCountry.map((item,index)=>{
                                                    return(
                                                        defaultCity.toLowerCase() == item.city.name.toLowerCase() &&
                                                        <div key={item.id} className={css.itermadresandicon}
-                                                            style={{marginLeft:item.id===5  && "3.33vw",marginRight:item.id===3  && "1.2vw"}}>
+                                                            style={{marginLeft:index===4  && "3.33vw",marginRight:item.id===3  && "1.2vw"}}
+                                                            onClick={()=>ChangeBranch(item)}
+                                                       >
                                                            <img src={adressicon} alt=""/>
-                                                           <p>{item.address}</p>
+                                                           <p style={{color:sitystyle==item.address &&  "#13AD54" }}>{item.address}</p>
                                                        </div>
                                                    )
                                                })
                                            }
                                        </div>
-                                       <div className={css.clock}>
-                                            <p>{clock} </p>
-                                            <img src={seltb} alt=""/>
-                                       </div>
+                                    {/*select data*/}
+                                        <div className={css.clokblok}>
+                                            <div className={css.clock} onClick={OpenSelectData}>
+                                                <p>{clock} </p>
+                                                {!dateSelectShow ?  <img src={seltb} alt=""/> :  <img src={salta} alt=""/>}
+                                            </div>
+                                            {dateSelectShow &&
+                                             <div className={css.clockselectwraper}>
+                                              <div className={css.clockcloseWraper} onClick={OpenSelectData}/>
+                                                 <div className={css.selectdate} onClick={(e)=>e.stopPropagation()}>
+
+                                                 </div>
+
+                                             </div>
+                                            }
+                                        </div>
+
+
                                    </div>
 
                               }
