@@ -151,7 +151,7 @@ const Contact =({history})=>{
                                  <div className={css.gic4}></div>
                                  <div className={css.hascee}>
                                       <p className={css.hascep}>Հասցե՝</p>
-                                      <p className={css.hacep2}>{item.city.name=="Երեվան" ? "0001, ՀՀ, Երևան," :"0051, ՀՀ, Ծաղկաձոր," } {item.address}</p>
+                                      <p className={css.hacep2}> {item.address}</p>
                                  </div>
                                  <div className={css.datejob}>
                                      <p className={css.datatitle}>

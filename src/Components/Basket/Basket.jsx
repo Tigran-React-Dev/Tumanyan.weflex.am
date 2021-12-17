@@ -17,6 +17,7 @@ import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
 import {useProduct} from "../Providers/ProductMenu";
+import {LoadProductData} from "../redux/Action/ProductAction";
 
 
 
@@ -25,14 +26,14 @@ import {useProduct} from "../Providers/ProductMenu";
 
 
 const Basket = () => {
+    const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
+    const  CardData = useSelector(({ CardReducer  }) => CardReducer)
+    const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const [showdetalis,setSowdetalis]=useState(1)
     const [paybtnstyle,setPeybtnStyle]=useState(1)
     const [clock,setClock]=useState("Ժամը")
     const [sucsessshop,setSucsessshp]=useState(false)
     const [count,srtcount]=useState(1)
-    const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
-    const  CardData = useSelector(({ CardReducer  }) => CardReducer)
-    const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const { totalPrice, items } =  CardData
     const {adressCountry,defaultCity} =useProduct()
     const dispatch =useDispatch()
@@ -41,11 +42,21 @@ const Basket = () => {
     const [errors,seterors]=useState("")
     const [dateSelectShow,setDateSelectShow]=useState(false)
     const [sitystyle,setSitystyle]=useState(null)
+    const [loading,setLoading]=useState(false)
+    const [activeSityTimes,setActiveSityTimes]=useState([])
+    const [activeSityName,setACtiveSityName]=useState("")
+
     useEffect(() => {
         window.scrollTo(0, 0);
+     }, [sucsessshop])
 
-    }, [sucsessshop])
 
+
+
+     useEffect(()=>{
+       dispatch(LoadProductData())
+         setLoading(true)
+     },[])
 
     useEffect(()=>{
         setTimeout(()=>{
@@ -86,10 +97,10 @@ const Basket = () => {
     }
 
     const SendFormdataCheck =()=>{
-
-        dispatch(SaveorderUser(items))
+         dispatch(SaveorderUser(items))
         setSucsessshp(!sucsessshop)
     }
+
 
     const [checket,setchecked]=useState(false)
     const hantletargetclick =()=>{
@@ -132,7 +143,9 @@ const Basket = () => {
    }
    const ChangeBranch =(sitydata)=>{
        setSitystyle(sitydata.address)
-
+       setActiveSityTimes(sitydata.times)
+       setACtiveSityName(sitydata.address)
+       setClock("Ժամը")
    }
 
 
@@ -338,14 +351,29 @@ const Basket = () => {
                                                 <p>{clock} </p>
                                                 {!dateSelectShow ?  <img src={seltb} alt=""/> :  <img src={salta} alt=""/>}
                                             </div>
-                                            {dateSelectShow &&
+
+                                            {activeSityName=="" && dateSelectShow ?
+
+                                              <p>ընտրեք մասնաճուղը</p>
+                                                :
+                                                activeSityName!="" && dateSelectShow ?
                                              <div className={css.clockselectwraper}>
                                               <div className={css.clockcloseWraper} onClick={OpenSelectData}/>
                                                  <div className={css.selectdate} onClick={(e)=>e.stopPropagation()}>
+                                                       <div className={css.overfloscrol}>
+                                                           {activeSityTimes.map((time,i)=>{
+                                                               return(
+                                                                   <p style={{marginTop:i==0 && "0px"}} onClick={()=>setClock(time.time)}>{time.time}</p>
+                                                               )
+                                                           })
 
+                                                           }
+                                                       </div>
                                                  </div>
 
                                              </div>
+                                                    :
+                                                    null
                                             }
                                         </div>
 
@@ -387,18 +415,18 @@ const Basket = () => {
                               />
 
                           </div>
-                          <div className={css.recomentcontroler} style={recomentcontroler} >
+                          {/*<div className={css.recomentcontroler} style={recomentcontroler} >*/}
                               <div className={css.recometntcontrol}>
+                                  <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
                                      <div className={css.shiporder}>
-                                      <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
-                                      {
-                                          product.filter(i=>i.category=="recoment").map((obj)=>{
+
+                                      {loading &&  product.filter(fil=>fil.name=="Ըմպելիք")[0]?.products.map((obj)=>{
 
                                               return   (<BasketRecoment
                                                   key={obj.id}
                                                   handleAddProductCard={handleAddProductCard}
-
                                                   {...obj}
+                                                  like={false}
                                               />)
                                           })
                                       }
@@ -406,7 +434,7 @@ const Basket = () => {
                                   </div>
 
                                 </div>
-                          </div>
+                          {/*</div>*/}
                       </div>  
                    </div>
                 </div>

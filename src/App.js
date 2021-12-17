@@ -50,7 +50,7 @@ function App() {
 
     const Clickcountry =(activdata,name,id)=>{
         sessionStorage.setItem("city",name.toLowerCase())
-        setDefaultSity(name)
+        setDefaultSity(name.toLowerCase())
         ChangeACtivSup(activdata,name)
         setBgcolor(id)
     }

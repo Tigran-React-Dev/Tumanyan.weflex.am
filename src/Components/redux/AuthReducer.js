@@ -15,7 +15,7 @@ export const initialstate={
         email:"anahit@gmail.com"
     },
     adresess:[
-        // {id:1,adress:"Աճառյան",bulding:"18",apartment:"10"},
+         // {id:1,adress:"Աճառյան",bulding:"18",apartment:"10"},
 
     ],
     userorders:[],

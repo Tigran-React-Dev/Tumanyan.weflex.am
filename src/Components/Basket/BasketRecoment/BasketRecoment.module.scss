@@ -74,4 +74,92 @@
       }
     }
   }
+
+}
+.itemrecommobile{
+  display: none;
+}
+@media screen  and (max-width: 500px) {
+
+  .itemrecom{
+    display: none;
+    }
+  .itemrecommobile{
+    display: block;
+    width: get-vw(320px,375)!important;
+    height: get-vw(157px,375);
+    border-radius: get-vw(10px,375);
+    background: #F9F9F9;
+    margin-left: get-vw(15px,375);
+    padding: 0 get-vw(15px,375);
+  }
+  .itemheader{
+    width: get-vw(290px,375);
+    height: get-vw(80px,375);
+
+    margin-top: get-vw(15px,375);
+    display: flex;
+    .imagerecom{
+      width: get-vw(80px,375);
+      height: get-vw(80px,375);
+    }
+  }
+.descriptionandname{
+  width: get-vw(190px,375);
+  height: get-vw(70px,375);
+  margin-top: get-vw(0px,375);
+  margin-left: get-vw(20px,375);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  .rectitle{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,375);
+    line-height: 120%;
+   letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+    margin-top: get-vw(0px,375);
+  }
+  .descript{
+    font-family: Montserrat-Medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size: get-vw(14px,375);
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    color: #BFB7B6;
+    margin-top: get-vw(0px,375);
+  }
+  .addcardandprice{
+    width: get-vw(290px,375);
+    height: get-vw(42px,375);
+    background: #13AD54;
+    border-radius: get-vw(6.25px,375);
+    margin-top: get-vw(10px,375);
+    margin-left: get-vw(0px,375);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(19px,375);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-left: get-vw(15px,375);
+    }
+    img{
+      width: get-vw(32px,375);
+      height: get-vw(32px,375);
+      object-fit: contain;
+      margin-right: get-vw(15px,375);
+    }
+  }
 }

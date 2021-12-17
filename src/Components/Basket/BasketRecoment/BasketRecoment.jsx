@@ -3,7 +3,8 @@ import css from "./BasketRecoment.module.scss";
 import btnrecom from "../../../images/icons/btnrecom.svg"
 
 
-const BasketRecoment = ({id,title,image,bonus,description,category,price,handleAddProductCard}) => {
+const BasketRecoment = ({id,name,nameRU,nameEN,description,image,bonus,like,category_id,prices,itionalitem=[],handleAddProductCard}) => {
+
 
 
     const AddtoCardRecom =()=>{
@@ -11,15 +12,19 @@ const BasketRecoment = ({id,title,image,bonus,description,category,price,handleA
         const recomobj={
             id,
             _id:Date.now(),
-            title,
+            name,
+            nameRU,
+            nameEN,
             image,
             bonus,
             description,
-            category,
-            priceitem:price,
-            price:price[0].price,
-            size: price.length===3 ? price[0].size : false,
+            category_id,
+            priceitem:prices,
+            price:+prices[0].price,
+            size: prices.length===1 ? undefined : prices[0].sizes.size,
             count:1,
+            like,
+            itionalitem,
         }
 
         handleAddProductCard(recomobj)
@@ -28,17 +33,39 @@ const BasketRecoment = ({id,title,image,bonus,description,category,price,handleA
 
 
      return (
+         <>
           <div className={css.itemrecom}>
-              <img className={css.imagerecom} src={image} alt=""/>
+              <img className={css.imagerecom} src={process.env.REACT_APP_IMG_URL+image} alt=""/>
               <div className={css.recomtitlebtn}>
-                   <p className={css.rectitle}>{title}</p>
+                   <p className={css.rectitle}>{name}</p>
                    <p className={css.descript}>{description}</p>
                   <div className={css.addcardandprice}>
-                      <p>{price[0].price} ֏</p>
-                      <img src={btnrecom} alt="" onClick={()=>AddtoCardRecom(category)}/>
+                      <p>{prices[0].price} ֏</p>
+                      <img src={btnrecom} alt="" onClick={()=>AddtoCardRecom()}/>
                   </div>
               </div>
           </div>
+             {/*Mobile ITEM Jsx*/}
+             <div className={css.itemrecommobile}>
+                 <div className={css.itemheader}>
+                     <img className={css.imagerecom} src={process.env.REACT_APP_IMG_URL+image} alt=""/>
+                     <div className={css.descriptionandname}>
+                             <p className={css.rectitle}>{name}</p>
+                             <p className={css.descript}>{description}</p>
+                     </div>
+                 </div>
+                     <div className={css.addcardandprice}>
+                         <p>{prices[0].price} ֏</p>
+                         <img src={btnrecom} alt="" onClick={()=>AddtoCardRecom()}/>
+                     </div>
+
+                 {/*<div className={css.recomtitlebtn}>*/}
+
+
+                 {/*</div>*/}
+             </div>
+         </>
+
     );
 };
 

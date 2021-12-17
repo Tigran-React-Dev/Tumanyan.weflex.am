@@ -139,18 +139,13 @@ const Header = () => {
     // Style animation open header
 
     const cardStyle = {
-
         top:  sowmenu ? "-3.4vw" : "0vw",
         transition: "all 0.3s ease-in",
-        // opacity: sowmenu ? "0" : "1",
-
-    };
+      };
     const menublogstyle = {
-
         top:  sowmenu ? "-3.4vw" : "0",
         transition: "all 0.3s ease-in",
-
-    }
+     }
     const headerstyle ={
          height: sowmenu ? "64px" : "160px",
         }
@@ -162,6 +157,11 @@ const ChangeMobileMenu =()=>{
     setMenuIconClik(!menuiconClik)
     if(menuiconClik){
         window.scrollTo(0, 0);
+        document.body.style.overflow = "auto";
+    }else{
+        document.body.style.overflow = "hidden";
+
+
     }
 
 }
@@ -172,7 +172,18 @@ const mobilemenustyle ={
          bottom:menuiconClik && 0,
          right:menuiconClik && 0,
          top:menuiconClik && "16.5vw",
-         transition: "all 0.9s",
+          transition: "all 0.9s",
+}
+const handleClickSelectMobile =()=>{
+    setSelectIcon(!selecticon)
+    setSowAdress(!sowAdress)
+    if(selecticon){
+        document.body.style.overflow = "auto";
+    }else{
+        document.body.style.overflow = "hidden";
+
+
+    }
 }
 
    
@@ -330,9 +341,9 @@ const mobilemenustyle ={
             <div style={mobilemenustyle} className={css.mobilecontn}  >
                 <div className={css.masnajuxmobile}  >
                     <div className={css.masnajuxwrapermobile} >
-                        <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelect} />
-                        <p  className={css.masnajuxnamemobile} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
-                        {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelect} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
+                        <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelectMobile} />
+                        <p  className={css.masnajuxnamemobile} onClick={handleClickSelectMobile}>{adresses ? adresses : t("adresscity")}</p>
+                         {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelectMobile} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
                     </div>
                 </div>
 
@@ -341,7 +352,6 @@ const mobilemenustyle ={
                             <p onClick={ScrlMenu}>{t("menuscrol")}</p>
                         </div>
                         <div className={css.menumixin}>
-
                                 {
                                     isOuthFooter.map((item,index)=>{
 

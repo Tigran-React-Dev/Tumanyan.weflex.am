@@ -69,7 +69,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
             size: prices.length===1 ? undefined : size,
             count,
             ingredients,
-            description:description!=null ? description : null,
+            description:description ,
             like
         }
         //coll function send object to redux reducer and product add to Card

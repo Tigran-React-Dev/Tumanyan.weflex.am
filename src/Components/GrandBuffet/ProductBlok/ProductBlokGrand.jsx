@@ -153,14 +153,8 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
                             <p className={css.descript}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
                             :
                             <>
-                            {price_buffets?.length===3 ?
-                                <div className={css.addlichni} onClick={AddlichniyProduct}>
-                                    <p>Ավելացնել</p>
-                                    <div className={css.kechup}/>
-                                </div>
-                             :
-                                price_buffets?.length===2 ?
-                                    <div className={css.addlichni} onClick={AddlichniyProduct}>
+                            {price_buffets?.length>0 ?
+                                 <div className={css.addlichni} onClick={AddlichniyProduct}>
                                         <p>Բաղադրիչներ</p>
 
                                     </div>

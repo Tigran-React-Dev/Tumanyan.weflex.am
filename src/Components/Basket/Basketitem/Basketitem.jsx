@@ -39,7 +39,7 @@ const [show,setShow]=useState({})
         {<img className={css.productpicturent} src={process.env.REACT_APP_IMG_URL + image} alt=""/>}
         <div className={css.titleanddescription}>
             <p className={css.titleproduct}>{name}</p>
-            <p className={css.description}>{itionalitem != undefined ? itionalitem.map(i => <span
+            <p className={css.description}>{itionalitem != undefined && itionalitem?.length!=0 ? itionalitem.map(i => <span
                 key={i.id}>{i.name},</span>) : description != undefined ? description : null} </p>
          </div>
         <h2 className={css.size}>{size != undefined ? size : null}</h2>

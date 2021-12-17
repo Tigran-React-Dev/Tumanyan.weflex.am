@@ -29,7 +29,7 @@ export const CardReducer = (state = initialState, action) => {
                 let files= state.items.filter((e)=>{
                     return (e.name===action.payload.name && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.name===action.payload.itionalitem?.[0]?.name )
               })
-
+             debugger
                 if(files.length===0){
                     arr1.push(action.payload)
                 }else{

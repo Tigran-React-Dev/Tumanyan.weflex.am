@@ -42,6 +42,7 @@
            cursor: pointer;
            margin-left: get-vw(13px,1920 );
            margin-top: get-vw(0px,1920 );
+
        }
        form{
            display: flex;
@@ -530,7 +531,6 @@
     line-height: get-vw(28px, 375);
     letter-spacing: -0.04em;
     text-transform: uppercase;
-
     margin-left: get-vw(13px,375);
     cursor: pointer;
     color: #13AD54;
@@ -562,7 +562,7 @@
   }
   .mobilecontn{
     width: get-vw(375px,375);
-    height:get-vw(1200px,500);
+    height:get-vw(1300px,500);
     background-color: #252223;
     position: absolute;
     left: 0;
