@@ -83,7 +83,11 @@ const Projects = () => {
                              className={css.containerProjectmodal}
                          >
                              <div className={css.controler} key={item.id} onMouseEnter={() => {
-                                 sethoveritem({[index]: !hoveritem[index]})
+                                  var width = window.innerWidth;
+                                 if(width>500){
+                                    sethoveritem({[index]: !hoveritem[index]})
+                                 }
+                                
                              }}
                                   onMouseLeave={() => sethoveritem({})}
                                   style={{backgroundImage: (hoveritem[index] && `url(${process.env.REACT_APP_IMG_URL + item.image})`)}}

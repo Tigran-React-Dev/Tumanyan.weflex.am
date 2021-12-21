@@ -155,11 +155,16 @@ const Header = () => {
 
 const ChangeMobileMenu =()=>{
     setMenuIconClik(!menuiconClik)
+    window.scrollTo(0, 0);
     if(menuiconClik){
-        window.scrollTo(0, 0);
+       
+       setTimeout(()=>{
         document.body.style.overflow = "auto";
+       },10)
     }else{
-        document.body.style.overflow = "hidden";
+        setTimeout(()=>{
+            document.body.style.overflow = "hidden";
+        },10)
 
 
     }

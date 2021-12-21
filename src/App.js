@@ -51,10 +51,14 @@ function App() {
 }, [languae])
 
     const Clickcountry =(activdata,name,id)=>{
+        var width = window.innerWidth;
         sessionStorage.setItem("city",name.toLowerCase())
         setDefaultSity(name.toLowerCase())
         ChangeACtivSup(activdata,name)
         setBgcolor(id)
+        if(width<700){
+            setSowZapros(!sowZapros)
+        }
     }
     
     useEffect(()=>{
