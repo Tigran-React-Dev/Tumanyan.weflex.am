@@ -20,7 +20,7 @@ function App() {
     const key = sessionStorage.getItem("key")
     const dispath=useDispatch()
     const [sowZapros ,setSowZapros]=useState(true)
-    const {menuCategorup,ChangeACtivSup,setDefaultSity,setactiveCityname,getData} =useProduct()
+    const {menuCategorup,ChangeACtivSup,setDefaultSity,setactiveCityname,getData,languae,setLanguage} =useProduct()
     const [bgcolor,setBgcolor]=useState(null)
     const history = useLocation()
     const [loading,setloading]=useState(false)
@@ -30,7 +30,12 @@ function App() {
 
   useEffect(()=>{
   let key2 = sessionStorage.getItem("city")
-
+  const item = JSON.parse(localStorage.getItem("card"))
+  if(item){
+    dispath(loadLocalCard(item))
+  }
+  
+    setloading(true)
       if(key2){
           setactiveCityname(key2)
           setDefaultSity(key2)
@@ -40,13 +45,10 @@ function App() {
 
 
   useEffect(() => {
-     const item = JSON.parse(localStorage.getItem("card"))
-   if(item){
-      dispath(loadLocalCard(item))
-    }
-    
-      setloading(true)
-}, [])
+      const activeLanguage=localStorage.getItem("i18nextLng")
+      setLanguage(activeLanguage)
+   
+}, [languae])
 
     const Clickcountry =(activdata,name,id)=>{
         sessionStorage.setItem("city",name.toLowerCase())

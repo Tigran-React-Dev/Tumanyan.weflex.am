@@ -147,8 +147,10 @@
     letter-spacing: -0.02em;
      color: #BFB7B6;
     span{
-      color: #EFEFEF;
-      cursor: pointer;
+      a{
+        color: #EFEFEF;
+       cursor: pointer;
+      }
     }
   }
   // .webflex{
@@ -305,8 +307,10 @@
       letter-spacing: -0.02em;
       color: #BFB7B6;
       span{
-        color: #EFEFEF;
-        cursor: pointer;
+        a{
+          color: #EFEFEF;
+         cursor: pointer;
+        }
       }
     }
     // .webflex{

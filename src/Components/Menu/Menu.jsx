@@ -2,12 +2,12 @@ import React, {useEffect, useRef, useState} from "react";
 import { useParams } from "react-router";
 import css from "./Menu.module.scss";
 import { useProduct } from "../Providers/ProductMenu";
-import {NavLink, Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import ProductBlok from "./ProductBlok/ProductBlok";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import { LoadProductData } from "../redux/Action/ProductAction";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -18,6 +18,7 @@ const Menu = ({ history }) => {
     
     const {activSub,activeMenuitem, setactiveMenuitem,languae} = useProduct()
     const { id } = useParams();
+    const { t }=useTranslation() 
     const dispatch =useDispatch()
     const ref =useRef(null)
     const [loader, setloader] = useState(true)
@@ -26,13 +27,6 @@ const Menu = ({ history }) => {
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
     const [advances,setadvances]=useState([])
-
-
-
-
-
-
-
 
     useEffect(()=>{
         dispatch(LoadProductData())
@@ -145,7 +139,7 @@ const Menu = ({ history }) => {
                         }
                     </div>
                     <div className={css.recoment}>
-                    <p className={css.recomtitle}>Խորհուրդ ենք տալիս նաեվ</p>
+                    <p className={css.recomtitle}>{t("advaces")}</p>
                       <div className={css.recomconstruct}>
                           {
                               product.filter(fil=>fil.name==id)[0]?.advices?.map((obj) => {
@@ -168,7 +162,7 @@ const Menu = ({ history }) => {
                     {id==20 && <div className={css.Sauces}>
                         <p className={css.Saucestitle}>Սոուսներ</p>
                         <div className={css.sousesblog}>
-                            {product.filter(fil=>fil.name==id)[0]?.souses.map((obj) => {
+                            {product.filter(fil=>fil.name==id)[0]?.souses?.map((obj) => {
 
                                 return (<ProductBlok
                                     key={obj.id}

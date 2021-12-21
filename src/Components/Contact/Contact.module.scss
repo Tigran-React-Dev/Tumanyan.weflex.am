@@ -270,13 +270,14 @@
     min-height: get-vw(267px,1920);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    
     margin-top: get-vw(50px,1920);
   }
 }
 .itemcontact1{
   width: get-vw(412px,1920);
   height: get-vw(67px,1920);
+ 
 
 
   h4{
@@ -439,6 +440,7 @@
     margin-top: get-vw(15px,1920);
   }
   .phonegroup{
+    min-width: max-content;
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;

@@ -63,20 +63,20 @@ const hoverItem=(id)=>{
             </div>
 
             <div className={css.reclams}>
-                {Reclam.map(({id,images,description})=>{
+                {Reclam.map(({id,images,description,descriptionRU,descriptionENG})=>{
                         return(
                             <React.Fragment key={id}>
                             {id===1 ? <NavLink to={"/grandBuffe/Axcan"}> <div className={css.wraperreclam} >
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />
-                                    <h2 className={css.rectitle}>{description}</h2>
+                                    <h2 className={css.rectitle}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
                                 </div></NavLink> :
                                     <NavLink to={FOOD_TRUCK_PAGE} exact> <div className={css.wraperreclam} key={id}>
                                         <div  className={css.itemreclam} style={{
                                             backgroundImage: `url(${images})`
                                         }}  />
-                                        <h2 className={css.rectitle2}>{description}</h2>
+                                        <h2 className={css.rectitle2}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
                                     </div></NavLink>
                             }
                            </React.Fragment>
@@ -104,8 +104,7 @@ const hoverItem=(id)=>{
             <>
             <div className={css.rec2}>
 
-                {
-                    homepageReclam2.map(({id, image}) => {
+                {homepageReclam2.map(({id, image}) => {
 
                         return (
                             <div key={id} className={css.itemreclam2}>
@@ -129,8 +128,7 @@ const hoverItem=(id)=>{
                     <h1>{t("about")}</h1>
                      <p className={css.aboutp}>{aboutinfo.info}</p>
                      <div className={css.step}>
-                         {
-                             aboutStep.map((item)=>{
+                         {aboutStep.map((item)=>{
                                  return(
                                      <div key={item.id} className={css.itemstop}>
                                          <div>

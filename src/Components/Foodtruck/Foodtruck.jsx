@@ -5,10 +5,13 @@ import FoodPage1 from "./FoodPage1/FoodPage1";
 import {useSlider} from "../Providers/SliderProvider";
 import FoodPage2 from "./FoodPage2/FoodPage2";
 import Foodpage3 from "./FoodPage3/Foodpage3";
-
+import {useTranslation} from "react-i18next"
+import { useProduct } from '../Providers/ProductMenu';
 
 
 const Foodtruck = ({history}) => {
+    const { languae }=useProduct()
+    const { t }=useTranslation()
     const {foodTruckdata,setFootruckData}=useSlider()
    const [activeMenu,setACtivemenu]=useState(1)
     const ref=useRef(null)
@@ -18,9 +21,9 @@ const Foodtruck = ({history}) => {
     },[history])
 
     const btnFoodTruck=[
-        {id:1,name:"միջոցառումներ",},
-        {id:2,name:"ինֆորմացիա",},
-        {id:3,name:"պատվիրել",},
+        {id:1,name:"միջոցառումներ",nameRU:"Мероприятия",nameEN:"Events"},
+        {id:2,name:"ինֆորմացիա",nameRU:"Информация ",nameEN:"Information",},
+        {id:3,name:"պատվիրել",nameRU:"Информация ",nameEN:"Order",},
     ]
 
 
@@ -47,7 +50,7 @@ const Foodtruck = ({history}) => {
     return (
          <div className={css.foodcontainer}>
              <div className={css.foodhdr}>
-                     <h1>Food truck</h1>
+                     <h1>{t("foodtruck")}</h1>
              </div>
              <div className={css.btnfoodmenu} ref={ref}>
                  {
@@ -62,7 +65,7 @@ const Foodtruck = ({history}) => {
                                      boxShadow:activeMenu===elem.id && "inset -1px 0px 0px",
                                      color:activeMenu===elem.id && "#13AD54"
                                  }}
-                             >{elem.name}</button>
+                             >{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</button>
                          )
                      })
                  }

@@ -17,24 +17,24 @@ const SliderProvider =({children})=>{
     const [project,setproject]=useState([])
     const [foodTruckdata,setFootruckData]=useState([])
     const Reclam = [
-        {id:1,images:rec1,description:"Գրանդ բուֆֆե"},
-        {id:2,images:rec2,description:"Food truck"},
+        {id:1,images:rec1,description:"Գրանդ բուֆֆե",descriptionRU:"Гранд Буфет",descriptionENG:"Grand Buffet"},
+        {id:2,images:rec2,description:"Ֆուդ տրաք",descriptionRU:"Фуд Трек",descriptionENG:"Food truck"},
 
     ];
     const aboutStep=[
-        {id:1,stepARM:"Զանգահարիր",stepENG:"Call",stepRUS:"Вызов"},
+        {id:1,stepARM:"Զանգահարիր",stepENG:"Call",stepRUS:"Звонить"},
         {id:2,stepARM:"Օնլայն պատվիրիր",stepENG:"Order online",stepRUS:"Заказать онлайн"},
-        {id:3,stepARM:"օգտագործիր հավելվածը",stepENG:"use the app",stepRUS:"использовать приложение"},
+        {id:3,stepARM:"օգտագործիր հավելվածը",stepENG:"Use the app/application",stepRUS:"Использовать приложение"},
     ];
-    const contacts1 ={
-        "Առաջարկների համար":"info@tumanyan.am",
-        "PR բաժին":"info@tumanyanpr.am",
-        "HR բաժին":"info@tumanyanhr.am",
-    }
-    const contacts2={
-        "Գլխավոր օֆիս":"0040, ՀՀ, ք․ Երևան  Թումանյան փ. 32",
-        "Տնօրենի գրասենյակ":"+374 91 12-34-56"
-    }
+  
+    const contactMail=[
+        {id:1,position:"Առաջարկների համար",positionRU:"За предложения",positionENG:"For the offers",mail:"info@tumanyan.am"},
+        {id:2,position:"PR բաժին",positionRU:"Отдел по связам с общественностью",positionENG:"PR Departement",mail:"info@tumanyan.am"},
+        {id:3,position:"HR բաժին",positionRU:"Отдел кадров",positionENG:"HR Departement ",mail:"info@tumanyan.am"},
+        {id:4,position:"Գլխավոր օֆիս",positionRU:"Главный офис",positionENG:"Head office",mail:"info@tumanyan.am"},
+        {id:5,position:"Տնօրենի գրասենյակ",positionRU:"Кабинет директора",positionENG:"Director's Office",mail:"+374 91 12-34-56"},
+    ]
+
     const aboutinfo={
         title:"Մեր մասին",
         info:"'Թումանյան Շաուրմա'-ն հիմնադրվել է 1998 թվականին:'Թումանյան Շաուրմա'-ի առաջին մասնաճյուղը տեղակայված էր Թումանյան-Աբովյան փողոցների խաչմերուկում,որը սկզբնական շրջանում զբաղեցնում էր բավականին փոքր զբաղեցնում էր բավականին փոքր... "
@@ -50,8 +50,7 @@ const SliderProvider =({children})=>{
         aboutStep,
         jobs,
         SetJobs,
-        contacts1,
-        contacts2,
+        contactMail,
         project,
         setproject,
         activeProjectdata,

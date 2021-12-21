@@ -4,9 +4,10 @@ import  face from "../../images/socsety/fb_normal.svg";
 import {useSlider} from "../Providers/SliderProvider";
 import {Link, NavLink} from "react-router-dom";
 import {useProduct} from "../Providers/ProductMenu";
-
+import {useTranslation} from "react-i18next"
 const Contact =({history})=>{
 
+    const { t } = useTranslation();
     useEffect(()=>{
         window.scrollTo(0, 0);
 
@@ -14,16 +15,17 @@ const Contact =({history})=>{
 
 
 
-    const {contacts1,contacts2} =useSlider()
-    const {adressCountry} =useProduct()
+    const {contactMail} =useSlider()
+    const {adressCountry,languae} =useProduct()
+    console.log(adressCountry)
     return(
         <div className={css.socbigcontainer}>
             <div className={css.contactContainer}>
                 <div className={css.contacthdr}>
-                    <h1>կապ</h1>
+                    <h1>{t("contact")}</h1>
                 </div>
                 <div className={css.socseti}>
-                    <p className={css.miaceqmez}>միացե՛ք մեզ սոց ցանցերում</p>
+                    <p className={css.miaceqmez}>{t("connectmesoc")}</p>
                     <div className={css.socitem}>
                         <a href="https://www.facebook.com/TumanyanShaurma/" target="_blank"><div className={css.fb}>
                             <div className={css.fbbg}>
@@ -107,31 +109,20 @@ const Contact =({history})=>{
                 </div>
                 <div className={css.contacner}>
                      <p className={css.titlecont}>
-                         Կոնտակտներ
+                         {t("contactmail")}
                      </p>
                     <div className={css.contactis}>
                         {
-                          Object.keys(contacts1).map((key,i)=>{
+                          contactMail.map((elem,i)=>{
                                return(
-                                   <div className={css.itemcontact1} key={i}>
-                                       <h4>{key}</h4>
-                                       <p>{contacts1[key]}</p>
+                                   <div className={css.itemcontact1} key={i} style={{marginLeft:(i!=0 && i!=3) && "10vw"}}>
+                                       <h4>{languae=="ՀԱՅ" ? elem.position : languae=="ENG" ? elem.positionENG : languae=="РУС" ? elem.positionRU : null}</h4>
+                                       <p>{elem.mail}</p>
                                    </div>
                                )
                            })
                         }
-                        <div className={css.itemcont2}>
-                            {
-                                Object.keys(contacts2).map((key,i)=>{
-                                    return(
-                                        <div className={css.itemcontact1} key={i}>
-                                            <h4>{key}</h4>
-                                            <p>{contacts2[key]}</p>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
+                        
 
                     </div>
                 </div>
@@ -139,23 +130,22 @@ const Contact =({history})=>{
             </div>
             <div className={css.masnajuxerinfo}>
              <div className={css.itemcontainer}>
-                 <p className={css.titlemasnajux}>մասնաճյուղեր</p>
+                 <p className={css.titlemasnajux}>{t("contactadress")}</p>
                  <div className={css.itemadresesblok}>
-                     {
-                         adressCountry.map((item)=>{
+                     {adressCountry.map((item)=>{
 
                              return (<div className={css.itemadressinfo} key={item.id} >
                                  <h2 className={css.titleitmadres}>
-                                     {item.title}
+                                     {languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}
                                  </h2>
                                  <div className={css.gic4}></div>
                                  <div className={css.hascee}>
-                                      <p className={css.hascep}>Հասցե՝</p>
-                                      <p className={css.hacep2}> {item.address}</p>
+                                      <p className={css.hascep}>{t("adress")}</p>
+                                      <p className={css.hacep2}> {languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
                                  </div>
                                  <div className={css.datejob}>
                                      <p className={css.datatitle}>
-                                         Աշխ. ժամ՝
+                                         {t("jobdate")}
                                      </p>
                                      <p className={css.dates}>
                                          {item.date}
@@ -163,7 +153,7 @@ const Contact =({history})=>{
                                  </div>
                                  <div className={css.heraxos}>
                                      <p className={css.heraxostit}>
-                                         Հեռ․՝
+                                         {t("tel")}
                                      </p>
                                       <div className={css.itemphone}>
                                           {

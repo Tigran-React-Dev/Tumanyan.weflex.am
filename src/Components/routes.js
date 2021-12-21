@@ -23,7 +23,7 @@ export const isAuthRoutes =[
         id:3,
         component:Projects,
         nameՀԱՅ:"Նախագծեր",
-        nameENG:"Project",
+        nameENG:"Projects",
         nameРУС:"Проекты",
         path:PROJECT_PAGE
     },
@@ -31,7 +31,7 @@ export const isAuthRoutes =[
         id:4,
         component:Jobs,
         nameՀԱՅ:"Աշխատանք",
-        nameENG:"Job",
+        nameENG:"Work",
         nameРУС:"Работа",
         path:JOBS_PAGE
     },
@@ -39,7 +39,7 @@ export const isAuthRoutes =[
         id:5,
         component:About,
         nameՀԱՅ:"Մեր մասին",
-        nameENG:"About",
+        nameENG:"About us",
         nameРУС:"О нас",
         path:ABOUT_PAGE,
     },
@@ -47,8 +47,8 @@ export const isAuthRoutes =[
         id:6,
         component:Contact,
         nameՀԱՅ:"Կապ",
-        nameENG:"Contact",
-        nameРУС:"Контакт",
+        nameENG:"Contact us",
+        nameРУС:"Контакты",
         path:CONTACT_PAGE
     },
 
@@ -76,15 +76,15 @@ export const isOuthFooter =[
         id:9,
         component:GrantBuffet,
         nameՀԱՅ:"Գրանդ բուֆֆե",
-        nameENG:"Գրանդ բուֆֆե",
-        nameРУС: "Գրանդ բուֆֆե",
+        nameENG:"Grand Buffet",
+        nameРУС: "Гранд Буфет",
         path:"grandBuffe/Axcan",
     },{
         id:10,
         component:Tumanian,
-        nameՀԱՅ:"Food truck",
+        nameՀԱՅ:"Ֆուդ թրաք",
         nameENG:"Food truck",
-        nameРУС:"Food truck",
+        nameРУС:"Фуд Трек",
         path:FOOD_TRUCK_PAGE,
     },
 

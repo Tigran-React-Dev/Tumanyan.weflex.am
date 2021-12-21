@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import storaket from "../../../images/icons/storaket.png"
 import {PROJECT_PAGE} from "../../urls";
 import axios from "axios";
-import parse from 'html-react-parser';
+
 import {useProduct} from "../../Providers/ProductMenu";
 const ProjectModals = () => {
 

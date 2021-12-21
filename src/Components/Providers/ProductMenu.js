@@ -61,6 +61,7 @@ const ProductProvider =({children})=>{
         getData,
         setactiveMenuitem,
         activeMenuitem,
+        setLanguage,
 
     }}>
         {children}

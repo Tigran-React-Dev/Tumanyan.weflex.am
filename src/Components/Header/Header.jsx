@@ -27,7 +27,7 @@ import axios from "axios";
 
 const Header = () => {
     const  totalprice = useSelector(({ CardReducer  }) => CardReducer.totalPrice)
-    const { adressCountry,setAdressCountry,activeCityname,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
+    const { adressCountry,setAdressCountry,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
     const { t } = useTranslation();
     const history = useHistory()
     const [selecticon, setSelectIcon] = useState(true)
@@ -167,7 +167,7 @@ const ChangeMobileMenu =()=>{
 }
 
 const mobilemenustyle ={
-         position:menuiconClik && !sowAdress ? "fixed" : "absolute",
+         position:menuiconClik && !sowAdress ? "absolute" : "absolute",
          left:menuiconClik && 0,
          bottom:menuiconClik && 0,
          right:menuiconClik && 0,

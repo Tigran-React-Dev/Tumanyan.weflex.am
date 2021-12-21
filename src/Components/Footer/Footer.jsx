@@ -53,7 +53,7 @@ const Footer = () => {
                 </div>
                 <div className={css.corporect}>
                     <p>© &nbsp; {new Date().getFullYear()} Tumanyan Shaurma</p>
-                    <p className={css.webflex}>{t("corporect")} &nbsp; <span>WeFlex</span></p>
+                    <p className={css.webflex}>{t("corporect")} &nbsp; <span><a href="https://weflex.am/" target="_blank" rel="noopener noreferrer">Weflex</a></span></p>
                 </div>
             </div>
 

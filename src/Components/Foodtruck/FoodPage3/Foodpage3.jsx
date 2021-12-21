@@ -11,11 +11,14 @@ import Button from "../../Global/Button/Button";
 import "./aniestyle.scss"
 import {HOME_PAGE} from "../../urls";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
+import { useProduct } from '../../Providers/ProductMenu';
 
 const Foodpage3 = () => {
 
     const history=useHistory()
-
+    const { t } =useTranslation()
+    const {languae}=useProduct()
     const [calendarvalue,setCalendarvalue]=useState("Ամսաթիվ*")
     const [openCalendarModal,setOpenCalendarModal]=useState(false)
     const [checkeds,setCheckeds]=useState(false)
@@ -121,16 +124,15 @@ const handleChangeInput=(e)=>{
             {!sucsessDataSend ?
              <>
             <div className={css.page3hdr}>
-                <p>Ունե՞ք առաջիկա միջոցառում։ Ցանկանում եք պատվիրել foof truck մինջոցառումներ համար, ապա լրացրեք
-                    տվյալները կամ զանգահարեք 81 81։</p>
+                <p>{t("foottruckordertitle")}</p>
                 <img src={trucklogo} alt=""/>
             </div>
                 <div className={css.sendinfoblok}>
                 <form action="" onSubmit={SubmitData}>
-                <h4>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</h4>
+                <h4>{t("information")}</h4>
                 <Input
                 cn="inputfoodtruck"
-                placeholder="Անուն*"
+                placeholder={t("name")}
                 name="name"
                 type="text"
                 value={name}
@@ -140,7 +142,7 @@ const handleChangeInput=(e)=>{
                 <div className={css.phoneandemail}>
                 <Input
                 cn="inputfoodtruck2"
-                placeholder="Հեռախոսահամար*"
+                placeholder={t("phonenumber")}
                 name="phone"
                 type="number"
                 value={phone}
@@ -149,7 +151,7 @@ const handleChangeInput=(e)=>{
                 />
                 <Input
                 cn="inputfoodtruck2"
-                placeholder="էլեկտրոնային հասցե*"
+                placeholder={t("emailadress")}
                 name="email"
                 type="text"
                 value={email}
@@ -159,7 +161,7 @@ const handleChangeInput=(e)=>{
                 </div>
                 <Input
                 cn="inputfoodtruck3"
-                placeholder="Կազմակերպություն"
+                placeholder={t("companiname")}
                 name="company_name"
                 type="text"
                 value={company_name}
@@ -167,10 +169,10 @@ const handleChangeInput=(e)=>{
                 style={{border:errors.company_name && "1px solid red"}}
                 />
                 <div className={css.gicform}/>
-                <h2>Միջոցառման տվյալներ</h2>
+                <h2>{t("infofoodrtuck")}</h2>
                 <Input
                 cn="inputfoodtruck4"
-                placeholder="Միջոցառման բնույթը (օրինակ՝ ծննդյան տարեդարձ կամ գործնական ընթրիք)*"
+                placeholder={t("event_type")}
                 name="event_type"
                 type="text"
                 value={event_type}
@@ -179,7 +181,7 @@ const handleChangeInput=(e)=>{
                 />
                 <Input
                 cn="inputfoodtruck3"
-                placeholder="Հասցե*"
+                placeholder={t("address_*")}
                 name="address"
                 type="text"
                 value={address}
@@ -189,7 +191,7 @@ const handleChangeInput=(e)=>{
                 <div className={css.dataamdfriend}>
                 <Input
                 cn="inputfoodtruck2"
-                placeholder="Հյուրերի քանակ"
+                placeholder={t("count_guests")}
                 name="guests_count"
                 type="number"
                 value={guests_count}
@@ -211,7 +213,7 @@ const handleChangeInput=(e)=>{
                 </div>
                 <textarea
                   className={css.textmaseges}
-                  placeholder="Ուղեկցող նամակ"
+                  placeholder={t("messages")}
                   name="message"
                   type="text"
                   value={message}
@@ -241,7 +243,7 @@ const handleChangeInput=(e)=>{
                 </div>
                     <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
                 <Button
-                title="պատվիրել"
+                title={t("zakazat")}
                 cn="btnFood"
 
                 />

@@ -12,8 +12,11 @@ import Input from "../Global/Input/Input";
 import {NavLink, useHistory} from "react-router-dom";
 import checkt from "../../images/icons/chechkoriginal.png"
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+import { useProduct } from "../Providers/ProductMenu";
 
 const Jobs =()=>{
+    const {languae}=useProduct()
     const [sowblok,setsowblock]=useState(null)
     const [activjobTutorial,setActiitmvSubTutorial]=useState({})
     const [activeSelect,Setactiveselect]=useState("Թափուր աշխատատեղեր")
@@ -24,11 +27,15 @@ const Jobs =()=>{
     const fileRef = useRef()
     const {jobs,SetJobs}=useSlider();
     const history =useHistory()
-
+    const {t}=useTranslation()
 
     const [sucsesdata,setSucses]=useState(false)
     const [errors,setErrors]=useState({})
 
+
+    useEffect(()=>{
+     Setactiveselect(languae=="ՀԱՅ" ? "Թափուր աշխատատեղեր" : languae=="ENG" ? "Vacancies" : languae=="РУС" ? "Вакансии" : null)
+    },[languae])
     const [JobsData,setJobsData]=useState({
         free_job:activeSelect != "Թափուր աշխատատեղեր" ? activeSelect : "",
         full_name:"",
@@ -138,6 +145,13 @@ const Jobs =()=>{
         })
     }
 
+    const jobcontext =[
+        {id:1,context:"Անվճար տունդարձ երեկոյան հերթափոխից հետո"},
+        {id:2,context:"Անվճար սնունդ"},
+        {id:3,context:"Համեղ ուտելիքներ"},
+        {id:4,context:"Ուրախ թիմ"},
+    ]
+
 
 
 
@@ -145,17 +159,35 @@ const Jobs =()=>{
          <div className={css.jobscontainer}>
             <div className={css.jibshdr}>
                 <div className={css.jobstitle}>
-                     <p className={css.job}>Աշխատանք</p>
-                      <p className={css.jobtext1}>Մենք միշտ ուրախ ենք ողջունել նոր մարդկանց մեր թիմում:</p>
+                     <p className={css.job}>{t("job")}</p>
+                      <p className={css.jobtext1}>{t("jobtitle")}</p>
                 </div>
                 <div className={css.jobslogo}>
                     <img src={axjik} alt=""/>
                 </div>
             </div>
+            <div className={css.jobcontext}>
+                 <div className={css.contextone}>
+                   <p>Մենք ցանկանում ենք, որ յուրաքանչյուր նոր աշխատակից իրեն զգա հարամարավետ, ջերմ և ընկերական միջավայրում:</p>
+                   <p>Մենք ստեղծում ենք միջավայր, որտեղ մարդիկ ցանկանում են սովորել և զարգանալ, աշխատանքից տուն վերադառնալ դրական և էներգիայով լի:</p>
+                   <p>Թումանյան Շաուրմայի ցանցերում կան տարբեր բաց հաստիքներ: Այնպես որ, եթե ցանկանում եք միանալ մեր ուրախ թիմին, ընտրեք Ձեզ հարմար հաստիքը և ուղարկեք ինքնակենսագրականը:</p>
+                </div>   
+                <div className={css.contextty}>
+                       
+                           {jobcontext.map(({id,context})=>{
+                               return(
+                                   <div className={css.contextitem} key={id}><div></div><p>{context}</p></div>
+                               )
+                           })
+
+                           }
+                       
+                </div>       
+            </div>
              {sucsesdata && <div className={css.succsessmobile}>
                  <div className={css.close}><img src={closebtn} alt="" onClick={() => setSucses(!sucsesdata)}/></div>
                  <img src={succsessimg} alt="" className={css.succsesimg}/>
-                 <h3 className={css.thenk_one}>Շնորհակալություն։</h3>
+                 <h3 className={css.thenk_one}>{t("thenkyou")}</h3>
                  <h3 className={css.thenk}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
                  <button className={css.btnpushmenu} onClick={() => {
 
@@ -165,7 +197,7 @@ const Jobs =()=>{
                  </button>
              </div>}
              <div className={sucsesdata ? css.displayoff : css.jobslist}>
-                    <p className={css.tapur}>Թափուր աշխատատեղեր</p>
+                    <p className={css.tapur}>{t("freejob")}</p>
                     <hr/>
                  {loading && <div className={css.itemjob}>
                      {
@@ -177,8 +209,8 @@ const Jobs =()=>{
                                          key={itm.id}
                                          onClick={() => SowJobsTutorial(itm)}
                                      >
-                                         <h2>{itm.free_job}</h2>
-                                         <h3><img src={cordinat} alt=""/><p>{itm.address}</p></h3>
+                                         <h2>{languae=="ՀԱՅ" ? itm.free_job : languae=="ENG" ? itm.free_jobEN : languae=="РУС" ? itm.free_jobRU : null}</h2>
+                                         <h3><img src={cordinat} alt=""/><p>{languae=="ՀԱՅ" ? itm.address : languae=="ENG" ? itm.addressEN : languae=="РУС" ? itm.addressRU : null}</p></h3>
                                          <h4>{itm.date}</h4>
                                          {sowblok === itm.id ? <img className={css.slaqnerqev} src={sala} alt=""/> :
                                              <img className={css.slaqnerqev} src={salb} alt=""/>}
@@ -191,7 +223,7 @@ const Jobs =()=>{
                                                  <ul>
                                                      {
                                                          activjobTutorial.experiences.map((elem, index) => {
-                                                             return <li key={index}>- {elem.experience}</li>
+                                                             return <li key={index}>- {languae=="ՀԱՅ" ? elem.experience : languae=="ENG" ? elem.experienceEN : languae=="РУС" ?elem.experienceRU : null}</li>
                                                          })
                                                      }
                                                  </ul>
@@ -201,7 +233,7 @@ const Jobs =()=>{
                                                  <ul>
                                                      {
                                                          activjobTutorial.skills.map((elem, index) => {
-                                                             return <li key={index}>- {elem.skill}</li>
+                                                             return <li key={index}>- {languae=="ՀԱՅ" ? elem.skill : languae=="ENG" ? elem.skillEN : languae=="РУС" ?elem.skillRU : null}</li>
                                                          })
                                                      }
                                                  </ul>
@@ -221,10 +253,8 @@ const Jobs =()=>{
                  </div>}
                 <div className={css.hayt}>
                   <div className={css.haytwraper}>
-                             <h2>դիմում հայտ</h2>
-                             <p>Թողեք ձեր կոնտակտային տվյալները,
-                                 և մեր աշխատակիցը հնարավորինս
-                                 շուտ կկապվի Ձեզ հետ։</p>
+                             <h2>{t("hayt")}</h2>
+                             <p>{t("jobhayttitle")}</p>
                       <form onSubmit={SubmitJobData}>
                             <div className={css.selectjob1} onClick={ShowSelectWindow} style={{border:errors.free_job && "1px solid red"}}>
                                 <h3>{activeSelect}</h3>
@@ -253,7 +283,7 @@ const Jobs =()=>{
                           
                           <Input
                               cn="jobinput"
-                              placeholder="Անուն Ազգանուն*"
+                              placeholder={t("fullname")}
                               type="text"
                               name="full_name"
                               value={full_name}
@@ -263,7 +293,7 @@ const Jobs =()=>{
 
                           <Input
                               cn="jobinput"
-                              placeholder="Հեռախոսահամար*"
+                              placeholder={t("phonenumber")}
                               type="number"
                               name="phone"
                               value={phone}
@@ -273,7 +303,7 @@ const Jobs =()=>{
 
                           <Input
                               cn="jobinput"
-                              placeholder="էլեկտրոնային հասցե*"
+                              placeholder={t("emailadress")}
                               type="text"
                               name="email"
                               value={email}
@@ -283,7 +313,7 @@ const Jobs =()=>{
 
                           <textarea
                               className={css.areatext}
-                              placeholder="Ուղեկցող նամակ"
+                              placeholder={t("messages")}
                               name="message"
                               value={message}
                               style={{border:errors.message && "1px solid red"}}
@@ -298,7 +328,7 @@ const Jobs =()=>{
                                   fileRef.current.click();
                               }}
                           >
-                              <h3>Կցել ռեզյումե</h3>
+                              <h3>{t("addrezume")}</h3>
                               <h6>{filename ? filename : "max. 4 MB PDF, DOC, DOCX"}</h6>
 
                           </button>
@@ -331,7 +361,7 @@ const Jobs =()=>{
                            <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
                         <Button
                           cn="btnjob2"
-                          title="ուղարկել"
+                          title={t("sendrezume")}
 
                         />
 

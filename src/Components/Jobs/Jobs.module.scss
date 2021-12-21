@@ -59,6 +59,62 @@
     margin-left: get-vw(252px,1920);
   }
 }
+
+.jobcontext{
+  width: get-vw(1920px,1920 );
+  min-height: get-vw(490px, 1920);
+  display: flex;
+  .contextone{
+    width: get-vw(789px,1920 );
+    min-height: get-vw(340px,1920);
+    margin-top: get-vw(100px,1920 );
+    margin-left: get-vw(145px,1920 );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(21px,1920 );
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      color: #252223;
+    }
+  }
+  .contextty{
+    width: get-vw(360px,1920 );
+    height: get-vw(260px,1920);
+    margin-top: get-vw(100px,1920 );
+    margin-left: get-vw(295px,1920 );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   .contextitem{
+        display: flex;
+        align-items: flex-start;
+        div{
+          min-width: get-vw(12px,1920 );
+          height: get-vw(12px,1920 );
+          border-radius: get-vw(70px,1920 );
+          background: #13AD54;
+          margin-top: get-vw(10px,1920 );
+        }
+        p{
+          margin-left: get-vw(20px,1920 );
+          font-family: Montserrat-Regular;
+          font-style: normal;
+          font-weight: normal;
+          font-size: get-vw(21px,1920 );
+          line-height: 160%;
+          letter-spacing: -0.02em;
+          color: #252223;
+        }
+      }
+     
+    
+  }
+}
 .jobslist{
   width: get-vw(1636px,1920);
   min-height: get-vw(361px,1920);
@@ -657,6 +713,65 @@ min-height: get-vw(75px,1920);
       margin-left: get-vw(0px,375);
     }
   }
+
+  .jobcontext{
+    width: get-vw(375px,375 );
+    min-height: get-vw(490px, 375);
+    display: flex;
+    flex-direction: column;
+    .contextone{
+      width: get-vw(345px,375 );
+      min-height: get-vw(340px,375);
+      margin-top: get-vw(60px,375 );
+      margin-left: get-vw(15px,375 );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p{
+        font-family: Montserrat-Regular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: get-vw(16px,375 );
+        line-height: 150%;
+        letter-spacing: -0.02em;
+        color: #252223;
+      }
+    }
+    .contextty{
+      width: get-vw(345px,375 );
+      min-height: get-vw(200px,375);
+      margin-top: get-vw(40px,375 );
+      margin-left: get-vw(15px,375 );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+     .contextitem{
+          display: flex;
+          align-items: flex-start;
+          div{
+            min-width: get-vw(12px,375 );
+            height: get-vw(12px,375 );
+            border-radius: get-vw(70px,375 );
+            background: #13AD54;
+            margin-top: get-vw(10px,375 );
+          }
+          p{
+            margin-left: get-vw(20px,375 );
+            font-family: Montserrat-Regular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: get-vw(16px,375 );
+            line-height: 160%;
+            letter-spacing: -0.02em;
+            color: #252223;
+          }
+        }
+       
+      
+    }
+  }
+
+
   .jobslist{
     width: get-vw(375px,375);
     min-height: get-vw(327px,375);
