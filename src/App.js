@@ -45,8 +45,11 @@ function App() {
 
 
   useEffect(() => {
-      const activeLanguage=localStorage.getItem("i18nextLng")
-      setLanguage(activeLanguage)
+    //   const activeLanguage=localStorage.getItem("i18nextLng")
+    //   if(activeLanguage){
+    //     setLanguage(activeLanguage)
+    //   }
+     
    
 }, [languae])
 
