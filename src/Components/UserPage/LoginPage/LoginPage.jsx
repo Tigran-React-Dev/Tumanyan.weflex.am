@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./LoginPage.module.scss"
 import Input from "../../Global/Input/Input";
 import Check from "../../Global/Checkbox2/Check";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import Button from "../../Global/Button/Button";
 import {REGISTER_PAGE, RESET_PASSWORD} from "../../urls";
 import pass from "../../../images/icons/password.png";
 import cpass from "../../../images/icons/cpassword.png";
 
 const LoginPage = () => {
+    const history=useHistory()
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+
+    },[history])
+
     const [checket,setchecked]=useState(false)
     const [inputtype,setInputType]=useState("password")
     const [user,setUser]=useState({

@@ -4,32 +4,51 @@
     @return $size;
   }
 
-
-
-.searchInput{
+@mixin serch{
     outline: none;
     background-color: #F9F9F9;
     border: none;
-    font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;
     font-size: get-vw(18px,1920 );
     line-height: 22px;
     color: #252223;
     letter-spacing: -0.02em;
-     margin-left: get-vw(13px,1920 );
-     width: get-vw(289px, 1920);
+    margin-left: get-vw(13px,1920 );
+    width: get-vw(289px, 1920);
     height: get-vw(20px,1920);
-     border-radius: get-vw(20px,1920 );
-     margin-top: get-vw(-2px,1920 );
+    border-radius: get-vw(20px,1920 );
+    margin-top: get-vw(-2px,1920 );
     cursor:pointer;
+}
+
+.searchInputAM{
+    @include serch;
+    font-family: Montserrat-Regular;
     &::placeholder{
         font-family: Montserrat-Regular;
         color: #BFB7B6;;
     }
     
 }
+.searchInputRU{
+    @include serch;
+    font-family: manrope-reg;
+    &::placeholder{
+        font-family: manrope-reg;
+        color: #BFB7B6;;
+    }
 
+}
+.searchInputENG{
+    @include serch;
+    font-family: manrope-reg;
+    &::placeholder{
+        font-family: manrope-reg;
+        color: #BFB7B6;;
+    }
+
+}
 .promoinput{
     font-family: Mardoto-Medium;
     font-style: normal;
@@ -184,7 +203,7 @@
     height: get-vw(75px,1920);
     background: #FFFFFF;
     outline: none;
-     border: get-vw(1px,1920) solid #DFDFDF;
+    border: get-vw(1px,1920) solid #DFDFDF;
     box-sizing: border-box;
     border-radius: get-vw(10px,1920);
     padding: 0 get-vw(25px,1920);
@@ -197,8 +216,7 @@
     color: #252223;
     margin-top: get-vw(25px,1920);
     &::placeholder{
-
-        color: #BFB7B6;
+       color: #BFB7B6;
     }
 }
 .inputuseraress{
@@ -217,10 +235,8 @@
     line-height: get-vw(22px,1920);
     letter-spacing: -0.02em;
     color: #252223;
-
-    &::placeholder{
-
-        color: #BFB7B6;
+     &::placeholder{
+       color: #BFB7B6;
     }
 }
 .inputbuildandaparamet{
@@ -254,6 +270,26 @@
         -webkit-appearance: none;
     }
 }
+//.jobinputRU{
+//    width: get-vw(890px,1920);
+//    font-family: Montserrat-Regular;
+//
+//    @include  inputglobalstyle;
+//    margin-top: get-vw(25px,1920);
+//    &::-webkit-outer-spin-button,
+//    &::-webkit-inner-spin-button {
+//        -webkit-appearance: none;
+//    }
+//}
+//.jobinput{
+//    width: get-vw(890px,1920);
+//    @include  inputglobalstyle;
+//    margin-top: get-vw(25px,1920);
+//    &::-webkit-outer-spin-button,
+//    &::-webkit-inner-spin-button {
+//        -webkit-appearance: none;
+//    }
+//}
 .inputfoodtruck{
     width: get-vw(891px,1920);
     margin-top: get-vw(40px,1920);

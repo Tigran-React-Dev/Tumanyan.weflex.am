@@ -115,18 +115,32 @@ const AboutPages1 = () => {
     }
 
 
-
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+            "manrope-reg" : languae=="РУС" ?
+            "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
     return (
         <div className={css.pages1container}>
              <div className={css.brendblok1}>
                   <div className={css.brendlogo}>
-                       <h1>{languae=="ՀԱՅ" ? "ԲՐԵՆԴ" : languae=="ENG" ? "MISSION" : languae=="РУС" ? "МИССИЯ" : null}</h1>
-                       <p>{languae=="ՀԱՅ" ? "Սկսած 1998 թվականից" : languae=="ENG" ? "Since 1998" : languae=="РУС" ? "Начиная с 1998" : null}</p>
+                       <h1 style={fontproprty}>{languae=="ՀԱՅ" ? "ԲՐԵՆԴ" : languae=="ENG" ? "MISSION" : languae=="РУС" ? "МИССИЯ" : null}</h1>
+                       <p style={fontproprty3}>{languae=="ՀԱՅ" ? "Սկսած 1998 թվականից" : languae=="ENG" ? "Since 1998" : languae=="РУС" ? "Начиная с 1998" : null}</p>
                   </div>
                  <div className={css.textbrend1}>
-                    <h6>{languae=="ՀԱՅ" ? Brend.title : languae=="ENG" ? Brend.titleENG : languae=="РУС" ? Brend.titleRU : null}</h6>
-                     <p>{languae=="ՀԱՅ" ? BrendText.text : languae=="ENG" ? BrendText.textENG : languae=="РУС" ? BrendText.textRU : null}</p>
+                    <h6 style={fontproprty}>{languae=="ՀԱՅ" ? Brend.title : languae=="ENG" ? Brend.titleENG : languae=="РУС" ? Brend.titleRU : null}</h6>
+                     <p style={fontproprty3}>{languae=="ՀԱՅ" ? BrendText.text : languae=="ENG" ? BrendText.textENG : languae=="РУС" ? BrendText.textRU : null}</p>
                  </div>
 
              </div>
@@ -137,7 +151,7 @@ const AboutPages1 = () => {
                             <>
                                 {
                                     index===0 ? <div className={css.step0} key={elem.id} style={{backgroundImage:`url(${elem.image})`}}>
-                                             <h1>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</h1>
+                                             <h1 style={fontproprty}>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</h1>
                                         </div>
                                         :
                                     index===4 ? <div className={css.haccpblok} key={elem.id}>
@@ -146,19 +160,19 @@ const AboutPages1 = () => {
                                            </div>
                                         <div className={css.haccpText}>
                                             <div className={css.indexandtitle}>
-                                                <h1>{index}</h1>
-                                                <h2>Hazard Analysis and Critical Control Point</h2>
+                                                <h1 style={fontproprty}>{index}</h1>
+                                                <h2 style={fontproprty3}>Hazard Analysis and Critical Control Point</h2>
                                             </div>
-                                            <p>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</p>
+                                            <p style={fontproprty2}>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</p>
                                         </div>
                                         </div>
                                         :
                                         <div className={css.stepsaloy} key={elem.id}>
                                            <div className={css.indexandlogo}>
-                                               <h1>{index}</h1>
+                                               <h1 style={fontproprty}>{index}</h1>
                                                <img src={elem.image} alt=""/>
                                            </div>
-                                            <p>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</p>
+                                            <p style={fontproprty2}>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</p>
                                         </div>
 
                                 }
@@ -182,10 +196,10 @@ const AboutPages1 = () => {
                                 <div className={css.itemstep} key={elem.id}>
                                    <div className={css.iconandtitle}>
                                        <img src={elem.icon} alt=""/>
-                                       <h1>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</h1>
+                                       <h1 style={fontproprty}>{languae=="ՀԱՅ" ? elem.title : languae=="ENG" ? elem.titleENG : languae=="РУС" ? elem.titleRU : null}</h1>
                                    </div>
 
-                                    <p>{languae=="ՀԱՅ" ? elem.description : languae=="ENG" ? elem.descriptionEng : languae=="РУС" ? elem.descriptionRU : null}</p>
+                                    <p style={fontproprty2}>{languae=="ՀԱՅ" ? elem.description : languae=="ENG" ? elem.descriptionEng : languae=="РУС" ? elem.descriptionRU : null}</p>
                                 </div>
                             )
                         })

@@ -149,7 +149,21 @@ const Header = () => {
     const headerstyle ={
          height: sowmenu ? "64px" : "160px",
         }
-
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+            "Manrope-Bold" : languae=="РУС" ?
+            "Manrope-Medium" : null
+               }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
     // mobileversion js code
 
@@ -200,10 +214,13 @@ const handleClickSelectMobile =()=>{
                         <form>
                              <img src={serch} alt="" />
                             <Input
-                                cn="searchInput"
+                                cn={languae=="ՀԱՅ" ? "searchInputAM" : languae=="ENG" ? "searchInputENG" : languae=="РУС" ? "searchInputRU" : null}
                                 onMouseEnter={changeborderinput}
                                 onMouseLeave={() => changeborderinput(null)}
-                                placeholder={t('plachholderserch')} />
+                                placeholder={t('plachholderserch')}
+
+                            />
+
                           </form>
 
                     </div>
@@ -219,13 +236,13 @@ const handleClickSelectMobile =()=>{
                             </NavLink>
                         </div>
                         <div className={css.linkmenu}>
-                            <p onClick={ScrlMenu}>{t("menuscrol")}</p>
+                            <p onClick={ScrlMenu}  style={fontproprty}>{t("menuscrol")}</p>
                         </div>
                         <div className={css.gic1} />
                         <div className={css.masnajux}  >
                             <div className={css.masnajuxwraper} >
                                 <img src={adress} alt="" className={css.adresicon} onClick={handleClickSelect} />
-                                <p  className={css.masnajuxname} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
+                                <p  className={css.masnajuxname} style={fontproprty} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
                                 {selecticon ? <img src={selt} className={css.slaq} onClick={handleClickSelect} /> : <img src={self} className={css.slaq} onClick={handleClickSelect}/>}
                             </div>
                          </div>
@@ -235,7 +252,7 @@ const handleClickSelectMobile =()=>{
                     <div className={css.contactandlogin}>
                         <img className={css.phone} src={phone} alt=""/>
                         <a className={css.phoneNumber} href="tel:81 88">81 88</a>
-                        <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={log} alt="" /></NavLink>
+                        <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt="" /></NavLink>
                          <div className={css.basketclick}>
                              <NavLink
                                 to={BASKET_PAGE}
@@ -292,9 +309,9 @@ const handleClickSelectMobile =()=>{
                                                 display: adressactive[item.id] ?
                                                     "block" : "none",
                                             }} />
-                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
+                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF",...fontproprty3 }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF",...fontproprty2 }} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" ,...fontproprty2}} className={css.dates}>{item.date}</p>
                                         </div>
                                     )
                                 })
@@ -305,13 +322,14 @@ const handleClickSelectMobile =()=>{
                         </div>
                         <p
                             className={css.select_menu}
+                            style={fontproprty2}
                             onClick={changeMenu}>{defaultCity == "երեվան" ?
                             t("adressadd1") : defaultCity == "ծաղկաձոր" ?
                                 t("adressadd2") :  t("adressadd2")}
                         </p>
 
                         {defaultCity=="երեվան" &&
-                        <h3 className={css.messagegrandbufe}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</h3>}
+                        <h3 className={css.messagegrandbufe} style={fontproprty3}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</h3>}
                     </div>
                 </div>}
 
@@ -347,14 +365,14 @@ const handleClickSelectMobile =()=>{
                 <div className={css.masnajuxmobile}  >
                     <div className={css.masnajuxwrapermobile} >
                         <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelectMobile} />
-                        <p  className={css.masnajuxnamemobile} onClick={handleClickSelectMobile}>{adresses ? adresses : t("adresscity")}</p>
+                        <p  className={css.masnajuxnamemobile} style={fontproprty} onClick={handleClickSelectMobile}>{adresses ? adresses : t("adresscity")}</p>
                          {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelectMobile} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
                     </div>
                 </div>
 
                 <div className={css.menubarmobile}>
                         <div className={css.linkmenu}>
-                            <p onClick={ScrlMenu}>{t("menuscrol")}</p>
+                            <p style={fontproprty} onClick={ScrlMenu}>{t("menuscrol")}</p>
                         </div>
                         <div className={css.menumixin}>
                                 {
@@ -362,7 +380,7 @@ const handleClickSelectMobile =()=>{
 
                                         return(
                                             <React.Fragment key={index}>
-                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact to={item.path}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
+                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact to={item.path} style={fontproprty}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
                                             </React.Fragment>
                                             )
                                     })
@@ -370,13 +388,13 @@ const handleClickSelectMobile =()=>{
                                 {
                                     isAuthRoutes.map((item,index)=>{
                                         return(
-                                            <NavLink onClick={ChangeMobileMenu} exact key={index} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                            <NavLink onClick={ChangeMobileMenu} exact key={index} to={item.path} style={fontproprty}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
                                         )
                                     })
                                 }
                         </div>
                         <div className={css.loginicon}>
-                            <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={log} alt="" /></NavLink>
+                            <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt="" /></NavLink>
                         </div>
                         <div className={css.changelanguagemobile}>
                             {languages.map((lang,i)=>{
@@ -417,9 +435,9 @@ const handleClickSelectMobile =()=>{
                                                 display: adressactive[item.id] ?
                                                     "block" : "none",
                                             }} />
-                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF" }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
-                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" }} className={css.dates}>{item.date}</p>
+                                            <p style={{ color: adressactive[item.id]  && "#FFFFFF",...fontproprty3 }} className={css.titleitem}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF" ,...fontproprty2}} className={css.adressity}>{languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
+                                            <p style={{ color: adressactive[item.id] && "#FFFFFF",...fontproprty2 }} className={css.dates}>{item.date}</p>
                                         </div>
                                     )
                                 })
@@ -430,11 +448,12 @@ const handleClickSelectMobile =()=>{
                             </div>
                             <p
                                 className={css.select_menu}
+                                style={fontproprty2}
                                 onClick={changeMenu}>{defaultCity === "երեվան" ?
                                 t("adressadd1") : defaultCity === "ծաղկաձոր" ?
                                     t("adressadd2") :  t("adressadd2")}
                             </p>
-                            {defaultCity=="երեվան" &&  <p className={css.messagegrandbufe}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>}
+                            {defaultCity=="երեվան" &&  <p className={css.messagegrandbufe} style={fontproprty3}>* Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>}
                         </div>
                     </div>}
             </div>

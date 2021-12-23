@@ -87,11 +87,7 @@ html{
   src: url("./font/Mardoto/Mardoto-Bold.ttf");
 
 }
-@font-face {
-  font-family: "Mardoto-Black";
-  src: url("./font/Mardoto/Mardoto-Black.ttf");
 
-}
 @font-face {
   font-family: "Mardoto-Medium";
   src: url("./font/Mardoto/Mardoto-Medium.ttf");
@@ -141,16 +137,9 @@ html{
   src: url("./font/Mardoto/Mardoto-Light.ttf");
 
 }
-@font-face {
-  font-family: "manrope-reg";
-  src: url("./font/manrope/regular.ttf");
 
-}
-@font-face {
-  font-family: "Mardoto-BlackItalic";
-  src: url("./font/Mardoto/Mardoto-BlackItalic.ttf");
 
-}
+
 @font-face {
   font-family: "Mardoto-Itali";
   src: url("./font/Mardoto/Mardoto-Italic.ttf");
@@ -179,6 +168,16 @@ html{
 @font-face {
   font-family: "Manrope-Medium";
   src: url("./font/English_Russian/Manrope/Manrope-Medium.ttf");
+
+}
+@font-face {
+  font-family: "Manrope-Bold";
+  src: url("./font/English_Russian/Manrope/Manrope-Bold.ttf");
+
+}
+@font-face {
+  font-family: "manrope-reg";
+  src: url("./font/manrope/regular.ttf");
 
 }
 @font-face {

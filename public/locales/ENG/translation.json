@@ -22,7 +22,7 @@
     "jobhayttitle":"Leave your contact information and our employee will contact you as soon as possible.",
     "fullname":"Name Surname *",
     "phonenumber":"Phone number *",
-    "emailadress":"Electronic address *",
+    "emailadress":"El. address *",
     "messages":"cover letter",
     "addrezume":"Attach CV",
     "sendrezume":"Send",
@@ -35,5 +35,9 @@
     "address_*":"Address *",
     "count_guests":"Number of guests",
     "zakazat":"Order",
-    "foottruckordertitle":"You have an upcoming event, would you like to order our Food Truck, fill in the information below or call 81 81։"
+    "foottruckordertitle":"You have an upcoming event, would you like to order our Food Truck, fill in the information below or call 81 81։",
+    "surname": "Surname *",
+    "contextone": "Join the happy team of Tumanyan Shaurma and learn new skills with us.",
+    "contextty": "We create an environment in which people want to learn, develop, return home from work, full of positive energy.",
+    "contexttry": " There are different vacancies in the Tumanyan Shaurma network. If you would like to join our happy team, choose the position that suits you and submit your resume."
 }

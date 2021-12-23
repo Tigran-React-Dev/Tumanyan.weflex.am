@@ -29,6 +29,7 @@ function App() {
 
 
   useEffect(()=>{
+      localStorage.setItem("i18nextLng","ՀԱՅ")
   let key2 = sessionStorage.getItem("city")
   const item = JSON.parse(localStorage.getItem("card"))
   if(item){
@@ -45,10 +46,11 @@ function App() {
 
 
   useEffect(() => {
-    //   const activeLanguage=localStorage.getItem("i18nextLng")
-    //   if(activeLanguage){
-    //     setLanguage(activeLanguage)
-    //   }
+
+      const activeLanguage=localStorage.getItem("i18nextLng")
+      if(activeLanguage){
+        setLanguage(activeLanguage)
+      }
      
    
 }, [languae])

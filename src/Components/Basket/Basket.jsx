@@ -18,6 +18,7 @@ import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
 import {useProduct} from "../Providers/ProductMenu";
 import {LoadProductData} from "../redux/Action/ProductAction";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -45,7 +46,8 @@ const Basket = () => {
     const [loading,setLoading]=useState(false)
     const [activeSityTimes,setActiveSityTimes]=useState([])
     const [activeSityName,setACtiveSityName]=useState("")
-
+    const {languae}=useProduct()
+    const { t } =useTranslation()
     useEffect(() => {
         window.scrollTo(0, 0);
      }, [sucsessshop])
@@ -171,8 +173,7 @@ const Basket = () => {
                 <div className={css.itemBasket}>
                     {
                         items.length && basketitemdata.map((obj)=>{
-
-                            return(
+                             return(
                                 <Basketitem
                                     key={obj.id}
                                     obj={obj}
@@ -203,7 +204,7 @@ const Basket = () => {
                        <p className={css.formtitle}>
                        ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                        </p>
-                       <p className={css.info}>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</p>
+                       <p className={css.info}>{t("information")}</p>
                        {/*className={css.formandrecomentwraper}*/}
                       <div style={formandrecomentwraper} className={css.formandrecomentwraper}>
 
@@ -212,25 +213,25 @@ const Basket = () => {
                                   <p>
                                       ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                                   </p>
-                                  <h6>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</h6>
+                                  <h6>{t("information")}</h6>
                               </div>
                               <Input
                                   cn="inputglobalinfo"
-                                  placeholder="Անուն*"
+                                  placeholder={t("name")}
                                   type="text"
                                   onChange={OnchangeInputofRegister}
                                   name="name"
                               />
                               <Input
                                   cn="inputglobalinfo"
-                                  placeholder="Ազգանուն"
+                                  placeholder={t("surname")}
                                   type="text"
                                   onChange={OnchangeInputofRegister}
                                   name="lastname"
                               />
                               <Input
                               cn="inputglobalinfo"
-                              placeholder="Հեռախոսահամար*"
+                              placeholder={t("phonenumber")}
                               type="number"
                               maxlength="12"
                               value={phone}
@@ -239,7 +240,7 @@ const Basket = () => {
                               />
                               <Input
                               cn="inputglobalinfo"
-                              placeholder="էլեկտրոնային հասցե*"
+                              placeholder={t("emailadress")}
                               type="email"
                               onChange={OnchangeInputofRegister}
                               name="email"
@@ -310,7 +311,7 @@ const Basket = () => {
                                       <div className={css.renderadressinput}>
                                       <Input
                                           cn="inputglobalinfo"
-                                          placeholder="Հասցե*"
+                                          placeholder={t("address_*")}
                                       />
                                       <div className={css.domandkey}>
                                           <Input

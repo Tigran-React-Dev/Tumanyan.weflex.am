@@ -8,11 +8,14 @@ import {
 
 
 export const initialstate={
+    token:null,
+    loadding:false,
+
     user:{
-        name:"Անահիտ",
-        lastname:"Համբարձումյան",
-        phoneNumber:"91 12-34-56",
-        email:"anahit@gmail.com"
+        // name:"Անահիտ",
+        // lastname:"Համբարձումյան",
+        // phoneNumber:"91 12-34-56",
+        // email:"anahit@gmail.com"
     },
     adresess:[
          // {id:1,adress:"Աճառյան",bulding:"18",apartment:"10"},
@@ -79,6 +82,11 @@ export const AuthReducer=(state=initialstate,action)=>{
         return {
             ...state
         }
+
+
+
+
+
         case LIKE_OBJ_SEND_TO_DATA:{
             if(action.payload.category==="շաուրմա"){
                 state.likeproduct.shaurma.push(action.payload)

@@ -52,6 +52,17 @@ const hoverItem=(id)=>{
       history.push(`/home/${item.name}`)
         setactiveMenuitem(item)
      }
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+           }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
  
     return(
         <div className={css.home} >
@@ -66,17 +77,17 @@ const hoverItem=(id)=>{
                 {Reclam.map(({id,images,description,descriptionRU,descriptionENG})=>{
                         return(
                             <React.Fragment key={id}>
-                            {id===1 ? <NavLink to={"/grandBuffe/Axcan"}> <div className={css.wraperreclam} >
+                            {id===1 ? <NavLink to={"/buffet/Axcan"}> <div className={css.wraperreclam} >
                                     <div  className={css.itemreclam} style={{
                                         backgroundImage: `url(${images})`
                                     }}  />
-                                    <h2 className={css.rectitle}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
+                                    <h2 className={css.rectitle} style={fontproprty}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
                                 </div></NavLink> :
                                     <NavLink to={FOOD_TRUCK_PAGE} exact> <div className={css.wraperreclam} key={id}>
                                         <div  className={css.itemreclam} style={{
                                             backgroundImage: `url(${images})`
                                         }}  />
-                                        <h2 className={css.rectitle2}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
+                                        <h2 className={css.rectitle2} style={fontproprty}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionENG : languae=="РУС" ? descriptionRU : null}</h2>
                                     </div></NavLink>
                             }
                            </React.Fragment>
@@ -91,7 +102,7 @@ const hoverItem=(id)=>{
                                 <div className={css.menuitem}  key={index} style={{
                                   backgroundColor:( hoverId[index] ? `${color}`   : " #EFEFEF" ),
                                }} onMouseEnter={()=>hoverItem(index)} onMouseLeave={()=>hoverItem(null)} onClick={()=>OpenMenu(item)}>
-                                    <p style={{ color:( hoverId[index] ? "#FFFFFF"   : "#252223" )}}>{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
+                                    <p style={{ color:( hoverId[index] ? "#FFFFFF"   : "#252223" ),...fontproprty}}>{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
                                     <img src={process.env.REACT_APP_IMG_URL+item.smallImage} alt="" style={{  opacity:( hoverId[index] ? "0.4"   : "1"  )}}/>
                                 </div>
                                )
@@ -125,8 +136,8 @@ const hoverItem=(id)=>{
             <div className={css.aboutblock}>
                  <div className={css.aboutglobal}>
 
-                    <h1>{t("about")}</h1>
-                     <p className={css.aboutp}>{aboutinfo.info}</p>
+                    <h1 style={fontproprty}>{t("about")}</h1>
+                     <p className={css.aboutp} style={fontproprty2}>{aboutinfo.info}</p>
                      <div className={css.step}>
                          {aboutStep.map((item)=>{
                                  return(
@@ -135,7 +146,7 @@ const hoverItem=(id)=>{
                                              <p className={css.circlenumber}>{item.id}</p>
                                          </div>
 
-                                         <p className={css.stepname}>{languae=="ՀԱՅ" ? item.stepARM : languae=="ENG" ? item.stepENG : languae=="РУС" ? item.stepRUS : null}</p>
+                                         <p className={css.stepname} style={fontproprty}>{languae=="ՀԱՅ" ? item.stepARM : languae=="ENG" ? item.stepENG : languae=="РУС" ? item.stepRUS : null}</p>
                                      </div>
                                  )
                              })

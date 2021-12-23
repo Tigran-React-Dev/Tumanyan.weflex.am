@@ -146,12 +146,27 @@ const Jobs =()=>{
     }
 
     const jobcontext =[
-        {id:1,context:"Անվճար տունդարձ երեկոյան հերթափոխից հետո"},
-        {id:2,context:"Անվճար սնունդ"},
-        {id:3,context:"Համեղ ուտելիքներ"},
-        {id:4,context:"Ուրախ թիմ"},
+        {id:1,context:"Անվճար տունդարձ երեկոյան հերթափոխից հետո",contextRU:"Бесплатное доставка сотрудника до дома в ночное время",contextENG:"Free return home after evening shift"},
+        {id:2,context:"Անվճար սնունդ",contextRU:"Бесплатное питание",contextENG:"Free meals"},
+        {id:3,context:"Համեղ ուտելիքներ",contextRU:"Вкусная еда",contextENG:"Tasty food"},
+        {id:4,context:"Ուրախ թիմ",contextRU:"Веселая команда",contextENG:"Happy team"},
     ]
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
 
 
@@ -159,8 +174,8 @@ const Jobs =()=>{
          <div className={css.jobscontainer}>
             <div className={css.jibshdr}>
                 <div className={css.jobstitle}>
-                     <p className={css.job}>{t("job")}</p>
-                      <p className={css.jobtext1}>{t("jobtitle")}</p>
+                     <p className={css.job} style={fontproprty}>{t("job")}</p>
+                      <p className={css.jobtext1} style={fontproprty2}>{t("jobtitle")}</p>
                 </div>
                 <div className={css.jobslogo}>
                     <img src={axjik} alt=""/>
@@ -168,15 +183,15 @@ const Jobs =()=>{
             </div>
             <div className={css.jobcontext}>
                  <div className={css.contextone}>
-                   <p>Մենք ցանկանում ենք, որ յուրաքանչյուր նոր աշխատակից իրեն զգա հարամարավետ, ջերմ և ընկերական միջավայրում:</p>
-                   <p>Մենք ստեղծում ենք միջավայր, որտեղ մարդիկ ցանկանում են սովորել և զարգանալ, աշխատանքից տուն վերադառնալ դրական և էներգիայով լի:</p>
-                   <p>Թումանյան Շաուրմայի ցանցերում կան տարբեր բաց հաստիքներ: Այնպես որ, եթե ցանկանում եք միանալ մեր ուրախ թիմին, ընտրեք Ձեզ հարմար հաստիքը և ուղարկեք ինքնակենսագրականը:</p>
+                   <p style={fontproprty2}>{t("contextone")}</p>
+                   <p style={fontproprty2}>{t("contextty")}</p>
+                   <p style={fontproprty2}>{t("contexttry")}</p>
                 </div>   
                 <div className={css.contextty}>
                        
-                           {jobcontext.map(({id,context})=>{
+                           {jobcontext.map(({id,context,contextRU,contextENG})=>{
                                return(
-                                   <div className={css.contextitem} key={id}><div></div><p>{context}</p></div>
+                                   <div className={css.contextitem} key={id}><div></div><p style={fontproprty2}>{languae=="ՀԱՅ" ? context : languae=="ENG" ? contextENG : languae=="РУС" ? contextRU : null}</p></div>
                                )
                            })
 
@@ -188,16 +203,16 @@ const Jobs =()=>{
                  <div className={css.close}><img src={closebtn} alt="" onClick={() => setSucses(!sucsesdata)}/></div>
                  <img src={succsessimg} alt="" className={css.succsesimg}/>
                  <h3 className={css.thenk_one}>{t("thenkyou")}</h3>
-                 <h3 className={css.thenk}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
+                 <h3 className={css.thenk} style={fontproprty}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
                  <button className={css.btnpushmenu} onClick={() => {
 
                      history.push("/home/Shaurma");
 
-                 }}>վերդառնալ մենյու
+                 }}style={fontproprty}>վերդառնալ մենյու
                  </button>
              </div>}
              <div className={sucsesdata ? css.displayoff : css.jobslist}>
-                    <p className={css.tapur}>{t("freejob")}</p>
+                    <p className={css.tapur} style={fontproprty}>{t("freejob")}</p>
                     <hr/>
                  {loading && <div className={css.itemjob}>
                      {
@@ -209,9 +224,9 @@ const Jobs =()=>{
                                          key={itm.id}
                                          onClick={() => SowJobsTutorial(itm)}
                                      >
-                                         <h2>{languae=="ՀԱՅ" ? itm.free_job : languae=="ENG" ? itm.free_jobEN : languae=="РУС" ? itm.free_jobRU : null}</h2>
-                                         <h3><img src={cordinat} alt=""/><p>{languae=="ՀԱՅ" ? itm.address : languae=="ENG" ? itm.addressEN : languae=="РУС" ? itm.addressRU : null}</p></h3>
-                                         <h4>{itm.date}</h4>
+                                         <h2 style={fontproprty}>{languae=="ՀԱՅ" ? itm.free_job : languae=="ENG" ? itm.free_jobEN : languae=="РУС" ? itm.free_jobRU : null}</h2>
+                                         <h3><img src={cordinat} alt=""/><p style={fontproprty}>{languae=="ՀԱՅ" ? itm.address : languae=="ENG" ? itm.addressEN : languae=="РУС" ? itm.addressRU : null}</p></h3>
+                                         <h4 style={fontproprty2}>{itm.date}</h4>
                                          {sowblok === itm.id ? <img className={css.slaqnerqev} src={sala} alt=""/> :
                                              <img className={css.slaqnerqev} src={salb} alt=""/>}
 
@@ -219,21 +234,21 @@ const Jobs =()=>{
                                      {sowblok === itm.id ?
                                          <div className={css.tutorialwraper}>
                                              <div className={css.wraper1}>
-                                                 <p>Ձեր փորձը՝</p>
+                                                 <p style={fontproprty2}>Ձեր փորձը՝</p>
                                                  <ul>
                                                      {
                                                          activjobTutorial.experiences.map((elem, index) => {
-                                                             return <li key={index}>- {languae=="ՀԱՅ" ? elem.experience : languae=="ENG" ? elem.experienceEN : languae=="РУС" ?elem.experienceRU : null}</li>
+                                                             return <li key={index} style={fontproprty2}>- {languae=="ՀԱՅ" ? elem.experience : languae=="ENG" ? elem.experienceEN : languae=="РУС" ?elem.experienceRU : null}</li>
                                                          })
                                                      }
                                                  </ul>
                                              </div>
                                              <div className={css.wrapper2}>
-                                                 <p>Ձեր հմտությունները՝</p>
+                                                 <p style={fontproprty2}>Ձեր հմտությունները՝</p>
                                                  <ul>
                                                      {
                                                          activjobTutorial.skills.map((elem, index) => {
-                                                             return <li key={index}>- {languae=="ՀԱՅ" ? elem.skill : languae=="ENG" ? elem.skillEN : languae=="РУС" ?elem.skillRU : null}</li>
+                                                             return <li key={index} style={fontproprty2}>- {languae=="ՀԱՅ" ? elem.skill : languae=="ENG" ? elem.skillEN : languae=="РУС" ?elem.skillRU : null}</li>
                                                          })
                                                      }
                                                  </ul>
@@ -242,6 +257,7 @@ const Jobs =()=>{
                                                  cn="btnselectjob"
                                                  title="դիմել"
                                                  onClick={() => Apllytojob(activjobTutorial.jobcategory)}
+                                                 style={fontproprty}
                                              />
 
                                          </div> : null}
@@ -253,11 +269,11 @@ const Jobs =()=>{
                  </div>}
                 <div className={css.hayt}>
                   <div className={css.haytwraper}>
-                             <h2>{t("hayt")}</h2>
-                             <p>{t("jobhayttitle")}</p>
+                             <h2 style={fontproprty}>{t("hayt")}</h2>
+                             <p style={fontproprty2}>{t("jobhayttitle")}</p>
                       <form onSubmit={SubmitJobData}>
                             <div className={css.selectjob1} onClick={ShowSelectWindow} style={{border:errors.free_job && "1px solid red"}}>
-                                <h3>{activeSelect}</h3>
+                                <h3 style={fontproprty2}>{activeSelect}</h3>
                                 {!sowselectPopup ? <img src={salb} alt=""/> : <img src={sala} alt=""/>}
                             </div>
                           {sowselectPopup &&
@@ -268,7 +284,7 @@ const Jobs =()=>{
                                        {
                                            jobs.map((item) => {
                                                return (
-                                                   <li key={item.id} onClick={() => JobsItemClick(item)}>
+                                                   <li key={item.id} onClick={() => JobsItemClick(item)} style={fontproprty2}>
                                                        {item.free_job}
                                                    </li>
                                                )
@@ -288,7 +304,7 @@ const Jobs =()=>{
                               name="full_name"
                               value={full_name}
                               onChange={OnchangeData}
-                              style={{border:errors.full_name && "1px solid red"}}
+                              style={{border:errors.full_name && "1px solid red",...fontproprty2}}
                           />
 
                           <Input
@@ -297,7 +313,7 @@ const Jobs =()=>{
                               type="number"
                               name="phone"
                               value={phone}
-                              style={{border:errors.phone && "1px solid red"}}
+                              style={{border:errors.phone && "1px solid red",...fontproprty2}}
                               onChange={OnchangeData}
                           />
 
@@ -307,7 +323,7 @@ const Jobs =()=>{
                               type="text"
                               name="email"
                               value={email}
-                              style={{border:errors.email ?  "1px solid red" : null}}
+                              style={{border:errors.email ?  "1px solid red" : null,...fontproprty2}}
                               onChange={OnchangeData}
                           />
 
@@ -316,7 +332,7 @@ const Jobs =()=>{
                               placeholder={t("messages")}
                               name="message"
                               value={message}
-                              style={{border:errors.message && "1px solid red"}}
+                              style={{border:errors.message && "1px solid red",...fontproprty2}}
                               onChange={OnchangeData}
                           ></textarea>
 
@@ -328,7 +344,7 @@ const Jobs =()=>{
                                   fileRef.current.click();
                               }}
                           >
-                              <h3>{t("addrezume")}</h3>
+                              <h3 style={fontproprty2}>{t("addrezume")}</h3>
                               <h6>{filename ? filename : "max. 4 MB PDF, DOC, DOCX"}</h6>
 
                           </button>
@@ -355,13 +371,14 @@ const Jobs =()=>{
                                        backgroundImage:checkeds && `url(${checkt})`
                                    }}>
                                    </div>
-                                   <h4>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h4>
+                                   <h4 style={fontproprty2}>Ստեղծելով ձեր անձնական էջը՝ դուք համաձայնում եք մեր<NavLink to={"/"} exact style={fontproprty2}> պայմաններին</NavLink> և գաղտնիության քաղաքականությանը</h4>
                                    </label>
                            </div>
                            <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
                         <Button
                           cn="btnjob2"
                           title={t("sendrezume")}
+                          style={fontproprty}
 
                         />
 
@@ -376,12 +393,12 @@ const Jobs =()=>{
                  <div className={css.succsess}>
                      <div className={css.close}><img src={closebtn} alt="" onClick={()=>setSucses(!sucsesdata)}/></div>
                      <img src={succsessimg} alt="" className={css.succsesimg}/>
-                     <h3 className={css.thenk_one}>Շնորհակալություն։</h3>
-                     <h3 className={css.thenk}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
+                     <h3 className={css.thenk_one} style={fontproprty}>Շնորհակալություն։</h3>
+                     <h3 className={css.thenk} style={fontproprty}>Ձեր դիմումն ընդունված է։ Մեր աշխատակիցը կկապվի Ձեզ հետ:</h3>
                      <button className={css.btnpushmenu} onClick={()=> {
 
                          history.push("/home/Shaurma");
-                     }}>վերդառնալ մենյու</button>
+                     }} style={fontproprty}>վերդառնալ մենյու</button>
                  </div>
              </div>}
         </div>

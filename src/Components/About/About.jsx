@@ -57,6 +57,16 @@ const About =({history})=>{
     setAactiveMenuStyle(id)
    
   }
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
 
 
 
@@ -65,8 +75,8 @@ const About =({history})=>{
         <div className={css.aboutcontainer}>
             <div className={css.abouthdr}>
                <div className={css.abouttitle}>
-                     <h1>{languae=="ՀԱՅ" ? "Մենք" : languae=="ENG" ?  "We": languae=="РУС" ? "Мы" : null}</h1>
-                      <p>շատ ուրախ, կրեատիվ թիմն ենք, և մեր մոտ կարող եք համտեսել ամենահամով շաուրման։</p>
+                     <h1 style={fontproprty}>{languae=="ՀԱՅ" ? "Մենք" : languae=="ENG" ?  "We": languae=="РУС" ? "Мы" : null}</h1>
+                      <p style={fontproprty2}>շատ ուրախ, կրեատիվ թիմն ենք, և մեր մոտ կարող եք համտեսել ամենահամով շաուրման։</p>
                </div>
                 <div className={css.aboutteam}/>
          </div>
@@ -79,7 +89,7 @@ const About =({history})=>{
                         onClick={()=>changestyleandscrolingmenu(id,index)}
                         style={{background:activeMneuStyle===id && "#ffffff" ,
                             boxShadow:activeMneuStyle===id && "inset -1px 0px 0px",
-                            color:activeMneuStyle===id && "#13AD54"
+                            color:activeMneuStyle===id && "#13AD54",...fontproprty,
                         }}
                         >{languae=="ՀԱՅ" ? name : languae=="ENG" ?  nameENG: languae=="РУС" ? nameRU : null}
                         </button>

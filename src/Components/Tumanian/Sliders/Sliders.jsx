@@ -36,7 +36,11 @@ const  TumanianSlider= () =>{
         setloading(true)
     },[])
 
-
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
   return (
     <>
@@ -58,8 +62,8 @@ const  TumanianSlider= () =>{
 
                         }}
                         >
-                            <h5 className="descriptionsld">{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</h5>
-                            <button><a href={url} target="_blank">{languae == "ՀԱՅ" ? button_name : languae == "ENG" ? button_nameEN : languae == "РУС" ? button_nameRU : null}</a></button>
+                            <h5 className="descriptionsld" style={fontproprty}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</h5>
+                            <button><a href={url} target="_blank" style={fontproprty}>{languae == "ՀԱՅ" ? button_name : languae == "ENG" ? button_nameEN : languae == "РУС" ? button_nameRU : null}</a></button>
                         </div>
 
                     </SwiperSlide>

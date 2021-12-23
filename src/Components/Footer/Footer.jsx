@@ -15,6 +15,23 @@ const Footer = () => {
     
     const {languae}=useProduct()
     const { t } = useTranslation();
+
+
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserratarm-Light" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
     return (
         <div className={css.footer}>
             <div className={css.footerblok}>
@@ -24,7 +41,7 @@ const Footer = () => {
                             isOuthFooter.map((item)=>{
 
                                 return(
-                                    <NavLink exact key={item.id} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                    <NavLink exact key={item.id} to={item.path} style={fontproprty}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
                                 )
                             })
                         }
@@ -33,7 +50,7 @@ const Footer = () => {
                         {
                             isAuthRoutes.map((item)=>{
                                 return(
-                                    <NavLink exact key={item.id} to={item.path}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                    <NavLink exact key={item.id} to={item.path} style={fontproprty}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
                                 )
                             })
                         }
@@ -53,7 +70,7 @@ const Footer = () => {
                 </div>
                 <div className={css.corporect}>
                     <p>© &nbsp; {new Date().getFullYear()} Tumanyan Shaurma</p>
-                    <p className={css.webflex}>{t("corporect")} &nbsp; <span><a href="https://weflex.am/" target="_blank" rel="noopener noreferrer">Weflex</a></span></p>
+                    <p className={css.webflex} style={fontproprty3}>{t("corporect")} &nbsp; <span><a href="https://weflex.am/" target="_blank" rel="noopener noreferrer">Weflex</a></span></p>
                 </div>
             </div>
 

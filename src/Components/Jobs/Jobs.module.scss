@@ -506,7 +506,7 @@ min-height: get-vw(75px,1920);
   //justify-content: space-between;
   //align-items: center;
   label{
-    width: get-vw(580px,1920);
+    width: get-vw(820px,1920);
     height: get-vw(27px,1920);
     display: flex;
     align-items: center;
@@ -519,8 +519,9 @@ min-height: get-vw(75px,1920);
       line-height:get-vw( 22px,1920);
       letter-spacing: -0.02em;
       color: #252223;
-      margin-left: get-vw(20px,1920);
-      min-width: max-content;
+      margin-left: get-vw(22px,1920);
+      width: get-vw(780px,1920);
+      margin-top: get-vw(14px,1900);
       cursor: pointer;
       a{
         font-family: Montserrat-Regular;

@@ -1,0 +1,13 @@
+@function get-vw($size, $width){
+  $vw-context: $width * 0.01 * 1px;
+  @return $size / $vw-context * 1vw;
+  @return $size;
+}
+
+
+
+.serchpage{
+  width: get-vw(1920px,1920);
+  min-height: get-vw(1070px,1920);
+  background: #FFFFFF;
+}

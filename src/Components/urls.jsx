@@ -12,4 +12,5 @@ export const REGISTER_PAGE="/registration";
 export const PROFIL_PAGE="/profile";
 export const PROJECT_PAGE_INFO="/project/:id"
 export const FOOD_TRUCK_PAGE="/foodtruck";
-export const GRAND_BUFFE_PAGE = "/grandBuffe/:id"
+export const GRAND_BUFFE_PAGE ="/buffet/:id";
+export const SEARCH_PAGE = "/search";

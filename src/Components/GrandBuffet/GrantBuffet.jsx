@@ -10,6 +10,7 @@ import {BiJoystickButton} from "react-icons/all";
 import Button from "../Global/Button/Button";
 import {LoadGrandBufetData, LoadProductData} from '../redux/Action/ProductAction';
 import ProductBlokGrand from "./ProductBlok/ProductBlokGrand";
+import {HOME_PAGE} from "../urls";
 
 
 const GrantBuffet = () => {
@@ -27,9 +28,21 @@ const GrantBuffet = () => {
     const [loader2, setloader2] = useState(false)
     const [pagintion,setpagination]=useState(7)
     const [showpage,setShowPage]=useState(true)
+
+
+
      useEffect(()=>{
+
          window.scrollTo(0, 0);
-     },[history])
+         if(grandfufet.length){
+          let data =   grandfufet.filter(f=>f.name==id)
+             if(!data.length){
+                 history.push(HOME_PAGE)
+             }
+         }
+
+
+     },[id,grandfufet])
 
 
 
@@ -85,7 +98,7 @@ const GrantBuffet = () => {
                 break
         }
         setActiveMenuStyle({[index]:!activeMenuStyle[index]})
-        history.push(`/grandBuffe/${menu.name}`)
+        history.push(`/buffet/${menu.name}`)
     }
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
@@ -112,9 +125,9 @@ const GrantBuffet = () => {
                                 className={css.itemmenu}
                                 key={elem.id}
                                 onClick={()=>ChangeStyleAndCategory(elem,index)}
-                                style={{background:activeMenuStyle[index] && "#13AD54",border:activeMenuStyle[index] && "none"}}
+                                style={{background:elem.name==id && "#13AD54",border:elem.name==id && "none"}}
                             >
-                                <p style={{color:activeMenuStyle[index] && "#FFFFFF" }}>{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</p>
+                                <p style={{color:elem.name==id && "#FFFFFF" }}>{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</p>
 
                             </div>
 
@@ -124,6 +137,7 @@ const GrantBuffet = () => {
             </div>
             <div className={css.bufetitemblok}>
                 {
+
                     grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.map((obj,index)=>{
                         return(
                             index<=pagintion &&

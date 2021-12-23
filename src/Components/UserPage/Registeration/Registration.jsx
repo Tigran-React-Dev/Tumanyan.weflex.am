@@ -1,21 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./Register.module.scss"
 import Input from "../../Global/Input/Input";
 import Check from "../../Global/Checkbox2/Check";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {LOGIN_PAGES, RESET_PASSWORD} from "../../urls";
 import Button from "../../Global/Button/Button";
+import axios from "axios";
 const Registration = () => {
     const [checket,setchecked]=useState(false)
     const [border,setborder]=useState("1px solid #DFDFDF")
+    const [errors,setErrors]=useState({})
+    const history=useHistory()
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+
+    },[history])
+
     const [user,setUser]=useState({
         name:"",
         email:"",
         password:"",
-        cpassword:"",
+        password_confirmation:"",
+        success_check:checket,
     })
 
-    const {name,email,password,cpassword}=user;
+    const {name,email,password,password_confirmation,success_check}=user;
 
 
     const onChangeRegisterdata= e =>{
@@ -27,15 +37,50 @@ const Registration = () => {
 
     const FormaSubmit = e =>{
         e.preventDefault()
-        if(password!==cpassword){
-            setborder("1px solid #EB2F2F")
-        }else{
-            setborder("1px solid #DFDFDF")
-        }
+
+
+
     }
     const hantletargetclick =()=>{
+         setchecked(!checket)
+        setUser({
+            ...user,
+            success_check: !checket,
+        })
 
-        setchecked(!checket)
+    }
+
+
+    const handleSubmit = async () => {
+
+        // store the states in the form data
+        const loginFormData = new FormData();
+        loginFormData.append("name", name)
+        loginFormData.append("email", email)
+        loginFormData.append("password", password)
+        loginFormData.append("password_confirmation", password_confirmation)
+        loginFormData.append("success_check",success_check)
+
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/addUser",
+                data: loginFormData,
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            if(response.data){
+
+
+                setErrors({})
+                window.scrollTo(0, 400);
+            }else{
+                setErrors(response.data);
+            }
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -52,7 +97,7 @@ const Registration = () => {
                     onChange={onChangeRegisterdata}
                     value={name}
                     name="name"
-                    required
+
                   />
                 <Input
                     cn="inputrgister"
@@ -61,7 +106,7 @@ const Registration = () => {
                     onChange={onChangeRegisterdata}
                     value={email}
                     name="email"
-                    required
+
                 />
                 <Input
                 cn="inputrgister"
@@ -70,7 +115,7 @@ const Registration = () => {
                 onChange={onChangeRegisterdata}
                 value={password}
                 name="password"
-                required
+
                 />
                 <Input
                     // style={{border:border}}
@@ -78,9 +123,9 @@ const Registration = () => {
                     type="password"
                     placeholder="Կրկնել գաղտնաբառը"
                     onChange={onChangeRegisterdata}
-                    value={cpassword}
+                    value={password_confirmation}
                     name="cpassword"
-                    required
+
                 />
                 <div className={css.zabilandzapomnit}>
                     <Check
