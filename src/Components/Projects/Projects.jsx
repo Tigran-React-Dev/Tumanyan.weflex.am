@@ -9,6 +9,7 @@ import {motion} from "framer-motion";
 import Button from "../Global/Button/Button";
 import axios from "axios";
 import {useProduct} from "../Providers/ProductMenu";
+import {useTranslation} from "react-i18next";
 const Projects = () => {
    const [hoveritem,sethoveritem]=useState({})
     const history =useHistory()
@@ -17,7 +18,7 @@ const Projects = () => {
     const [anime,setanime]=useState(true)
     const [loading, setLoading]=useState(false)
     const [pagintion,setpagination]=useState(3)
-
+    const { t }=useTranslation()
     useEffect(()=>{
        const resProject =axios.get(process.env.REACT_APP_API_URL +"/projects_list")
         resProject.then(res=>{
@@ -62,11 +63,23 @@ const Projects = () => {
         return animation3
     }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
+
     return (
         <>
         <div className={css.projecthdr}>
-            <p className={css.projrcttitle}>
-                Նախագծեր
+            <p className={css.projrcttitle} style={fontproprty}>
+                {t("project")}
             </p>
         </div>
          <div className={css.projectContainer}>
@@ -94,10 +107,10 @@ const Projects = () => {
 
                              >
                                  <div className={css.ptojectitem} onClick={() => addtoprojectpage(item)}>
-                                     <h6 style={{color: hoveritem[index] && "#FFFFFF"}}>{item.date}</h6>
+                                     <h6 style={{color: hoveritem[index] && "#FFFFFF",...fontproprty2}}>{item.date}</h6>
                                      <div className={css.titleanddescription}>
-                                         <h2 style={{color: hoveritem[index] && "#FFFFFF"}}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</h2>
-                                         <p style={{color: hoveritem[index] && "#FFFFFF"}}>Երկու տող նախագծի
+                                         <h2 style={{color: hoveritem[index] && "#FFFFFF",...fontproprty}}>{languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}</h2>
+                                         <p style={{color: hoveritem[index] && "#FFFFFF",...fontproprty2}}>Երկու տող նախագծի
                                              մասին․ {languae=="ՀԱՅ" ? item.context : languae=="ENG" ? item.contextEN : languae=="РУС" ? item.contextRU : null}</p>
                                      </div>
                                      <img src={arowgrren} className={css.arowgreen} alt=""
@@ -115,6 +128,7 @@ const Projects = () => {
                  <Button
                      title="տեսնել ավելին"
                      cn="btnreadmore"
+                     style={fontproprty}
                      onClick={()=> {
                          setpagination(pagintion + 3)
                          window.scrollTo(0, 1400);

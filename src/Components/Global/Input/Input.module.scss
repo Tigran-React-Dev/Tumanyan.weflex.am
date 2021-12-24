@@ -105,7 +105,7 @@
 }
 .zdachi{
     width: get-vw(227px,1920);
-    height: get-vw(72px,1920);
+    height: get-vw(62px,1920);
     background: #FFFFFF;
     outline: none;
     font-family: Montserrat-Regular;
@@ -116,6 +116,7 @@
      letter-spacing: -0.02em;
     border:none;
     margin-left: get-vw(35px,1920);
+    margin-top: get-vw(8px,1920);
    color: #252223;
     &::placeholder{
         color: #BFB7B6;

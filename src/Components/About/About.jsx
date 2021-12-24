@@ -117,13 +117,13 @@ const About =({history})=>{
 
                                         >
                                             <img src={process.env.REACT_APP_IMG_URL+image} alt=""/>
-                                           <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
-                                            <h6>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h6>
+                                           <h4 style={fontproprty2}>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
+                                            <h6 style={fontproprty2}>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h6>
                                             {
                                                 // index === 0 ? <p>{languae=="ՀԱՅ" ? information.substring(0, 167) :
                                                 // languae=="ENG" ?information.substring(0, 167) :languae=="РУС" ? information.substring(167, 290) : null} <br/>
                                                 //     <br/> {information.substring(167, 290)}</p> :
-                                                     <p>{languae=="ՀԱՅ" ? information : languae=="ENG" ? informationEN : languae=="РУС" ? informationRU : null}</p>
+                                                     <p style={fontproprty2}>{languae=="ՀԱՅ" ? information : languae=="ENG" ? informationEN : languae=="РУС" ? informationRU : null}</p>
                                             }
                                         </div>
                                     )
@@ -145,9 +145,9 @@ const About =({history})=>{
 
                                         >
                                             <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
-                                            <h4>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
-                                            <h2>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h2>
-                                            <h6>{email}</h6>
+                                            <h4 style={fontproprty2}>{languae=="ՀԱՅ" ? full_name : languae=="ENG" ? full_nameEN : languae=="РУС" ? full_nameRU : null}</h4>
+                                            <h2 style={fontproprty2}>{languae=="ՀԱՅ" ? position : languae=="ENG" ? positionEN : languae=="РУС" ? positionRU : null}</h2>
+                                            <h6 style={fontproprty2}>{email}</h6>
                                         </div>
                                     )
                                 })

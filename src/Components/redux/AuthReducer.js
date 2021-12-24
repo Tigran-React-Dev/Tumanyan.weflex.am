@@ -1,7 +1,7 @@
 import {
     ADD_NEW_ADRESS,
     CHANGEADRESES,
-    LIKE_OBJ_SEND_TO_DATA,
+    LIKE_OBJ_SEND_TO_DATA, REGISTER_USER,
     REMOVE_ADRESES,
     SAVE_ORDERS_USER
 } from "./Action/AuthACtion";
@@ -9,7 +9,7 @@ import {
 
 export const initialstate={
     token:null,
-    loadding:false,
+    loadding:true,
 
     user:{
         // name:"Անահիտ",
@@ -37,6 +37,24 @@ export const initialstate={
 
 export const AuthReducer=(state=initialstate,action)=>{
     switch (action.type) {
+        case REGISTER_USER:{
+            debugger
+            return {
+                ...state,
+                loadding: false,
+                token: sessionStorage.getItem("token"),
+                user:{
+                    name:action.payload.userdata.name,
+                    lastname:action.payload.userdata.lastname ? action.payload.userdata.lastname  : "",
+                    phoneNumber:action.payload.userdata.phoneNumber ?  action.payload.userdata.phoneNumber : "",
+                    email:action.payload.userdata.email,
+                    success_check:action.payload.userdata.success_check,
+                },
+
+            }
+        }
+
+
 
         case CHANGEADRESES :{
            state.adresess.forEach((i)=>{

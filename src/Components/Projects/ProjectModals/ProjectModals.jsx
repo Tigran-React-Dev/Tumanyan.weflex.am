@@ -52,6 +52,16 @@ const ProjectModals = () => {
             y: '10%'
         },
     }
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
 
 
 
@@ -76,22 +86,22 @@ const ProjectModals = () => {
                                         <path d="M3.49691e-07 8L15 14.9282L15 1.0718L3.49691e-07 8Z" fill="white"/>
                                         <rect width="30" height="2" transform="matrix(-1 0 0 1 45 7)" fill="white"/>
                                     </svg></NavLink>
-                                    <h1 className={css.titleproject2}>
+                                    <h1 className={css.titleproject2} style={fontproprty}>
                                         {languae=="ՀԱՅ" ? product.title : languae=="ENG" ? product.titleEN : languae=="РУС" ? product.titleRU : null}
                                     </h1>
-                                    <p className={css.dateproj}>
+                                    <p className={css.dateproj} style={fontproprty2}>
                                         {product.date}
                                     </p>
 
                                 </div>
                                 <div className={css.blockinfo1}>
                                      <div className={css.textblok}>
-                                        <p>
+                                        <p style={fontproprty2}>
                                             {languae=="ՀԱՅ" ? product.projects[0]?.context : languae=="ENG" ? product.projects[0]?.contextEN : languae=="РУС" ? product.projects[0]?.contextRU : null}
                                         </p>
                                         <div className={css.burgercount}>
-                                            <h2>{product.projects[0]?.count}</h2>
-                                            <h4>{languae=="ՀԱՅ" ? product.projects[0]?.type : languae=="ENG" ? product.projects[0]?.typeEN : languae=="РУС" ? product.projects[0]?.typeRU : null}</h4>
+                                            <h2 style={fontproprty}>{product.projects[0]?.count}</h2>
+                                            <h4 style={fontproprty2}>{languae=="ՀԱՅ" ? product.projects[0]?.type : languae=="ENG" ? product.projects[0]?.typeEN : languae=="РУС" ? product.projects[0]?.typeRU : null}</h4>
 
                                         </div>
                                     </div>
@@ -102,11 +112,11 @@ const ProjectModals = () => {
                                 <div className={css.blokinfo2}>
                                     <div className={css.blokinfotext}>
                                         <img src={storaket} alt="" className={css.storaket}/>
-                                        <p className={css.text2}>
+                                        <p className={css.text2} style={fontproprty}>
                                             {languae=="ՀԱՅ" ? product.projects[0]?.information : languae=="ENG" ? product.projects[0]?.informationEN : languae=="РУС" ? product.projects[0]?.informationRU : null}
                                         </p>
-                                        <h4>{languae=="ՀԱՅ" ? product.projects[0]?.full_name: languae=="ENG" ? product.projects[0]?.full_nameEN : languae=="РУС" ? product.projects[0]?.full_nameRU : null}</h4>
-                                        <h6>{languae=="ՀԱՅ" ? product.projects[0]?.position : languae=="ENG" ? product.projects[0]?.positionEN : languae=="РУС" ? product.projects[0]?.positionRU : null}</h6>
+                                        <h4 style={fontproprty}>{languae=="ՀԱՅ" ? product.projects[0]?.full_name: languae=="ENG" ? product.projects[0]?.full_nameEN : languae=="РУС" ? product.projects[0]?.full_nameRU : null}</h4>
+                                        <h6 style={fontproprty2}>{languae=="ՀԱՅ" ? product.projects[0]?.position : languae=="ENG" ? product.projects[0]?.positionEN : languae=="РУС" ? product.projects[0]?.positionRU : null}</h6>
                                     </div>
                                     <div className={css.positionimageblok}>
                                        <div className={css.bigimg}>

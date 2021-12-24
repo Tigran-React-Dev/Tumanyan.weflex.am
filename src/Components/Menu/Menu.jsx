@@ -97,6 +97,11 @@ const Menu = ({ history }) => {
         history.push(`/home/${item.name}`)
         window.scrollTo(0, 300)
     }
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
 
     return (
@@ -105,7 +110,7 @@ const Menu = ({ history }) => {
                 <h1></h1> : <div className={css.contanier}>
                 <div className={css.menuimagesandtitle}>
                     <img src={process.env.REACT_APP_IMG_URL+activeMenuitem?.bigImage} alt="" />
-                    <h1>{languae=="ՀԱՅ" ? activeMenuitem?.name : languae=="ENG" ? activeMenuitem?.nameEN : languae=="РУС" ? activeMenuitem?.nameRU : null}</h1>
+                    <h1 style={fontproprty}>{languae=="ՀԱՅ" ? activeMenuitem?.name : languae=="ENG" ? activeMenuitem?.nameEN : languae=="РУС" ? activeMenuitem?.nameRU : null}</h1>
                 </div>
                 <div className={css.category} ref={ref}>
                     {activSub.map((item,index) => {
@@ -114,7 +119,7 @@ const Menu = ({ history }) => {
                                 className={item.name == id ? css.btncategory : css.btncategory2}
                                 key={item.id} onClick={() => changeProductCategory(item,index)}
                                 >
-                                <p className={item.name == id ? css.menuname : css.menuname2} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
+                                <p className={item.name == id ? css.menuname : css.menuname2} style={fontproprty} >{languae=="ՀԱՅ" ? item.name : languae=="ENG" ? item.nameEN : languae=="РУС" ? item.nameRU : null}</p>
                             </div>
                         )
                     })
@@ -139,7 +144,7 @@ const Menu = ({ history }) => {
                         }
                     </div>
                     <div className={css.recoment}>
-                    <p className={css.recomtitle}>{t("advaces")}</p>
+                    <p className={css.recomtitle} style={fontproprty}>{t("advaces")}</p>
                       <div className={css.recomconstruct}>
                           {
                               product.filter(fil=>fil.name==id)[0]?.advices?.map((obj) => {
@@ -160,7 +165,7 @@ const Menu = ({ history }) => {
                     </>
                     }
                     {id==20 && <div className={css.Sauces}>
-                        <p className={css.Saucestitle}>Սոուսներ</p>
+                        <p className={css.Saucestitle} style={fontproprty}>Սոուսներ</p>
                         <div className={css.sousesblog}>
                             {product.filter(fil=>fil.name==id)[0]?.souses?.map((obj) => {
 

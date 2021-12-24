@@ -112,6 +112,23 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
         setsowproductmodal(!sowlichniproductmodal)
       }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+
+
 
 
     return (
@@ -122,10 +139,10 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
                 <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
             }
             {bonus > 0 && <div className={css.akcia}>
-                <p>-{+bonus}%</p>
+                <p style={fontproprty}>-{+bonus}%</p>
             </div>}
             <div className={css.titleanlike}>
-                <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
+                <p style={fontproprty}>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
             {(prices.length>1 &&  typeof(prices)!="string") && <div className={css.sizeproduct}>
@@ -134,6 +151,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
                         prices.map(({id, sizes, price}, index) => {
                             return <li
                                 key={index}
+                                style={fontproprty2}
                                 onClick={() => changeSizeAndprice(price, index+1, sizes.size)}
                                 className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
                             >
@@ -149,18 +167,18 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
                        }
                     <div className={css.addlichniproduct}>
                         {description ?
-                            <p className={css.descript}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
+                            <p className={css.descript} style={fontproprty2}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
                             :
                             <>
                             {prices?.length===3 ?
                                 <div className={css.addlichni} onClick={AddlichniyProduct}>
-                                    <p>Ավելացնել</p>
+                                    <p style={fontproprty2}>Ավելացնել</p>
                                     <div className={css.kechup}/>
                                 </div>
                              :
                              prices?.length===2 ?
                                     <div className={css.addlichni} onClick={AddlichniyProduct}>
-                                        <p>Բաղադրիչներ</p>
+                                        <p style={fontproprty2}>Բաղադրիչներ</p>
 
                                     </div>
                                 :
@@ -171,7 +189,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
                         <div className={css.addcountproduct}>
                              <div className={css.addcount}>
                                 <img src={minus} alt="" className={css.minus} onClick={onMinus}/>
-                                <div><p>{count}</p></div>
+                                <div><p style={fontproprty3}>{count}</p></div>
                                 <img src={plus} alt="" className={css.plus} onClick={onPlus}/>
                             </div>
                         </div>
@@ -179,7 +197,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
                     </div>
                     <div className={css.priceandaddcat}>
                         <div className={css.pricecontayner}>
-                            <p>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)}&nbsp;֏</p>
+                            <p style={fontproprty}>{bonus ? (itempricesitog - (itempricesitog / 100 * bonus))+priceItional : (+itempricesitog)+(+priceItional)}&nbsp;֏</p>
                             <del className={css.hinprice}>{bonus ? `${activeprice}   ֏` : null} </del>
                         </div>
 

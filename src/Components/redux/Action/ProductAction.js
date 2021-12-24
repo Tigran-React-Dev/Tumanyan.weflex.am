@@ -2,8 +2,8 @@ import axios from "axios";
 export const LIKE_PRODUCT ="LIKE_PRODUCT";
 export const CHANGE_CHECKBOX ="CHANGE_CHECKBOX";
 export const LOAD_DATA="LOAD_DATA";
-export const LOAD_GRAND_BUFET_DATA="LOAD_GRAND_BUFET_DATA"
-
+export const LOAD_GRAND_BUFET_DATA="LOAD_GRAND_BUFET_DATA";
+export const SEARCH_PRODUCT="SEARCH_PRODUCT";
 
 export const LikedProduct=(id,category,like)=>{
    return{
@@ -35,6 +35,21 @@ export const LoadGrandBufetData=()=>{
         dispatch({
             type: LOAD_GRAND_BUFET_DATA,
             payload: response
+        })
+    }
+}
+
+export const SearchingProduct=(serch)=>{
+    return async dispatch => {
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/search/${serch}`)
+
+        dispatch({
+            type: SEARCH_PRODUCT,
+            payload: {
+                response,
+                serch,
+            }
+
         })
     }
 }

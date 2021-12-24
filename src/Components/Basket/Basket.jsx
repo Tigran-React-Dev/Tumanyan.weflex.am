@@ -150,21 +150,32 @@ const Basket = () => {
        setClock("Ժամը")
    }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
 
     return (
          <div className={css.Basketconstructor}>
                <div className={css.bskhdr}>
-                   <p className={css.baskettitle}>զամբյուղ</p>
+                   <p className={css.baskettitle} style={fontproprty}>զամբյուղ</p>
                </div>
           <div className={css.bskconstr2}>
               {totalPrice ===0 ?
                <>
-                   <p className={css.basketstatus}>ձեր զամբյուղն առայժմ դատարկ է։</p>
+                   <p className={css.basketstatus} style={fontproprty}>ձեր զամբյուղն առայժմ դատարկ է։</p>
                    <div className={css.btndiv}>
                        <button className={css.btnpushmenu} onClick={()=> {
 
                            history.push("/home/Shaurma");
-                     }}>վերդառնալ մենյու</button>
+                     }} style={fontproprty}>վերդառնալ մենյու</button>
                    </div>
                </>
 
@@ -185,40 +196,42 @@ const Basket = () => {
                        <div className={css.promoblok}>
                           <Input
                               cn="promoinput"
+                              style={fontproprty2}
                               placeholder="պրոմոկոդ"/>
                           <img src={btnbsk} alt="" />
                        </div>
                         <div className={css.bonuss}>
-                            <p>օգտագործել իմ կուտակված</p>
-                             <span>10 %</span>
+                            <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
+                             <span style={fontproprty}>10 %</span>
                              <img src={btnbsk} alt="" />
                         </div>
                         <div className={css.totaldiv}>
-                            <p>{totalPrice} ֏</p>
+                            <p style={fontproprty}>{totalPrice} ֏</p>
                         </div>
                         <div className={css.clearnbasket} onClick={clearnBasketitem}>
-                             <p>Մաքրել <img src={btndel} alt="" /></p>
+                             <p style={fontproprty2}>Մաքրել <img src={btndel} alt="" /></p>
                         </div>
                     </div>
                    <div className={css.constrctorformandrecoment}>
-                       <p className={css.formtitle}>
+                       <p className={css.formtitle} style={fontproprty}>
                        ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                        </p>
-                       <p className={css.info}>{t("information")}</p>
+                       <p className={css.info} style={fontproprty}>{t("information")}</p>
                        {/*className={css.formandrecomentwraper}*/}
                       <div style={formandrecomentwraper} className={css.formandrecomentwraper}>
 
                           <div className={css.formcontlorel}>
                               <div className={css.mobileformtitle}>
-                                  <p>
+                                  <p style={fontproprty}>
                                       ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                                   </p>
-                                  <h6>{t("information")}</h6>
+                                  <h6 style={fontproprty}>{t("information")}</h6>
                               </div>
                               <Input
                                   cn="inputglobalinfo"
                                   placeholder={t("name")}
                                   type="text"
+                                  style={fontproprty2}
                                   onChange={OnchangeInputofRegister}
                                   name="name"
                               />
@@ -226,6 +239,7 @@ const Basket = () => {
                                   cn="inputglobalinfo"
                                   placeholder={t("surname")}
                                   type="text"
+                                  style={fontproprty2}
                                   onChange={OnchangeInputofRegister}
                                   name="lastname"
                               />
@@ -235,6 +249,7 @@ const Basket = () => {
                               type="number"
                               maxlength="12"
                               value={phone}
+                              style={fontproprty2}
                               onChange={OnchangeInputofRegister}
                               name="phone"
                               />
@@ -244,6 +259,7 @@ const Basket = () => {
                               type="email"
                               onChange={OnchangeInputofRegister}
                               name="email"
+                              style={fontproprty2}
                               />
                               <div className={css.checkdiv}>
                                   <Check
@@ -261,6 +277,7 @@ const Basket = () => {
                                    <Button
                                        cn="btnPopupshop"
                                        title="առաքում"
+
                                        onClick={()=> {
                                            seterors("")
                                            setSowdetalis(1)
@@ -268,7 +285,7 @@ const Basket = () => {
                                        style={{color: showdetalis===1 ?
                                                "#13AD54" : "#BFB7B6" ,
                                            border:showdetalis===1 ?
-                                               "1px solid #13AD54" : "1px solid #BFB7B6"}}
+                                               "1px solid #13AD54" : "1px solid #BFB7B6",...fontproprty}}
 
                                    />
                                   <Button
@@ -278,7 +295,7 @@ const Basket = () => {
                                       style={{color: showdetalis===2 &&
                                               "#13AD54"  ,
                                           border:showdetalis===2 &&
-                                              "1px solid #13AD54" }}
+                                              "1px solid #13AD54", ...fontproprty}}
                                    />
 
 
@@ -290,7 +307,7 @@ const Basket = () => {
                                   <>
                                   {userAdress.length ?
                                       <div className={css.userADresesblok}>
-                                         <p className={css.selectuseradres}>Ընտրեք հասցեն՝</p>
+                                         <p className={css.selectuseradres} style={fontproprty2}>Ընտրեք հասցեն՝</p>
                                           <div className={css.adresselement}>
                                               {
                                                   userAdress.map(({id,adress,bulding,apartment})=>{
@@ -298,7 +315,7 @@ const Basket = () => {
                                                           <div key={id} className={css.itermadresandicon}
                                                                style={{marginLeft:id===5  && "3.33vw",marginRight:id===3  && "1.2vw"}}>
                                                               <img src={adressicon} alt=""/>
-                                                              <p>{adress }, շ․{bulding}, բն․{apartment}</p>
+                                                              <p style={fontproprty}>{adress }, շ․{bulding}, բն․{apartment}</p>
                                                           </div>
                                                       )
                                                   })
@@ -312,15 +329,18 @@ const Basket = () => {
                                       <Input
                                           cn="inputglobalinfo"
                                           placeholder={t("address_*")}
+                                          style={fontproprty2}
                                       />
                                       <div className={css.domandkey}>
                                           <Input
                                               cn="inputdom"
                                               placeholder="Շենք"
+                                              style={fontproprty2}
                                           />
                                           <Input
                                               cn="inputdom"
                                               placeholder="Բնակարան"
+                                              style={fontproprty2}
                                           />
                                       </div>
                                       <hr/>
@@ -329,7 +349,7 @@ const Basket = () => {
                                   </>
                                   :
                                    <div className={css.adresscityortoradress}>
-                                      <p className={css.adresstitle}>Ընտրեք մասնաճյուղը՝</p>
+                                      <p className={css.adresstitle} style={fontproprty2}>Ընտրեք մասնաճյուղը՝</p>
                                        <div className={css.adresselement}>
                                            {
                                                adressCountry.map((item,index)=>{
@@ -340,7 +360,7 @@ const Basket = () => {
                                                             onClick={()=>ChangeBranch(item)}
                                                        >
                                                            <img src={adressicon} alt=""/>
-                                                           <p style={{color:sitystyle==item.address &&  "#13AD54" }}>{item.address}</p>
+                                                           <p style={{color:sitystyle==item.address &&  "#13AD54" ,...fontproprty}}>{item.address}</p>
                                                        </div>
                                                    )
                                                })
@@ -349,7 +369,7 @@ const Basket = () => {
                                     {/*select data*/}
                                         <div className={css.clokblok}>
                                             <div className={css.clock} onClick={OpenSelectData}>
-                                                <p>{clock} </p>
+                                                <p style={fontproprty2}>{clock} </p>
                                                 {!dateSelectShow ?  <img src={seltb} alt=""/> :  <img src={salta} alt=""/>}
                                             </div>
 
@@ -364,7 +384,10 @@ const Basket = () => {
                                                        <div className={css.overfloscrol}>
                                                            {activeSityTimes.map((time,i)=>{
                                                                return(
-                                                                   <p style={{marginTop:i==0 && "0px"}} onClick={()=>setClock(time.time)}>{time.time}</p>
+                                                                   <p style={{marginTop:i==0 && "0px",...fontproprty2}} onClick={()=> {
+                                                                       setClock(time.time)
+                                                                       OpenSelectData()
+                                                                   }}>{time.time}</p>
                                                                )
                                                            })
 
@@ -389,6 +412,7 @@ const Basket = () => {
                                           return <Button
                                               key={id}
                                               title={title}
+                                              style={fontproprty}
                                               cn="btnPopupshop"
                                               style={{color:id==paybtnstyle && "#13AD54" ,border:id==paybtnstyle && "1px solid #13AD54" }}
                                               onClick={()=>setPeybtnStyle(id)}
@@ -404,13 +428,15 @@ const Basket = () => {
                                   <Input
                                       cn="zdachi"
                                       placeholder="նշեք կանխիկի չափը"
+                                      style={fontproprty2}
                                   />
-                                  <p className={css.zdachittitle1}>-ից</p>
+                                  <p className={css.zdachittitle1} style={fontproprty2}>-ից</p>
                                </div>
                               }
                               <Button
                                   cn="btnokpey"
                                   title="պատվիրել"
+                                  style={fontproprty}
                                   onClick={SendFormdataCheck}
 
                               />
@@ -418,7 +444,7 @@ const Basket = () => {
                           </div>
                           {/*<div className={css.recomentcontroler} style={recomentcontroler} >*/}
                               <div className={css.recometntcontrol}>
-                                  <p className={css.itonalItemcard}>ձեր պատվերի հետ կսազի նաևվ</p>
+                                  <p className={css.itonalItemcard} style={fontproprty}>ձեր պատվերի հետ կսազի նաևվ</p>
                                      <div className={css.shiporder}>
 
                                       {loading &&  product.filter(fil=>fil.name=="Ըմպելիք")[0]?.products.map((obj)=>{
@@ -442,12 +468,12 @@ const Basket = () => {
                 :
                       <>
                           <img className={css.checkbasket} src={checketbasket} alt=""/>
-                          <p className={css.statussok}>ձեր պատվերը կատարվել է։</p>
+                          <p className={css.statussok} style={fontproprty}>ձեր պատվերը կատարվել է։</p>
                           <div className={css.btndiv2}>
                               <button className={css.btnpushmenu} onClick={()=> {
                                   setSucsessshp(!sucsessshop)
                                   history.push("/home/Shaurma");
-                              }}>վերդառնալ մենյու</button>
+                              }} style={fontproprty}>վերդառնալ մենյու</button>
                           </div>
                       </>
               }

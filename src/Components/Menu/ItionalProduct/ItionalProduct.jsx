@@ -44,6 +44,23 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, Addli
     }
 
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+
+
     return (
         <div className={css.itionalwraper}>
             <div className={css.itionalwrraper} onClick={AddlichniyProduct}/>
@@ -53,7 +70,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, Addli
                         return (
                             <div>
                                 <div className={css.banjarexen}>
-                                    <h2 style={{}}>{languae == "ՀԱՅ" ? e.name : languae == "ENG" ? e.nameEN : languae == "РУС" ? e.nameRU : null}</h2>
+                                    <h2 style={fontproprty}>{languae == "ՀԱՅ" ? e.name : languae == "ENG" ? e.nameEN : languae == "РУС" ? e.nameRU : null}</h2>
                                 </div>
                                 <div>
                                     {
@@ -81,7 +98,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, Addli
                         {add_buffets.map(({id, name, amount}, i) => {
                            return <div key={id} className={css.igraditem}
                            style={{marginTop: i == 0 ? "0px" : " 1.01vw"}}>
-                           <p>{name}</p><p>{amount}</p>
+                           <p style={fontproprty2}>{name}</p><p style={fontproprty2}>{amount}</p>
                     </div>
                 })
                 }

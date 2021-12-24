@@ -17,15 +17,25 @@ const Contact =({history})=>{
 
     const {contactMail} =useSlider()
     const {adressCountry,languae} =useProduct()
-    console.log(adressCountry)
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
     return(
         <div className={css.socbigcontainer}>
             <div className={css.contactContainer}>
                 <div className={css.contacthdr}>
-                    <h1>{t("contact")}</h1>
+                    <h1 style={fontproprty}>{t("contact")}</h1>
                 </div>
                 <div className={css.socseti}>
-                    <p className={css.miaceqmez}>{t("connectmesoc")}</p>
+                    <p className={css.miaceqmez} style={fontproprty}>{t("connectmesoc")}</p>
                     <div className={css.socitem}>
                         <a href="https://www.facebook.com/TumanyanShaurma/" target="_blank"><div className={css.fb}>
                             <div className={css.fbbg}>
@@ -107,8 +117,8 @@ const Contact =({history})=>{
 
                     </div>
                 </div>
-                <div className={css.contacner}>
-                     <p className={css.titlecont}>
+                <div className={css.contacts}>
+                     <p className={css.titlecont} style={fontproprty}>
                          {t("contactmail")}
                      </p>
                     <div className={css.contactis}>
@@ -116,8 +126,8 @@ const Contact =({history})=>{
                           contactMail.map((elem,i)=>{
                                return(
                                    <div className={css.itemcontact1} key={i} style={{marginLeft:(i!=0 && i!=3) && "10vw"}}>
-                                       <h4>{languae=="ՀԱՅ" ? elem.position : languae=="ENG" ? elem.positionENG : languae=="РУС" ? elem.positionRU : null}</h4>
-                                       <p>{elem.mail}</p>
+                                       <h4 style={fontproprty2}>{languae=="ՀԱՅ" ? elem.position : languae=="ENG" ? elem.positionENG : languae=="РУС" ? elem.positionRU : null}</h4>
+                                       <p style={fontproprty2}>{elem.mail}</p>
                                    </div>
                                )
                            })
@@ -130,34 +140,34 @@ const Contact =({history})=>{
             </div>
             <div className={css.masnajuxerinfo}>
              <div className={css.itemcontainer}>
-                 <p className={css.titlemasnajux}>{t("contactadress")}</p>
+                 <p className={css.titlemasnajux} style={fontproprty}>{t("contactadress")}</p>
                  <div className={css.itemadresesblok}>
                      {adressCountry.map((item)=>{
 
                              return (<div className={css.itemadressinfo} key={item.id} >
-                                 <h2 className={css.titleitmadres}>
+                                 <h2 className={css.titleitmadres} style={fontproprty2}>
                                      {languae=="ՀԱՅ" ? item.title : languae=="ENG" ? item.titleEN : languae=="РУС" ? item.titleRU : null}
                                  </h2>
-                                 <div className={css.gic4}></div>
-                                 <div className={css.hascee}>
-                                      <p className={css.hascep}>{t("adress")}</p>
-                                      <p className={css.hacep2}> {languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
+                                 <div className={css.line}></div>
+                                 <div className={css.text_blok}>
+                                      <p className={css.text_top}  style={fontproprty2}>{t("adress")}</p>
+                                      <p className={css.text_bottom} style={fontproprty2}> {languae=="ՀԱՅ" ? item.address : languae=="ENG" ? item.addressEN : languae=="РУС" ? item.addressRU : null}</p>
                                  </div>
                                  <div className={css.datejob}>
-                                     <p className={css.datatitle}>
+                                     <p className={css.datatitle} style={fontproprty2}>
                                          {t("jobdate")}
                                      </p>
-                                     <p className={css.dates}>
+                                     <p className={css.dates} style={fontproprty2}>
                                          {item.date}
                                      </p>
                                  </div>
-                                 <div className={css.heraxos}>
-                                     <p className={css.heraxostit}>
+                                 <div className={css.phone_number}>
+                                     <p className={css.phone_title} style={fontproprty2}>
                                          {t("tel")}
                                      </p>
                                       <div className={css.itemphone}>
                                           {
-                                              item.phones.map((e,i)=><p className={css.phonegroup} key={i}>{e.phone}</p>)
+                                              item.phones.map((e,i)=><p className={css.phonegroup} key={i} style={fontproprty2}>{e.phone}</p>)
                                           }
                                       </div>
                                  </div>

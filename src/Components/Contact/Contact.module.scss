@@ -251,7 +251,7 @@
 
 
 
-.contacner{
+.contacts{
   width: get-vw(1636px,1920);
   height: get-vw(449px,1920);
 
@@ -356,20 +356,20 @@
   letter-spacing: -0.02em;
   color: #13AD54;
 }
-.gic4{
+.line{
   width: get-vw(412px,1920);
   height: get-vw(1px,1920);
   background: #BFB7B6;
   margin-top: get-vw(15px,1920);
 }
 
-.hascee{
+.text_blok{
   width: get-vw(412px,1920);
   height: get-vw(66px,19820);
   display: flex;
   justify-content: space-between;
   margin-top: get-vw(30px,1920);
-  .hascep{
+  .text_top{
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;
@@ -378,7 +378,7 @@
     letter-spacing: -0.02em;
     color: #BFB7B6;
   }
-  .hacep2{
+  .text_bottom{
     width: get-vw(306px,1920);
     font-family: Montserrat-Regular;
     font-style: normal;
@@ -417,11 +417,11 @@
     margin-left: get-vw(20px,1920);
   }
 }
-.heraxos{
+.phone_number{
   width: get-vw(282px,1920);
   min-height: get-vw(119px,1920);
   display: flex;
-  .heraxostit{
+  .phone_title{
     font-family: Montserrat-Regular;
     font-style: normal;
     font-weight: normal;
@@ -615,7 +615,7 @@
 
 
 
-  .contacner{
+  .contacts{
     width: get-vw(375px,375);
     min-height: get-vw(510px,375);
     margin-top: get-vw(100px,375);
@@ -698,19 +698,19 @@
     line-height: 160%;
 
   }
-  .gic4{
+  .line{
     width: get-vw(345px,375);
     height: get-vw(1px,375);
     margin-top: get-vw(8px,375);
   }
 
-  .hascee{
+  .text_blok{
     width: get-vw(345px,375);
     height: get-vw(52px,375);
     display: flex;
     justify-content: space-between;
     margin-top: get-vw(24px,375);
-    .hascep{
+    .text_top{
       width: get-vw(92px,375);
       font-family: Montserrat-Regular;
       font-style: normal;
@@ -720,7 +720,7 @@
       letter-spacing: -0.02em;
       color: #BFB7B6;
     }
-    .hacep2{
+    .text_bottom{
       width: get-vw(231px,375);
       font-family: Montserrat-Regular;
       font-style: normal;
@@ -749,11 +749,11 @@
       margin-left: get-vw(47px,375);
     }
   }
-  .heraxos{
+  .phone_number{
     width: get-vw(345px,375);
     min-height: get-vw(52px,375);
     display: flex;
-    .heraxostit{
+    .phone_title{
      font-size: get-vw(13px,375);
       line-height: 160%;
       letter-spacing: -0.02em;

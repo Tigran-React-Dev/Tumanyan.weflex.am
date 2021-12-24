@@ -6,13 +6,14 @@ import dltbtn from "../../../images/icons/delete.svg"
 import {DeleteItemCard, OnMinusCount, OnplusCount} from "../../redux/Action/CardAction";
 import closeiconmobile from "../../../images/icons/closeiconbasketmobile.png"
 import {useDispatch} from "react-redux";
+import {useProduct} from "../../Providers/ProductMenu";
 
 
 const Basketitem = ({obj}) => {
  const dispatch = useDispatch()
 const {id,name,image, itionalitem,description,price,size,count,_id,category,bonus} =obj
 const [show,setShow]=useState({})
-
+const {languae}=useProduct()
     const DeleteItems =(_id)=>{
         setShow({[_id]:!show[_id]})
       setTimeout(()=>{
@@ -30,7 +31,21 @@ const [show,setShow]=useState({})
         dispatch(OnMinusCount(obj,bonus))
     })
 
-
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
 
     return (
         <>
@@ -38,11 +53,11 @@ const [show,setShow]=useState({})
         {!show[_id] && <div className={css.basketelement}>
         {<img className={css.productpicturent} src={process.env.REACT_APP_IMG_URL + image} alt=""/>}
         <div className={css.titleanddescription}>
-            <p className={css.titleproduct}>{name}</p>
-            <p className={css.description}>{itionalitem != undefined && itionalitem?.length!=0 ? itionalitem.map(i => <span
+            <p className={css.titleproduct} style={fontproprty}>{name}</p>
+            <p className={css.description} style={fontproprty2}>{itionalitem != undefined && itionalitem?.length!=0 ? itionalitem.map(i => <span
                 key={i.id}>{i.name},</span>) : description != undefined ? description : null} </p>
          </div>
-        <h2 className={css.size}>{size != undefined ? size : null}</h2>
+        <h2 className={css.size} style={fontproprty2}>{size != undefined ? size : null}</h2>
         <div className={css.minuspluscount}>
             {count ==1 ?
                 <>
@@ -51,11 +66,11 @@ const [show,setShow]=useState({})
                 </>
                 :
                 <img className={css.onminus2} src={minus} alt="" onClick={() => onMinusCount(obj)}/>}
-            <span><p>{count}</p></span>
+            <span><p style={fontproprty3}>{count}</p></span>
             <img className={css.pluscaunt} src={plus} alt="" onClick={() => onPlusCount(obj)}/>
         </div>
         <div className={css.price}>
-            <p>{price} ֏</p>
+            <p style={fontproprty}>{price} ֏</p>
         </div>
         <img onClick={() => DeleteItems(_id)} className={css.dltbtn} src={dltbtn} alt=""/>
        </div>
@@ -65,15 +80,15 @@ const [show,setShow]=useState({})
             <>
                 {!show[_id] && <div className={css.basketelementmobile}>
                     <div className={css.titleanddprice}>
-                        <p className={css.titleproductmobile}>{name}</p>
+                        <p className={css.titleproductmobile} style={fontproprty}>{name}</p>
                         <div className={css.pricemobile}>
-                            <p> {price} ֏</p>
+                            <p style={fontproprty}> {price} ֏</p>
                         </div>
                      </div>
-                    <h2 className={css.sizemobile}>{size != undefined ? size : null}</h2>
+                    <h2 className={css.sizemobile} style={fontproprty2}>{size != undefined ? size : null}</h2>
                     <div className={css.minuspluscountmobile}>
                         <p className={css.descriptionmobile}>{description !=null  ? <span>{description}</span> :
-                            itionalitem !=undefined ? itionalitem.map(e=><span>{e.name}, </span>) : null} </p>
+                            itionalitem !=undefined ? itionalitem.map(e=><span style={fontproprty2}> {e.name}, </span>) : null} </p>
                         <div className={css.countminusplus}>
                             {count ==1 ?
                                 <>
@@ -82,7 +97,7 @@ const [show,setShow]=useState({})
                                 </>
                                 :
                                 <img className={css.onminus2} src={minus} alt="" onClick={() => onMinusCount(obj,bonus)}/>}
-                            <span><p>{count}</p></span>
+                            <span><p style={fontproprty3}>{count}</p></span>
                             <img className={css.pluscaunt} src={plus} alt="" onClick={() => onPlusCount(obj,bonus)}/>
                         </div>
 

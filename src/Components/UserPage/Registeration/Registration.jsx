@@ -3,18 +3,22 @@ import css from "./Register.module.scss"
 import Input from "../../Global/Input/Input";
 import Check from "../../Global/Checkbox2/Check";
 import {NavLink, useHistory} from "react-router-dom";
-import {LOGIN_PAGES, RESET_PASSWORD} from "../../urls";
+import {HOME_PAGE, LOGIN_PAGES, RESET_PASSWORD} from "../../urls";
 import Button from "../../Global/Button/Button";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {Registeruser} from "../../redux/Action/AuthACtion";
 const Registration = () => {
     const [checket,setchecked]=useState(false)
     const [border,setborder]=useState("1px solid #DFDFDF")
     const [errors,setErrors]=useState({})
     const history=useHistory()
-
+    const dispath =useDispatch()
     useEffect(()=>{
         window.scrollTo(0, 0);
-
+        if(sessionStorage.getItem("token")){
+            history.push(HOME_PAGE)
+        }
     },[history])
 
     const [user,setUser]=useState({
@@ -37,6 +41,7 @@ const Registration = () => {
 
     const FormaSubmit = e =>{
         e.preventDefault()
+        handleSubmit()
 
 
 
@@ -65,16 +70,16 @@ const Registration = () => {
             // make axios post request
             const response = await axios({
                 method: "post",
-                url: process.env.REACT_APP_API_URL+"/user/addUser",
+                url: process.env.REACT_APP_API_URL+"/user/register",
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
 
-            if(response.data){
-
-
+            if(response.data.token){
+                sessionStorage.setItem("token",response.data.token)
+                sessionStorage.setItem("user",JSON.stringify(response.data))
                 setErrors({})
-                window.scrollTo(0, 400);
+                history.push(HOME_PAGE)
             }else{
                 setErrors(response.data);
             }
@@ -97,6 +102,7 @@ const Registration = () => {
                     onChange={onChangeRegisterdata}
                     value={name}
                     name="name"
+                    style={{border:errors.name && "1px solid red"}}
 
                   />
                 <Input
@@ -106,6 +112,7 @@ const Registration = () => {
                     onChange={onChangeRegisterdata}
                     value={email}
                     name="email"
+                    style={{border:errors.email && "1px solid red"}}
 
                 />
                 <Input
@@ -115,6 +122,7 @@ const Registration = () => {
                 onChange={onChangeRegisterdata}
                 value={password}
                 name="password"
+                style={{border:errors.password && "1px solid red"}}
 
                 />
                 <Input
@@ -124,7 +132,8 @@ const Registration = () => {
                     placeholder="Կրկնել գաղտնաբառը"
                     onChange={onChangeRegisterdata}
                     value={password_confirmation}
-                    name="cpassword"
+                    name="password_confirmation"
+                    style={{border:errors.password_confirmation && "1px solid red"}}
 
                 />
                 <div className={css.zabilandzapomnit}>

@@ -3,7 +3,7 @@ import Input from "../Global/Input/Input";
 import css from "./Header.module.scss"
 import Menu from "./Menu/Menu";
 import {NavLink,useHistory,} from "react-router-dom";
-import {BASKET_PAGE, HOME_PAGE, LOGIN_PAGES, PROFIL_PAGE} from "../urls";
+import {BASKET_PAGE, HOME_PAGE, LOGIN_PAGES, PROFIL_PAGE, SEARCH_PAGE} from "../urls";
 import logo from "../../images/logo.png";
 import adress from "../../images/icons/select.png";
 import self from "../../images/icons/self.png";
@@ -13,15 +13,17 @@ import gumar from "../../images/icons/gumar.png";
 import phone from "../../images/icons/phone.png"
 import verify from "../../images/icons/chosen.png";
 import log from "../../images/icons/logins.svg";
+import userlogin from "../../images/icons/userIicon.svg"
 import iconmenu from "../../images/icons/iconmobilemenu.svg";
 import iconclose from "../../images/icons/closebtniconmobilemenu.svg";
 import topbootom from "../../images/icons/up.png";
 import { useProduct } from "../Providers/ProductMenu";
 import { useTranslation } from 'react-i18next';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import i18next from 'i18next';
 import {isAuthRoutes, isOuthFooter} from "../routes";
 import axios from "axios";
+import {SEARCH_PRODUCT, SearchingProduct} from "../redux/Action/ProductAction";
 
 
 
@@ -30,6 +32,7 @@ const Header = () => {
     const { adressCountry,setAdressCountry,languae, activSub, setactiveCityname, setActivSub,menuCategorup, changeLang,language, defaultCity, setDefaultSity } = useProduct()
     const { t } = useTranslation();
     const history = useHistory()
+    const dispath=useDispatch()
     const [selecticon, setSelectIcon] = useState(true)
     const [languagemodal, setLanguageModal] = useState(false)
     const [sowmenu, setSoumenu] = useState(false)
@@ -42,6 +45,8 @@ const Header = () => {
     const [menuiconClik,setMenuIconClik]=useState(false)
     const [loading,setLoading]=useState(false)
     const [hegth,setHegth]=useState(false)
+    const [search,setSearch]=useState("")
+
 
 
 
@@ -131,10 +136,13 @@ const Header = () => {
         key ? setInputborder(key) : setInputborder(!inputborder)
 
     }
-    const onsubmit = (e) => {
+    const SearchSubmit = async (e) => {
         e.preventDefault()
-        setInputborder(!inputborder)
+        await dispath(SearchingProduct(search))
+        history.push(SEARCH_PAGE)
+
     }
+
 
     // Style animation open header
 
@@ -211,13 +219,15 @@ const handleClickSelectMobile =()=>{
             <div className={css.headerContainer} style={headerstyle}>
                 <div style={cardStyle} className={css.header} >
                     <div className={css.serch}>
-                        <form>
-                             <img src={serch} alt="" />
+                        <form onSubmit={SearchSubmit}>
+                             <img src={serch} alt="" onClick={SearchSubmit}/>
                             <Input
                                 cn={languae=="ՀԱՅ" ? "searchInputAM" : languae=="ENG" ? "searchInputENG" : languae=="РУС" ? "searchInputRU" : null}
                                 onMouseEnter={changeborderinput}
                                 onMouseLeave={() => changeborderinput(null)}
                                 placeholder={t('plachholderserch')}
+                                onChange={(e)=>setSearch(e.target.value)}
+
 
                             />
 
@@ -252,7 +262,8 @@ const handleClickSelectMobile =()=>{
                     <div className={css.contactandlogin}>
                         <img className={css.phone} src={phone} alt=""/>
                         <a className={css.phoneNumber} href="tel:81 88">81 88</a>
-                        <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt="" /></NavLink>
+                        {sessionStorage.getItem("token") ? <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
+                            <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
                          <div className={css.basketclick}>
                              <NavLink
                                 to={BASKET_PAGE}

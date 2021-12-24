@@ -4,33 +4,34 @@ import Input from "../../Global/Input/Input";
 import Check from "../../Global/Checkbox2/Check";
 import {NavLink, useHistory} from "react-router-dom";
 import Button from "../../Global/Button/Button";
-import {REGISTER_PAGE, RESET_PASSWORD} from "../../urls";
+import {HOME_PAGE, REGISTER_PAGE, RESET_PASSWORD} from "../../urls";
 import pass from "../../../images/icons/password.png";
 import cpass from "../../../images/icons/cpassword.png";
+import axios from "axios";
 
 const LoginPage = () => {
     const history=useHistory()
 
     useEffect(()=>{
         window.scrollTo(0, 0);
-
+        if(sessionStorage.getItem("token")){
+            history.push(HOME_PAGE)
+        }
     },[history])
 
     const [checket,setchecked]=useState(false)
     const [inputtype,setInputType]=useState("password")
+    const [errors,setErrors]=useState({})
     const [user,setUser]=useState({
-        login:"",
+        email:"",
         password:""
     })
 
-    const {login,password}=user;
+    const {email,password}=user;
 
-
-    const onChangeinput =(e)=>{
-        setUser({
-            ...user,
-            [e.target.name]:e.target.value
-        })
+    const SubmitUser =(e)=>{
+        e.preventDefault()
+        handleSubmit()
     }
     const changeInpuytype =()=>{
         if(inputtype==="password"){
@@ -40,6 +41,42 @@ const LoginPage = () => {
         }
 
     }
+    const handleSubmit = async () => {
+
+        // store the states in the form data
+        const loginFormData = new FormData();
+        loginFormData.append("email", email)
+        loginFormData.append("password", password)
+
+
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/login",
+                data: loginFormData,
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+            debugger
+            if(response.data.token){
+                sessionStorage.setItem("token",response.data.token)
+                sessionStorage.setItem("user",JSON.stringify(response.data))
+                setErrors({})
+                history.push(HOME_PAGE)
+            }else{
+                setErrors(response.data);
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const onChangeinput =(e)=>{
+        setUser({
+            ...user,
+            [e.target.name]:e.target.value
+        })
+    }
+
 
     const hantletargetclick =()=>{
 
@@ -52,14 +89,15 @@ const LoginPage = () => {
                 <p>Մուտք</p>
             </div>
             <div className={css.loginuser}>
-                 <form className={css.formcontole}>
+                 <form className={css.formcontole} onSubmit={SubmitUser}>
                        <Input
                            cn="logininput"
                            placeholder="Էլ․ փոստ"
                            type="email"
-                           value={login}
-                           name="login"
+                           value={email}
+                           name="email"
                            onChange={onChangeinput}
+                           style={{border:errors.error && "1px solid red"}}
 
                        />
                      {inputtype ==="password" ?
@@ -73,6 +111,7 @@ const LoginPage = () => {
                           value={password}
                          name="password"
                          onChange={onChangeinput}
+                         style={{border:errors.error && "1px solid red"}}
                      />
                      <div className={css.zabilandzapomnit}>
                          <Check

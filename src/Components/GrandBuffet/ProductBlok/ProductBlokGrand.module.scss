@@ -185,7 +185,7 @@
   justify-content: space-between;
   align-items: center;
    .addlichni{
-     width: get-vw(145px,1920);
+     min-width: max-content;
      height: get-vw(31px,1920);
      display: flex;
      align-items: center;
@@ -415,7 +415,7 @@ color: #BFB7B6;
     width: get-vw(345px,375 );
     margin-top: get-vw(30px,375);
     .addlichni{
-      min-width: get-vw(89px,375);
+      min-width: max-content;
       height: get-vw(25px,375);
       display: flex;
       align-items: center;
