@@ -12,7 +12,7 @@ import seltb from "../../images/icons/seltb.png";
 import salta from "../../images/icons/selta.png";
 import { useDispatch } from 'react-redux';
 import {AddproductCard, AddproductCardonly, ClardnBasket} from '../redux/Action/CardAction';
-import {SaveorderUser} from "../redux/Action/AuthACtion";
+import {LoadingUserdata, SaveorderUser} from "../redux/Action/AuthACtion";
 import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
@@ -30,6 +30,7 @@ const Basket = () => {
     const product = useSelector(({ ProductReducer  }) => ProductReducer.product)
     const  CardData = useSelector(({ CardReducer  }) => CardReducer)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
+    const user = useSelector(({AuthReducer})=>AuthReducer.user)
     const [showdetalis,setSowdetalis]=useState(1)
     const [paybtnstyle,setPeybtnStyle]=useState(1)
     const [clock,setClock]=useState("Ժամը")
@@ -48,6 +49,9 @@ const Basket = () => {
     const [activeSityName,setACtiveSityName]=useState("")
     const {languae}=useProduct()
     const { t } =useTranslation()
+
+
+    console.log(user)
     useEffect(() => {
         window.scrollTo(0, 0);
      }, [sucsessshop])
@@ -58,6 +62,8 @@ const Basket = () => {
      useEffect(()=>{
        dispatch(LoadProductData())
          setLoading(true)
+
+
      },[])
 
     useEffect(()=>{
@@ -111,17 +117,29 @@ const Basket = () => {
 
      // _____changeInputWalue____
 
-    const [user,setUser]=useState({
-        name:"",
+    const [users,setUser]=useState({
+        ...user,
         lastname:"",
         phone:"374",
-        email:"",
+
     })
-    const {name,lastname,phone,email}=user;
+    const {name,lastname,phone,email,success_check}=users;
+
+    useEffect(()=>{
+        if(success_check=="true"){
+            setchecked(true)
+        }else{
+            setchecked(false)
+        }
+
+    },[success_check])
+
+
+
 
    const OnchangeInputofRegister =(e)=>{
        setUser({
-           ...user,
+           ...users,
            [e.target.name]:e.target.value,
        })
    }
@@ -231,6 +249,7 @@ const Basket = () => {
                                   cn="inputglobalinfo"
                                   placeholder={t("name")}
                                   type="text"
+                                  value={name}
                                   style={fontproprty2}
                                   onChange={OnchangeInputofRegister}
                                   name="name"
@@ -239,6 +258,7 @@ const Basket = () => {
                                   cn="inputglobalinfo"
                                   placeholder={t("surname")}
                                   type="text"
+                                  value={lastname}
                                   style={fontproprty2}
                                   onChange={OnchangeInputofRegister}
                                   name="lastname"
@@ -259,6 +279,7 @@ const Basket = () => {
                               type="email"
                               onChange={OnchangeInputofRegister}
                               name="email"
+                              value={email}
                               style={fontproprty2}
                               />
                               <div className={css.checkdiv}>

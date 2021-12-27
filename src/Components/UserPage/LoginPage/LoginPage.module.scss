@@ -85,8 +85,10 @@
   }
 }
 .passzabil{
+  width: get-vw(25px,1920);
+  height: get-vw(18px,1920);
   position: absolute;
-  top: get-vw(150px,1920);
+  top: get-vw(156px,1920);
   left: get-vw(570px,1920);
   cursor: pointer;
 }

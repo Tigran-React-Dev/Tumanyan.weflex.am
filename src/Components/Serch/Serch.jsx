@@ -34,8 +34,11 @@ const Serch = () => {
             <div className={css.searchhdr}>
                 <div className={css.textstatus}>
                   <p>որոնման արդյունքները</p>
-                  <h3>&nbsp;&nbsp;«{serchtext}»&nbsp;&nbsp;</h3>
-                  <p>բառի համար</p>
+                    <div style={{display:"flex"}}>
+                        <h3>&nbsp;&nbsp;«{serchtext}»&nbsp;&nbsp;</h3>
+                        <p>բառի համար</p>
+                    </div>
+
                   <h6>&nbsp;({(serchdata.product==undefined) ? "0" : (+serchdata.product?.length)+(+serchdata.product_buffet?.length)} արդյունք)</h6>
                 </div>
 

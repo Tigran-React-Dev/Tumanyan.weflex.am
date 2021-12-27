@@ -577,7 +577,7 @@
     padding-top: get-vw(45px,800);
     .menubarmobile{
       width: get-vw(335px,375);
-      height: get-vw(950px,815);
+      min-height: get-vw(915px,375);
       margin-top: get-vw(5px,815);
       margin-left: get-vw(15px,375 );
       display: flex;
@@ -638,11 +638,56 @@
           }
          }
       }
+       .loginlogouth{
+         width: get-vw(380px,375);
+         min-height: get-vw(99px,800);
+
+       }
+      .logouth{
+        min-height: get-vw(26px,800);
+        width: get-vw(76px,375);
+        margin-top: get-vw(40px,800);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        img{
+          width: get-vw(26px,375);
+          height: get-vw(28px,500);
+        }
+        p{
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(22px,375);
+          line-height: get-vw(26px,375);
+          text-align: right;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #BFB7B6;
+          margin-left: get-vw(10px,375);
+        }
+      }
+      .usernamesurname{
+        display: flex;
+
+        align-items: center;
+        p{
+          font-family: Montserrat-Regular;
+          font-style: normal;
+          font-weight: normal;
+          font-size: get-vw(18px,375);
+          line-height: get-vw(22px,375);
+         letter-spacing: -0.02em;
+          color: #FFFFFF;
+          margin-left: get-vw(20px,375);
+
+        }
+      }
       .changelanguagemobile{
         display: block;
         width: get-vw(154px,375);
         height: get-vw(25px,500);
-        margin-top: get-vw(45px,500);
+        margin-top: get-vw(100px,500);
         display: flex;
         justify-content: space-between;
         align-items: center;

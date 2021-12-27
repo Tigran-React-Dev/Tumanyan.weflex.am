@@ -5,8 +5,8 @@ export const REMOVE_ADRESES ="REMOVE_ADRESES";
 export const ADD_NEW_ADRESS="ADD_NEW_ADRESS"
 export const SAVE_ORDERS_USER="SAVE_ORDERS_USER";
 export const  LIKE_OBJ_SEND_TO_DATA = "LIKE_OBJ_SEND_TO_DATA";
-export const REGISTER_USER="REGISTER_USER";
-export const REGISTER_USER_ERROR="REGISTER_USER_ERROR"
+export const LOAD_USER_DATA="LOAD_USER_DATA";
+export const LOAD_USER_DATA_ERROR="LOAD_USER_DATA_ERROR"
 export const Changeadress =(newobj)=>{
     return {
         type: CHANGEADRESES,
@@ -47,16 +47,16 @@ export const LikeObjSenddat =(obj)=>{
 }
 export const LoadingUserdata =(userdata,token)=>{
     return {
-        type: REGISTER_USER,
+        type: LOAD_USER_DATA,
         payload: {
             userdata,
             token,
         }
     }
 }
-export const RegisteruserError =()=>{
+export const LoadingUserdataError =()=>{
     return {
-        type: REGISTER_USER_ERROR,
+        type: LOAD_USER_DATA_ERROR,
 
     }
 }

@@ -28,7 +28,9 @@ const Profile = ({user,userAdress}) => {
         cpassword:""
     })
 
-    console.log(users)
+
+
+
     const [newAdress,setNewAdress]=useState({
         adress:"",
         bulding:"",
@@ -36,10 +38,17 @@ const Profile = ({user,userAdress}) => {
     })
     
      const {name,lastname,phoneNumber,email,success_check,oldpassword,password,cpassword}=users
-     const [checket,setchecked]=useState(success_check)
+     const [checket,setchecked]=useState(false)
      const {adress,bulding,apartment}=newAdress
 
+    useEffect(()=>{
+        if(success_check=="true"){
+            setchecked(true)
+        }else{
+            setchecked(false)
+        }
 
+    },[success_check])
 
 
     const handleChangeinput = e =>{

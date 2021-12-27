@@ -8,7 +8,9 @@ import {NavLink} from "react-router-dom";
 import vxod from "../../../images/icons/logins.svg"
 import Bonuces from "./Bonuces/Bonuces";
 import {LoadingUserdata} from "../../redux/Action/AuthACtion";
-const ProfilPage = () => {
+import axios from "axios";
+import {HOME_PAGE} from "../../urls";
+const ProfilPage = ({history}) => {
 
 
     const user = useSelector(({AuthReducer})=>AuthReducer.user)
@@ -32,16 +34,32 @@ const ProfilPage = () => {
     useEffect(()=>{
         let userinfo=JSON.parse(sessionStorage.getItem("user"))
 
-        if(userinfo.token){
+        if(userinfo?.token){
             dispath(LoadingUserdata(userinfo,userinfo.token))
             setloading(true)
         }
     },[])
 
-    const LogautUser=()=>{
+
+    const LogautUser=async ()=>{
+        let token = sessionStorage.getItem("token");
+        const response = await axios.get(
+            process.env.REACT_APP_API_URL+"/user/logout",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        if (response.data.message=="You have successfully Logged Out"){
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("user")
+            history.push(HOME_PAGE)
+        }
+
 
     }
-
 
     return (
         <>
@@ -58,7 +76,7 @@ const ProfilPage = () => {
                             })
                             }
                         </div>
-                        <div className={css.vixod} onClick={LogautUser} ><img src={vxod} alt=""/><p>ելք</p></div>
+                        <div className={css.vixod} onClick={LogautUser}  ><img src={vxod} alt=""/><p>ելք</p></div>
                     </div>
                 </div>
                 {activeMenu===1 ?

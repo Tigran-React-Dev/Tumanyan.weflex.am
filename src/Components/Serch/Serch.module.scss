@@ -76,3 +76,82 @@
   text-align: center;
   margin-top: get-vw(100px,1920);
 }
+
+@media screen and(max-width: 500px){
+  .serchpage{
+    width: get-vw(375px,375);
+    min-height: get-vw(192px,375);
+
+    .searchhdr{
+      width: get-vw(375px,375);
+      height: get-vw(72px,375);
+
+      .textstatus{
+        width: get-vw(261px,375);
+        height: get-vw(72px,1920);
+        display: flex;
+        margin-top: get-vw(60px,375);
+        margin-left: get-vw(15px,375);
+        flex-direction: column;
+        p{
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(16px,375);
+          line-height: get-vw(19px,375);
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #252223;
+
+
+        }
+        h6{
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(16px,375);
+          line-height: get-vw(19px,375);
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #BFB7B6;
+          margin-top: get-vw(15px,375);
+
+        }
+        h3{
+          font-family: Mardoto-Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: get-vw(16px,375);
+          line-height: get-vw(19px,375);
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: #13AD54;
+        }
+      }
+
+    }
+    .product{
+      width: get-vw(345px,375 );
+      min-height: get-vw(0px, 375);
+      margin-left: get-vw(0px,375 );
+      margin-top: get-vw(60px,375);
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: get-vw(60px,375);
+
+    }
+  }
+  .statuserror{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(24px,1920);
+    line-height: get-vw(28px,1920);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #252223;
+    text-align: center;
+    margin-top: get-vw(100px,1920);
+  }
+
+}

@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {loadLocalCard} from "./Components/redux/Action/CardAction"
 import axios from "axios";
+import {LoadingUserdata, LoadingUserdataError} from "./Components/redux/Action/AuthACtion";
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
 
 
   useEffect(()=>{
-      localStorage.setItem("i18nextLng","ՀԱՅ")
+  localStorage.setItem("i18nextLng","ՀԱՅ")
   let key2 = sessionStorage.getItem("city")
   const item = JSON.parse(localStorage.getItem("card"))
   if(item){
@@ -42,7 +43,18 @@ function App() {
           setDefaultSity(key2)
       }
       getData()
+
     },[])
+
+    useEffect(()=>{
+        let userinfo=JSON.parse(sessionStorage.getItem("user"))
+        if(userinfo?.token){
+            dispath(LoadingUserdata(userinfo,userinfo.token))
+        }else{
+            dispath(LoadingUserdataError())
+        }
+
+    },[sessionStorage.getItem("token")])
 
 
   useEffect(() => {

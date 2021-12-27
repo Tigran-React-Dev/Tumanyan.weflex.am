@@ -13,6 +13,7 @@ import gumar from "../../images/icons/gumar.png";
 import phone from "../../images/icons/phone.png"
 import verify from "../../images/icons/chosen.png";
 import log from "../../images/icons/logins.svg";
+import logouth_img from "../../images/icons/logouth.svg";
 import userlogin from "../../images/icons/userIicon.svg"
 import iconmenu from "../../images/icons/iconmobilemenu.svg";
 import iconclose from "../../images/icons/closebtniconmobilemenu.svg";
@@ -178,17 +179,36 @@ const Header = () => {
 const ChangeMobileMenu =()=>{
     setMenuIconClik(!menuiconClik)
     window.scrollTo(0, 0);
-    if(menuiconClik){
-       
-       setTimeout(()=>{
-        document.body.style.overflow = "auto";
-       },10)
-    }else{
-        setTimeout(()=>{
-            document.body.style.overflow = "hidden";
-        },10)
+    // if(menuiconClik){
+    //
+    //    setTimeout(()=>{
+    //     document.body.style.overflow = "auto";
+    //    },10)
+    // }else{
+    //     setTimeout(()=>{
+    //         document.body.style.overflow = "hidden";
+    //     },10)
+    //
+    //
+    // }
 
+}
+const LogautUser =async ()=>{
 
+    let token = sessionStorage.getItem("token");
+    const response = await axios.get(
+        process.env.REACT_APP_API_URL+"/user/logout",
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    if (response.data.message=="You have successfully Logged Out"){
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user")
+        history.push(HOME_PAGE)
     }
 
 }
@@ -204,14 +224,16 @@ const mobilemenustyle ={
 const handleClickSelectMobile =()=>{
     setSelectIcon(!selecticon)
     setSowAdress(!sowAdress)
-    if(selecticon){
-        document.body.style.overflow = "auto";
-    }else{
-        document.body.style.overflow = "hidden";
+    // if(selecticon){
+    //     document.body.style.overflow = "auto";
+    // }else{
+    //     document.body.style.overflow = "hidden";
+    //
+    //
+    // }
+   }
 
 
-    }
-}
 
    
     return (
@@ -336,7 +358,7 @@ const handleClickSelectMobile =()=>{
                             style={fontproprty2}
                             onClick={changeMenu}>{defaultCity == "երեվան" ?
                             t("adressadd1") : defaultCity == "ծաղկաձոր" ?
-                                t("adressadd2") :  t("adressadd2")}
+                            t("adressadd2") :  t("adressadd2")}
                         </p>
 
                         {defaultCity=="երեվան" &&
@@ -345,6 +367,9 @@ const handleClickSelectMobile =()=>{
                 </div>}
 
             </div>
+
+
+
        {/*MOBILE VERSION -JSX CODE*/}
             <div className={css.mobileheader}>
                 <NavLink
@@ -405,8 +430,24 @@ const handleClickSelectMobile =()=>{
                                 }
                         </div>
                         <div className={css.loginicon}>
-                            <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt="" /></NavLink>
+                            {sessionStorage.getItem("token") ?
+                                <div className={css.loginlogouth}>
+                                <NavLink to={PROFIL_PAGE} className={css.loginh}>
+                                    <div className={css.usernamesurname}>
+                                        <img src={userlogin} alt=""/>
+                                        <p>{JSON.parse(sessionStorage.getItem("user"))['name']}</p>
+                                    </div>
+                                </NavLink>
+                                <div  className={css.logouth} onClick={LogautUser}>
+                                    <img src={logouth_img} alt=""/>
+                                    <p>ելք</p>
+                                </div>
+                                </div>
+                                :
+                                <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
                         </div>
+
+
                         <div className={css.changelanguagemobile}>
                             {languages.map((lang,i)=>{
                                     return(

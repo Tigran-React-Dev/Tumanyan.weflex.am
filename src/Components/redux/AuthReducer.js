@@ -1,7 +1,7 @@
 import {
     ADD_NEW_ADRESS,
     CHANGEADRESES,
-    LIKE_OBJ_SEND_TO_DATA, REGISTER_USER,
+    LIKE_OBJ_SEND_TO_DATA, LOAD_USER_DATA, LOAD_USER_DATA_ERROR,
     REMOVE_ADRESES,
     SAVE_ORDERS_USER
 } from "./Action/AuthACtion";
@@ -10,13 +10,7 @@ import {
 export const initialstate={
     token:null,
     loadding:true,
-
-    user:{
-        // name:"Անահիտ",
-        // lastname:"Համբարձումյան",
-        // phoneNumber:"91 12-34-56",
-        // email:"anahit@gmail.com"
-    },
+    user:{},
     adresess:[
          // {id:1,adress:"Աճառյան",bulding:"18",apartment:"10"},
 
@@ -37,8 +31,8 @@ export const initialstate={
 
 export const AuthReducer=(state=initialstate,action)=>{
     switch (action.type) {
-        case REGISTER_USER:{
-            debugger
+        case LOAD_USER_DATA:{
+
             return {
                 ...state,
                 loadding: false,
@@ -51,6 +45,15 @@ export const AuthReducer=(state=initialstate,action)=>{
                     success_check:action.payload.userdata.success_check,
                 },
 
+            }
+        }
+
+        case LOAD_USER_DATA_ERROR:{
+            return {
+                ...state,
+                loadding: true,
+                token: sessionStorage.removeItem("token"),
+                user:{}
             }
         }
 
