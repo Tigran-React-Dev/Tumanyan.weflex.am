@@ -12,6 +12,7 @@ import axios from "axios";
 const LoginPage = () => {
     const history=useHistory()
 
+
     useEffect(()=>{
         window.scrollTo(0, 0);
         if(sessionStorage.getItem("token")){
@@ -26,12 +27,27 @@ const LoginPage = () => {
         email:"",
         password:""
     })
+    useEffect(()=>{
+        let useremaillocal=localStorage.getItem("useremail")
+        if(useremaillocal){
+            setUser({
+                ...user,
+                email: useremaillocal
+            })
+        }
 
+
+    },[])
     const {email,password}=user;
 
     const SubmitUser =(e)=>{
         e.preventDefault()
         handleSubmit()
+        if(checket){
+            localStorage.setItem("useremail",email)
+        }else{
+            localStorage.setItem("useremail","")
+        }
     }
     const changeInpuytype =()=>{
         if(inputtype==="password"){
@@ -81,6 +97,7 @@ const LoginPage = () => {
     const hantletargetclick =()=>{
 
         setchecked(!checket)
+
     }
 
     return (

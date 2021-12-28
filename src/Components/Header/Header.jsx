@@ -94,10 +94,17 @@ const Header = () => {
     }
     const ScrlMenu = () => {
         if (history.location.pathname === "/" || history.location.pathname === "/home") {
-            window.scrollTo(0, 850);
-        }else{
 
+            let width =window.innerWidth;
+            if(width<700){
+                setMenuIconClik(!menuiconClik)
+                window.scrollTo(0, 450);
+            }else{
+                window.scrollTo(0, 350);
+            }
+        }else{
              history.push("/home/Shaurma")
+
         }
 
     }
@@ -215,6 +222,7 @@ const LogautUser =async ()=>{
 
 const mobilemenustyle ={
          position:menuiconClik && !sowAdress ? "absolute" : "absolute",
+         overflow:"hidden",
          left:menuiconClik && 0,
          bottom:menuiconClik && 0,
          right:menuiconClik && 0,
@@ -284,7 +292,7 @@ const handleClickSelectMobile =()=>{
                     <div className={css.contactandlogin}>
                         <img className={css.phone} src={phone} alt=""/>
                         <a className={css.phoneNumber} href="tel:81 88">81 88</a>
-                        {sessionStorage.getItem("token") ? <NavLink to={PROFIL_PAGE} className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
+                        {sessionStorage.getItem("token") ? <NavLink to={PROFIL_PAGE}  className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
                             <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
                          <div className={css.basketclick}>
                              <NavLink
@@ -389,8 +397,8 @@ const handleClickSelectMobile =()=>{
 
 
             </div>
-            <img src={topbootom} alt="" className={css.up} style={{display: (hegth && !menuiconClik)  ? "block" : "none"}} onClick={home}/>
-            <div className={css.basketclick}>
+            {/*<img src={topbootom} alt="" className={css.up} style={{display: (hegth && !menuiconClik)  ? "block" : "none"}} onClick={home}/>*/}
+            <div className={css.basketclick} style={{display:menuiconClik  ? "none" : "block"}}>
                 <NavLink
                     to={BASKET_PAGE}
                     exact>
@@ -400,8 +408,16 @@ const handleClickSelectMobile =()=>{
             <div style={mobilemenustyle} className={css.mobilecontn}  >
                 <div className={css.masnajuxmobile}  >
                     <div className={css.masnajuxwrapermobile} >
-                        <img src={adress} alt="" className={css.adresiconmobile} onClick={handleClickSelectMobile} />
-                        <p  className={css.masnajuxnamemobile} style={fontproprty} onClick={handleClickSelectMobile}>{adresses ? adresses : t("adresscity")}</p>
+                        <img
+                            src={adress}
+                            alt=""
+                            className={css.adresiconmobile}
+                            onClick={handleClickSelectMobile} />
+                        <p  className={css.masnajuxnamemobile}
+                            style={fontproprty}
+                            onClick={handleClickSelectMobile}>
+                            {adresses ? adresses : t("adresscity")}
+                        </p>
                          {selecticon ? <img src={selt} className={css.slaqmobile} onClick={handleClickSelectMobile} /> : <img src={self} className={css.slaqmobile} onClick={handleClickSelect}/>}
                     </div>
                 </div>
@@ -411,12 +427,16 @@ const handleClickSelectMobile =()=>{
                             <p style={fontproprty} onClick={ScrlMenu}>{t("menuscrol")}</p>
                         </div>
                         <div className={css.menumixin}>
-                                {
-                                    isOuthFooter.map((item,index)=>{
+                                {isOuthFooter.map((item,index)=>{
 
                                         return(
                                             <React.Fragment key={index}>
-                                            {item.id!=8 && <NavLink onClick={ChangeMobileMenu} exact to={item.path} style={fontproprty}>{languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}</NavLink>}
+                                            {item.id!=8 && <NavLink
+                                                onClick={ChangeMobileMenu}
+                                                exact to={item.path}
+                                                style={fontproprty}>
+                                                {languae == "ՀԱՅ" ? item.nameՀԱՅ : languae == "ENG" ? item.nameENG : languae == "РУС" ? item.nameРУС : null}
+                                            </NavLink>}
                                             </React.Fragment>
                                             )
                                     })
@@ -424,7 +444,14 @@ const handleClickSelectMobile =()=>{
                                 {
                                     isAuthRoutes.map((item,index)=>{
                                         return(
-                                            <NavLink onClick={ChangeMobileMenu} exact key={index} to={item.path} style={fontproprty}>{languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}</NavLink>
+                                            <NavLink
+                                                onClick={ChangeMobileMenu}
+                                                exact
+                                                key={index}
+                                                to={item.path}
+                                                style={fontproprty}>
+                                                {languae=="ՀԱՅ" ? item.nameՀԱՅ : languae=="ENG" ? item.nameENG : languae=="РУС" ? item.nameРУС : null}
+                                            </NavLink>
                                         )
                                     })
                                 }
@@ -432,21 +459,44 @@ const handleClickSelectMobile =()=>{
                         <div className={css.loginicon}>
                             {sessionStorage.getItem("token") ?
                                 <div className={css.loginlogouth}>
-                                <NavLink to={PROFIL_PAGE} className={css.loginh}>
+                                <NavLink
+                                         to={PROFIL_PAGE}
+                                         onClick={()=> setMenuIconClik(!menuiconClik)}
+                                         className={css.loginh}>
                                     <div className={css.usernamesurname}>
                                         <img src={userlogin} alt=""/>
                                         <p>{JSON.parse(sessionStorage.getItem("user"))['name']}</p>
                                     </div>
                                 </NavLink>
-                                <div  className={css.logouth} onClick={LogautUser}>
-                                    <img src={logouth_img} alt=""/>
-                                    <p>ելք</p>
-                                </div>
+                                {/*<div  className={css.logouth} onClick={LogautUser}>*/}
+                                {/*    <img src={logouth_img} alt=""/>*/}
+                                {/*    <p>ելք</p>*/}
+                                {/*</div>*/}
                                 </div>
                                 :
-                                <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
+                                <NavLink
+                                    to={LOGIN_PAGES}
+                                    className={css.loginh}
+                                    onClick={()=> setMenuIconClik(!menuiconClik)}
+                                  ><img src={log} alt=""/>
+                                </NavLink>}
                         </div>
+                    <div className={css.serch}>
+                        <form onSubmit={SearchSubmit}>
+                            <img src={serch} alt="" onClick={SearchSubmit}/>
+                            <Input
+                                cn={languae=="ՀԱՅ" ? "searchInputAM" : languae=="ENG" ? "searchInputENG" : languae=="РУС" ? "searchInputRU" : null}
+                                onMouseEnter={changeborderinput}
+                                onMouseLeave={() => changeborderinput(null)}
+                                placeholder={t('plachholderserch')}
+                                onChange={(e)=>setSearch(e.target.value)}
 
+
+                            />
+
+                        </form>
+
+                    </div>
 
                         <div className={css.changelanguagemobile}>
                             {languages.map((lang,i)=>{

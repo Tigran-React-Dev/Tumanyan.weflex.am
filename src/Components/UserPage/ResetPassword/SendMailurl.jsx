@@ -1,17 +1,50 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./Reset.module.scss"
 import Input from "../../Global/Input/Input";
 import Button from "../../Global/Button/Button";
 import {NavLink} from "react-router-dom";
-import {LOGIN_PAGES} from "../../urls";
-const SendMailurl = () => {
+import {HOME_PAGE, LOGIN_PAGES} from "../../urls";
+import axios from "axios";
+const SendMailurl = ({history}) => {
 
 
-    const [value,Setvalue]=useState("")
+    const [email,setemail]=useState("")
+    const [errors,setErrors]=useState({})
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+        if(sessionStorage.getItem("token")){
+            history.push(HOME_PAGE)
+        }
+    },[history])
 
 
-    const onSubmitform =(e)=>{
+
+    const onSubmitform =async (e)=>{
         e.preventDefault()
+
+        const loginFormData = new FormData();
+        loginFormData.append("email", email)
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/login",
+                data: loginFormData,
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            // if(response.data.token){
+            //     sessionStorage.setItem("token",response.data.token)
+            //     sessionStorage.setItem("user",JSON.stringify(response.data))
+            //     setErrors({})
+            //     history.push(HOME_PAGE)
+            // }else{
+            //     setErrors(response.data);
+            // }
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -25,8 +58,9 @@ const SendMailurl = () => {
                      cn="zabilinput"
                      type="text"
                      placeholder="Էլ․ փոստ"
-                     onChange={(e)=>Setvalue(e.target.value)}
-                     value={value}
+                     onChange={(e)=>setemail(e.target.value)}
+                     value={email}
+                     style={{border:errors.error && "1px solid red"}}
                  />
                  <Button
                      cn="loginbtn"

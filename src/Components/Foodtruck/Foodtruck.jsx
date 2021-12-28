@@ -44,13 +44,22 @@ const Foodtruck = ({history}) => {
        setACtivemenu(btninfo.id)
 
     }
-
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
 
 
     return (
          <div className={css.foodcontainer}>
              <div className={css.foodhdr}>
-                     <h1>{t("foodtruck")}</h1>
+                     <h1 style={fontproprty}>{t("foodtruck")}</h1>
              </div>
              <div className={css.btnfoodmenu} ref={ref}>
                  {
@@ -63,7 +72,7 @@ const Foodtruck = ({history}) => {
                                  onClick={()=>ChangeActiveMenu(elem)}
                                  style={{background:activeMenu===elem.id && "#ffffff" ,
                                      boxShadow:activeMenu===elem.id && "inset -1px 0px 0px",
-                                     color:activeMenu===elem.id && "#13AD54"
+                                     color:activeMenu===elem.id && "#13AD54",...fontproprty
                                  }}
                              >{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</button>
                          )

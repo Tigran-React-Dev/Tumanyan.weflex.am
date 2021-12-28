@@ -1,27 +1,87 @@
-import React, {useState} from 'react';
-import css from "./Reset.module.scss"
+import React, {useEffect, useState} from 'react';
+import css from "./Reset.module.scss";
 import Input from "../../Global/Input/Input";
 import Button from "../../Global/Button/Button";
-import {NavLink} from "react-router-dom";
-import {LOGIN_PAGES} from "../../urls";
+import {NavLink, useParams} from "react-router-dom";
+import {HOME_PAGE, LOGIN_PAGES} from "../../urls";
+import axios from "axios";
 
-const ResetPassword = () => {
+const ResetPassword = ({history}) => {
 
-    const [password,setPasword]=useState({
-        passwords:"",
-        cpasswords:"",
+    const [userdata,setuserdata]=useState({
+        token:"",
+        email:"",
     })
-    console.log(password)
-    const {passwords,cpasswords}=password;
+      const {token,email}=userdata;
+     useEffect(()=>{
+         var str = window.location.href;
+         str = str.split("token=")
+          str = str[1].split("&email=")
+         let token=str[0];
+         let email= str[1];
+         setuserdata({
+             token:token,
+             email:email,
+         })
+
+     },[])
+
+
+     useEffect(()=>{
+        window.scrollTo(0, 0);
+        if(sessionStorage.getItem("token")){
+            history.push(HOME_PAGE)
+        }
+     },[history])
+
+
+
+    const [pass,setPasword]=useState({
+        password:"",
+        password_confirmation:"",
+    })
+
+    const {password,password_confirmation}=pass;
 
     const onChangePassword=(e)=>{
         setPasword({
-            ...password,
+            ...pass,
             [e.target.name]:e.target.value,
         })
     }
-    const sendnewpassword=()=>{
+    const sendnewpassword=async (e)=>{
+        e.preventDefault();
+        // store the states in the form data
+        const loginFormData = new FormData();
+        loginFormData.append("email", email)
+        loginFormData.append("token", token)
+        loginFormData.append("password", password)
+        loginFormData.append("password_confirmation", password_confirmation)
 
+
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/new-password",
+                data: loginFormData,
+                headers:
+                    { "Content-Type": "multipart/form-data"},
+            });
+
+            console.log(response)
+            console.log(token,email,password,password_confirmation)
+            // if(response.data.token){
+            //     sessionStorage.setItem("token",response.data.token)
+            //     sessionStorage.setItem("user",JSON.stringify(response.data))
+            //     setErrors({})
+            //     history.push(HOME_PAGE)
+            // }else{
+            //     setErrors(response.data);
+            // }
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -35,17 +95,17 @@ const ResetPassword = () => {
                     cn="zabilinput"
                     type="password"
                     placeholder="Նոր գաղտնաբառ"
-                    name="passwords"
+                    name="password"
                     onChange={onChangePassword}
-                    value={passwords}
+                    value={password}
                 />
                 <Input
                     cn="zabilinput"
                     type="password"
                     placeholder="Կրկնել նոր գաղտնաբառը"
-                    name="cpasswords"
+                    name="password_confirmation"
                     onChange={onChangePassword}
-                    value={cpasswords}
+                    value={password_confirmation}
                 />
                 <Button
                     cn="loginbtn"

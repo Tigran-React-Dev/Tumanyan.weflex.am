@@ -117,19 +117,28 @@ const handleChangeInput=(e)=>{
        }
 
     },[sucsessDataSend])
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
 
-
-    return (
+        return (
         <div className={css.pages3container}>
             {!sucsessDataSend ?
              <>
             <div className={css.page3hdr}>
-                <p>{t("foottruckordertitle")}</p>
+                <p style={fontproprty}>{t("foottruckordertitle")}</p>
                 <img src={trucklogo} alt=""/>
             </div>
                 <div className={css.sendinfoblok}>
                 <form action="" onSubmit={SubmitData}>
-                <h4>{t("information")}</h4>
+                <h4 style={fontproprty}>{t("information")}</h4>
                 <Input
                 cn="inputfoodtruck"
                 placeholder={t("name")}
@@ -137,7 +146,8 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={name}
                 onChange={handleChangeInput}
-                style={{border:errors.name && "1px solid red"}}
+
+                style={{border:errors.name && "1px solid red",...fontproprty2}}
                 />
                 <div className={css.phoneandemail}>
                 <Input
@@ -156,7 +166,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={email}
                 onChange={handleChangeInput}
-                style={{border:errors.email && "1px solid red"}}
+                style={{border:errors.email && "1px solid red",...fontproprty2}}
                 />
                 </div>
                 <Input
@@ -166,7 +176,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={company_name}
                 onChange={handleChangeInput}
-                style={{border:errors.company_name && "1px solid red"}}
+                style={{border:errors.company_name && "1px solid red",...fontproprty2}}
                 />
                 <div className={css.gicform}/>
                 <h2>{t("infofoodrtuck")}</h2>
@@ -177,7 +187,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={event_type}
                 onChange={handleChangeInput}
-                style={{border:errors.event_type && "1px solid red"}}
+                style={{border:errors.event_type && "1px solid red",...fontproprty2}}
                 />
                 <Input
                 cn="inputfoodtruck3"
@@ -186,7 +196,7 @@ const handleChangeInput=(e)=>{
                 type="text"
                 value={address}
                 onChange={handleChangeInput}
-                style={{border:errors.address && "1px solid red"}}
+                style={{border:errors.address && "1px solid red",...fontproprty2}}
                 />
                 <div className={css.dataamdfriend}>
                 <Input
@@ -196,10 +206,10 @@ const handleChangeInput=(e)=>{
                 type="number"
                 value={guests_count}
                 onChange={handleChangeInput}
-                style={{border:errors.guests_count && "1px solid red"}}
+                style={{border:errors.guests_count && "1px solid red",...fontproprty2}}
                 />
                 <div className={css.datainput} onClick={CalendarModalControler} style={{border:errors.date && "1px solid red"}}>
-                <p>{calendarvalue==="Ամսաթիվ*" ? calendarvalue : calendarvalue.toLocaleDateString()}</p>
+                <p style={fontproprty2}>{calendarvalue==="Ամսաթիվ*" ? calendarvalue : calendarvalue.toLocaleDateString()}</p>
             {openCalendarModal ? <img src={close} alt=""/> : <img src={open} alt=""/>}
             {openCalendarModal &&
                 <div className={css.calenarmodals} onClick={(e)=>e.stopPropagation()}>
@@ -217,7 +227,7 @@ const handleChangeInput=(e)=>{
                   name="message"
                   type="text"
                   value={message}
-                  style={{border:errors.message && "1px solid red"}}
+                  style={{border:errors.message && "1px solid red",...fontproprty2}}
                   onChange={handleChangeInput}
                 />
 
@@ -237,15 +247,15 @@ const handleChangeInput=(e)=>{
             }}>
 
                </div>
-                <h6>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h6>
+                <h6 style={fontproprty2}>Համաձայն եմ <NavLink to={"/"} exact> անձնական տվյալների</NavLink> օգտգործման հետ</h6>
                 </label>
 
                 </div>
-                    <h6 className={css.error}>{errors.success_check && errors.success_check[0]}</h6>
+                    <h6 className={css.error} style={fontproprty2}>{errors.success_check && errors.success_check[0]}</h6>
                 <Button
                 title={t("zakazat")}
                 cn="btnFood"
-
+                style={fontproprty}
                 />
 
                 </form>
@@ -264,13 +274,14 @@ const handleChangeInput=(e)=>{
                         </div>
 
                     </div>
-                    <p className={css.statustitle}>
+                    <p style={fontproprty} className={css.statustitle}>
                         ձեր պատվերը կատարվել է։ <br/> Համապատասխան բաժնի մասնագետը շուտով ձեզ հետ կկապնվի։
                     </p>
                     <img className={css.trucklogos} src={trucklogo} alt=""/>
                     <Button
                         cn="btnsucsesfood"
                         title="անցնել մենյու"
+                        style={fontproprty}
                         onClick={()=>history.push(`${HOME_PAGE}/շաուրմա`)}
                     />
                 </div>

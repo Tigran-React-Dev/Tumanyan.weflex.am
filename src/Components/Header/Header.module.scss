@@ -577,15 +577,15 @@
     padding-top: get-vw(45px,800);
     .menubarmobile{
       width: get-vw(335px,375);
-      min-height: get-vw(915px,375);
-      margin-top: get-vw(5px,815);
+      min-height: get-vw(815px,375);
+      margin-top: get-vw(5px,375);
       margin-left: get-vw(15px,375 );
       display: flex;
       flex-direction: column;
       .linkmenu{
         margin-left:get-vw(0px, 375) ;
-        height: get-vw(23px,800);
-        margin-top: get-vw(60px,800);
+        height: get-vw(23px,375);
+        margin-top: get-vw(60px,375);
 
         p{
           text-decoration: none;
@@ -606,8 +606,8 @@
       }
       .menumixin{
         width: get-vw(135px,375);
-        height: get-vw(305px,800);
-        margin-top: get-vw(40px,800);
+        height: get-vw(305px,375);
+        margin-top: get-vw(40px,375);
         display: flex;
         flex-direction: column;
         a{
@@ -620,27 +620,27 @@
           letter-spacing: -0.04em;
           text-transform: uppercase;
           color: #FFFFFF;
-          margin-top: get-vw(24px,800);
+          margin-top: get-vw(24px,375);
         }
       }
       .loginicon{
         width: get-vw(26px,375);
-        height: get-vw(30px,800);
-        margin-top: get-vw(260px,800);
+        height: get-vw(26px,375);
+        margin-top: get-vw(60px,375);
         .loginh{
           width: get-vw(26px,375);
-          height: get-vw(30px,500);
+          height: get-vw(26px,375);
           img{
             width: get-vw(26px,375);
-            height: get-vw(30px,375);
+            height: get-vw(26px,375);
             margin-left: get-vw(0px,375 );
-            margin-top: get-vw(0px,800);
+
           }
          }
       }
        .loginlogouth{
          width: get-vw(380px,375);
-         min-height: get-vw(99px,800);
+
 
        }
       .logouth{
@@ -669,7 +669,6 @@
       }
       .usernamesurname{
         display: flex;
-
         align-items: center;
         p{
           font-family: Montserrat-Regular;
@@ -686,8 +685,8 @@
       .changelanguagemobile{
         display: block;
         width: get-vw(154px,375);
-        height: get-vw(25px,500);
-        margin-top: get-vw(100px,500);
+        height: get-vw(25px,375);
+        margin-top: get-vw(40px,375);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -696,8 +695,8 @@
           font-family: Manrope;
           font-style: normal;
           font-weight: bold;
-          font-size: 18px;
-          line-height: 25px;
+          font-size: get-vw(18px,375);
+          line-height: get-vw(25px,375);
           text-align: center;
           letter-spacing: -0.04em;
           text-transform: uppercase;
@@ -711,24 +710,23 @@
     display: block;
     max-width: min-content!important;
     min-width: max-content;
-
-    height: get-vw(26px, 400);
+    height: get-vw(26px, 375);
     margin-left: get-vw(15px, 375);
     border-bottom:  get-vw(1px,375) dashed rgba(255, 255, 255, 0.3);
 
     .masnajuxwrapermobile{
       min-width: get-vw(150px, 375);
-      height: get-vw(20px,400 );
+      height: get-vw(20px,375 );
       display: flex;
       align-items: center;
      .adresiconmobile{
         width: get-vw(24px,375);
-        height: get-vw(24px,400);
+        height: get-vw(24px,375);
         cursor: pointer;
       }
       .slaqmobile{
         width: get-vw(14px, 375);
-        height: get-vw(14px, 400);
+        height: get-vw(14px, 375);
         margin-left: get-vw(10px,375 );
         cursor: pointer;
       }
@@ -959,6 +957,34 @@
     right: 0;
     bottom: 0;
     z-index: 50;
+  }
+
+  .serch{
+    width: get-vw(345px,375 );
+    height: get-vw(44px,375 );
+    border-radius: get-vw(70px,375 );
+    margin-left: get-vw(0px,375 );
+    cursor: pointer;
+    background: #F9F9F9;
+    margin-top: get-vw(60px,375);
+    &:hover{
+      border: get-vw(1px,375) solid #13AD54;
+    }
+    form img{
+      width: get-vw(25px,375 );
+      height: get-vw(25px,375 );
+      cursor: pointer;
+      margin-left: get-vw(11px,375 );
+      margin-top: get-vw(5px,375 );
+
+    }
+    form{
+      display: flex;
+      align-items: center;
+      width: get-vw(345px,375 );
+      height: get-vw(44px,375 );
+
+    }
   }
 
 }

@@ -4,9 +4,10 @@ import auto from "../../../images/product/Pic_Big.png";
 import sld1 from "../../../images/product/sldimg1.png";
 import sld2 from "../../../images/product/sldimg2.png"
 import Page2Slider from "./Page2Slider/Page2Slider";
+import {useProduct} from "../../Providers/ProductMenu";
 
 const FoodPage2 = () => {
-
+    const {languae}=useProduct()
     const info ={
         title:"Ունե՞ք առաջիկա միջոցառում։ Ցանկանում եք պատվիրել foof truck մինջոցառումներ համար, ապա լրացրեք տվյալները կամ զանգահարեք 81 81։",
         description:"Առաջին մասնաճյուղը գործել է Թումանյան - Աբովյան փողոցների խաչմերուկում:\n" +
@@ -26,6 +27,16 @@ const FoodPage2 = () => {
     const slideritem=[
         {id:1,image:sld1},{id:1,image:sld2},
     ]
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
 
 
     return (
@@ -36,15 +47,15 @@ const FoodPage2 = () => {
                </div>
             </div>
              <div className={css.textblok}>
-                   <h2>
+                   <h2 style={fontproprty}>
                        {info.title}
                    </h2>
-                 <p>{info.description.substring(0,166)}<br/> <br/>{info.description.substring(166,290)}</p>
+                 <p style={fontproprty2}>{info.description.substring(0,166)}<br/> <br/>{info.description.substring(166,290)}</p>
            </div>
              <div className={css.sliderandsize}>
                 <div className={css.sizetext}>
-                     <h2>{sizeinfo.title}</h2>
-                    <p>{sizeinfo.description}</p>
+                     <h2 style={fontproprty}>{sizeinfo.title}</h2>
+                    <p style={fontproprty2}>{sizeinfo.description}</p>
                 </div>
                  <div className={css.sizeslider}>
                       <Page2Slider slideritem={slideritem}/>

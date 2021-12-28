@@ -3,6 +3,7 @@ import css from "./FoodPage1.module.scss";
 import FoodModals from "./FoodModals/FoodModals";
 import Button from "../../Global/Button/Button";
 import axios from "axios";
+import {useProduct} from "../../Providers/ProductMenu";
 
 
 
@@ -12,6 +13,7 @@ const FoodPage1 = ({foodTruckdata,setFootruckData}) => {
     const [displeysetigs,setDisplaySetins]=useState("none")
     const [loding,setLoading]=useState(false)
     const [pagintion,setpagination]=useState(5)
+    const {languae}=useProduct()
     useEffect(()=>{
         const resFoodtruck =axios.get(process.env.REACT_APP_API_URL+"/food_trucks_list" )
         resFoodtruck.then((res)=> {
@@ -31,6 +33,17 @@ const ShowModal =(itemWindow)=>{
     setACtiveModaldata(itemWindow)
 }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
 
     return (
          <div className={css.foodpage1containeritem}>
@@ -49,8 +62,8 @@ const ShowModal =(itemWindow)=>{
                                  onClick={() => ShowModal(elem)}
                              >
                                  <div className={css.itemcontroler} style={{}}>
-                                     <p className={css.dateitem}>{elem.date}</p>
-                                     <p className={css.itemtitle}>{elem.title}</p>
+                                     <p className={css.dateitem} style={fontproprty2}>{elem.date}</p>
+                                     <p className={css.itemtitle} style={fontproprty}>{elem.title}</p>
                                  </div>
                              </div>
                              :
@@ -62,8 +75,8 @@ const ShowModal =(itemWindow)=>{
                                   onClick={() => ShowModal(elem)}
                              >
                                  <div className={css.itemcontroler2}>
-                                     <p className={css.dateitem2}>{elem.date}</p>
-                                     <p className={css.itemtitle2}>{elem.title}</p>
+                                     <p className={css.dateitem2} style={fontproprty2}>{elem.date}</p>
+                                     <p className={css.itemtitle2} style={fontproprty}>{elem.title}</p>
                                  </div>
 
                              </div>
@@ -82,6 +95,7 @@ const ShowModal =(itemWindow)=>{
                 <Button
                     title="տեսնել ավելին"
                     cn="btnreadmore2"
+                    style={fontproprty}
                     onClick={()=> {
                         var height = window.innerHeight;
 
