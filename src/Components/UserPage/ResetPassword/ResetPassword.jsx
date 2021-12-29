@@ -7,7 +7,8 @@ import {HOME_PAGE, LOGIN_PAGES} from "../../urls";
 import axios from "axios";
 
 const ResetPassword = ({history}) => {
-
+    const [errors,setErrors]=useState({})
+    const [succses,SetSuccsess]=useState({})
     const [userdata,setuserdata]=useState({
         token:"",
         email:"",
@@ -69,16 +70,21 @@ const ResetPassword = ({history}) => {
                     { "Content-Type": "multipart/form-data"},
             });
 
-            console.log(response)
-            console.log(token,email,password,password_confirmation)
-            // if(response.data.token){
-            //     sessionStorage.setItem("token",response.data.token)
-            //     sessionStorage.setItem("user",JSON.stringify(response.data))
-            //     setErrors({})
-            //     history.push(HOME_PAGE)
-            // }else{
-            //     setErrors(response.data);
-            // }
+
+
+            if(response.data?.status=="Success"){
+                setErrors({});
+                SetSuccsess(response.data.message)
+                setPasword({
+                    password: "",
+                    password_confirmation: "",
+                })
+                setTimeout(()=>{
+                    history.push(LOGIN_PAGES)
+                },3000)
+            }else{
+                setErrors(response.data);
+            }
         } catch(error) {
             console.log(error)
         }
@@ -98,6 +104,7 @@ const ResetPassword = ({history}) => {
                     name="password"
                     onChange={onChangePassword}
                     value={password}
+                    style={{border:errors.error && "1px solid red"}}
                 />
                 <Input
                     cn="zabilinput"
@@ -106,12 +113,14 @@ const ResetPassword = ({history}) => {
                     name="password_confirmation"
                     onChange={onChangePassword}
                     value={password_confirmation}
+                    style={{border:errors.error && "1px solid red"}}
                 />
                 <Button
                     cn="loginbtn"
                     title="հաստատել"
 
                 />
+                <p className={css.message}>{succses.am && succses.am}</p>
                 {/*<div className={css.linknazat}>*/}
                 {/*    /!*<NavLink  to={LOGIN_PAGES} exect >վերադառնալ</NavLink>*!/*/}
                 {/*</div>*/}

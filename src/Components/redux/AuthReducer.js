@@ -40,7 +40,7 @@ export const AuthReducer=(state=initialstate,action)=>{
                 user:{
                     name:action.payload.userdata.name,
                     lastname:action.payload.userdata.lastname ? action.payload.userdata.lastname  : "",
-                    phoneNumber:action.payload.userdata.phoneNumber ?  action.payload.userdata.phoneNumber : "",
+                    phone:action.payload.userdata.phone ?  action.payload.userdata.phone : "",
                     email:action.payload.userdata.email,
                     success_check:action.payload.userdata.success_check,
                 },

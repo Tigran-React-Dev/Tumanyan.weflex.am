@@ -113,6 +113,17 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
       }
 
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
 
     return (
         <div className={css.productItem}>
@@ -125,7 +136,7 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
                 <p>-{+bonus}%</p>
             </div>}
             <div className={css.titleanlike}>
-                <p>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
+                <p style={fontproprty}>{languae=="ՀԱՅ" ? name : languae=="ENG" ? nameEN : languae=="РУС" ? nameRU : null}</p>
                 {!like ? <img src={lik} alt="" onClick={()=>AddTolike(id)}/> : <img src={liked} alt=""  onClick={()=>AddTolike(id)}/>}
             </div>
 
@@ -150,12 +161,12 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
                        }
                     <div className={css.addlichniproduct}>
                         {description ?
-                            <p className={css.descript}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
+                            <p className={css.descript} style={fontproprty2}>{languae=="ՀԱՅ" ? description : languae=="ENG" ? descriptionEN : languae=="РУС" ? descriptionRU : null}</p>
                             :
                             <>
                             {price_buffets?.length>0 ?
                                  <div className={css.addlichni} onClick={AddlichniyProduct}>
-                                        <p>Բաղադրիչներ</p>
+                                        <p style={fontproprty2}>Բաղադրիչներ</p>
 
                                     </div>
                                 :

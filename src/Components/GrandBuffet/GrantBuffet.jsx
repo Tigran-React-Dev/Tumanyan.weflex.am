@@ -110,14 +110,26 @@ const GrantBuffet = () => {
         dispatch(LikeObjSenddat(ob))
     }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
+
     return (
         <div className={css.grandebufecontantainer}>
             <div className={css.grandbufeHdr}>
-                 <h1>grand buffet</h1>
+                 <h1 style={fontproprty}>grand buffet</h1>
             </div>
             {loader2 && showpage ?
             <>
-            <div className={css.menuconsreuctor} ref={ref}>
+             <div className={css.menuconsreuctor} ref={ref}>
                 {
                     grandfufet.map((elem,index)=>{
                         return(
@@ -127,7 +139,7 @@ const GrantBuffet = () => {
                                 onClick={()=>ChangeStyleAndCategory(elem,index)}
                                 style={{background:elem.name==id && "#13AD54",border:elem.name==id && "none"}}
                             >
-                                <p style={{color:elem.name==id && "#FFFFFF" }}>{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</p>
+                                <p style={{color:elem.name==id && "#FFFFFF" ,...fontproprty}}>{languae=="ՀԱՅ" ? elem.name : languae=="ENG" ? elem.nameEN : languae=="РУС" ? elem.nameRU : null}</p>
 
                             </div>
 
@@ -157,13 +169,14 @@ const GrantBuffet = () => {
             </>
                 :
                 <div  className={css.blokbufet}>
-                   <p>Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>
+                   <p style={fontproprty}>Գրանդ Բուֆֆեի տեսականին Ծաղկաձորում հասանելի չէ։</p>
                 </div>
             }
             {grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.length>8 && <div className={css.grandbufefooter}>
                 <Button
                     title="տեսնել ավելին"
                     cn="btnreadmore2"
+                    style={fontproprty}
                     onClick={() => setpagination(pagintion + 8)}/>
             </div>}
         </div>

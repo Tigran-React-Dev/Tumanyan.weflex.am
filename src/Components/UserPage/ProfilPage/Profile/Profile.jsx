@@ -7,25 +7,36 @@ import csowicon from "../../../../images/icons/cpassword.png"
 import Button from "../../../Global/Button/Button";
 import btndell from "../../../../images/icons/delbtnadress.svg"
 import {useDispatch} from "react-redux";
-import {AddNewAdress, Changeadress, LoadingUserdata, RemuveAdres} from "../../../redux/Action/AuthACtion";
+import {
+    AddNewAdress,
+    Changeadress,
+    LoadingUserdata,
+    LoadingUserdataError,
+    RemuveAdres
+} from "../../../redux/Action/AuthACtion";
+import axios from "axios";
+import {HOME_PAGE} from "../../../urls";
+import {useProduct} from "../../../Providers/ProductMenu";
 
 const Profile = ({user,userAdress}) => {
 
     const [typeinput1,settypeinput1]=useState("password")
     const [typeinput2,settypeinput2]=useState("password")
+
+
     const [showEdit, setShowEdit] = useState({})
     const [showEdit1, setShowEdit1] = useState({})
     const [showEdit2, setShowEdit2] = useState({})
     const [editValue, setEditValue] = useState({})
     const [inputname,setinputname]=useState({})
     const [newAdreswin,setnewAdresswin]=useState(false)
-
+    const {languae}=useProduct()
     const dispath=useDispatch()
     const [users,setUserinfo]=useState({
         ...user,
-        oldpassword:"",
+        oldPassword:"",
         password:"",
-        cpassword:""
+        password_confirmation:""
     })
 
 
@@ -37,10 +48,10 @@ const Profile = ({user,userAdress}) => {
         apartment:"",
     })
     
-     const {name,lastname,phoneNumber,email,success_check,oldpassword,password,cpassword}=users
+     const {name,lastname,phone,email,success_check,oldPassword,password,password_confirmation}=users
      const [checket,setchecked]=useState(false)
      const {adress,bulding,apartment}=newAdress
-
+     const [errors,setErrors]=useState({})
     useEffect(()=>{
         if(success_check=="true"){
             setchecked(true)
@@ -48,7 +59,7 @@ const Profile = ({user,userAdress}) => {
             setchecked(false)
         }
 
-    },[success_check])
+    },[])
 
 
     const handleChangeinput = e =>{
@@ -91,9 +102,57 @@ const Profile = ({user,userAdress}) => {
             [e.target.name]:e.target.value
         })
     }
- const SendData = (e) => {
+ const SendData = async (e) => {
         e.preventDefault()
-     console.log(userAdress)
+
+     const loginFormData = new FormData();
+     loginFormData.append("name", name)
+
+     loginFormData.append("success_check",checket)
+     loginFormData.append("oldPassword",oldPassword)
+     loginFormData.append("password_confirmation",password_confirmation)
+      if(lastname!=""){
+          loginFormData.append("lastname", lastname)
+      }
+      if(phone !=""){
+          loginFormData.append("phone", phone)
+      }
+      if(password!=""){
+          loginFormData.append("password",password)
+      }
+
+     let token=sessionStorage.getItem("token")
+     console.log(loginFormData)
+     try {
+         // make axios post request
+         const response = await axios({
+             method: "post",
+             url: process.env.REACT_APP_API_URL+"/user/update",
+             data: loginFormData,
+             headers: {
+                 "Content-Type": "multipart/form-data",
+                  "Authorization": `Bearer ${token}`
+                      },
+         });
+
+     debugger
+         if(response.data.token){
+             sessionStorage.setItem("token",token)
+             sessionStorage.setItem("user",JSON.stringify(response.data))
+             let userinfo=JSON.parse(sessionStorage.getItem("user"))
+             if(userinfo?.token){
+                 dispath(LoadingUserdata(userinfo,userinfo.token))
+             }else{
+                 dispath(LoadingUserdataError())
+             }
+             setErrors({})
+
+         }else{
+             setErrors(response.data);
+         }
+     } catch(error) {
+         console.log(error)
+     }
 
  }
 
@@ -106,8 +165,23 @@ const Profile = ({user,userAdress}) => {
         dispath(RemuveAdres(id))
  }
     const hantletargetclick =()=>{
+          setchecked(!checket)
+    }
 
-        setchecked(!checket)
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
     }
 
     return (
@@ -115,7 +189,7 @@ const Profile = ({user,userAdress}) => {
 
     <>
         <div className={css.userinfoblok1}>
-            <p className={css.titleinfo}>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</p>
+            <p className={css.titleinfo} style={fontproprty}>ԱՆՁՆԱԿԱՆ ՏՎՅԱԼՆԵՐ</p>
             <form onSubmit={SendData}>
                 <Input
                     cn="inputuserinfo"
@@ -123,6 +197,8 @@ const Profile = ({user,userAdress}) => {
                     placeholder="Անուն *"
                     value={name}
                     name="name"
+                    style={{border:errors.name && "1px solid red",...fontproprty2}}
+
                     onChange={handleChangeinput}
                 />
                 <Input
@@ -131,14 +207,17 @@ const Profile = ({user,userAdress}) => {
                     placeholder="Ազգանուն"
                     value={lastname}
                     name="lastname"
+                    style={{border:errors.lastname && "1px solid red",...fontproprty2}}
+
                     onChange={handleChangeinput}
                 />
                 <Input
                     cn="inputuserinfo"
                     type="text"
                     placeholder="Հեռախոսահամար"
-                    value={phoneNumber}
-                    name="phoneNumber"
+                    value={phone}
+                    name="phone"
+                    style={{border:errors.phone && "1px solid red",...fontproprty2}}
                     onChange={handleChangeinput}
                 />
                 <Input
@@ -147,7 +226,8 @@ const Profile = ({user,userAdress}) => {
                     placeholder="email *"
                     value={email}
                     name="email"
-                    onChange={handleChangeinput}
+                    style={{...fontproprty2}}
+                    disabled
                 />
                 <div className={css.newcheckbpx}>
                     <Check
@@ -163,14 +243,16 @@ const Profile = ({user,userAdress}) => {
                     cn="inputuserinfo"
                     type="password"
                     placeholder="Ներկա գաղտնաբառը"
-                    value={oldpassword}
-                    name="oldpassword"
+                    value={oldPassword}
+                    style={{border:errors.name && "1px solid red",...fontproprty2}}
+                    name="oldPassword"
                     onChange={handleChangeinput}
                 />
                 <div className={css.passresetdiv}>
                     <Input
                         cn="inputuserinfo"
                         type={typeinput1}
+                        style={{border:errors.name && "1px solid red",...fontproprty2}}
                         placeholder="Նոր գաղտնաբառ"
                         value={password}
                         name="password"
@@ -189,9 +271,10 @@ const Profile = ({user,userAdress}) => {
                     <Input
                         cn="inputuserinfo"
                         type={typeinput2}
+                        style={{border:errors.name && "1px solid red",...fontproprty2}}
                         placeholder="Կրկնել նոր գաղտնաբառը"
-                        value={cpassword}
-                        name="cpassword"
+                        value={password_confirmation}
+                        name="password_confirmation"
                         onChange={handleChangeinput}
                     />
                     {typeinput2 === "password" ?
@@ -211,6 +294,7 @@ const Profile = ({user,userAdress}) => {
                         cn="btnprofil"
                         title="պահպանել փոփոխությունները"
                         onClick={SendData}
+                        style={fontproprty}
                     />
                 </div>
 
@@ -224,7 +308,7 @@ const Profile = ({user,userAdress}) => {
                         return (
                             <div className={css.useradrss} key={id}>
                                 <div className={css.adresshdr}>
-                                    <p>առաքման հասցե {id}</p>
+                                    <p style={fontproprty}>առաքման հասցե {id}</p>
                                     <img src={btndell} alt="" onClick={() => RemuveAdreses(id)}/>
                                 </div>
                                 <div
@@ -242,6 +326,7 @@ const Profile = ({user,userAdress}) => {
                                             cn="inputuseraress"
                                             type="text"
                                             placeholder="Հասցե"
+                                            style={fontproprty2}
                                             value={editValue[id]}
                                             name="adress"
                                             onChange={e => {
@@ -252,7 +337,7 @@ const Profile = ({user,userAdress}) => {
                                         />
 
                                         :
-                                        <p>
+                                        <p  style={fontproprty2}>
                                             {adress}
                                         </p>
                                     }
@@ -275,6 +360,7 @@ const Profile = ({user,userAdress}) => {
                                                     cn="inputbuildandaparamet"
                                                     type="text"
                                                     placeholder="Շենք"
+                                                    style={fontproprty2}
                                                     value={editValue[id]}
                                                     name="bulding"
                                                     onChange={e => {
@@ -283,7 +369,7 @@ const Profile = ({user,userAdress}) => {
                                                     }}
                                                 />
                                                 :
-                                                <p>
+                                                <p  style={fontproprty2}>
                                                     {bulding}
                                                 </p>
                                         }
@@ -304,6 +390,7 @@ const Profile = ({user,userAdress}) => {
                                                     cn="inputbuildandaparamet"
                                                     type="text"
                                                     placeholder="Բնակարան"
+                                                    style={fontproprty2}
                                                     value={editValue[id]}
                                                     name="apartment"
                                                     onChange={e => {
@@ -312,7 +399,7 @@ const Profile = ({user,userAdress}) => {
                                                     }}
                                                 />
                                                 :
-                                                <p>
+                                                <p  style={fontproprty2}>
                                                     {apartment}
                                                 </p>
                                         }
@@ -329,13 +416,14 @@ const Profile = ({user,userAdress}) => {
             }
             {newAdreswin &&
             <div className={css.windownewAdres} onBlur={saveNewAdress}>
-                <p>առաքման հասցե {userAdress.length + 1}</p>
+                <p style={fontproprty}>առաքման հասցե {userAdress.length + 1}</p>
                 <form>
                     <Input
                         cn="inputuserinfo"
                         type="text"
                         placeholder="Հասցե"
                         value={adress}
+                        style={fontproprty2}
                         name="adress"
                         onChange={ChangeNewAdresvalue}
                     />
@@ -344,6 +432,7 @@ const Profile = ({user,userAdress}) => {
                             cn="inputbuildandaparamet"
                             type="text"
                             placeholder="Շենք"
+                            style={fontproprty2}
                             value={bulding}
                             name="bulding"
                             onChange={ChangeNewAdresvalue}
@@ -352,6 +441,7 @@ const Profile = ({user,userAdress}) => {
                             cn="inputbuildandaparamet"
                             type="text"
                             placeholder="Բնակարան"
+                            style={fontproprty2}
                             value={apartment}
                             name="apartment"
                             onChange={ChangeNewAdresvalue}
@@ -362,10 +452,11 @@ const Profile = ({user,userAdress}) => {
 
 
             </div>}
-            <p className={css.addnewadresbtn} onClick={SowaddnewAdressWindow}>Ավելացնել հասցե</p>
+            <p className={css.addnewadresbtn} onClick={SowaddnewAdressWindow} style={fontproprty3}>Ավելացնել հասցե</p>
             <div className={css.resetuserinfobtnmobile}>
                 <Button
                     cn="btnprofil"
+                    style={fontproprty2}
                     title="պահպանել փոփոխությունները"
                     onClick={SendData}
                 />

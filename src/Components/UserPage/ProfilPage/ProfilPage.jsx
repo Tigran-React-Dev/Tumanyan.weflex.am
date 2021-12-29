@@ -10,6 +10,7 @@ import Bonuces from "./Bonuces/Bonuces";
 import {LoadingUserdata} from "../../redux/Action/AuthACtion";
 import axios from "axios";
 import {HOME_PAGE} from "../../urls";
+import {useProduct} from "../../Providers/ProductMenu";
 const ProfilPage = ({history}) => {
 
 
@@ -19,6 +20,7 @@ const ProfilPage = ({history}) => {
     const likeproduct = useSelector(({AuthReducer})=>AuthReducer.likeproduct)
     const [activeMenu,setactiveMenu]=useState(1)
     const [loading,setloading]=useState(false)
+    const {languae}=useProduct()
     const dispath=useDispatch()
     const menudata=[
         {id:1,title:"Պրոֆիլ"},
@@ -61,17 +63,33 @@ const ProfilPage = ({history}) => {
 
     }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Medium" : languae=="ENG" ?
+                "Manrope-Medium" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+
     return (
         <>
             {loading &&
             <div className={css.ProfilPagescontroler}>
                 <div className={css.profilhdr}>
-                    <p className={css.titleprofile}>Անձնական էջ</p>
+                    <p className={css.titleprofile} style={fontproprty}>Անձնական էջ</p>
                     <div className={css.menuandexetbtn}>
                         <div className={css.menuprofil}>
                             {menudata .map(({id,title})=>{
 
-                                return <p style={{color:activeMenu===id ? "#13AD54" : "#BFB7B6"}} className={css.menuname} key={id} onClick={()=>ChangeProfileACtiveMenu(title,id)}>
+                                return <p style={{color:activeMenu===id ? "#13AD54" : "#BFB7B6",...fontproprty}} className={css.menuname} key={id} onClick={()=>ChangeProfileACtiveMenu(title,id)}>
                                     {title}{id==4 && <div className={css.bonuceicons}></div>}</p>
                             })
                             }
@@ -91,7 +109,7 @@ const ProfilPage = ({history}) => {
                                     return <Orders key={index} data={data}/>
                                 })
                                 :
-                                <p className={css.ordertitle}>Դուք դեռ չունեք գնաած ապրանք</p>
+                                <p className={css.ordertitle} style={fontproprty2}>Դուք դեռ չունեք գնաած ապրանք</p>
                             }
                         </div>
                         :

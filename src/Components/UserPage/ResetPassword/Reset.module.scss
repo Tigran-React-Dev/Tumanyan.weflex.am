@@ -91,6 +91,30 @@
   }
 
 }
+.succsessmessage{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(21px,1920);
+  line-height: get-vw(23px,1920);
+  letter-spacing: -0.04em;
+  color: red;
+  margin-left: get-vw(0px,1920);
+  padding-top: get-vw(20px,1920);
+  padding-bottom: get-vw(0px,1920);
+}
+.message{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(21px,1920);
+  line-height: get-vw(23px,1920);
+  letter-spacing: -0.04em;
+  color: red;
+  margin-left: get-vw(0px,1920);
+  padding-top: get-vw(20px,1920);
+  padding-bottom: get-vw(0px,1920);
+}
 
 @media screen and (max-width: 500px){
   .sendconstructor{
@@ -144,5 +168,29 @@
 
     }
 
+  }
+  .succsessmessage{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,375);
+    line-height: get-vw(21px,375);
+    letter-spacing: -0.04em;
+    color: red;
+    margin-left: get-vw(0px,375);
+    padding-top: get-vw(20px,375);
+    padding-bottom: get-vw(0px,375);
+  }
+  .message{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(18px,375);
+    line-height: get-vw(21px,375);
+    letter-spacing: -0.04em;
+    color: red;
+    margin-left: get-vw(0px,375);
+    padding-top: get-vw(20px,375);
+    padding-bottom: get-vw(0px,375);
   }
 }

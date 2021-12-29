@@ -552,10 +552,11 @@
     }
     .zdachi{
         width: get-vw(179px,375);
-        height: get-vw(62px,375);
+        height: get-vw(50px,375);
         font-size: get-vw(16px,375);
         line-height: 160%;
         margin-left: get-vw(24px,375);
+        margin-top: get-vw(8px,375);
         color: #252223;
         &::placeholder{
             color: #BFB7B6;

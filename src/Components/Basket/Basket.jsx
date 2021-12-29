@@ -277,10 +277,10 @@ const Basket = () => {
                               cn="inputglobalinfo"
                               placeholder={t("emailadress")}
                               type="email"
-                              onChange={OnchangeInputofRegister}
                               name="email"
                               value={email}
                               style={fontproprty2}
+                              disabled
                               />
                               <div className={css.checkdiv}>
                                   <Check

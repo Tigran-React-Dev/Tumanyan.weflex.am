@@ -3,12 +3,14 @@ import css from "./Orders.module.scss";
 import btn2 from "../../../../images/icons/btn1.svg"
 import {useDispatch} from "react-redux";
 import {OldcheckAddTocard} from "../../../redux/Action/CardAction";
+import {useProduct} from "../../../Providers/ProductMenu";
 
 const Orders = ({data}) => {
-const [counts, setCount]=useState(3)
+    const [counts, setCount]=useState(3)
     const [itionallength,setitionallength]=useState(2)
-const [sowinfo,setsowinfo]=useState(false)
+    const [sowinfo,setsowinfo]=useState(false)
     const dispath=useDispatch()
+    const {languae}=useProduct()
     const handleeditcount =(newcount)=>{
         setsowinfo(!sowinfo)
         if(sowinfo){
@@ -25,6 +27,17 @@ const [sowinfo,setsowinfo]=useState(false)
         dispath(OldcheckAddTocard(data))
     }
 
+    const fontproprty={fontFamily:languae=="ՀԱՅ" ?
+            "Mardoto-Medium" : languae=="ENG" ?
+                "Manrope-Bold" : languae=="РУС" ?
+                    "Manrope-Medium" : null
+    }
+    const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
+            "Montserrat-Regular" : languae=="ENG" ?
+                "manrope-reg" : languae=="РУС" ?
+                    "manrope-reg" : null
+    }
+
 
     return (
          <div className={css.oredersitem}>
@@ -34,8 +47,9 @@ const [sowinfo,setsowinfo]=useState(false)
                         if(data.length >= 4){
                             return(
                                 <>
-                                    {i<=counts && <div className={css.orderimgdiv}>
-                                        <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
+                                    {i<=counts &&
+                                    <div className={css.orderimgdiv}>
+                                    <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
                                         {item.count > 1 ? <div className={css.countitemx}>
                                                 <p>x{item.count}</p>
                                             </div>
@@ -48,8 +62,9 @@ const [sowinfo,setsowinfo]=useState(false)
                         }else{
                             return(
                                 <>
-                                    {i<=counts && <div className={css.orderimgdiv}>
-                                        <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
+                                    {i<=counts &&
+                                    <div className={css.orderimgdiv}>
+                                    <img className={css.imgitem} src={process.env.REACT_APP_IMG_URL+item.image} alt=""/>
                                         {item.count > 1 ? <div className={css.countitemx}>
                                                 <p>x{item.count}</p>
                                             </div>
@@ -66,8 +81,8 @@ const [sowinfo,setsowinfo]=useState(false)
                      })
                  }
              </div>
-             <p className={css.dastacupit}>Այսօր</p>
-              <p className={css.descriptionorder}>
+             <p className={css.dastacupit} style={fontproprty2}>Այսօր</p>
+              <p className={css.descriptionorder} style={fontproprty2}>
                   {
                       data.map((e,index)=>{
                           if(data.length>=4){

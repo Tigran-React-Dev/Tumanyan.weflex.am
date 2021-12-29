@@ -10,7 +10,7 @@ const SendMailurl = ({history}) => {
 
     const [email,setemail]=useState("")
     const [errors,setErrors]=useState({})
-
+    const [succsessSendMail,setSuccsessSendMail]=useState(false)
     useEffect(()=>{
         window.scrollTo(0, 0);
         if(sessionStorage.getItem("token")){
@@ -29,19 +29,19 @@ const SendMailurl = ({history}) => {
             // make axios post request
             const response = await axios({
                 method: "post",
-                url: process.env.REACT_APP_API_URL+"/user/login",
+                url: process.env.REACT_APP_API_URL+"/user/reset",
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
-
-            // if(response.data.token){
-            //     sessionStorage.setItem("token",response.data.token)
-            //     sessionStorage.setItem("user",JSON.stringify(response.data))
-            //     setErrors({})
-            //     history.push(HOME_PAGE)
-            // }else{
-            //     setErrors(response.data);
-            // }
+            console.log(response)
+            if(response.data=="success"){
+                setSuccsessSendMail(true)
+                setemail("")
+                setErrors({});
+            }else{
+                setErrors(response.data);
+                setSuccsessSendMail(false)
+            }
         } catch(error) {
             console.log(error)
         }
@@ -67,6 +67,8 @@ const SendMailurl = ({history}) => {
                      title="ուղարկել"
 
                  />
+                  <h3 className={css.succsessmessage}>{succsessSendMail && "Ձեր email-ին ուղարկվել է նամակ ,խնդրում ենք շարունակելու համար մուտք գործել email"}</h3>
+
                  <div className={css.linknazat}>
                      <NavLink  to={LOGIN_PAGES} exect >վերադառնալ</NavLink>
                  </div>
