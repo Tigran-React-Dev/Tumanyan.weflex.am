@@ -173,6 +173,18 @@
 .resetuserinfobtnmobile{
   display: none;
 }
+.cuccsess{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(18px,1920 );
+  line-height: get-vw(21px,1920 );
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: red;
+  margin-top: get-vw(30px,1920);
+
+}
 
 @media screen and (max-width: 500px) {
   .userinfoblok1{

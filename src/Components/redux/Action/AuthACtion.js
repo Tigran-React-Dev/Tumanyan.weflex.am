@@ -45,12 +45,13 @@ export const LikeObjSenddat =(obj)=>{
         payload: obj,
     }
 }
-export const LoadingUserdata =(userdata,token)=>{
+export const LoadingUserdata =(userdata,token,useradress)=>{
     return {
         type: LOAD_USER_DATA,
         payload: {
             userdata,
             token,
+            useradress,
         }
     }
 }

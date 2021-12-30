@@ -32,11 +32,12 @@ export const initialstate={
 export const AuthReducer=(state=initialstate,action)=>{
     switch (action.type) {
         case LOAD_USER_DATA:{
-
+debugger
             return {
                 ...state,
                 loadding: false,
                 token: sessionStorage.getItem("token"),
+                adresess:JSON.parse(sessionStorage.getItem("useradress")),
                 user:{
                     name:action.payload.userdata.name,
                     lastname:action.payload.userdata.lastname ? action.payload.userdata.lastname  : "",
@@ -44,6 +45,7 @@ export const AuthReducer=(state=initialstate,action)=>{
                     email:action.payload.userdata.email,
                     success_check:action.payload.userdata.success_check,
                 },
+
 
             }
         }

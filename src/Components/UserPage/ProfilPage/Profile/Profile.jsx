@@ -6,7 +6,7 @@ import sowicon from "../../../../images/icons/password.png"
 import csowicon from "../../../../images/icons/cpassword.png"
 import Button from "../../../Global/Button/Button";
 import btndell from "../../../../images/icons/delbtnadress.svg"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
     AddNewAdress,
     Changeadress,
@@ -22,8 +22,8 @@ const Profile = ({user,userAdress}) => {
 
     const [typeinput1,settypeinput1]=useState("password")
     const [typeinput2,settypeinput2]=useState("password")
-
-
+    const token = useSelector(({AuthReducer})=>AuthReducer.token)
+    const [succsess,setSuccsess]=useState(false)
     const [showEdit, setShowEdit] = useState({})
     const [showEdit1, setShowEdit1] = useState({})
     const [showEdit2, setShowEdit2] = useState({})
@@ -39,18 +39,19 @@ const Profile = ({user,userAdress}) => {
         password_confirmation:""
     })
 
-
+    console.log(userAdress)
 
 
     const [newAdress,setNewAdress]=useState({
-        adress:"",
-        bulding:"",
+        street:"",
+        building:"",
         apartment:"",
     })
+
     
      const {name,lastname,phone,email,success_check,oldPassword,password,password_confirmation}=users
      const [checket,setchecked]=useState(false)
-     const {adress,bulding,apartment}=newAdress
+     const {street,building,apartment}=newAdress
      const [errors,setErrors]=useState({})
     useEffect(()=>{
         if(success_check=="true"){
@@ -82,20 +83,7 @@ const Profile = ({user,userAdress}) => {
         setShowEdit1({})
         setShowEdit2({})
     }
-    const saveNewAdress =()=>{
-      
-        if(adress!=="" && bulding!="" && apartment!=""){
-            dispath(AddNewAdress(newAdress))
-            setNewAdress({
-                adress:"",
-                bulding:"",
-                apartment:"",
-            })
-            setnewAdresswin(!newAdreswin)
-        }
 
-       
-    }
     const ChangeNewAdresvalue=(e)=>{
         setNewAdress({
             ...newAdress,
@@ -103,26 +91,31 @@ const Profile = ({user,userAdress}) => {
         })
     }
  const SendData = async (e) => {
-        e.preventDefault()
+     e.preventDefault()
 
      const loginFormData = new FormData();
      loginFormData.append("name", name)
-
      loginFormData.append("success_check",checket)
      loginFormData.append("oldPassword",oldPassword)
-     loginFormData.append("password_confirmation",password_confirmation)
-      if(lastname!=""){
+       if(lastname != ""){
           loginFormData.append("lastname", lastname)
       }
-      if(phone !=""){
+      if(phone !="") {
           loginFormData.append("phone", phone)
       }
       if(password!=""){
           loginFormData.append("password",password)
       }
+     if(password_confirmation!=""){
+          loginFormData.append("password_confirmation",password_confirmation)
+      }
 
-     let token=sessionStorage.getItem("token")
-     console.log(loginFormData)
+     //  const fdata = new FormData();
+     //  fdata.append("name", "Tiko");
+     // fdata.append("oldPassword", "123456789");
+     // fdata.append("password", "22222222");
+     // fdata.append("password_confirmation", "22222222");
+
      try {
          // make axios post request
          const response = await axios({
@@ -132,29 +125,103 @@ const Profile = ({user,userAdress}) => {
              headers: {
                  "Content-Type": "multipart/form-data",
                   "Authorization": `Bearer ${token}`
-                      },
+             },
          });
 
-     debugger
          if(response.data.token){
-             sessionStorage.setItem("token",token)
+             setErrors({})
+             sessionStorage.setItem("token",response.data.token)
              sessionStorage.setItem("user",JSON.stringify(response.data))
              let userinfo=JSON.parse(sessionStorage.getItem("user"))
              if(userinfo?.token){
                  dispath(LoadingUserdata(userinfo,userinfo.token))
-             }else{
-                 dispath(LoadingUserdataError())
              }
-             setErrors({})
-
+            setSuccsess(true)
          }else{
              setErrors(response.data);
+             setSuccsess(false)
          }
      } catch(error) {
          console.log(error)
      }
+     //add new adreesa
 
+     if(street!="" && building!="" && apartment!=""){
+         AddAdress()
+      }
+     UpdateAddress()
  }
+
+
+
+ const UpdateAddress =async ()=>{
+     console.log(userAdress)
+     try {
+         // make axios post request
+         const res = await axios({
+             method: "post",
+             url: process.env.REACT_APP_API_URL+"/user/updateAddress",
+             data: JSON.stringify(userAdress),
+             headers: {
+                 "Content-Type": "multipart/form-data",
+                 "Authorization": `Bearer ${token}`
+             },
+         });
+         debugger
+
+         if(res.data){
+             // setErrors({})
+             // sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
+             // dispath(AddNewAdress(newAdress))
+             // setnewAdresswin(!newAdreswin)
+             // setSuccsess(true)
+         }else{
+             // setErrors(responseadress.data);
+             // setSuccsess(false)
+         }
+     } catch(error) {
+         console.log(error)
+     }
+ }
+ const AddAdress =async ()=>{
+
+     const adresformdata = new FormData();
+     adresformdata.append("street", street)
+     adresformdata.append("building",building)
+     adresformdata.append("apartment",apartment)
+     let newtoken=sessionStorage.getItem("token")
+
+     try {
+         // make axios post request
+         const responseadress = await axios({
+             method: "post",
+             url: process.env.REACT_APP_API_URL+"/user/addAddress",
+             data: adresformdata,
+             headers: {
+                 "Content-Type": "multipart/form-data",
+                 "Authorization": `Bearer ${newtoken}`
+             },
+         });
+         debugger
+
+         if(responseadress.data?.[0]){
+             setErrors({})
+             sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
+             dispath(AddNewAdress(newAdress))
+             setnewAdresswin(!newAdreswin)
+             setSuccsess(true)
+         }else{
+             setErrors(responseadress.data);
+             setSuccsess(false)
+         }
+     } catch(error) {
+         console.log(error)
+     }
+ }
+
+    const saveNewAdress =()=>{
+
+    }
 
 
  const SowaddnewAdressWindow =()=>{
@@ -244,7 +311,7 @@ const Profile = ({user,userAdress}) => {
                     type="password"
                     placeholder="Ներկա գաղտնաբառը"
                     value={oldPassword}
-                    style={{border:errors.name && "1px solid red",...fontproprty2}}
+                    style={{border:errors.message && "1px solid red",...fontproprty2}}
                     name="oldPassword"
                     onChange={handleChangeinput}
                 />
@@ -252,7 +319,7 @@ const Profile = ({user,userAdress}) => {
                     <Input
                         cn="inputuserinfo"
                         type={typeinput1}
-                        style={{border:errors.name && "1px solid red",...fontproprty2}}
+                        style={{border:errors.message && "1px solid red",...fontproprty2}}
                         placeholder="Նոր գաղտնաբառ"
                         value={password}
                         name="password"
@@ -271,7 +338,7 @@ const Profile = ({user,userAdress}) => {
                     <Input
                         cn="inputuserinfo"
                         type={typeinput2}
-                        style={{border:errors.name && "1px solid red",...fontproprty2}}
+                        style={{border:errors.message && "1px solid red",...fontproprty2}}
                         placeholder="Կրկնել նոր գաղտնաբառը"
                         value={password_confirmation}
                         name="password_confirmation"
@@ -296,6 +363,7 @@ const Profile = ({user,userAdress}) => {
                         onClick={SendData}
                         style={fontproprty}
                     />
+                    <h2 className={css.cuccsess}>{succsess &&" ձեր փոփոխությունները կատարվել են"}</h2>
                 </div>
 
 
@@ -303,19 +371,19 @@ const Profile = ({user,userAdress}) => {
         </div>
         <div className={css.userinfoblok2}>
             {
-                userAdress.length ?
-                    userAdress.map(({id, bulding, adress, apartment}) => {
+                userAdress?.length ?
+                    userAdress.map(({id,building , street, apartment},index) => {
                         return (
                             <div className={css.useradrss} key={id}>
                                 <div className={css.adresshdr}>
-                                    <p style={fontproprty}>առաքման հասցե {id}</p>
+                                    <p style={fontproprty}>առաքման հասցե {index+1}</p>
                                     <img src={btndell} alt="" onClick={() => RemuveAdreses(id)}/>
                                 </div>
                                 <div
                                     className={css.divadress}
                                     onClick={(e) => {
                                         setShowEdit({[id]: true})
-                                        setEditValue({[id]: adress})
+                                        setEditValue({[id]: street})
                                     }}
                                     onBlur={() => {
                                         sendChangeInfoadres(editValue[id], id, inputname[id])
@@ -328,7 +396,7 @@ const Profile = ({user,userAdress}) => {
                                             placeholder="Հասցե"
                                             style={fontproprty2}
                                             value={editValue[id]}
-                                            name="adress"
+                                            name="street"
                                             onChange={e => {
                                                 setEditValue({[id]: e.target.value})
                                                 setinputname({[id]: e.target.name})
@@ -338,7 +406,7 @@ const Profile = ({user,userAdress}) => {
 
                                         :
                                         <p  style={fontproprty2}>
-                                            {adress}
+                                            {street}
                                         </p>
                                     }
 
@@ -348,7 +416,7 @@ const Profile = ({user,userAdress}) => {
                                         className={css.dom}
                                         onClick={(e) => {
                                             setShowEdit1({[id]: true})
-                                            setEditValue({[id]: bulding})
+                                            setEditValue({[id]: building})
                                         }}
                                         onBlur={() => {
                                             sendChangeInfoadres(editValue[id], id, inputname[id])
@@ -362,7 +430,7 @@ const Profile = ({user,userAdress}) => {
                                                     placeholder="Շենք"
                                                     style={fontproprty2}
                                                     value={editValue[id]}
-                                                    name="bulding"
+                                                    name="building"
                                                     onChange={e => {
                                                         setEditValue({[id]: e.target.value})
                                                         setinputname({[id]: e.target.name})
@@ -370,7 +438,7 @@ const Profile = ({user,userAdress}) => {
                                                 />
                                                 :
                                                 <p  style={fontproprty2}>
-                                                    {bulding}
+                                                    {building}
                                                 </p>
                                         }
 
@@ -416,15 +484,15 @@ const Profile = ({user,userAdress}) => {
             }
             {newAdreswin &&
             <div className={css.windownewAdres} onBlur={saveNewAdress}>
-                <p style={fontproprty}>առաքման հասցե {userAdress.length + 1}</p>
+                <p style={fontproprty}>առաքման հասցե {userAdress?.length ? userAdress.length + 1 : 1}</p>
                 <form>
                     <Input
                         cn="inputuserinfo"
                         type="text"
                         placeholder="Հասցե"
-                        value={adress}
+                        value={street}
                         style={fontproprty2}
-                        name="adress"
+                        name="street"
                         onChange={ChangeNewAdresvalue}
                     />
                     <div className={css.domandbuild}>
@@ -433,8 +501,8 @@ const Profile = ({user,userAdress}) => {
                             type="text"
                             placeholder="Շենք"
                             style={fontproprty2}
-                            value={bulding}
-                            name="bulding"
+                            value={building}
+                            name="building"
                             onChange={ChangeNewAdresvalue}
                         />
                         <Input
