@@ -32,8 +32,7 @@ export const initialstate={
 export const AuthReducer=(state=initialstate,action)=>{
     switch (action.type) {
         case LOAD_USER_DATA:{
-debugger
-            return {
+        return {
                 ...state,
                 loadding: false,
                 token: sessionStorage.getItem("token"),

@@ -32,8 +32,15 @@ const ProfilPage = ({history}) => {
     const ChangeProfileACtiveMenu =(title,id)=>{
         setactiveMenu(id)
     }
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+        if(!sessionStorage.getItem("token")){
+            history.push(HOME_PAGE)
+        }
+    },[history])
 
     useEffect(()=>{
+
         let userinfo=JSON.parse(sessionStorage.getItem("user"))
 
         if(userinfo?.token){

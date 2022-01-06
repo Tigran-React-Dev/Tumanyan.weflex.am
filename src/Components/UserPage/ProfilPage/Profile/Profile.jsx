@@ -91,6 +91,9 @@ const Profile = ({user,userAdress}) => {
         })
     }
  const SendData = async (e) => {
+
+
+
      e.preventDefault()
 
      const loginFormData = new FormData();
@@ -110,12 +113,7 @@ const Profile = ({user,userAdress}) => {
           loginFormData.append("password_confirmation",password_confirmation)
       }
 
-     //  const fdata = new FormData();
-     //  fdata.append("name", "Tiko");
-     // fdata.append("oldPassword", "123456789");
-     // fdata.append("password", "22222222");
-     // fdata.append("password_confirmation", "22222222");
-
+     
      try {
          // make axios post request
          const response = await axios({
@@ -127,7 +125,7 @@ const Profile = ({user,userAdress}) => {
                   "Authorization": `Bearer ${token}`
              },
          });
-
+         debugger
          if(response.data.token){
              setErrors({})
              sessionStorage.setItem("token",response.data.token)
@@ -146,16 +144,23 @@ const Profile = ({user,userAdress}) => {
      }
      //add new adreesa
 
-     if(street!="" && building!="" && apartment!=""){
+     if(street!="" && building!="" && apartment!="" ){
          AddAdress()
+         console.log("addadres")
       }
-     UpdateAddress()
+     
+     setTimeout(()=>{
+        if (succsess){
+            UpdateAddress()
+            console.log("updateaddres")
+         }
+     },1000)
  }
 
 
 
  const UpdateAddress =async ()=>{
-     console.log(userAdress)
+     
      try {
          // make axios post request
          const res = await axios({
@@ -167,17 +172,15 @@ const Profile = ({user,userAdress}) => {
                  "Authorization": `Bearer ${token}`
              },
          });
-         debugger
+         
 
-         if(res.data){
-             // setErrors({})
-             // sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
-             // dispath(AddNewAdress(newAdress))
-             // setnewAdresswin(!newAdreswin)
-             // setSuccsess(true)
+         if(res.data?.[0]){
+             setErrors({})
+             sessionStorage.setItem("useradress",JSON.stringify(res.data))
+             setSuccsess(true)
          }else{
-             // setErrors(responseadress.data);
-             // setSuccsess(false)
+             setErrors(res.data);
+             setSuccsess(false)
          }
      } catch(error) {
          console.log(error)
@@ -202,7 +205,7 @@ const Profile = ({user,userAdress}) => {
                  "Authorization": `Bearer ${newtoken}`
              },
          });
-         debugger
+        
 
          if(responseadress.data?.[0]){
              setErrors({})
