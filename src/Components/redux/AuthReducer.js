@@ -3,7 +3,7 @@ import {
     CHANGEADRESES,
     LIKE_OBJ_SEND_TO_DATA, LOAD_USER_DATA, LOAD_USER_DATA_ERROR,
     REMOVE_ADRESES,
-    SAVE_ORDERS_USER
+    SAVE_ORDERS_USER, UPDATE_USER_ADRESS
 } from "./Action/AuthACtion";
 
 
@@ -59,7 +59,13 @@ export const AuthReducer=(state=initialstate,action)=>{
         }
 
 
+        case UPDATE_USER_ADRESS:{
+            return {
+                ...state,
+                adresess:JSON.parse(sessionStorage.getItem("useradress"))
+            }
 
+        }
         case CHANGEADRESES :{
            state.adresess.forEach((i)=>{
                if(i.id===action.payload.id){
@@ -84,16 +90,11 @@ export const AuthReducer=(state=initialstate,action)=>{
 
         }
         case ADD_NEW_ADRESS :{
-        let newid=state.adresess.length+1
-         
-        let newobj={
-            ...action.payload,
-            id:newid,
-        }
-         state.adresess.push(newobj)
+
 
         return{
             ...state,
+            adresess: JSON.parse(sessionStorage.getItem("useradress")),
         }
         
         }

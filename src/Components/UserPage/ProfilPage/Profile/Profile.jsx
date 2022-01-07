@@ -12,7 +12,7 @@ import {
     Changeadress,
     LoadingUserdata,
     LoadingUserdataError,
-    RemuveAdres
+    RemuveAdres, UpdataUserAdress
 } from "../../../redux/Action/AuthACtion";
 import axios from "axios";
 import {HOME_PAGE} from "../../../urls";
@@ -53,6 +53,8 @@ const Profile = ({user,userAdress}) => {
      const [checket,setchecked]=useState(false)
      const {street,building,apartment}=newAdress
      const [errors,setErrors]=useState({})
+    const [errorsadressadd,setErrorsadressadd]=useState({})
+    const [errorsadressupdata,setErrorsadressupdata]=useState({})
     useEffect(()=>{
         if(success_check=="true"){
             setchecked(true)
@@ -125,16 +127,22 @@ const Profile = ({user,userAdress}) => {
                   "Authorization": `Bearer ${token}`
              },
          });
-         debugger
+
          if(response.data.token){
              setErrors({})
              sessionStorage.setItem("token",response.data.token)
              sessionStorage.setItem("user",JSON.stringify(response.data))
              let userinfo=JSON.parse(sessionStorage.getItem("user"))
-             if(userinfo?.token){
+             if(userinfo){
                  dispath(LoadingUserdata(userinfo,userinfo.token))
              }
             setSuccsess(true)
+
+             if(street!="" && building!="" && apartment!="" ){
+                 AddAdress()
+                 console.log("addadres")
+             }
+             UpdateAddress()
          }else{
              setErrors(response.data);
              setSuccsess(false)
@@ -144,17 +152,8 @@ const Profile = ({user,userAdress}) => {
      }
      //add new adreesa
 
-     if(street!="" && building!="" && apartment!="" ){
-         AddAdress()
-         console.log("addadres")
-      }
-     
-     setTimeout(()=>{
-        if (succsess){
-            UpdateAddress()
-            console.log("updateaddres")
-         }
-     },1000)
+
+
  }
 
 
@@ -175,11 +174,12 @@ const Profile = ({user,userAdress}) => {
          
 
          if(res.data?.[0]){
-             setErrors({})
+             setErrorsadressupdata({})
              sessionStorage.setItem("useradress",JSON.stringify(res.data))
+             dispath(UpdataUserAdress(res.data))
              setSuccsess(true)
          }else{
-             setErrors(res.data);
+             setErrorsadressupdata(res.data);
              setSuccsess(false)
          }
      } catch(error) {
@@ -187,7 +187,6 @@ const Profile = ({user,userAdress}) => {
      }
  }
  const AddAdress =async ()=>{
-
      const adresformdata = new FormData();
      adresformdata.append("street", street)
      adresformdata.append("building",building)
@@ -207,14 +206,20 @@ const Profile = ({user,userAdress}) => {
          });
         
 
-         if(responseadress.data?.[0]){
-             setErrors({})
+         if(responseadress.data?.[0] ){
+             setErrorsadressadd({})
              sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
              dispath(AddNewAdress(newAdress))
              setnewAdresswin(!newAdreswin)
              setSuccsess(true)
+             setNewAdress({
+                 street:"",
+                 building:"",
+                 apartment:"",
+             })
+
          }else{
-             setErrors(responseadress.data);
+             setErrorsadressadd(responseadress.data);
              setSuccsess(false)
          }
      } catch(error) {
@@ -231,8 +236,23 @@ const Profile = ({user,userAdress}) => {
     setnewAdresswin(!newAdreswin)
  }
 
- const RemuveAdreses =(id)=>{
-        dispath(RemuveAdres(id))
+ const RemuveAdreses =async (id)=>{
+
+     const resremuveitem = await axios({
+         method: "post",
+         url: process.env.REACT_APP_API_URL+`/user/deleteAddress/${id}`,
+         headers: {
+             "Authorization": `Bearer ${token}`
+         },
+     });
+     debugger
+
+     if(resremuveitem.data){
+         sessionStorage.setItem("useradress",JSON.stringify(resremuveitem.data))
+         dispath(RemuveAdres(id))
+     }
+
+
  }
     const hantletargetclick =()=>{
           setchecked(!checket)
@@ -384,6 +404,7 @@ const Profile = ({user,userAdress}) => {
                                 </div>
                                 <div
                                     className={css.divadress}
+                                    style={{border:errorsadressupdata.street && "1px solid red",}}
                                     onClick={(e) => {
                                         setShowEdit({[id]: true})
                                         setEditValue({[id]: street})
@@ -417,6 +438,7 @@ const Profile = ({user,userAdress}) => {
                                 <div className={css.domandbuild}>
                                     <div
                                         className={css.dom}
+                                        style={{border:errorsadressupdata.building && "1px solid red",}}
                                         onClick={(e) => {
                                             setShowEdit1({[id]: true})
                                             setEditValue({[id]: building})
@@ -447,6 +469,7 @@ const Profile = ({user,userAdress}) => {
 
                                     </div>
                                     <div className={css.build}
+                                         style={{border:errorsadressupdata.apartment && "1px solid red",}}
                                          onClick={(e) => {
                                              setShowEdit2({[id]: true})
                                              setEditValue({[id]: apartment})
@@ -494,7 +517,8 @@ const Profile = ({user,userAdress}) => {
                         type="text"
                         placeholder="Հասցե"
                         value={street}
-                        style={fontproprty2}
+                        style={{border:errorsadressadd.street && "1px solid red",...fontproprty2}}
+
                         name="street"
                         onChange={ChangeNewAdresvalue}
                     />
@@ -503,7 +527,7 @@ const Profile = ({user,userAdress}) => {
                             cn="inputbuildandaparamet"
                             type="text"
                             placeholder="Շենք"
-                            style={fontproprty2}
+                            style={{border:errorsadressadd.building && "1px solid red",...fontproprty2}}
                             value={building}
                             name="building"
                             onChange={ChangeNewAdresvalue}
@@ -512,7 +536,7 @@ const Profile = ({user,userAdress}) => {
                             cn="inputbuildandaparamet"
                             type="text"
                             placeholder="Բնակարան"
-                            style={fontproprty2}
+                            style={{border:errorsadressadd.apartment && "1px solid red",...fontproprty2}}
                             value={apartment}
                             name="apartment"
                             onChange={ChangeNewAdresvalue}

@@ -34,7 +34,7 @@ const SendMailurl = ({history}) => {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(response)
-            if(response.data=="success"){
+            if(response.data=="Success"){
                 setSuccsessSendMail(true)
                 setemail("")
                 setErrors({});

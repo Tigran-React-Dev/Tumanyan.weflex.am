@@ -67,10 +67,12 @@ const ResetPassword = ({history}) => {
                 url: process.env.REACT_APP_API_URL+"/user/new-password",
                 data: loginFormData,
                 headers:
-                    { "Content-Type": "multipart/form-data"},
+                    { "Content-Type": "multipart/form-data",
+
+                    },
             });
 
-
+            debugger
 
             if(response.data?.status=="Success"){
                 setErrors({});

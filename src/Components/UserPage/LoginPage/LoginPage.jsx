@@ -8,6 +8,10 @@ import {HOME_PAGE, REGISTER_PAGE, RESET_PASSWORD} from "../../urls";
 import pass from "../../../images/icons/password.png";
 import cpass from "../../../images/icons/cpassword.png";
 import axios from "axios";
+import fb from "../../../images/sociallfb.svg";
+import  google from "../../../images/socialgoogle.svg"
+import FacebookLogin from 'react-facebook-login';
+
 
 const LoginPage = () => {
     const history=useHistory()
@@ -73,10 +77,11 @@ const LoginPage = () => {
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
-
-            if(response.data.token){
-                sessionStorage.setItem("token",response.data.token)
-                sessionStorage.setItem("user",JSON.stringify(response.data))
+     debugger
+            if(response.data[0].token){
+                sessionStorage.setItem("token",response.data[0].token)
+                sessionStorage.setItem("user",JSON.stringify(response.data[0]))
+                sessionStorage.setItem("useradress",JSON.stringify(response.data.address))
                 setErrors({})
                 history.push(HOME_PAGE)
             }else{
@@ -98,6 +103,9 @@ const LoginPage = () => {
 
         setchecked(!checket)
 
+    }
+    const responseFacebook =(res)=>{
+        console.log(res)
     }
 
     return (
@@ -147,6 +155,25 @@ const LoginPage = () => {
                            title="մուտք"
 
                        />
+                       <p className={css.or}>կամ</p>
+                     <div className={css.socialfb} >
+
+
+                         <FacebookLogin
+                             appId="331261461769561"
+                             autoLoad={false}
+                             fields="name,email,picture"
+                             callback={responseFacebook}
+                             textButton="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;շարունակել ֆեյսբուքով"
+                             cssClass={css.mubtnfacebook}
+                             icon={<img src={fb} alt="" className={css.iconfb}/>}
+
+                         />
+                     </div>
+                     <div className={css.socialgoogle} >
+                         <img src={google} alt=""/>
+                         <h2>շարունակել գուգլով</h2>
+                     </div>
                      <div className={css.reglink}>
                         <p>Դեռ գրանցվա՞ծ չեք։</p>
                          <NavLink to={REGISTER_PAGE} exect >Գրանցվել</NavLink>

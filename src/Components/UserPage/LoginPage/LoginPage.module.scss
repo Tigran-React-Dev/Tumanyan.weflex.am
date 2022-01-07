@@ -27,7 +27,7 @@
   }
   .loginuser{
     width: get-vw(1920px,1920);
-    height: get-vw(524px,1920);
+    height: get-vw(778px,1920);
 
   }
 }
@@ -91,6 +91,105 @@
   top: get-vw(156px,1920);
   left: get-vw(570px,1920);
   cursor: pointer;
+}
+.or{
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(16px,1920);
+  line-height: get-vw(19px,1920);
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #252223;
+  margin-top: get-vw(30px,1920);
+}
+.socialfb{
+  width: get-vw(628px,1920);
+  height: get-vw(75px,1920);
+
+
+  img{
+    width: get-vw(40px,1920);
+    height: get-vw(40px,1920);
+    margin-left: get-vw(40px,1920);
+    margin-top: get-vw(18px,1820);
+  }
+  h2{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(20px,1920);
+    line-height: get-vw(23px,1920);
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-left: get-vw(120px,1920);
+    margin-top: get-vw(26px,1920);
+
+    /* White */
+
+    color: #FFFFFF;
+  }
+}
+.socialgoogle{
+  width: get-vw(628px,1920);
+  height: get-vw(75px,1920);
+  background: #DC4E41;
+  border-radius: get-vw(10px,1920);
+  margin-top: get-vw(25px,1920);
+  cursor: pointer;
+  display: flex;
+  img{
+    width: get-vw(40px,1920);
+    height: get-vw(40px,1920);
+    margin-left: get-vw(40px,1920);
+    margin-top: get-vw(18px,1820);
+  }
+  h2{
+    font-family: Mardoto-Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: get-vw(20px,1920);
+    line-height: get-vw(23px,1920);
+    text-align: center;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-left: get-vw(120px,1920);
+    margin-top: get-vw(26px,1920);
+
+    /* White */
+
+    color: #FFFFFF;
+  }
+}
+.mubtnfacebook{
+  width: get-vw(628px,1920);
+  height: get-vw(75px,1920);
+  background: #3B5998;
+  border-radius: get-vw(10px,1920);
+  margin-top: get-vw(25px,1920);
+  cursor: pointer;
+  display: flex;
+  border: none;
+  font-family: Mardoto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: get-vw(20px,1920);
+  line-height: get-vw(23px,1920);
+  text-align: center !important;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  padding: get-vw(26px,1920);
+
+  color: #FFFFFF;
+}
+.iconfb{
+  width: get-vw(40px,1920);
+  height: get-vw(40px,1920);
+  margin-left: get-vw(5px,1920)!important;
+  margin-top: get-vw(-5px,1820)!important;
+  //padding-left: get-vw(120px,1920) !important;
 }
 
 @media screen and (max-width: 500px){

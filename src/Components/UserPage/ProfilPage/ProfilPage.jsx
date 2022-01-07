@@ -42,8 +42,7 @@ const ProfilPage = ({history}) => {
     useEffect(()=>{
 
         let userinfo=JSON.parse(sessionStorage.getItem("user"))
-
-        if(userinfo?.token){
+       if(userinfo?.token){
             dispath(LoadingUserdata(userinfo,userinfo.token))
             setloading(true)
         }
@@ -63,7 +62,8 @@ const ProfilPage = ({history}) => {
 
         if (response.data.message=="You have successfully Logged Out"){
             sessionStorage.removeItem("token");
-            sessionStorage.removeItem("user")
+            sessionStorage.removeItem("user");
+            sessionStorage.removeItem("useradress");
             history.push(HOME_PAGE)
         }
 
