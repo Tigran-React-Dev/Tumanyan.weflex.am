@@ -10,7 +10,8 @@ import cpass from "../../../images/icons/cpassword.png";
 import axios from "axios";
 import fb from "../../../images/sociallfb.svg";
 import  google from "../../../images/socialgoogle.svg"
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import GoogleLogin from "react-google-login";
 
 
 const LoginPage = () => {
@@ -77,8 +78,8 @@ const LoginPage = () => {
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
-     debugger
-            if(response.data[0].token){
+
+            if(response?.data[0]?.token){
                 sessionStorage.setItem("token",response.data[0].token)
                 sessionStorage.setItem("user",JSON.stringify(response.data[0]))
                 sessionStorage.setItem("useradress",JSON.stringify(response.data.address))
@@ -104,8 +105,63 @@ const LoginPage = () => {
         setchecked(!checket)
 
     }
-    const responseFacebook =(res)=>{
+    const responseFacebook =async (res)=>{
         console.log(res)
+        if(res.accessToken){
+            const loginForm = new FormData();
+            loginForm.append("accessToken", res.accessToken)
+            loginForm.append("provider", "facebook")
+
+
+            try {
+                // make axios post request
+                const response = await axios({
+                    method: "post",
+                    url: process.env.REACT_APP_API_URL+"/user/social-login",
+                    data: loginForm,
+                    headers: { "Content-Type": "multipart/form-data" },
+                });
+
+                if(response?.data[0]?.token){
+                    sessionStorage.setItem("token",response.data[0].token)
+                    sessionStorage.setItem("user",JSON.stringify(response.data[0]))
+                    sessionStorage.setItem("useradress",JSON.stringify(response.data.address))
+                    history.push(HOME_PAGE)
+                }
+            } catch(error) {
+                console.log(error)
+            }
+        }
+    }
+
+
+    const responseGoogle =async (res)=>{
+        console.log(res)
+        if(res.accessToken){
+            const loginForm = new FormData();
+            loginForm.append("accessToken", res.accessToken)
+            loginForm.append("provider", "google")
+
+
+            try {
+                // make axios post request
+                const response = await axios({
+                    method: "post",
+                    url: process.env.REACT_APP_API_URL+"/user/social-login",
+                    data: loginForm,
+                    headers: { "Content-Type": "multipart/form-data" },
+                });
+                console.log(response)
+                if(response?.data[0]?.token){
+                    sessionStorage.setItem("token",response.data[0].token)
+                    sessionStorage.setItem("user",JSON.stringify(response.data[0]))
+                    sessionStorage.setItem("useradress",JSON.stringify(response.data.address))
+                    history.push(HOME_PAGE)
+                }
+            } catch(error) {
+                console.log(error)
+            }
+        }
     }
 
     return (
@@ -155,30 +211,47 @@ const LoginPage = () => {
                            title="մուտք"
 
                        />
-                       <p className={css.or}>կամ</p>
-                     <div className={css.socialfb} >
 
-
-                         <FacebookLogin
-                             appId="331261461769561"
-                             autoLoad={false}
-                             fields="name,email,picture"
-                             callback={responseFacebook}
-                             textButton="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;շարունակել ֆեյսբուքով"
-                             cssClass={css.mubtnfacebook}
-                             icon={<img src={fb} alt="" className={css.iconfb}/>}
-
-                         />
-                     </div>
-                     <div className={css.socialgoogle} >
-                         <img src={google} alt=""/>
-                         <h2>շարունակել գուգլով</h2>
-                     </div>
-                     <div className={css.reglink}>
-                        <p>Դեռ գրանցվա՞ծ չեք։</p>
-                         <NavLink to={REGISTER_PAGE} exect >Գրանցվել</NavLink>
-                     </div>
                  </form>
+
+            </div>
+            <div className={css.socialloginform}>
+                <p className={css.or}>կամ</p>
+                <FacebookLogin
+                    appId="598582751447780"
+                    autoLoad={false}
+
+                    fields="name,email,picture"
+                    callback={responseFacebook}
+                    render={renderProps => (
+                        <button onClick={(e)=>{
+                            renderProps.onClick()
+                            e.stopPropagation()
+
+                        }} className={css.mubtnfacebook}>
+                            <img src={fb} alt='fb' />
+                            <h2>շարունակել ֆեյսբուքով</h2></button>
+                    )}
+                />
+                <GoogleLogin
+                    clientId="798988727061-09ffbg2uivsb38i34i6bknj6l1gogg5l.apps.googleusercontent.com"
+                    buttonText=""
+                    icon={true}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    render={renderProps => (
+                        <button onClick={renderProps.onClick} className={css.btngoogle}>
+                            <img src={google} alt='google' />
+                            <h2>շարունակել գուգլով</h2>
+                        </button>
+                    )}
+                    cookiePolicy={'single_host_origin'}
+                />
+
+                <div className={css.reglink}>
+                    <p>Դեռ գրանցվա՞ծ չեք։</p>
+                    <NavLink to={REGISTER_PAGE} exect >Գրանցվել</NavLink>
+                </div>
             </div>
         </div>
     );

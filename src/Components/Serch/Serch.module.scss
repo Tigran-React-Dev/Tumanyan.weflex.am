@@ -145,13 +145,14 @@
     font-family: Mardoto-Medium;
     font-style: normal;
     font-weight: 500;
-    font-size: get-vw(24px,1920);
-    line-height: get-vw(28px,1920);
+    font-size: get-vw(24px,375);
+    line-height: get-vw(28px,375);
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #252223;
     text-align: center;
-    margin-top: get-vw(100px,1920);
+    margin-top: get-vw(100px,375);
+    padding-bottom: get-vw(60px,375);
   }
 
 }

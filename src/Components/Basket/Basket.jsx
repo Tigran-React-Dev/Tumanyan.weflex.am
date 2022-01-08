@@ -326,17 +326,18 @@ const Basket = () => {
                               </div>}
                               {showdetalis===1 ?
                                   <>
-                                  {userAdress.length ?
+                                  {userAdress?.length ?
                                       <div className={css.userADresesblok}>
                                          <p className={css.selectuseradres} style={fontproprty2}>Ընտրեք հասցեն՝</p>
                                           <div className={css.adresselement}>
                                               {
-                                                  userAdress.map(({id,adress,bulding,apartment})=>{
+                                                  userAdress.map(({id,building , street, apartment})=>{
                                                       return(
                                                           <div key={id} className={css.itermadresandicon}
                                                                style={{marginLeft:id===5  && "3.33vw",marginRight:id===3  && "1.2vw"}}>
                                                               <img src={adressicon} alt=""/>
-                                                              <p style={fontproprty}>{adress }, շ․{bulding}, բն․{apartment}</p>
+                                                              <p style={fontproprty}>
+                                                                  {street }, շ․{building}, բն․{apartment}</p>
                                                           </div>
                                                       )
                                                   })

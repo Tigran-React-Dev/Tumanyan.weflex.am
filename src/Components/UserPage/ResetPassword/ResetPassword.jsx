@@ -9,11 +9,13 @@ import axios from "axios";
 const ResetPassword = ({history}) => {
     const [errors,setErrors]=useState({})
     const [succses,SetSuccsess]=useState({})
+    const [errormesage,setErrormessage]=useState(null)
     const [userdata,setuserdata]=useState({
         token:"",
         email:"",
     })
       const {token,email}=userdata;
+
      useEffect(()=>{
          var str = window.location.href;
          str = str.split("token=")
@@ -58,18 +60,17 @@ const ResetPassword = ({history}) => {
         loginFormData.append("token", token)
         loginFormData.append("password", password)
         loginFormData.append("password_confirmation", password_confirmation)
-
+        console.log(token)
+        console.log(email)
 
         try {
             // make axios post request
             const response = await axios({
                 method: "post",
-                url: process.env.REACT_APP_API_URL+"/user/new-password",
+                url: "http://tumanyanadmin.weflex.am/api/user/new-password",
                 data: loginFormData,
                 headers:
-                    { "Content-Type": "multipart/form-data",
-
-                    },
+                    { "Content-Type": "multipart/form-data",},
             });
 
             debugger
@@ -86,6 +87,10 @@ const ResetPassword = ({history}) => {
                 },3000)
             }else{
                 setErrors(response.data);
+
+            }
+            if(response.data?.status=="Error"){
+                setErrormessage(response.data.message)
             }
         } catch(error) {
             console.log(error)
@@ -122,7 +127,7 @@ const ResetPassword = ({history}) => {
                     title="հաստատել"
 
                 />
-                <p className={css.message}>{succses.am && succses.am}</p>
+                <p className={css.message}>{succses.am && succses.am }{errormesage!=null && errormesage}</p>
                 {/*<div className={css.linknazat}>*/}
                 {/*    /!*<NavLink  to={LOGIN_PAGES} exect >վերադառնալ</NavLink>*!/*/}
                 {/*</div>*/}

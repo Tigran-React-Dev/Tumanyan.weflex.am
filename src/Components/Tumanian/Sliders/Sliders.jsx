@@ -30,7 +30,7 @@ const  TumanianSlider= () =>{
     const {languae}=useProduct()
     useEffect(()=>{
 
-        const sldrespons=axios.get("http://tumanyanadmin.weflex.am/api/slider_one")
+        const sldrespons=axios.get(process.env.REACT_APP_API_URL+"/slider_one")
         sldrespons.then(res=>setSliderHome1(res.data))
             .catch(err=>console.log(err))
         setloading(true)
