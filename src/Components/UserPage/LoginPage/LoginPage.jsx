@@ -136,7 +136,7 @@ const LoginPage = () => {
 
 
     const responseGoogle =async (res)=>{
-        console.log(res)
+
         if(res.accessToken){
             const loginForm = new FormData();
             loginForm.append("accessToken", res.accessToken)

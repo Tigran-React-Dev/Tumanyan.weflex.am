@@ -71,7 +71,6 @@ export const ProductReducer =(state=initialState,action)=>{
             }
 
             return {
-
                 product:[...state.product],
                 recoment: [...state.recoment],
                 Sauces:[...state.Sauces]

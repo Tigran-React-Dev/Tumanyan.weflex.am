@@ -32,7 +32,6 @@ const ProductProvider =({children})=>{
      const responsmenu=axios.get(process.env.REACT_APP_API_URL + `/category`)
        responsmenu.then(res=>{
             const sityone="Երեվան";
-
             const sityty="Ծաղկաձոր";
             const dataone =menuCategorup.find((i)=>i.id===1);
             const datatoo =menuCategorup.find((i)=>i.id===2);

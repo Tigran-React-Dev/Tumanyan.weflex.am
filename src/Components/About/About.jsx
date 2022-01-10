@@ -29,7 +29,6 @@ const About =({history})=>{
 
         const respons=axios.get(process.env.REACT_APP_API_URL + "/about_management", )
         respons.then(res=> {
-               console.log(res)
              setMenejmentdata(res.data)
 
         }).catch(err=>console.log(err))

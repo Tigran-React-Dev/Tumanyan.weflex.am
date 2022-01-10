@@ -68,7 +68,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, Addli
                 {add_buffets === undefined ?  <div className={css.overfloscrol}>
                     {itionaldataitem.map(e => {
                         return (
-                            <div>
+                            <div key={Math.random()}>
                                 <div className={css.banjarexen}>
                                     <h2 style={fontproprty}>{languae == "ՀԱՅ" ? e.name : languae == "ENG" ? e.nameEN : languae == "РУС" ? e.nameRU : null}</h2>
                                 </div>
@@ -76,7 +76,7 @@ const ItionalProduct = ({itionaldataitem, setItionaldataitem, add_buffets, Addli
                                     {
                                         e.adds.map(el => {
                                             return (
-                                                <div>
+                                                <div key={Math.random()}>
                                                     <CheckBox cn="Checkboxitional" {...el}
                                                               onchangecheck={(e) => onchangecheck({
                                                                   ...el,

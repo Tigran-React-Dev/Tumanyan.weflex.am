@@ -74,11 +74,10 @@ const Registration = () => {
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
-        debugger
+
             if(response.data.token){
                 sessionStorage.setItem("token",response.data.token)
                 sessionStorage.setItem("user",JSON.stringify(response.data))
-
                 setErrors({})
                 history.push(HOME_PAGE)
             }else{

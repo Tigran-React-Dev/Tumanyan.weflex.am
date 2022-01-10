@@ -49,7 +49,7 @@ const Profile = ({user,userAdress}) => {
     })
 
     
-     const {name,lastname,phone,email,success_check,oldPassword,password,password_confirmation}=users
+     const {name,lastname,phone,email,success_check,oldPassword,password,password_confirmation,type}=users
      const [checket,setchecked]=useState(false)
      const {street,building,apartment}=newAdress
      const [errors,setErrors]=useState({})
@@ -63,6 +63,7 @@ const Profile = ({user,userAdress}) => {
         }
 
     },[])
+
 
 
     const handleChangeinput = e =>{
@@ -204,7 +205,7 @@ const Profile = ({user,userAdress}) => {
                  "Authorization": `Bearer ${newtoken}`
              },
          });
-        
+
 
          if(responseadress.data?.[0] ){
              setErrorsadressadd({})
@@ -245,7 +246,7 @@ const Profile = ({user,userAdress}) => {
              "Authorization": `Bearer ${token}`
          },
      });
-     debugger
+
 
      if(resremuveitem.data){
          sessionStorage.setItem("useradress",JSON.stringify(resremuveitem.data))
@@ -273,7 +274,7 @@ const Profile = ({user,userAdress}) => {
                 "Manrope-Medium" : languae=="РУС" ?
                     "Manrope-Medium" : null
     }
-
+    console.log(type)
     return (
         <>
 
@@ -328,57 +329,63 @@ const Profile = ({user,userAdress}) => {
                         isChecked={checket}
                     />
                 </div>
-                <p className={css.resetpass}>ՓՈԽԵԼ ԳԱՂՏՆԱԲԱՌԸ</p>
-                <Input
-                    cn="inputuserinfo"
-                    type="password"
-                    placeholder="Ներկա գաղտնաբառը"
-                    value={oldPassword}
-                    style={{border:errors.message && "1px solid red",...fontproprty2}}
-                    name="oldPassword"
-                    onChange={handleChangeinput}
-                />
-                <div className={css.passresetdiv}>
-                    <Input
-                        cn="inputuserinfo"
-                        type={typeinput1}
-                        style={{border:errors.message && "1px solid red",...fontproprty2}}
-                        placeholder="Նոր գաղտնաբառ"
-                        value={password}
-                        name="password"
-                        onChange={handleChangeinput}
-                    />
-                    {typeinput1 === "password" ?
-                        <img className={css.sowicon} src={sowicon}
-                             alt=""
-                             onClick={() => settypeinput1("text")}
-                        />
-                        :
-                        <img src={csowicon}
-                             className={css.sowicon}
-                             alt=""
-                             onClick={() => settypeinput1("password")}/>}
-                    <Input
-                        cn="inputuserinfo"
-                        type={typeinput2}
-                        style={{border:errors.message && "1px solid red",...fontproprty2}}
-                        placeholder="Կրկնել նոր գաղտնաբառը"
-                        value={password_confirmation}
-                        name="password_confirmation"
-                        onChange={handleChangeinput}
-                    />
-                    {typeinput2 === "password" ?
-                        <img className={css.sowicon2} src={sowicon}
-                             alt=""
-                             onClick={() => settypeinput2("text")}
-                        />
-                        :
-                        <img src={csowicon}
-                             className={css.sowicon2}
-                             alt=""
-                             onClick={() => settypeinput2("password")}/>}
 
-                </div>
+                {<>
+                    <p className={css.resetpass}>ՓՈԽԵԼ ԳԱՂՏՆԱԲԱՌԸ</p>
+                    <Input
+                        cn="inputuserinfo"
+                        type="password"
+                        placeholder="Ներկա գաղտնաբառը"
+                        value={oldPassword}
+                        disabled={type==true && "disabled"}
+                        style={{border: errors.message && "1px solid red", ...fontproprty2}}
+                        name="oldPassword"
+                        onChange={handleChangeinput}
+                    />
+                    <div className={css.passresetdiv}>
+                        <Input
+                            cn="inputuserinfo"
+                            type={typeinput1}
+                            style={{border: errors.message && "1px solid red", ...fontproprty2}}
+                            placeholder="Նոր գաղտնաբառ"
+                            value={password}
+                            disabled={type==true  && "disabled"}
+                            name="password"
+                            onChange={handleChangeinput}
+                        />
+                        {typeinput1 === "password" ?
+                            <img className={css.sowicon} src={sowicon}
+                                 alt=""
+                                 onClick={() => settypeinput1("text")}
+                            />
+                            :
+                            <img src={csowicon}
+                                 className={css.sowicon}
+                                 alt=""
+                                 onClick={() => settypeinput1("password")}/>}
+                        <Input
+                            cn="inputuserinfo"
+                            type={typeinput2}
+                            disabled={type==true && "disabled"}
+                            style={{border: errors.message && "1px solid red", ...fontproprty2}}
+                            placeholder="Կրկնել նոր գաղտնաբառը"
+                            value={password_confirmation}
+                            name="password_confirmation"
+                            onChange={handleChangeinput}
+                        />
+                        {typeinput2 === "password" ?
+                            <img className={css.sowicon2} src={sowicon}
+                                 alt=""
+                                 onClick={() => settypeinput2("text")}
+                            />
+                            :
+                            <img src={csowicon}
+                                 className={css.sowicon2}
+                                 alt=""
+                                 onClick={() => settypeinput2("password")}/>}
+
+                    </div>
+                </>}
                 <div className={css.resetuserinfobtn}>
                     <Button
                         cn="btnprofil"

@@ -29,7 +29,7 @@ export const CardReducer = (state = initialState, action) => {
                 let files= state.items.filter((e)=>{
                     return (e.name===action.payload.name && e.size===action.payload.size && e.itionalitem?.length==action.payload.itionalitem?.length && e.itionalitem?.[0]?.name===action.payload.itionalitem?.[0]?.name )
               })
-             debugger
+
                 if(files.length===0){
                     arr1.push(action.payload)
                 }else{
@@ -59,13 +59,11 @@ export const CardReducer = (state = initialState, action) => {
                  items: newArr,
                  totalPrice,
             }
-
-        }
+            }
 
         case ADD_PRODUCT_CARD_ONLY:{
-
             const arrayy=[];
-            if (!state.items.length) {
+            if(!state.items.length){
                 arrayy.push(action.payload)
              }else{
                 const fol= state.items.filter((i)=>i.title===action.payload.title )
@@ -85,8 +83,8 @@ export const CardReducer = (state = initialState, action) => {
                 ...state.items,
                 ...arrayy
             ]
-      
-              const totalPrice = getTotalPrice(newar)
+
+            const totalPrice = getTotalPrice(newar)
 
             const local ={
                 ...state,
@@ -95,7 +93,7 @@ export const CardReducer = (state = initialState, action) => {
             }
 
             localStorage.setItem("card",JSON.stringify(local))
-          return {
+            return {
                    ...state,
                    items: newar,
                    totalPrice,
@@ -152,7 +150,7 @@ export const CardReducer = (state = initialState, action) => {
 
            })
        }
-            const totalPrice = getTotalPrice(state.items)
+       const totalPrice = getTotalPrice(state.items)
         return {
            ...state,
             totalPrice,
@@ -172,7 +170,6 @@ export const CardReducer = (state = initialState, action) => {
                         }else{
                             const filprice= elem.priceitem.find(e=>e.sizes.size==elem.size)
                             if(filprice){
-
                                 let plusPrice=(action.payload.obj.bonus !=null) ? (+filprice.price-(+filprice.price/100 *+action.payload.obj.bonus))  : +filprice.price;
                                 elem.price-=plusPrice;
                                 elem.count-=1
@@ -189,7 +186,7 @@ export const CardReducer = (state = initialState, action) => {
                 })
             }else{
                 const filtertu = state.items.filter((e)=>e._id!==action.payload)
-                 filtertu.forEach(e=>{
+                   filtertu.forEach(e=>{
                     minusdata.push(e)
                 })
             }

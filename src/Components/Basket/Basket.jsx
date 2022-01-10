@@ -51,7 +51,7 @@ const Basket = () => {
     const { t } =useTranslation()
 
 
-    console.log(user)
+    console.log(CardData)
     useEffect(() => {
         window.scrollTo(0, 0);
      }, [sucsessshop])

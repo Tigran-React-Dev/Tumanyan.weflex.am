@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-import {Switch,Route,Link,useLocation,Redirect} from "react-router-dom";
+import {useLocation,Redirect} from "react-router-dom";
 import Header from "./Components/Header/Header"
 import Routes from "./Components/Routes/Routes"
 import {useState,useEffect} from "react";
@@ -12,7 +12,6 @@ import Footer from "./Components/Footer/Footer";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {loadLocalCard} from "./Components/redux/Action/CardAction"
-import axios from "axios";
 import {LoadingUserdata, LoadingUserdataError} from "./Components/redux/Action/AuthACtion";
 
 function App() {
@@ -20,10 +19,10 @@ function App() {
 
     const key = sessionStorage.getItem("key")
     const dispath=useDispatch()
+    const history = useLocation()
     const [sowZapros ,setSowZapros]=useState(true)
     const {menuCategorup,ChangeACtivSup,setDefaultSity,setactiveCityname,getData,languae,setLanguage} =useProduct()
     const [bgcolor,setBgcolor]=useState(null)
-    const history = useLocation()
     const [loading,setloading]=useState(false)
     const [sowmenu, setSoumenu] = useState(false)
 
@@ -43,7 +42,7 @@ function App() {
           setDefaultSity(key2)
       }
       getData()
-
+      window.scrollTo(0, 0);
     },[])
 
     useEffect(()=>{
@@ -53,12 +52,11 @@ function App() {
         }else{
             dispath(LoadingUserdataError())
         }
-
+      debugger
     },[sessionStorage.getItem("token")])
 
 
   useEffect(() => {
-
       const activeLanguage=localStorage.getItem("i18nextLng")
       if(activeLanguage){
         setLanguage(activeLanguage)
@@ -78,11 +76,7 @@ function App() {
         }
     }
     
-    useEffect(()=>{
 
-         window.scrollTo(0, 0);
-
-    },[])
    if(history.pathname==="/"){
         return <Redirect to={HOME_PAGE}/>
     }
@@ -127,9 +121,15 @@ function App() {
            </div>
          
        </div>
-          {sowZapros   && !key  && <div className="modalzapros">
-             <div className="wraper" onClick={()=>setSowZapros(!sowZapros)} />
-                 <div className="zapros" onClick={(e)=>e.stopPropagation()}>
+          {sowZapros   && !key  &&
+          <div className="modalzapros">
+             <div
+                 className="wraper"
+                 onClick={()=>setSowZapros(!sowZapros)}
+             />
+                 <div
+                     className="zapros"
+                     onClick={(e)=>e.stopPropagation()}>
                      <div className="closewindow" onClick={CloseWinzapros}>
                          <img src={close}  className="close"/>
                      </div>

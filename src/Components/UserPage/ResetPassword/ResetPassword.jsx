@@ -18,10 +18,10 @@ const ResetPassword = ({history}) => {
 
      useEffect(()=>{
          var str = window.location.href;
-         str = str.split("token=")
-          str = str[1].split("&email=")
-         let token=str[0];
-         let email= str[1];
+         str = str?.split("token=")
+          str = str[1]?.split("&email=")
+         let token=str?.[0];
+         let email= str?.[1];
          setuserdata({
              token:token,
              email:email,
@@ -60,20 +60,19 @@ const ResetPassword = ({history}) => {
         loginFormData.append("token", token)
         loginFormData.append("password", password)
         loginFormData.append("password_confirmation", password_confirmation)
-        console.log(token)
-        console.log(email)
+
 
         try {
             // make axios post request
             const response = await axios({
                 method: "post",
-                url: "http://tumanyanadmin.weflex.am/api/user/new-password",
+                url: process.env.REACT_APP_API_URL + "/user/new-password",
                 data: loginFormData,
                 headers:
                     { "Content-Type": "multipart/form-data",},
             });
 
-            debugger
+
 
             if(response.data?.status=="Success"){
                 setErrors({});

@@ -43,6 +43,7 @@ export const AuthReducer=(state=initialstate,action)=>{
                     phone:action.payload.userdata.phone ?  action.payload.userdata.phone : "",
                     email:action.payload.userdata.email,
                     success_check:action.payload.userdata.success_check,
+                    type:action.payload.userdata.type,
                 },
 
 
@@ -53,6 +54,7 @@ export const AuthReducer=(state=initialstate,action)=>{
             return {
                 ...state,
                 loadding: true,
+                adresess: sessionStorage.removeItem("useradress"),
                 token: sessionStorage.removeItem("token"),
                 user:{}
             }
@@ -82,17 +84,14 @@ export const AuthReducer=(state=initialstate,action)=>{
         case REMOVE_ADRESES :{
             
             const newadresesdata = state.adresess.filter((elem)=>elem.id!==action.payload)
-
-            return {
+           return {
                 ...state,
                 adresess:[... newadresesdata]
             }
 
         }
         case ADD_NEW_ADRESS :{
-
-
-        return{
+         return{
             ...state,
             adresess: JSON.parse(sessionStorage.getItem("useradress")),
         }

@@ -65,9 +65,7 @@ const Header = () => {
         setSelectIcon(!selecticon)
         setSowAdress(!sowAdress)
     }
-
-   
-    const languages = [
+   const languages = [
         { id: 1, name: "ՀԱՅ" },
         { id: 2, name: "ENG" },
         { id: 3, name: "РУС" },
@@ -89,9 +87,7 @@ const Header = () => {
 
     const home = () => {
         window.scrollTo(0, 0);
-
-
-    }
+     }
     const ScrlMenu = () => {
         if (history.location.pathname === "/" || history.location.pathname === "/home") {
 
@@ -108,8 +104,7 @@ const Header = () => {
         }
 
     }
-
-    const showactiveAdress = (id, adress, city) => {
+   const showactiveAdress = (id, adress, city) => {
         sessionStorage.setItem("city",city.toLowerCase())
         setActiveAdress({ [id]: !adressactive[id] })
         setAdress(adress)
@@ -257,13 +252,9 @@ const handleClickSelectMobile =()=>{
                                 onMouseLeave={() => changeborderinput(null)}
                                 placeholder={t('plachholderserch')}
                                 onChange={(e)=>setSearch(e.target.value)}
-
-
                             />
-
                           </form>
-
-                    </div>
+                     </div>
                     <Menu />
                 </div>
                 <div className={css.menuandlog} style={menublogstyle}>
@@ -281,17 +272,42 @@ const handleClickSelectMobile =()=>{
                         <div className={css.gic1} />
                         <div className={css.masnajux}  >
                             <div className={css.masnajuxwraper} >
-                                <img src={adress} alt="" className={css.adresicon} onClick={handleClickSelect} />
-                                <p  className={css.masnajuxname} style={fontproprty} onClick={handleClickSelect}>{adresses ? adresses : t("adresscity")}</p>
-                                {selecticon ? <img src={selt} className={css.slaq} onClick={handleClickSelect} /> : <img src={self} className={css.slaq} onClick={handleClickSelect}/>}
+                                <img
+                                    src={adress}
+                                    alt=""
+                                    className={css.adresicon}
+                                    onClick={handleClickSelect}
+                                />
+                                <p
+                                    className={css.masnajuxname}
+                                    style={fontproprty}
+                                    onClick={handleClickSelect}
+                                >{adresses ? adresses : t("adresscity")}</p>
+                                {selecticon ?
+                                    <img src={selt}
+                                         className={css.slaq}
+                                         onClick={handleClickSelect}
+                                    />
+                                    :
+                                    <img
+                                        src={self}
+                                        className={css.slaq}
+                                        onClick={handleClickSelect}
+                                    />
+                                }
                             </div>
                          </div>
-
-
                     </div>
-                    <div className={css.contactandlogin}>
-                        <img className={css.phone} src={phone} alt=""/>
-                        <a className={css.phoneNumber} href="tel:81 88">81 88</a>
+                    <div
+                        className={css.contactandlogin}>
+                        <img
+                            className={css.phone}
+                            src={phone} alt=""
+                        />
+                        <a
+                            className={css.phoneNumber}
+                            href="tel:81 88">81 88
+                        </a>
                         {sessionStorage.getItem("token") ? <NavLink to={PROFIL_PAGE}  className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
                             <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
                          <div className={css.basketclick}>
