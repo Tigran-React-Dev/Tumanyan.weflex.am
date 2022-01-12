@@ -8,6 +8,7 @@ import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import { LoadProductData } from "../redux/Action/ProductAction";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 
 
@@ -27,16 +28,38 @@ const Menu = ({ history }) => {
     const recoment = useSelector(({ ProductReducer  }) => ProductReducer.recoment)
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
     const [advances,setadvances]=useState([])
-
+    const [likeproduct,setLikeProduct]=useState([])
     useEffect(()=>{
-        dispatch(LoadProductData())
-         setloader2(true)
+          dispatch(LoadProductData())
+          setloader2(true)
+
+        let token=sessionStorage.getItem("token")
+        let URL=process.env.REACT_APP_API_URL+"/user/like";
+        axios.get(URL, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        })
+
+            .then((data)=> {
+                console.log(data)
+                setLikeProduct(data.data)
+
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+
+
+
 
     },[])
 
 
     useEffect(() => {
        if (activSub.length !== 0) {
+           debugger
             let act = activSub.find(i => i.name == id)
             setactiveMenuitem(act)
             setloader(false)
@@ -103,6 +126,7 @@ const Menu = ({ history }) => {
                     "Manrope-Medium" : null
     }
 
+    console.log(product)
 
     return (
         <>
@@ -134,7 +158,7 @@ const Menu = ({ history }) => {
 
                                 return (<ProductBlok
                                     key={obj.id}
-                                    like={false}
+                                    likeproduct={likeproduct}
                                     SendobjtoLikecategory={SendobjtoLikecategory}
                                     handleAddProductCard={handleAddProductCard}
                                     handleonlyproduct={handleonlyproduct}

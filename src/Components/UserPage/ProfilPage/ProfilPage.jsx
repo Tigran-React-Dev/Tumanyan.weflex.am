@@ -17,9 +17,10 @@ const ProfilPage = ({history}) => {
     const user = useSelector(({AuthReducer})=>AuthReducer.user)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const saveOrders = useSelector(({AuthReducer})=>AuthReducer.userorders)
-    const likeproduct = useSelector(({AuthReducer})=>AuthReducer.likeproduct)
+    // const likeproduct = useSelector(({AuthReducer})=>AuthReducer.likeproduct)
     const [activeMenu,setactiveMenu]=useState(1)
     const [loading,setloading]=useState(false)
+    const [likeProduct,setlikeProduct]=useState([])
     const {languae}=useProduct()
     const dispath=useDispatch()
     const menudata=[
@@ -46,6 +47,29 @@ const ProfilPage = ({history}) => {
             dispath(LoadingUserdata(userinfo,userinfo.token))
             setloading(true)
         }
+
+        let token=sessionStorage.getItem("token")
+        let URL=process.env.REACT_APP_API_URL+"/user/getLike";
+        axios.get(URL, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                         Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        })
+
+            .then((data)=> {
+                console.log(data)
+                setlikeProduct(data)
+             })
+            .catch(err=>{
+                console.log(err)
+            })
+
+
+
+
+
+
     },[])
 
 
@@ -122,7 +146,7 @@ const ProfilPage = ({history}) => {
                         :
                         activeMenu===3 ?
                             <div className={css.likeproduct}>
-                                {likeproduct.shaurma.length || likeproduct.salads.length ? <Likeproduct likeproduct={likeproduct}/> : <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>}
+                                {likeProduct.length ? <Likeproduct likeProduct={likeProduct}/> : <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>}
                             </div>
                             :
                             <div>

@@ -141,7 +141,7 @@ const Profile = ({user,userAdress}) => {
 
              if(street!="" && building!="" && apartment!="" ){
                  AddAdress()
-                 console.log("addadres")
+
              }
              UpdateAddress()
          }else{
@@ -247,7 +247,6 @@ const Profile = ({user,userAdress}) => {
          },
      });
 
-
      if(resremuveitem.data){
          sessionStorage.setItem("useradress",JSON.stringify(resremuveitem.data))
          dispath(RemuveAdres(id))
@@ -274,7 +273,7 @@ const Profile = ({user,userAdress}) => {
                 "Manrope-Medium" : languae=="РУС" ?
                     "Manrope-Medium" : null
     }
-    console.log(type)
+
     return (
         <>
 

@@ -1,4 +1,4 @@
-import React, {useState,Memo} from "react";
+import React, {useState, Memo, useEffect} from "react";
 import css from "./ProductBlok.module.scss";
 import btn1 from "../../../images/icons/btn1.svg";
 import minus from "../../../images/icons/Minus.svg";
@@ -9,12 +9,15 @@ import ItionalProduct from "../ItionalProduct/ItionalProduct";
 import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
+import axios from "axios";
+import {LOGIN_PAGES} from "../../urls";
+import {useHistory} from "react-router-dom";
 
-const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, prices, bonus,description,descriptionRU,descriptionEN,handleAddProductCard,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,image, prices, bonus,description,descriptionRU,descriptionEN,handleAddProductCard,SendobjtoLikecategory}) => {
 
 
 
-
+    const history=useHistory()
     const [itempricesitog, setpricesItog] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
     const [activeprice, setactivprice] = useState(typeof (prices)=="string" ? +prices : prices?.[0]?.price)
     const [size, setActivsize] = useState(typeof (prices)=="string" ?  undefined : prices?.[0]?.sizes.size)
@@ -29,28 +32,69 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
     const [priceItional,setPriceItional]=useState(0)
     const [itionalitem,setItionalitem]=useState([])
     const [sowlichniproductmodal,setsowproductmodal]=useState(false);
+    const [like,setLike]=useState(false)
+
+    useEffect(()=>{
+        likeproduct.forEach((item)=>{
+            debugger
+            if(item.product_id==id){
+                setLike(true)
+            }
+        })
+
+    },[likeproduct])
 
 
     const dispath=useDispatch()
     const {languae} =useProduct()
 
 
-    const  AddTolike=()=>{
-
-        dispath(LikedProduct(id,like))
-
-        const likeobj={
-            id,
-            _id:Date.now(),
-            name,
-            image,
-            itionalitem,
-            bonus,
-            prices,
-            description,
-            like:true
+    const  AddTolike=async ()=>{
+        let token =sessionStorage.getItem("token")
+        if(!token){
+           return  history.push(LOGIN_PAGES)
         }
-        SendobjtoLikecategory(likeobj)
+        const likeform = new FormData();
+        likeform.append("product_id", id)
+
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/addLike",
+                data: likeform,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`
+                },
+            });
+
+            debugger
+            if(response.data[0]=="Success"){
+                setLike(true)
+            }
+            console.log(response)
+         } catch(error) {
+            console.log(error)
+        }
+
+
+
+
+        // dispath(LikedProduct(id,like))
+
+        // const likeobj={
+        //     id,
+        //     _id:Date.now(),
+        //     name,
+        //     image,
+        //     itionalitem,
+        //     bonus,
+        //     prices,
+        //     description,
+        //     like:true
+        // }
+        // SendobjtoLikecategory(likeobj)
     }
 
     const addtoCart = () => {
@@ -136,7 +180,7 @@ const ProductBlok = ({id,like, name,nameRU,nameEN,names, ingredients,image, pric
             {prices.length==2 ?
                 <div className={css.imgblok}><img src={process.env.REACT_APP_IMG_URL + image} alt=""/></div>
                   :
-                <img src={process.env.REACT_APP_IMG_URL + image} alt=""/>
+                <img    src={process.env.REACT_APP_IMG_URL + image} alt=""/>
             }
             {bonus > 0 && <div className={css.akcia}>
                 <p style={fontproprty}>-{+bonus}%</p>

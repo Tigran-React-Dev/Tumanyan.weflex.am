@@ -1,4 +1,4 @@
-import React, {useState,Memo} from "react";
+    import React, {useState,Memo} from "react";
 import css from "./ProductBlokGrand.module.scss";
 import btn1 from "../../../images/icons/btn1.svg";
 import minus from "../../../images/icons/Minus.svg";

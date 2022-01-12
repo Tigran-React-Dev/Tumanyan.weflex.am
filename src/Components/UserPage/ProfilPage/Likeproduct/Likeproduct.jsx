@@ -6,8 +6,8 @@ import {useDispatch} from "react-redux";
 import {AddproductCard} from "../../../redux/Action/CardAction";
 
 
-const Likeproduct = ({likeproduct}) => {
-    const { itionaldata,setItionaldata} = useProduct()
+const Likeproduct = ({likeProduct}) => {
+
     const dispath=useDispatch()
 
     const handleAddProductCard =(obj)=>{
@@ -17,38 +17,38 @@ const Likeproduct = ({likeproduct}) => {
 
     return (
          <div  className={css.likehdr}>
-             {likeproduct.shaurma.length ? <p className={css.shaurmatitle}>շաուրմա</p> : null}
-             {
-                 likeproduct.shaurma.length ? likeproduct.shaurma.map((obj)=>{
+             {/*{likeproduct.shaurma.length ? <p className={css.shaurmatitle}>շաուրմա</p> : null}*/}
+             {/*{*/}
+             {/*    likeproduct.shaurma.length ? likeproduct.shaurma.map((obj)=>{*/}
 
-                     return (
-                         <ProductBlok
-                             itionaldata={itionaldata}
-                             handleAddProductCard={handleAddProductCard}
-                             setItionaldata={setItionaldata}
-                             key={obj.id}
-                             {...obj}
-                         />
-                     )
-                 })
-                     :
-                     null
-             }
-             {likeproduct.salads.length ? <p className={css.shaurmatitle}>աղցաններ</p> : null}
-             {
-                 likeproduct.salads.length && likeproduct.salads.map((obj)=>{
+             {/*        return (*/}
+             {/*            <ProductBlok*/}
+             {/*                itionaldata={itionaldata}*/}
+             {/*                handleAddProductCard={handleAddProductCard}*/}
+             {/*                setItionaldata={setItionaldata}*/}
+             {/*                key={obj.id}*/}
+             {/*                {...obj}*/}
+             {/*            />*/}
+             {/*        )*/}
+             {/*    })*/}
+             {/*        :*/}
+             {/*        null*/}
+             {/*}*/}
+             {/*{likeproduct.salads.length ? <p className={css.shaurmatitle}>աղցաններ</p> : null}*/}
+             {/*{*/}
+             {/*    likeproduct.salads.length && likeproduct.salads.map((obj)=>{*/}
 
-                     return (
-                         <ProductBlok
-                             itionaldata={itionaldata}
-                             handleAddProductCard={handleAddProductCard}
-                             setItionaldata={setItionaldata}
-                             key={obj.id}
-                             {...obj}
-                         />
-                     )
-                 })
-             }
+             {/*        return (*/}
+             {/*            <ProductBlok*/}
+             {/*                itionaldata={itionaldata}*/}
+             {/*                handleAddProductCard={handleAddProductCard}*/}
+             {/*                setItionaldata={setItionaldata}*/}
+             {/*                key={obj.id}*/}
+             {/*                {...obj}*/}
+             {/*            />*/}
+             {/*        )*/}
+             {/*    })*/}
+             {/*}*/}
          </div>
     );
 };

@@ -52,7 +52,7 @@ function App() {
         }else{
             dispath(LoadingUserdataError())
         }
-      debugger
+
     },[sessionStorage.getItem("token")])
 
 
