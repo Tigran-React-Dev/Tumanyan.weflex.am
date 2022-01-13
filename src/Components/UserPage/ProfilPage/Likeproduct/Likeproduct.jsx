@@ -6,49 +6,32 @@ import {useDispatch} from "react-redux";
 import {AddproductCard} from "../../../redux/Action/CardAction";
 
 
-const Likeproduct = ({likeProduct}) => {
+const Likeproduct = ({likeProductdata,likeproduct}) => {
 
     const dispath=useDispatch()
 
     const handleAddProductCard =(obj)=>{
         dispath(AddproductCard(obj))
     }
-
+    console.log(likeProductdata)
 
     return (
          <div  className={css.likehdr}>
-             {/*{likeproduct.shaurma.length ? <p className={css.shaurmatitle}>շաուրմա</p> : null}*/}
-             {/*{*/}
-             {/*    likeproduct.shaurma.length ? likeproduct.shaurma.map((obj)=>{*/}
 
-             {/*        return (*/}
-             {/*            <ProductBlok*/}
-             {/*                itionaldata={itionaldata}*/}
-             {/*                handleAddProductCard={handleAddProductCard}*/}
-             {/*                setItionaldata={setItionaldata}*/}
-             {/*                key={obj.id}*/}
-             {/*                {...obj}*/}
-             {/*            />*/}
-             {/*        )*/}
-             {/*    })*/}
-             {/*        :*/}
-             {/*        null*/}
-             {/*}*/}
-             {/*{likeproduct.salads.length ? <p className={css.shaurmatitle}>աղցաններ</p> : null}*/}
-             {/*{*/}
-             {/*    likeproduct.salads.length && likeproduct.salads.map((obj)=>{*/}
+             {likeProductdata.map((obj)=>{
+                    return (
+                         <ProductBlok
+                             likeproduct={likeproduct}
+                             handleAddProductCard={handleAddProductCard}
+                             key={obj.id}
+                             {...obj.products}
+                         />
+                     )
+                 })
 
-             {/*        return (*/}
-             {/*            <ProductBlok*/}
-             {/*                itionaldata={itionaldata}*/}
-             {/*                handleAddProductCard={handleAddProductCard}*/}
-             {/*                setItionaldata={setItionaldata}*/}
-             {/*                key={obj.id}*/}
-             {/*                {...obj}*/}
-             {/*            />*/}
-             {/*        )*/}
-             {/*    })*/}
-             {/*}*/}
+             }
+
+
          </div>
     );
 };

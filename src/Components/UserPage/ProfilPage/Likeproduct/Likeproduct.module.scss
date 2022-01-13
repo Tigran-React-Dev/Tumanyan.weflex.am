@@ -6,9 +6,11 @@
 
 
 .likehdr{
-  width: get-vw(1636px,1920);
+  width: get-vw(1772px,1920);
   min-height: get-vw(764px,1920);
-  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+
 }
 .shaurmatitle{
   font-family: Mardoto-Medium;

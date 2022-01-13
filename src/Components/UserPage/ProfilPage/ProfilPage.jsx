@@ -20,7 +20,8 @@ const ProfilPage = ({history}) => {
     // const likeproduct = useSelector(({AuthReducer})=>AuthReducer.likeproduct)
     const [activeMenu,setactiveMenu]=useState(1)
     const [loading,setloading]=useState(false)
-    const [likeProduct,setlikeProduct]=useState([])
+    const [likeProductdata,setlikeProductdata]=useState([])
+    const [likeproduct,setLikeProduct]=useState([])
     const {languae}=useProduct()
     const dispath=useDispatch()
     const menudata=[
@@ -45,7 +46,7 @@ const ProfilPage = ({history}) => {
         let userinfo=JSON.parse(sessionStorage.getItem("user"))
        if(userinfo?.token){
             dispath(LoadingUserdata(userinfo,userinfo.token))
-            setloading(true)
+
         }
 
         let token=sessionStorage.getItem("token")
@@ -58,8 +59,8 @@ const ProfilPage = ({history}) => {
         })
 
             .then((data)=> {
-                console.log(data)
-                setlikeProduct(data)
+                setlikeProductdata(data.data)
+                setloading(true)
              })
             .catch(err=>{
                 console.log(err)
@@ -67,12 +68,27 @@ const ProfilPage = ({history}) => {
 
 
 
+        let URL2=process.env.REACT_APP_API_URL+"/user/like";
+        axios.get(URL2, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        }).then((data)=> {
+                console.log(data)
+                setLikeProduct(data.data)
+
+            })
+            .catch(err=>{
+                console.log(err)
+            })
 
 
 
-    },[])
 
+     },[])
 
+    //logoutUser
     const LogautUser=async ()=>{
         let token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -146,7 +162,7 @@ const ProfilPage = ({history}) => {
                         :
                         activeMenu===3 ?
                             <div className={css.likeproduct}>
-                                {likeProduct.length ? <Likeproduct likeProduct={likeProduct}/> : <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>}
+                                {likeProductdata.length ? <Likeproduct likeProductdata={likeProductdata} likeproduct={likeproduct}/> : <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>}
                             </div>
                             :
                             <div>

@@ -36,7 +36,6 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
 
     useEffect(()=>{
         likeproduct.forEach((item)=>{
-            debugger
             if(item.product_id==id){
                 setLike(true)
             }
@@ -68,34 +67,14 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
                     Authorization: `Bearer ${token}`
                 },
             });
-
-            debugger
-            if(response.data[0]=="Success"){
+           if(response.data[0]=="Success"){
                 setLike(true)
             }
             console.log(response)
-         } catch(error) {
+            } catch(error) {
             console.log(error)
-        }
-
-
-
-
-        // dispath(LikedProduct(id,like))
-
-        // const likeobj={
-        //     id,
-        //     _id:Date.now(),
-        //     name,
-        //     image,
-        //     itionalitem,
-        //     bonus,
-        //     prices,
-        //     description,
-        //     like:true
-        // }
-        // SendobjtoLikecategory(likeobj)
-    }
+            }
+       }
 
     const addtoCart = () => {
 

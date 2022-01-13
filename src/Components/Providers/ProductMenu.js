@@ -1,6 +1,5 @@
 import React, {createContext, useContext, useState} from "react";
 import shaurma from "../../images/product/shaurma.png"
-import shaurmabig from "../../images/product/bigshaurma.png"
 import axios from "axios";
 const ProductContext = createContext({});
 
@@ -32,16 +31,16 @@ const ProductProvider =({children})=>{
      const responsmenu=axios.get(process.env.REACT_APP_API_URL + `/category`)
        responsmenu.then(res=>{
             const sityone="Երեվան";
-            const sityty="Ծաղկաձոր";
+            const sitytwo="Ծաղկաձոր";
             const dataone =menuCategorup.find((i)=>i.id===1);
-            const datatoo =menuCategorup.find((i)=>i.id===2);
+            const datatwo =menuCategorup.find((i)=>i.id===2);
             dataone.sup=res.data.filter(e=>e.city.name.toLowerCase().includes(sityone.toLowerCase()))
-            datatoo.sup=res.data.filter(e=>e.city.name.toLowerCase()==sityty.toLowerCase())
+           datatwo.sup=res.data.filter(e=>e.city.name.toLowerCase()==sitytwo.toLowerCase())
             setMenuCategrup([...menuCategorup])
-            if(defaultCity==sityone){
+            if(defaultCity==sityone.toLowerCase()){
                 setActivSub([...dataone.sup])
             }else{
-                setActivSub([...datatoo.sup])
+                setActivSub([...datatwo.sup])
             }
          }).catch(err=>console.log(err))
 

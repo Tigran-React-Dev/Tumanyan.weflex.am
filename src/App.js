@@ -63,9 +63,9 @@ function App() {
       }
      
    
-}, [languae])
+      }, [languae])
 
-    const Clickcountry =(activdata,name,id)=>{
+     const Clickcountry =(activdata,name,id)=>{
         var width = window.innerWidth;
         sessionStorage.setItem("city",name.toLowerCase())
         setDefaultSity(name.toLowerCase())
@@ -74,7 +74,7 @@ function App() {
         if(width<700){
             setSowZapros(!sowZapros)
         }
-    }
+     }
     
 
    if(history.pathname==="/"){
@@ -105,9 +105,6 @@ function App() {
         transition: "all 0.3s ease-in",
     }
 
-    const stylefooter={
-        
-    }
 
 
   return (
@@ -116,7 +113,7 @@ function App() {
            <Header/>
       <div className="main" style={stylemain}>
            <Routes/>
-           <div style={stylefooter}>
+           <div>
            <Footer/>
            </div>
          
