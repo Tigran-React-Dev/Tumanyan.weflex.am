@@ -1,7 +1,6 @@
 import React from 'react';
 import css from "./Likeproduct.module.scss";
 import ProductBlok from "../../../Menu/ProductBlok/ProductBlok";
-import {useProduct} from "../../../Providers/ProductMenu";
 import {useDispatch} from "react-redux";
 import {AddproductCard} from "../../../redux/Action/CardAction";
 
@@ -17,8 +16,7 @@ const Likeproduct = ({likeProductdata,likeproduct}) => {
 
     return (
          <div  className={css.likehdr}>
-
-             {likeProductdata.map((obj)=>{
+          {likeProductdata.map((obj)=>{
                     return (
                          <ProductBlok
                              likeproduct={likeproduct}
@@ -27,12 +25,8 @@ const Likeproduct = ({likeProductdata,likeproduct}) => {
                              {...obj.products}
                          />
                      )
-                 })
-
-             }
-
-
-         </div>
+                 })}
+           </div>
     );
 };
 

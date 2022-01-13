@@ -105,27 +105,6 @@ export const AuthReducer=(state=initialstate,action)=>{
             ...state
         }
 
-
-
-
-
-        case LIKE_OBJ_SEND_TO_DATA:{
-            if(action.payload.category==="շաուրմա"){
-                state.likeproduct.shaurma.push(action.payload)
-            }
-            if(action.payload.category==="աղցաններ"){
-
-                state.likeproduct.salads.push(action.payload)
-            }
-
-        }
-        return {
-            ...state
-        }
-
-
-
-
         default:
             return state
     }

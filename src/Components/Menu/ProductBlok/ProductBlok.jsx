@@ -13,7 +13,7 @@ import axios from "axios";
 import {LOGIN_PAGES} from "../../urls";
 import {useHistory} from "react-router-dom";
 
-const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,image, prices, bonus,description,descriptionRU,descriptionEN,handleAddProductCard,SendobjtoLikecategory}) => {
+const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,image, prices, bonus,description,descriptionRU,descriptionEN,handleAddProductCard}) => {
 
 
 
@@ -67,9 +67,14 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
                     Authorization: `Bearer ${token}`
                 },
             });
-           if(response.data[0]=="Success"){
+
+            console.log(response)
+
+           if(response.data=="Success"){
                 setLike(true)
-            }
+            }else{
+               setLike(false)   
+           }
             console.log(response)
             } catch(error) {
             console.log(error)

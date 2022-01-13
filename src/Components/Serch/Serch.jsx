@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import css from "./Serch.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import ProductBlok from "../Menu/ProductBlok/ProductBlok";
 import {AddproductCard, AddproductCardonly} from "../redux/Action/CardAction";
 import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import ProductBlokGrand from "../GrandBuffet/ProductBlok/ProductBlokGrand";
+import {LoadProductData} from "../redux/Action/ProductAction";
+import axios from "axios";
 
 
 
@@ -13,7 +15,31 @@ const Serch = () => {
     const serchdata = useSelector(({ ProductReducer  }) => ProductReducer.searchProduct)
     const serchtext = useSelector(({ ProductReducer  }) => ProductReducer.searchtext)
     const dispatch =useDispatch()
+    const [likeproduct,setLikeProduct]=useState([])
+    useEffect(()=>{
 
+        let token=sessionStorage.getItem("token")
+        let URL=process.env.REACT_APP_API_URL+"/user/like";
+        axios.get(URL, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        })
+
+            .then((data)=> {
+                console.log(data)
+                setLikeProduct(data.data)
+
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+
+
+
+
+    },[])
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
     }
@@ -48,8 +74,7 @@ const Serch = () => {
                      return (
                          <ProductBlok
                              key={obj.id}
-                             like={false}
-                             SendobjtoLikecategory={SendobjtoLikecategory}
+                             likeproduct={likeproduct}
                              handleAddProductCard={handleAddProductCard}
                              handleonlyproduct={handleonlyproduct}
                              {...obj}
@@ -62,8 +87,7 @@ const Serch = () => {
                      return (
                          <ProductBlokGrand
                              key={obj.id}
-                             like={false}
-                             SendobjtoLikecategory={SendobjtoLikecategory}
+                             likeproduct={likeproduct}
                              handleAddProductCard={handleAddProductCard}
                              handleonlyproduct={handleonlyproduct}
                              {...obj}

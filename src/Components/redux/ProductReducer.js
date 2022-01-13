@@ -38,45 +38,6 @@ export const ProductReducer =(state=initialState,action)=>{
         }
 
 
-
-
-
-
-        case LIKE_PRODUCT:{
-            if(action.payload.category==="շաուրմա"){
-                state.product.forEach((e)=>{
-                    if(e.id===action.payload.id){
-                      return   e.like=!e.like
-                    }
-                })
-            }else if(action.payload.category=="recoment"){
-                state.recoment.forEach((e)=>{
-                    if(e.id===action.payload.id){
-                      return   e.like=!e.like
-                    }
-                })
-            }else if(action.payload.category=="Sauces"){
-                state.recoment.forEach((e)=>{
-                    if(e.id===action.payload.id){
-                       return  e.like=!e.like
-                    }
-                })
-            }
-            else if(action.payload.category=="աղցաններ"){
-                state.product.forEach((e)=>{
-                    if(e.id===action.payload.id){
-                        return  e.like=!e.like
-                    }
-                })
-            }
-
-            return {
-                product:[...state.product],
-                recoment: [...state.recoment],
-                Sauces:[...state.Sauces]
-
-            }
-        }
         
         default:
             return state

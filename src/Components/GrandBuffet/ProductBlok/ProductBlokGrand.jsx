@@ -11,7 +11,7 @@ import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
 import ItionalProduct from "../../Menu/ItionalProduct/ItionalProduct";
 
-const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard,SendobjtoLikecategory}) => {
+const ProductBlokGrand = ({id,category_buffet_id,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard}) => {
 
 
 
@@ -19,7 +19,7 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
     const [itempricesitog, setpricesItog] = useState(price_buffets?.[0]?.price)
     const [activeprice, setactivprice] = useState(price_buffets?.[0]?.price)
     const [size, setActivsize] = useState(price_buffets?.[0]?.size_buffets.size)
-
+    const [like,setLike]=useState(false)
     const [count, setCount] = useState(1)
     const [activeBtnStyle, setActivebtn] = useState(1)
 
@@ -38,20 +38,7 @@ const ProductBlokGrand = ({id,category_buffet_id,like,names, name,nameRU,nameEN,
     
     const  AddTolike=()=>{
 
-        dispath(LikedProduct(id,like))
 
-        const likeobj={
-            id,
-            _id:Date.now(),
-            name,
-            image,
-            itionalitem,
-            bonus,
-            price_buffets,
-            description,
-            like:true
-        }
-        SendobjtoLikecategory(likeobj)
     }
 
     const addtoCart = () => {

@@ -106,9 +106,7 @@ const GrantBuffet = () => {
     const handleonlyproduct=(obj2)=>{
         dispatch(AddproductCardonly(obj2))
     }
-    const SendobjtoLikecategory =(ob)=>{
-        dispatch(LikeObjSenddat(ob))
-    }
+
 
     const fontproprty={fontFamily:languae=="ՀԱՅ" ?
             "Mardoto-Medium" : languae=="ENG" ?
@@ -155,7 +153,6 @@ const GrantBuffet = () => {
                             index<=pagintion &&
                             <ProductBlokGrand
                             key={obj.id}
-                            SendobjtoLikecategory={SendobjtoLikecategory}
                             handleAddProductCard={handleAddProductCard}
                             handleonlyproduct={handleonlyproduct}
                             {...obj}

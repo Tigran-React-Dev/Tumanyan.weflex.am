@@ -30,23 +30,20 @@ const Menu = ({ history }) => {
     const [advances,setadvances]=useState([])
     const [likeproduct,setLikeProduct]=useState([])
     useEffect(()=>{
-          dispatch(LoadProductData())
-          setloader2(true)
+
+        dispatch(LoadProductData())
+        setloader2(true)
 
         let token=sessionStorage.getItem("token")
         let URL=process.env.REACT_APP_API_URL+"/user/like";
-        axios.get(URL, {
+         axios.get(URL, {
             'headers': {  "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`
             } ,
             method:"GET"
-        })
-
-            .then((data)=> {
-                console.log(data)
+         }).then((data)=> {
                 setLikeProduct(data.data)
-
-            })
+             })
             .catch(err=>{
                 console.log(err)
             })
@@ -59,9 +56,8 @@ const Menu = ({ history }) => {
 
     useEffect(() => {
        if (activSub.length !== 0) {
-           debugger
-            let act = activSub.find(i => i.name == id)
-            setactiveMenuitem(act)
+           let active = activSub.find(i => i.name == id)
+            setactiveMenuitem(active)
             setloader(false)
         }
 
@@ -80,11 +76,6 @@ const Menu = ({ history }) => {
     const handleonlyproduct=(obj2)=>{
         dispatch(AddproductCardonly(obj2))
     }
-    const SendobjtoLikecategory =(ob)=>{
-      dispatch(LikeObjSenddat(ob))
-    }
-
-
 
     const changeProductCategory = (item,index) => {
         switch (index){
@@ -153,63 +144,48 @@ const Menu = ({ history }) => {
                     {loader2 &&
                     <>
                     <div className={css.categoryitemblok}>
-                        {
-                            product.filter(fil=>fil.name==id)[0]?.products.map((obj) => {
-
-                                return (<ProductBlok
+                        {product.filter(fil=>fil.name==id)[0]?.products.map((obj) => {
+                               return (<ProductBlok
                                     key={obj.id}
                                     likeproduct={likeproduct}
-                                    SendobjtoLikecategory={SendobjtoLikecategory}
                                     handleAddProductCard={handleAddProductCard}
                                     handleonlyproduct={handleonlyproduct}
                                     {...obj}
                                 />)
-                            })
-                        }
+                            })}
                     </div>
                     <div className={css.recoment}>
                     <p className={css.recomtitle} style={fontproprty}>{t("advaces")}</p>
                       <div className={css.recomconstruct}>
-                          {
-                              product.filter(fil=>fil.name==id)[0]?.advices?.map((obj) => {
-
-                                  return (<ProductBlok
+                          {product.filter(fil=>fil.name==id)[0]?.advices?.map((obj) => {
+                                return (<ProductBlok
                                       key={obj.product.id}
-                                      like={false}
-                                      SendobjtoLikecategory={SendobjtoLikecategory}
+                                      likeproduct={likeproduct}
                                       handleAddProductCard={handleAddProductCard}
                                       handleonlyproduct={handleonlyproduct}
                                       {...obj.product}
                                   />)
-                              })
-                          }
+                              })}
                     </div>
-
-              </div>
+                   </div>
                     </>
                     }
-                    {id==20 && <div className={css.Sauces}>
+                    {id=="Սոուսներ" && <div className={css.Sauces}>
                         <p className={css.Saucestitle} style={fontproprty}>Սոուսներ</p>
                         <div className={css.sousesblog}>
                             {product.filter(fil=>fil.name==id)[0]?.souses?.map((obj) => {
-
-                                return (<ProductBlok
+                                 return (<ProductBlok
                                     key={obj.id}
-                                    like={false}
-                                    SendobjtoLikecategory={SendobjtoLikecategory}
+                                    likeproduct={likeproduct}
                                     handleAddProductCard={handleAddProductCard}
                                     handleonlyproduct={handleonlyproduct}
                                     {...obj}
                                 />)
-                            })
-                            }
+                            })}
                         </div>
 
                     </div>}
-
-
-
-            </div>}
+             </div>}
         </>
     )
 }

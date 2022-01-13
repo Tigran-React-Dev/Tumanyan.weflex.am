@@ -29,7 +29,7 @@
 }
 .formregister{
   width: get-vw(628px,1920);
-  min-height: get-vw(724px,1920);
+  min-height: get-vw(500px,1920);
   margin: auto auto;
 
 }
@@ -48,9 +48,73 @@
 }
 .footregister{
   width: get-vw(628px,1920);
-  height: get-vw(22px,1920);
+  height: get-vw(300px,1920);
   display: flex;
-  margin-top: get-vw(50px,1920);
+  flex-direction: column;
+  margin-top: get-vw(30px,1920);
+  margin-left: get-vw(645px,1920);
+  .mubtnfacebook{
+    width: get-vw(628px,1920);
+    height: get-vw(75px,1920);
+    background: #3B5998;
+    border-radius: get-vw(10px,1920);
+    margin-top: get-vw(0px,1920);
+    cursor: pointer;
+    display: flex;
+    border: none;
+    h2{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(20px,1920);
+      line-height: get-vw(23px,1920);
+      text-align: center !important;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-left: get-vw(120px,1920);
+      margin-top: get-vw(26px,1920);
+      color: #FFFFFF;
+
+    }
+    img{
+      width: get-vw(40px,1920);
+      height: get-vw(40px,1920);
+      margin-left: get-vw(40px,1920);
+      margin-top: get-vw(18px,1820);
+    }
+  }
+
+  .btngoogle{
+    width: get-vw(628px,1920);
+    height: get-vw(75px,1920);
+    background: #DC4E41;
+    border-radius: get-vw(10px,1920);
+    margin-top: get-vw(25px,1920);
+    border: none;
+    cursor: pointer;
+    display: flex;
+
+    h2{
+      font-family: Mardoto-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(20px,1920);
+      line-height: get-vw(23px,1920);
+      text-align: center !important;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-left: get-vw(120px,1920);
+      margin-top: get-vw(26px,1920);
+      color: #FFFFFF;
+
+    }
+    img{
+      width: get-vw(40px,1920);
+      height: get-vw(40px,1920);
+      margin-left: get-vw(40px,1920);
+      margin-top: get-vw(18px,1820);
+    }
+  }
   p{
     font-family: Montserrat-Regular;
     font-style: normal;
@@ -59,8 +123,8 @@
     line-height: get-vw(22px,1920);
     letter-spacing: -0.02em;
     color: #252223;
-   margin-left: get-vw(155px,1920);
-
+    margin-left: get-vw(155px,1920);
+    margin-top: get-vw(50px,1920);
     min-width: max-content;
   }
   a{
@@ -74,6 +138,7 @@
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: #13AD54;
+    margin-top: get-vw(50px,1920);
     margin-left: get-vw(10px,1920);
   }
 }
@@ -97,7 +162,7 @@
   }
   .formregister{
     width: get-vw(345px,375);
-    min-height: get-vw(515px,375);
+    min-height: get-vw(415px,375);
     margin-left: get-vw(15px,375);
     margin-top: get-vw(40px,375);
 
@@ -123,23 +188,103 @@
   }
   .footregister{
     width: get-vw(375px,375);
-    height: get-vw(26px,375);
+    height: get-vw(280px,375);
     display: flex;
-    margin-top: get-vw(60px,375);
-    padding-bottom: get-vw(60px,375);
-    p{
-     font-size: get-vw(16px,375);
-      line-height: 160%;
-      margin-left: get-vw(19px,375);
+    flex-direction: column;
+    margin-top: get-vw(30px,375);
+    margin-left: get-vw(0px,375);
+    .mubtnfacebook{
+      width: get-vw(345px,375);
+      height: get-vw(57px,375);
+      background: #3B5998;
+      border-radius: get-vw(10px,375);
+      margin-top: get-vw(30px,375);
+      margin-left: get-vw(15px,375);
+      cursor: pointer;
+      display: flex;
+      border: none;
+      h2{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        text-align: center !important;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        margin-left: get-vw(30px,375);
+        margin-top: get-vw(19px,375);
+        color: #FFFFFF;
 
+      }
+      img{
+        width: get-vw(40px,375);
+        height: get-vw(40px,375);
+        margin-left: get-vw(15px,375);
+        margin-top: get-vw(8.5px,375);
+      }
+    }
+
+    .btngoogle{
+      width: get-vw(345px,375);
+      height: get-vw(57px,375);
+      background: #DC4E41;
+      border-radius: get-vw(10px,375);
+      margin-top: get-vw(25px,375);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      margin-left: get-vw(15px,375);
+
+      h2{
+        font-family: Mardoto-Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: get-vw(16px,375);
+        line-height: get-vw(19px,375);
+        text-align: center !important;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        margin-left: get-vw(30px,375);
+        margin-top: get-vw(19px,375);
+        color: #FFFFFF;
+
+      }
+      img{
+        width: get-vw(40px,375);
+        height: get-vw(40px,375);
+        margin-left: get-vw(15px,375);
+        margin-top: get-vw(8.5px,375);
+      }
+    }
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(18px,375);
+      letter-spacing: -0.02em;
+      color: #252223;
+      margin-left: get-vw(25px,375);
+      margin-top: get-vw(30px,375);
       min-width: max-content;
     }
     a{
-     font-size: get-vw(18px,375);
-      line-height: get-vw(22px,375);
-
-      margin-left: get-vw(8px,375);
+      min-width:max-content ;
+      font-family: Montserrat-Medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(18px,375);
+      text-align: right;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #13AD54;
+      margin-top: get-vw(30px,375);
+      margin-left: get-vw(10px,375);
     }
   }
+
+
 
 }

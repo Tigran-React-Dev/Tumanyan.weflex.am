@@ -44,9 +44,8 @@ const ProfilPage = ({history}) => {
     useEffect(()=>{
 
         let userinfo=JSON.parse(sessionStorage.getItem("user"))
-       if(userinfo?.token){
+        if(userinfo?.token){
             dispath(LoadingUserdata(userinfo,userinfo.token))
-
         }
 
         let token=sessionStorage.getItem("token")
@@ -56,9 +55,7 @@ const ProfilPage = ({history}) => {
                          Authorization: `Bearer ${token}`
             } ,
             method:"GET"
-        })
-
-            .then((data)=> {
+        }).then((data)=> {
                 setlikeProductdata(data.data)
                 setloading(true)
              })
@@ -68,8 +65,8 @@ const ProfilPage = ({history}) => {
 
 
 
-        let URL2=process.env.REACT_APP_API_URL+"/user/like";
-        axios.get(URL2, {
+         let URL2=process.env.REACT_APP_API_URL+"/user/like";
+         axios.get(URL2, {
             'headers': {  "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`
             } ,
@@ -77,21 +74,15 @@ const ProfilPage = ({history}) => {
         }).then((data)=> {
                 console.log(data)
                 setLikeProduct(data.data)
-
-            })
-            .catch(err=>{
+           }).catch(err=>{
                 console.log(err)
             })
-
-
-
-
-     },[])
+        },[])
 
     //logoutUser
     const LogautUser=async ()=>{
-        let token = sessionStorage.getItem("token");
-        const response = await axios.get(
+         let token = sessionStorage.getItem("token");
+         const response = await axios.get(
             process.env.REACT_APP_API_URL+"/user/logout",
             {
                 headers: {
@@ -112,18 +103,13 @@ const ProfilPage = ({history}) => {
 
     const fontproprty={fontFamily:languae=="ՀԱՅ" ?
             "Mardoto-Medium" : languae=="ENG" ?
-                "Manrope-Bold" : languae=="РУС" ?
-                    "Manrope-Medium" : null
+             "Manrope-Bold" : languae=="РУС" ?
+             "Manrope-Medium" : null
     }
     const fontproprty2={fontFamily:languae=="ՀԱՅ" ?
             "Montserrat-Regular" : languae=="ENG" ?
-                "manrope-reg" : languae=="РУС" ?
-                    "manrope-reg" : null
-    }
-    const fontproprty3={fontFamily:languae=="ՀԱՅ" ?
-            "Montserrat-Medium" : languae=="ENG" ?
-                "Manrope-Medium" : languae=="РУС" ?
-                    "Manrope-Medium" : null
+             "manrope-reg" : languae=="РУС" ?
+             "manrope-reg" : null
     }
 
     return (
@@ -141,12 +127,26 @@ const ProfilPage = ({history}) => {
                             })
                             }
                         </div>
-                        <div className={css.vixod} onClick={LogautUser}  ><img src={vxod} alt=""/><p>ելք</p></div>
+                        <div
+                            className={css.vixod}
+                            onClick={LogautUser}
+                          >
+                            <img
+                                src={vxod}
+                                alt=""
+                            />
+                            <p>
+                                ելք
+                            </p>
+                        </div>
                     </div>
                 </div>
                 {activeMenu===1 ?
                     <div className={css.userinfokonstruct} >
-                        <Profile user={user} userAdress={userAdress}/>
+                        <Profile
+                            user={user}
+                            userAdress={userAdress}
+                        />
                     </div>
                     :
                     activeMenu===2 ?
@@ -162,7 +162,11 @@ const ProfilPage = ({history}) => {
                         :
                         activeMenu===3 ?
                             <div className={css.likeproduct}>
-                                {likeProductdata.length ? <Likeproduct likeProductdata={likeProductdata} likeproduct={likeproduct}/> : <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>}
+                                {likeProductdata.length ?
+                                    <Likeproduct likeProductdata={likeProductdata} likeproduct={likeproduct}/>
+                                    :
+                                    <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>
+                                }
                             </div>
                             :
                             <div>

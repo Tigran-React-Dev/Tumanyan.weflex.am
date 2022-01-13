@@ -135,8 +135,7 @@ function App() {
                        </div>
                       
                      <div className="butonns">
-                         {
-                             menuCategorup.map(({id,name,sup})=>{
+                         {menuCategorup.map(({id,name,sup})=>{
                                  return (
                                       <Button
                                         cn={bgcolor===id ? "zaprosbuuton2" : "zaprosbuuton"  }

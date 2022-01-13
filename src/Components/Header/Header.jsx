@@ -90,7 +90,6 @@ const Header = () => {
      }
     const ScrlMenu = () => {
         if (history.location.pathname === "/" || history.location.pathname === "/home") {
-
             let width =window.innerWidth;
             if(width<700){
                 setMenuIconClik(!menuiconClik)
@@ -143,6 +142,7 @@ const Header = () => {
         e.preventDefault()
         await dispath(SearchingProduct(search))
         history.push(SEARCH_PAGE)
+
 
     }
 
