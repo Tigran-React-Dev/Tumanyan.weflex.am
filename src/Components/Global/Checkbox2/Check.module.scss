@@ -74,7 +74,7 @@ input[type=checkbox] {
 }
 
 
-@media screen and(max-width: 500px){
+@media screen and(max-width: 600px){
   .checkproduct[type=checkbox] + label {
     display: block;
     margin-left: get-vw(0px,375);

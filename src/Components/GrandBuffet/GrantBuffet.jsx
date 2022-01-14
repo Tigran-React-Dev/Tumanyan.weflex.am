@@ -11,6 +11,7 @@ import Button from "../Global/Button/Button";
 import {LoadGrandBufetData, LoadProductData} from '../redux/Action/ProductAction';
 import ProductBlokGrand from "./ProductBlok/ProductBlokGrand";
 import {HOME_PAGE} from "../urls";
+import axios from "axios";
 
 
 const GrantBuffet = () => {
@@ -28,7 +29,7 @@ const GrantBuffet = () => {
     const [loader2, setloader2] = useState(false)
     const [pagintion,setpagination]=useState(7)
     const [showpage,setShowPage]=useState(true)
-
+    const [likeproductBuffet,setLikeProductBuffet]=useState([])
 
 
      useEffect(()=>{
@@ -47,11 +48,27 @@ const GrantBuffet = () => {
 
 
      useEffect(()=>{
-
-        dispatch(LoadGrandBufetData())
+        //Coll grad bufe API in redux think
+         dispatch(LoadGrandBufetData())
          setloader2(true)
+        //get request req user token, res like product data
 
-    },[])
+         let token=sessionStorage.getItem("token")
+         let URL=process.env.REACT_APP_API_URL+"/user/likeBuffet";
+         axios.get(URL, {
+             'headers': {  "Content-Type": "multipart/form-data",
+                 Authorization: `Bearer ${token}`
+             } ,
+             method:"GET"
+         }).then((data)=> {
+             debugger
+             setLikeProductBuffet(data.data)
+         })
+             .catch(err=>{
+                 console.log(err)
+             })
+
+         },[])
 
     useEffect(()=>{
 
@@ -118,7 +135,7 @@ const GrantBuffet = () => {
                 "manrope-reg" : languae=="РУС" ?
                     "manrope-reg" : null
     }
-
+    console.log(grandfufet)
 
     return (
         <div className={css.grandebufecontantainer}>
@@ -146,12 +163,11 @@ const GrantBuffet = () => {
                 }
             </div>
             <div className={css.bufetitemblok}>
-                {
-
-                    grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.map((obj,index)=>{
+                {grandfufet.filter(fil=>fil.name==id)?.[0]?.product_buffets.map((obj,index)=>{
                         return(
                             index<=pagintion &&
                             <ProductBlokGrand
+                            likeproductBuffet={likeproductBuffet}
                             key={obj.id}
                             handleAddProductCard={handleAddProductCard}
                             handleonlyproduct={handleonlyproduct}

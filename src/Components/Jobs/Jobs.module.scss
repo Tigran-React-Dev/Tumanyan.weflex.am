@@ -669,7 +669,7 @@ min-height: get-vw(75px,1920);
 .succsessmobile{
   display: none;
 }
-@media screen and (max-width:500px ) {
+@media screen and (max-width:600px ) {
   .jobscontainer{
     width: get-vw(375px,375);
     min-height: get-vw(622px,375);

@@ -39,9 +39,6 @@ const Profile = ({user,userAdress}) => {
         password_confirmation:""
     })
 
-    console.log(userAdress)
-
-
     const [newAdress,setNewAdress]=useState({
         street:"",
         building:"",
@@ -53,9 +50,10 @@ const Profile = ({user,userAdress}) => {
      const [checket,setchecked]=useState(false)
      const {street,building,apartment}=newAdress
      const [errors,setErrors]=useState({})
-    const [errorsadressadd,setErrorsadressadd]=useState({})
-    const [errorsadressupdata,setErrorsadressupdata]=useState({})
-    useEffect(()=>{
+     const [errorsadressadd,setErrorsadressadd]=useState({})
+     const [errorsadressupdata,setErrorsadressupdata]=useState({})
+
+     useEffect(()=>{
         if(success_check=="true"){
             setchecked(true)
         }else{
@@ -94,10 +92,7 @@ const Profile = ({user,userAdress}) => {
         })
     }
  const SendData = async (e) => {
-
-
-
-     e.preventDefault()
+      e.preventDefault()
 
      const loginFormData = new FormData();
      loginFormData.append("name", name)
@@ -115,9 +110,7 @@ const Profile = ({user,userAdress}) => {
      if(password_confirmation!=""){
           loginFormData.append("password_confirmation",password_confirmation)
       }
-
-     
-     try {
+       try {
          // make axios post request
          const response = await axios({
              method: "post",
@@ -238,8 +231,7 @@ const Profile = ({user,userAdress}) => {
  }
 
  const RemuveAdreses =async (id)=>{
-
-     const resremuveitem = await axios({
+    const resremuveitem = await axios({
          method: "post",
          url: process.env.REACT_APP_API_URL+`/user/deleteAddress/${id}`,
          headers: {
@@ -524,7 +516,6 @@ const Profile = ({user,userAdress}) => {
                         placeholder="Հասցե"
                         value={street}
                         style={{border:errorsadressadd.street && "1px solid red",...fontproprty2}}
-
                         name="street"
                         onChange={ChangeNewAdresvalue}
                     />

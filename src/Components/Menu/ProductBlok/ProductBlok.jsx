@@ -55,8 +55,7 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
         }
         const likeform = new FormData();
         likeform.append("product_id", id)
-
-        try {
+         try {
             // make axios post request
             const response = await axios({
                 method: "post",
@@ -75,7 +74,7 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
             }else{
                setLike(false)   
            }
-            console.log(response)
+
             } catch(error) {
             console.log(error)
             }

@@ -48,10 +48,7 @@ const Menu = ({ history }) => {
                 console.log(err)
             })
 
-
-
-
-    },[])
+      },[])
 
 
     useEffect(() => {
@@ -117,7 +114,7 @@ const Menu = ({ history }) => {
                     "Manrope-Medium" : null
     }
 
-    console.log(product)
+
 
     return (
         <>

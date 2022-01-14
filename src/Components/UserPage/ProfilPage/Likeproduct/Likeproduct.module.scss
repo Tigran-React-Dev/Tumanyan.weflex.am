@@ -7,19 +7,18 @@
 
 .likehdr{
   width: get-vw(1772px,1920);
-  min-height: get-vw(764px,1920);
+  min-height: get-vw(400px,1920);
   display: flex;
   flex-wrap: wrap;
 
 }
-.shaurmatitle{
-  font-family: Mardoto-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: get-vw(18px,1920);
-  line-height: get-vw(21px,1920);
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: #252223;
-  margin-top: get-vw(80px,1920);
+@media screen and (max-width: 600px) {
+  .likehdr{
+    width: get-vw(375px,375);
+    min-height: get-vw(464px,375);
+    padding-bottom: get-vw(60px,375);
+    display: flex;
+    flex-wrap: wrap;
+
+  }
 }

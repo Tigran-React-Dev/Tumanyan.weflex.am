@@ -308,7 +308,8 @@ const handleClickSelectMobile =()=>{
                             className={css.phoneNumber}
                             href="tel:81 88">81 88
                         </a>
-                        {sessionStorage.getItem("token") ? <NavLink to={PROFIL_PAGE}  className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
+                        {sessionStorage.getItem("token") ?
+                            <NavLink to={PROFIL_PAGE}  className={css.loginh}><img src={userlogin} alt=""/></NavLink> :
                             <NavLink to={LOGIN_PAGES} className={css.loginh}><img src={log} alt=""/></NavLink>}
                          <div className={css.basketclick}>
                              <NavLink
@@ -484,10 +485,10 @@ const handleClickSelectMobile =()=>{
                                         <p>{JSON.parse(sessionStorage.getItem("user"))['name']}</p>
                                     </div>
                                 </NavLink>
-                                {/*<div  className={css.logouth} onClick={LogautUser}>*/}
-                                {/*    <img src={logouth_img} alt=""/>*/}
-                                {/*    <p>ելք</p>*/}
-                                {/*</div>*/}
+                                <div  className={css.logouth} onClick={LogautUser}>
+                                    <img src={logouth_img} alt=""/>
+                                    <p>ելք</p>
+                                </div>
                                 </div>
                                 :
                                 <NavLink

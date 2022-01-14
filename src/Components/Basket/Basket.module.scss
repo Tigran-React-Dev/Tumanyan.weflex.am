@@ -67,6 +67,19 @@
       }
 
     }
+
+    .selecttimeerror{
+      min-width: max-content;
+      font-family: Montserrat-Medium;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(12px,1920);
+      line-height: get-vw(15px,1920);
+      margin-top: get-vw(5px,1920);
+      letter-spacing: -0.02em;
+      color: #13AD54;
+    }
+
     .btndiv2{
       width: get-vw(1625px,1920);
       height: get-vw(175px,1920);
@@ -615,7 +628,7 @@
   }
 }
 
-@media screen  and (max-width: 500px){
+@media screen  and (max-width: 600px){
   .Basketconstructor{
     width: get-vw(375px,375);
     min-height: get-vw(397px,375);
@@ -813,7 +826,7 @@
   }
   .constrctorformandrecoment{
     width: get-vw(375px,375);
-    min-height: get-vw(1773px,375);
+    min-height: get-vw(1440px,375);
 
     .formtitle{
       display: none;
@@ -925,7 +938,6 @@
     min-height: get-vw(192px,375);
     margin-top: get-vw(30px,375);
     hr{
-
       width: get-vw(345px,375);
       margin-left: get-vw(15px,375);
       border: 1px solid #EFEFEF;
@@ -1140,8 +1152,14 @@
     display: none;
   }
   .hradres{
-    margin-top: get-vw(50px,1920);
-    border: 1px solid #EFEFEF;
+    display: none;
+  }
+  .selecttimeerror{
+     font-size: get-vw(12px,375)!important;
+    line-height: get-vw(15px,375)!important;
+    margin-top: get-vw(10px,375)!important;
+    margin-left: get-vw(15px,375);
+
   }
 
 }

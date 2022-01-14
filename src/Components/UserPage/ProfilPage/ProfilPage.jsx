@@ -17,13 +17,20 @@ const ProfilPage = ({history}) => {
     const user = useSelector(({AuthReducer})=>AuthReducer.user)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const saveOrders = useSelector(({AuthReducer})=>AuthReducer.userorders)
-    // const likeproduct = useSelector(({AuthReducer})=>AuthReducer.likeproduct)
     const [activeMenu,setactiveMenu]=useState(1)
     const [loading,setloading]=useState(false)
+
+    //state likeproduct
     const [likeProductdata,setlikeProductdata]=useState([])
     const [likeproduct,setLikeProduct]=useState([])
+
+    //state likeproduct ->buffet
+    const [likeproductBuffet,setLikeProductBuffet]=useState([])
+    const [likeProductdataBuffet,setlikeProductdataBuffet]=useState([])
+
     const {languae}=useProduct()
     const dispath=useDispatch()
+
     const menudata=[
         {id:1,title:"Պրոֆիլ"},
         {id:2,title:"պատվերներ"},
@@ -47,17 +54,17 @@ const ProfilPage = ({history}) => {
         if(userinfo?.token){
             dispath(LoadingUserdata(userinfo,userinfo.token))
         }
-
+       //product like data request --->token ;res->>like product data
         let token=sessionStorage.getItem("token")
-        let URL=process.env.REACT_APP_API_URL+"/user/getLike";
-        axios.get(URL, {
+        let URL_GET_LIKE=process.env.REACT_APP_API_URL+"/user/getLike";
+        axios.get(URL_GET_LIKE, {
             'headers': {  "Content-Type": "multipart/form-data",
                          Authorization: `Bearer ${token}`
             } ,
             method:"GET"
         }).then((data)=> {
                 setlikeProductdata(data.data)
-                setloading(true)
+
              })
             .catch(err=>{
                 console.log(err)
@@ -65,19 +72,51 @@ const ProfilPage = ({history}) => {
 
 
 
-         let URL2=process.env.REACT_APP_API_URL+"/user/like";
-         axios.get(URL2, {
+         let URL_LIKE=process.env.REACT_APP_API_URL+"/user/like";
+         axios.get(URL_LIKE, {
             'headers': {  "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`
             } ,
             method:"GET"
         }).then((data)=> {
-                console.log(data)
                 setLikeProduct(data.data)
            }).catch(err=>{
                 console.log(err)
             })
-        },[])
+
+
+        //Grand buffet like request -->token  ; res-->>like grand-buffet data
+
+        let URL_GET_LIKE_BUFFET=process.env.REACT_APP_API_URL+"/user/getLikeBuffet";
+        axios.get(URL_GET_LIKE_BUFFET, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        }).then((data)=> {
+            setlikeProductdataBuffet(data.data)
+        }).catch(err=>{
+                console.log(err)
+            })
+
+
+
+        let URL_LIKE_BUFFET=process.env.REACT_APP_API_URL+"/user/likeBuffet";
+
+        axios.get(URL_LIKE_BUFFET, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        }).then((data)=> {
+
+            setLikeProductBuffet(data.data)
+        }).catch(err=>{
+            console.log(err)
+        })
+
+        setloading(true)
+    },[])
 
     //logoutUser
     const LogautUser=async ()=>{
@@ -163,7 +202,12 @@ const ProfilPage = ({history}) => {
                         activeMenu===3 ?
                             <div className={css.likeproduct}>
                                 {likeProductdata.length ?
-                                    <Likeproduct likeProductdata={likeProductdata} likeproduct={likeproduct}/>
+                                    <Likeproduct
+                                        likeProductdata={likeProductdata}
+                                        likeproduct={likeproduct}
+                                        likeProductdataBuffet={likeProductdataBuffet}
+                                        likeproductBuffet={likeproductBuffet}
+                                    />
                                     :
                                     <p className={css.nolike}>Դուք դեռ ոչինչ չեք հավանել։</p>
                                 }

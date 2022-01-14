@@ -299,7 +299,7 @@ color: #BFB7B6;
     object-fit: contain;
   }
 }
-@media screen and(max-width: 500px){
+@media screen and(max-width: 600px){
   .productItem{
     width: get-vw(345px,375 );
     min-height: get-vw(478px, 375);
@@ -485,8 +485,7 @@ color: #BFB7B6;
     background-image: url("../../../images/bggranditembg.png");
     background-color: #EFEFEF;
     object-fit: contain;
-
-    img{
+     img{
       width: get-vw(345px,375);
       height: get-vw(309px,375);
       object-fit: contain;

@@ -139,7 +139,7 @@
   margin-left: get-vw(10px,1920);
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   .ProfilPagescontroler{
     width: get-vw(375px,375);
     min-height: get-vw(180px,375);
@@ -165,7 +165,7 @@
     height: get-vw(19px,375);
     display: flex;
     justify-content: space-between;
-    //align-items: center;
+   //align-items: center;
     .menuprofil{
       width: get-vw(375px,375);
       height: get-vw(19px,375);
@@ -202,9 +202,9 @@
 
   }
   .likeproduct{
-    width: get-vw(1636px,1920);
-    min-height: get-vw(202px,1920);
-    margin-left: get-vw(142px,1920 );
+    width: get-vw(375px,375);
+    min-height: get-vw(524px,375);
+    margin-left: get-vw(0px,375 );
     display: flex;
     flex-wrap: wrap;
     align-items: start;
@@ -213,11 +213,12 @@
       font-family: Montserrat-Regular;
       font-style: normal;
       font-weight: normal;
-      font-size: get-vw(18px,1920);
-      line-height: get-vw(22px,1920);
+      font-size: get-vw(18px,375);
+      line-height: get-vw(21px,375);
       r-spacing: -0.02em;
       color: #252223;
-      margin-top: get-vw(80px,1920);
+      margin-top: get-vw(60px,375);
+      margin-left: get-vw(15px,1920);
     }
   }
   .ordertitle{

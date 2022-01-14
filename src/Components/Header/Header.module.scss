@@ -496,7 +496,7 @@
 //media
 
 
-@media  screen and (max-width:700px){
+@media  screen and (max-width:600px){
 
   .headerContainer{
     display: none;
@@ -577,7 +577,7 @@
     padding-top: get-vw(45px,800);
     .menubarmobile{
       width: get-vw(335px,375);
-      min-height: get-vw(815px,375);
+      min-height: get-vw(915px,375);
       margin-top: get-vw(5px,375);
       margin-left: get-vw(15px,375 );
       display: flex;
@@ -639,20 +639,19 @@
          }
       }
        .loginlogouth{
-         width: get-vw(380px,375);
-
-
-       }
+         width: get-vw(375px,375);
+         min-height: get-vw(76px,375);
+      }
       .logouth{
-        min-height: get-vw(26px,800);
+        min-height: get-vw(26px,375);
         width: get-vw(76px,375);
-        margin-top: get-vw(40px,800);
+        margin-top: get-vw(30px,375);
         display: flex;
         align-items: center;
         cursor: pointer;
         img{
           width: get-vw(26px,375);
-          height: get-vw(28px,500);
+          height: get-vw(28px,375);
         }
         p{
           font-family: Mardoto-Medium;
@@ -966,7 +965,7 @@
     margin-left: get-vw(0px,375 );
     cursor: pointer;
     background: #F9F9F9;
-    margin-top: get-vw(60px,375);
+    margin-top: get-vw(120px,375);
     &:hover{
       border: get-vw(1px,375) solid #13AD54;
     }

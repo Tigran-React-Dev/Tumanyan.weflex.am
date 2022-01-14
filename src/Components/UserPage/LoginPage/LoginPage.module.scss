@@ -42,7 +42,7 @@
     margin-top:get-vw(30px,1920) ;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center!important;
     .zabilparol{
       font-family: Montserrat-Regular;
       font-style: normal;
@@ -52,6 +52,8 @@
       text-align: right;
       letter-spacing: -0.02em;
       color: #13AD54;
+      margin-top: get-vw(10px,1920);
+
     }
   }
 }
@@ -176,7 +178,7 @@
 }
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   .loginconstructor{
     width: get-vw(375px,375);
     min-height: get-vw(150px,375);
@@ -206,13 +208,14 @@
     .zabilandzapomnit{
       width:get-vw(345px,375);
       height: get-vw(22px,375);
-      margin-top:get-vw(24px,375) ;
+      margin-top:get-vw(30px,375) ;
       display: flex;
       justify-content: space-between;
       align-items: center;
       .zabilparol{
         font-size: get-vw(13px,375);
         line-height: 160%;
+        margin-top: get-vw(20px,375);
 
       }
     }

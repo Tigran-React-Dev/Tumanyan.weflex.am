@@ -1,4 +1,4 @@
-    import React, {useState,Memo} from "react";
+    import React, {useState, Memo, useEffect} from "react";
 import css from "./ProductBlokGrand.module.scss";
 import btn1 from "../../../images/icons/btn1.svg";
 import minus from "../../../images/icons/Minus.svg";
@@ -10,8 +10,11 @@ import {useDispatch} from "react-redux";
 import {LikedProduct} from "../../redux/Action/ProductAction";
 import {useProduct} from "../../Providers/ProductMenu";
 import ItionalProduct from "../../Menu/ItionalProduct/ItionalProduct";
+    import {LOGIN_PAGES} from "../../urls";
+    import axios from "axios";
+    import {useHistory} from "react-router-dom";
 
-const ProductBlokGrand = ({id,category_buffet_id,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard}) => {
+const ProductBlokGrand = ({id,likeproductBuffet,category_buffet_id,names, name,nameRU,nameEN,add_buffets,image, price_buffets, bonus,description,descriptionEN,descriptionRU,handleAddProductCard}) => {
 
 
 
@@ -31,15 +34,55 @@ const ProductBlokGrand = ({id,category_buffet_id,names, name,nameRU,nameEN,add_b
     const [itionalitem,setItionalitem]=useState([])
     const [sowlichniproductmodal,setsowproductmodal]=useState(false);
 
-
+    const history=useHistory()
     const dispath=useDispatch()
     const {languae} =useProduct()
 
-    
-    const  AddTolike=()=>{
+     useEffect(()=>{
+         likeproductBuffet.forEach((item)=>{
+            if(item.product_buffet_id==id){
+                setLike(true)
+            }
+        })
 
+    },[likeproductBuffet])
+
+
+       //Like Grand - buffet product function
+
+       const  AddTolike=async ()=>{
+
+
+        let token =sessionStorage.getItem("token")
+        if(!token){
+            return  history.push(LOGIN_PAGES)
+        }
+        const likeform = new FormData();
+        likeform.append("product_buffet_id", id)
+        try {
+            // make axios post request
+            const response = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL+"/user/addLikeBuffet",
+                data: likeform,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`
+                },
+            });
+
+          if(response.data=="Success"){
+                setLike(true)
+            }else{
+                setLike(false)
+            }
+
+        } catch(error) {
+            console.log(error)
+        }
 
     }
+
 
     const addtoCart = () => {
 

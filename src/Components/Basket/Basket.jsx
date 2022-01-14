@@ -31,15 +31,17 @@ const Basket = () => {
     const  CardData = useSelector(({ CardReducer  }) => CardReducer)
     const userAdress = useSelector(({AuthReducer})=>AuthReducer.adresess)
     const user = useSelector(({AuthReducer})=>AuthReducer.user)
+    const {adressCountry,defaultCity} =useProduct()
+    const dispatch =useDispatch()
+    const history = useHistory()
+    const { totalPrice, items } =  CardData
+    const {languae}=useProduct()
+    const { t } =useTranslation()
     const [showdetalis,setSowdetalis]=useState(1)
     const [paybtnstyle,setPeybtnStyle]=useState(1)
     const [clock,setClock]=useState("Ժամը")
     const [sucsessshop,setSucsessshp]=useState(false)
     const [count,srtcount]=useState(1)
-    const { totalPrice, items } =  CardData
-    const {adressCountry,defaultCity} =useProduct()
-    const dispatch =useDispatch()
-    const history = useHistory()
     const [basketitemdata,setItemBasketdata]=useState(items)
     const [errors,seterors]=useState("")
     const [dateSelectShow,setDateSelectShow]=useState(false)
@@ -47,11 +49,11 @@ const Basket = () => {
     const [loading,setLoading]=useState(false)
     const [activeSityTimes,setActiveSityTimes]=useState([])
     const [activeSityName,setACtiveSityName]=useState("")
-    const {languae}=useProduct()
-    const { t } =useTranslation()
 
 
-    console.log(CardData)
+
+
+
     useEffect(() => {
         window.scrollTo(0, 0);
      }, [sucsessshop])
@@ -118,12 +120,18 @@ const Basket = () => {
      // _____changeInputWalue____
 
     const [users,setUser]=useState({
-        ...user,
-        lastname:"",
-        phone:"374",
+         ...user,
+         lastname:"",
+         phone:"",
 
     })
+    const [adressUser,setAdewssUser]=useState({
+        street:"",
+        building:"",
+        apartment:"",
+    })
     const {name,lastname,phone,email,success_check}=users;
+   const {street,building,apartment}=adressUser;
 
     useEffect(()=>{
         if(success_check=="true"){
@@ -143,6 +151,17 @@ const Basket = () => {
            [e.target.name]:e.target.value,
        })
    }
+   // change user adress and post add new user adress
+   const ChangeUserAdress=(e)=>{
+       setAdewssUser({
+           ...userAdress,
+           [e.target.name]:e.target.value
+       })
+    }
+
+
+
+
    const OpenSelectData =()=>{
        setDateSelectShow(!dateSelectShow)
    }
@@ -166,6 +185,10 @@ const Basket = () => {
        setActiveSityTimes(sitydata.times)
        setACtiveSityName(sitydata.address)
        setClock("Ժամը")
+   }
+
+   const ChangeBonuces=()=>{
+        console.log("bonuces")
    }
 
     const fontproprty={fontFamily:languae=="ՀԱՅ" ?
@@ -220,8 +243,8 @@ const Basket = () => {
                        </div>
                         <div className={css.bonuss}>
                             <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
-                             <span style={fontproprty}>10 %</span>
-                             <img src={btnbsk} alt="" />
+                             <span style={fontproprty}>10 ֏</span>
+                             <img src={btnbsk} alt=""  onClick={ChangeBonuces}/>
                         </div>
                         <div className={css.totaldiv}>
                             <p style={fontproprty}>{totalPrice} ֏</p>
@@ -234,9 +257,9 @@ const Basket = () => {
                        <p className={css.formtitle} style={fontproprty}>
                        ՊԱՏՎԵՐԻ ՋԵՎԱԿԵՐՊՈՒՄ
                        </p>
-                       <p className={css.info} style={fontproprty}>{t("information")}</p>
-                       {/*className={css.formandrecomentwraper}*/}
-                      <div style={formandrecomentwraper} className={css.formandrecomentwraper}>
+                        <p className={css.info} style={fontproprty}>{t("information")}</p>
+                        {/*className={css.formandrecomentwraper}*/}
+                        <div style={formandrecomentwraper} className={css.formandrecomentwraper}>
 
                           <div className={css.formcontlorel}>
                               <div className={css.mobileformtitle}>
@@ -251,6 +274,7 @@ const Basket = () => {
                                   type="text"
                                   value={name}
                                   style={fontproprty2}
+                                  disabled={sessionStorage.getItem("token") && "disabled"}
                                   onChange={OnchangeInputofRegister}
                                   name="name"
                               />
@@ -260,6 +284,7 @@ const Basket = () => {
                                   type="text"
                                   value={lastname}
                                   style={fontproprty2}
+                                  disabled={sessionStorage.getItem("token") && "disabled"}
                                   onChange={OnchangeInputofRegister}
                                   name="lastname"
                               />
@@ -268,6 +293,7 @@ const Basket = () => {
                               placeholder={t("phonenumber")}
                               type="number"
                               maxlength="12"
+                              disabled={sessionStorage.getItem("token") && "disabled"}
                               value={phone}
                               style={fontproprty2}
                               onChange={OnchangeInputofRegister}
@@ -278,6 +304,7 @@ const Basket = () => {
                               placeholder={t("emailadress")}
                               type="email"
                               name="email"
+                              disabled={sessionStorage.getItem("token") && "disabled"}
                               value={email}
                               style={fontproprty2}
                               disabled
@@ -287,6 +314,7 @@ const Basket = () => {
                                       cn="newsinfo"
                                       lableinfo="Ստանալ ակցիաների, նորությունների մասին ծանուցումներ"
                                       id="newcheket"
+                                      disabled={sessionStorage.getItem("token") && "disabled"}
                                       onClick={hantletargetclick}
                                       isChecked={checket}
                                   />
@@ -352,17 +380,29 @@ const Basket = () => {
                                           cn="inputglobalinfo"
                                           placeholder={t("address_*")}
                                           style={fontproprty2}
+                                          onChange={ChangeUserAdress}
+                                          name="street"
+                                          type="text"
+                                          value={street}
                                       />
                                       <div className={css.domandkey}>
                                           <Input
                                               cn="inputdom"
                                               placeholder="Շենք"
                                               style={fontproprty2}
+                                              onChange={ChangeUserAdress}
+                                              name="building"
+                                              type="number"
+                                              value={building}
                                           />
                                           <Input
                                               cn="inputdom"
                                               placeholder="Բնակարան"
                                               style={fontproprty2}
+                                              onChange={ChangeUserAdress}
+                                              name="apartment"
+                                              type="number"
+                                              value={apartment}
                                           />
                                       </div>
                                       <hr/>
@@ -397,7 +437,7 @@ const Basket = () => {
 
                                             {activeSityName=="" && dateSelectShow ?
 
-                                              <p>ընտրեք մասնաճուղը</p>
+                                              <p className={css.selecttimeerror}>ընտրեք մասնաճուղը</p>
                                                 :
                                                 activeSityName!="" && dateSelectShow ?
                                              <div className={css.clockselectwraper}>

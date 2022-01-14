@@ -78,7 +78,7 @@ border-radius: get-vw(5px, 1920);
 }
 
 
-@media screen and(max-width: 500px) {
+@media screen and(max-width: 600px) {
   @function get-vw($size, $width){
     $vw-context: $width * 0.01 * 1px;
     @return $size / $vw-context * 1vw;
