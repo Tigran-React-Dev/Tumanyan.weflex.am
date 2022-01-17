@@ -3,7 +3,7 @@ import css from "./Bonuces.module.scss"
 import Button from "../../../Global/Button/Button";
 import {useProduct} from "../../../Providers/ProductMenu";
 
-const Bonuces = () => {
+const Bonuces = ({user}) => {
 
     const {languae}=useProduct()
 
@@ -29,7 +29,7 @@ const Bonuces = () => {
 
 
             <div className={css.divprice}><p className={css.titlebns} style={fontproprty2}></p>Կուտակված՝<p className={css.tokosprice} style={fontproprty3}>30%</p></div>
-            <div className={css.divprice2}><p className={css.titlebns} style={fontproprty2}></p>Գումարային՝<p className={css.tokosprice} style={fontproprty3}>2500 ֏</p></div>
+            <div className={css.divprice2}><p className={css.titlebns} style={fontproprty2}></p>Գումարային՝<p className={css.tokosprice} style={fontproprty3}>{user.bonus} ֏</p></div>
             <Button
                 cn="bonucebtn"
                 title="վճարել բոնուսներով"

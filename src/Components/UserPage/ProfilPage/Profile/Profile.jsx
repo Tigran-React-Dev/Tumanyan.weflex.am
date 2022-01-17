@@ -15,7 +15,7 @@ import {
     RemuveAdres, UpdataUserAdress
 } from "../../../redux/Action/AuthACtion";
 import axios from "axios";
-import {HOME_PAGE} from "../../../urls";
+
 import {useProduct} from "../../../Providers/ProductMenu";
 
 const Profile = ({user,userAdress}) => {
@@ -136,7 +136,7 @@ const Profile = ({user,userAdress}) => {
                  AddAdress()
 
              }
-             UpdateAddress()
+                 UpdateAddress()
          }else{
              setErrors(response.data);
              setSuccsess(false)

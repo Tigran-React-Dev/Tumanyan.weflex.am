@@ -12,13 +12,14 @@ import seltb from "../../images/icons/seltb.png";
 import salta from "../../images/icons/selta.png";
 import { useDispatch } from 'react-redux';
 import {AddproductCard, AddproductCardonly, ClardnBasket} from '../redux/Action/CardAction';
-import {LoadingUserdata, SaveorderUser} from "../redux/Action/AuthACtion";
+import {AddNewAdress, LoadingUserdata, SaveorderUser} from "../redux/Action/AuthACtion";
 import BasketRecoment from "./BasketRecoment/BasketRecoment";
 import Check from "../Global/Checkbox2/Check";
 import Button from "../Global/Button/Button";
 import {useProduct} from "../Providers/ProductMenu";
 import {LoadProductData} from "../redux/Action/ProductAction";
 import {useTranslation} from "react-i18next";
+import axios from "axios";
 
 
 
@@ -49,8 +50,8 @@ const Basket = () => {
     const [loading,setLoading]=useState(false)
     const [activeSityTimes,setActiveSityTimes]=useState([])
     const [activeSityName,setACtiveSityName]=useState("")
-
-
+    const [userBonus,setUserBonus]=useState(user.bonus)
+    const [adressErrors,setErrorsadressadd]=useState({});
 
 
 
@@ -106,10 +107,6 @@ const Basket = () => {
 
     }
 
-    const SendFormdataCheck =()=>{
-         dispatch(SaveorderUser(items))
-        setSucsessshp(!sucsessshop)
-    }
 
 
     const [checket,setchecked]=useState(false)
@@ -145,6 +142,7 @@ const Basket = () => {
 
 
 
+
    const OnchangeInputofRegister =(e)=>{
        setUser({
            ...users,
@@ -154,12 +152,51 @@ const Basket = () => {
    // change user adress and post add new user adress
    const ChangeUserAdress=(e)=>{
        setAdewssUser({
-           ...userAdress,
+           ...adressUser,
            [e.target.name]:e.target.value
        })
     }
 
+    const SendFormdataCheck = async ()=>{
+        if(userAdress.length==0){
+            const adresformdata = new FormData();
+            adresformdata.append("street", street)
+            adresformdata.append("building",building)
+            adresformdata.append("apartment",apartment)
+            console.log(adressUser)
 
+            try {
+                // make axios post request
+                const responseadress = await axios({
+                    method: "post",
+                    url: process.env.REACT_APP_API_URL+"/user/addAddress",
+                    data: adresformdata,
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": `Bearer ${sessionStorage.getItem("token")}`
+                    },
+                });
+                debugger
+                if(responseadress.data?.[0] ){
+                    setErrorsadressadd({})
+                    sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
+                    dispatch(AddNewAdress(adressUser))
+                    setAdewssUser({
+                        street:"",
+                        building:"",
+                        apartment:"",
+                    })
+
+                }else{
+                    setErrorsadressadd(responseadress.data);
+                }
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        // dispatch(SaveorderUser(items))
+        // setSucsessshp(!sucsessshop)
+    }
 
 
    const OpenSelectData =()=>{
@@ -223,8 +260,7 @@ const Basket = () => {
               : (totalPrice >0 && !sucsessshop) ?
 
                 <div className={css.itemBasket}>
-                    {
-                        items.length && basketitemdata.map((obj)=>{
+                    {items.length && basketitemdata.map((obj)=>{
                              return(
                                 <Basketitem
                                     key={obj.id}
@@ -243,7 +279,7 @@ const Basket = () => {
                        </div>
                         <div className={css.bonuss}>
                             <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
-                             <span style={fontproprty}>10 ֏</span>
+                             <span style={fontproprty}>{userBonus} ֏</span>
                              <img src={btnbsk} alt=""  onClick={ChangeBonuces}/>
                         </div>
                         <div className={css.totaldiv}>
@@ -379,7 +415,7 @@ const Basket = () => {
                                       <Input
                                           cn="inputglobalinfo"
                                           placeholder={t("address_*")}
-                                          style={fontproprty2}
+                                          style={{border: adressErrors.street && "1px solid red", ...fontproprty2}}
                                           onChange={ChangeUserAdress}
                                           name="street"
                                           type="text"
@@ -389,7 +425,7 @@ const Basket = () => {
                                           <Input
                                               cn="inputdom"
                                               placeholder="Շենք"
-                                              style={fontproprty2}
+                                              style={{border: adressErrors.building && "1px solid red", ...fontproprty2}}
                                               onChange={ChangeUserAdress}
                                               name="building"
                                               type="number"
@@ -398,7 +434,7 @@ const Basket = () => {
                                           <Input
                                               cn="inputdom"
                                               placeholder="Բնակարան"
-                                              style={fontproprty2}
+                                              style={{border: adressErrors.apartment && "1px solid red", ...fontproprty2}}
                                               onChange={ChangeUserAdress}
                                               name="apartment"
                                               type="number"

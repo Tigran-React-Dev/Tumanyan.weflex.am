@@ -11,23 +11,9 @@ export const initialstate={
     token:null,
     loadding:true,
     user:{},
-    adresess:[
-         // {id:1,adress:"Աճառյան",bulding:"18",apartment:"10"},
-
-    ],
+    adresess:[],
     userorders:[],
-
-    likeproduct:{
-        shaurma:[],
-        salads:[],
-
-    }
-
-
 }
-
-
-
 
 export const AuthReducer=(state=initialstate,action)=>{
     switch (action.type) {
@@ -44,6 +30,7 @@ export const AuthReducer=(state=initialstate,action)=>{
                     email:action.payload.userdata.email,
                     success_check:action.payload.userdata.success_check,
                     type:action.payload.userdata.type,
+                    bonus:action.payload.userdata.bonus ? action.payload.userdata.bonus : "0",
                 },
 
 

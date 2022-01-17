@@ -16,6 +16,7 @@ const Serch = () => {
     const serchtext = useSelector(({ ProductReducer  }) => ProductReducer.searchtext)
     const dispatch =useDispatch()
     const [likeproduct,setLikeProduct]=useState([])
+    const [likeproductBuffet,setLikeProductBuffet]=useState([])
     useEffect(()=>{
 
         let token=sessionStorage.getItem("token")
@@ -36,10 +37,23 @@ const Serch = () => {
                 console.log(err)
             })
 
+        let URL_LIKE_GRANDBUFFE=process.env.REACT_APP_API_URL+"/user/likeBuffet";
+         axios.get(URL_LIKE_GRANDBUFFE, {
+            'headers': {  "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`
+            } ,
+            method:"GET"
+        }).then((data)=> {
+            debugger
+            setLikeProductBuffet(data.data)
+        })
+            .catch(err=>{
+                console.log(err)
+            })
+
+     },[])
 
 
-
-    },[])
     const handleAddProductCard =(obj)=>{
         dispatch(AddproductCard(obj))
     }
@@ -87,7 +101,7 @@ const Serch = () => {
                      return (
                          <ProductBlokGrand
                              key={obj.id}
-                             likeproduct={likeproduct}
+                             likeproductBuffet={likeproductBuffet}
                              handleAddProductCard={handleAddProductCard}
                              handleonlyproduct={handleonlyproduct}
                              {...obj}

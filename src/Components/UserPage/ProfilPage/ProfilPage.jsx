@@ -214,7 +214,9 @@ const ProfilPage = ({history}) => {
                             </div>
                             :
                             <div>
-                                <Bonuces/>
+                                <Bonuces
+                                    user={user}
+                                />
                             </div>
                 }
             </div>

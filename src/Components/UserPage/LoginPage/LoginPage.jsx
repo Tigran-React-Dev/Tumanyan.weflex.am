@@ -78,7 +78,7 @@ const LoginPage = () => {
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             });
-
+            console.log(response)
             if(response?.data[0]?.token){
                 sessionStorage.setItem("token",response.data[0].token)
                 sessionStorage.setItem("user",JSON.stringify(response.data[0]))
