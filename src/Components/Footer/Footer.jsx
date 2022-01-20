@@ -10,6 +10,7 @@ import youtube from "../../images/social/youtube.svg";
 import trip from "../../images/social/trip.svg"
 import { useProduct } from '../Providers/ProductMenu';
 import { useTranslation } from 'react-i18next';
+import {PRIVACY_POLICEY} from "../urls";
 const Footer = () => {
 
     
@@ -64,9 +65,12 @@ const Footer = () => {
                         </ul>
                     
                 </div>
-                <div className={css.storeaplication}>
-                    <img src={appstor} alt=""/>
-                    <img src={play} alt=""/>
+                <div className={css.pravicyandappbtn}>
+                    <NavLink to={PRIVACY_POLICEY} exact={true} >Գաղտնիության պայմաններ</NavLink>
+                    <div className={css.storeaplication}>
+                        <img src={appstor} alt=""/>
+                        <img src={play} alt=""/>
+                    </div>
                 </div>
                 <div className={css.corporect}>
                     <p>© &nbsp; {new Date().getFullYear()} Tumanyan Shaurma</p>
@@ -76,9 +80,7 @@ const Footer = () => {
 
             <div className={css.map}>
             <iframe src="https://snazzymaps.com/embed/345148" className={css.maps}></iframe>  
-                  
-                
-           </div>
+             </div>
         </div>
     );
 };

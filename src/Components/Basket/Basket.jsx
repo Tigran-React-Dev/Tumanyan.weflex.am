@@ -52,9 +52,10 @@ const Basket = () => {
     const [activeSityName,setACtiveSityName]=useState("")
     const [userBonus,setUserBonus]=useState(user.bonus)
     const [adressErrors,setErrorsadressadd]=useState({});
-
-
-
+    const [selectOne,setSelectOne]=useState("Մարզ*")
+    const [selecttwo,setSelectTwo]=useState("Բնակավայր*")
+    const [selectOneShow,setSelectOneShow]=useState(false)
+    const [selectTwoShow,setSelectTwoShow]=useState(false)
     useEffect(() => {
         window.scrollTo(0, 0);
      }, [sucsessshop])
@@ -176,7 +177,7 @@ const Basket = () => {
                         "Authorization": `Bearer ${sessionStorage.getItem("token")}`
                     },
                 });
-                debugger
+
                 if(responseadress.data?.[0] ){
                     setErrorsadressadd({})
                     sessionStorage.setItem("useradress",JSON.stringify(responseadress.data))
@@ -226,6 +227,13 @@ const Basket = () => {
 
    const ChangeBonuces=()=>{
         console.log("bonuces")
+   }
+
+   const ShowSelectOne =()=>{
+       setSelectOneShow(!selectOneShow)
+   }
+   const ShowSelectTwo=()=>{
+        setSelectTwoShow(!selectTwoShow)
    }
 
     const fontproprty={fontFamily:languae=="ՀԱՅ" ?
@@ -278,9 +286,9 @@ const Basket = () => {
                           <img src={btnbsk} alt="" />
                        </div>
                         <div className={css.bonuss}>
-                            <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
+                             <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
                              <span style={fontproprty}>{userBonus} ֏</span>
-                             <img src={btnbsk} alt=""  onClick={ChangeBonuces}/>
+                              <img src={btnbsk} alt=""  onClick={ChangeBonuces}/>
                         </div>
                         <div className={css.totaldiv}>
                             <p style={fontproprty}>{totalPrice} ֏</p>
@@ -384,12 +392,31 @@ const Basket = () => {
                                    />
 
 
+
                               </div>
                               {errors !="" && <div className={css.error}>
                                   <p>{errors}</p>
                               </div>}
                               {showdetalis===1 ?
+
                                   <>
+                                      <div className={css.twoselect}>
+                                          <div className={css.selectone} onClick={ShowSelectOne}>
+                                              <p>{selectOne}</p>
+                                              {selectOneShow ? <img src={salta} alt=""/> : <img src={seltb} alt=""/>}
+                                              {selectOneShow && <div className={css.modalonecontaainer}>
+
+                                              </div>}
+                                          </div>
+                                          <div className={css.selecttwo} onClick={ShowSelectTwo}>
+                                              <p>{selecttwo}</p>
+                                              {selectTwoShow ? <img src={salta} alt=""/> : <img src={seltb} alt=""/>}
+                                              {selectTwoShow && <div className={css.modalonecontaainer}>
+
+                                              </div>}
+                                          </div>
+                                      </div>
+
                                   {userAdress?.length ?
                                       <div className={css.userADresesblok}>
                                          <p className={css.selectuseradres} style={fontproprty2}>Ընտրեք հասցեն՝</p>

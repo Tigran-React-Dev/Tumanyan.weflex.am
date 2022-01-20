@@ -561,9 +561,64 @@
   margin-top: get-vw(50px,1920);
   color: #252223;
 }
+
+
+
+.twoselect{
+  width: get-vw(890px,1920);
+  height: get-vw(75px,1920);
+  display: flex;
+  justify-content: space-between;
+  margin-top: get-vw(50px,1920);
+  .selectone,.selecttwo{
+    width: get-vw(433px,1920);
+    height: get-vw(75px,1920);
+    background: #FFFFFF;
+    border: get-vw(1px,1920) solid #DFDFDF;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-radius: get-vw(10px,1920);
+    cursor: pointer;
+
+    p{
+      font-family: Montserrat-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: get-vw(18px,1920);
+      line-height: get-vw(22px,1920);
+      letter-spacing: -0.02em;
+      color: #BFB7B6;
+      margin-top: get-vw(27px,1920);
+      margin-left: get-vw(25px,1920);
+    }
+    img{
+      width: get-vw(15px,1920);
+      height: get-vw(15px,1920);
+      object-fit: contain;
+      margin-top: get-vw(30px,1920);
+      margin-right: get-vw(30px,1920);
+    }
+  }
+  .modalonecontaainer{
+    width: get-vw(433px,1920);
+    height: get-vw(433px,1920);
+    background: #FFFFFF;
+    border: get-vw(1px,1920) solid #DFDFDF;
+    box-sizing: border-box;
+    border-radius: get-vw(10px,1920);
+    position: absolute;
+    top: get-vw(75px,1920);
+    left: get-vw(0px,1920);
+  }
+}
+
+
 .userADresesblok{
   width: get-vw(890px,1920);
-  height: get-vw(311px,1920);
+  height: get-vw(275px,1920);
+
 
 }
 .selectuseradres{
@@ -790,14 +845,10 @@
           min-width: max-content;
           font-size: get-vw(26px, 375);
           line-height: 120%;
-
-
-
-        }
+          }
       }
       .clearnbasket{
         top: get-vw(25px,375);
-
         position: absolute;
         p{
           min-width: max-content;
@@ -936,7 +987,7 @@
   .renderadressinput{
     width: get-vw(375px,375 );
     min-height: get-vw(192px,375);
-    margin-top: get-vw(30px,375);
+    margin-top: get-vw(0px,375);
     hr{
       width: get-vw(345px,375);
       margin-left: get-vw(15px,375);
@@ -1143,6 +1194,46 @@
    margin-top: get-vw(30px,375);
 
   }
+  .twoselect{
+    width: get-vw(375px,375);
+    height: get-vw(158px,375);
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: get-vw(30px,375);
+    .selectone,.selecttwo{
+      width: get-vw(345px,375);
+      height: get-vw(64px,375);
+     position: relative;
+      border-radius: get-vw(0px,375);
+      border: get-vw(0px,375) solid #DFDFDF;
+      border-bottom: get-vw(1px,375) solid #DFDFDF;
+      cursor: pointer;
+      margin-left: get-vw(15px,375);
+
+      p{
+        font-size: get-vw(16px,375);
+        line-height: 160%;
+        margin-top: get-vw(19px,375);
+        margin-left: get-vw(0px,375);
+      }
+      img{
+       display: none;
+      }
+    }
+    .modalonecontaainer{
+      width: get-vw(345px,375);
+      height: get-vw(210px,375);
+      border: get-vw(1px,375) solid #DFDFDF;
+      border-radius: get-vw(10px,375);
+      box-shadow: get-vw(1px,1920) get-vw(1px,1920) get-vw(5px,1920) rgba(3, 142, 62, 0.2);
+      position: absolute;
+      top: get-vw(64px,375);
+      left: get-vw(0px,375);
+      z-index: 15;
+    }
+  }
+
+
   .userADresesblok{
     width: get-vw(375px,375);
     min-height: get-vw(80px,375);

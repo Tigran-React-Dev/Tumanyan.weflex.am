@@ -116,14 +116,32 @@
   }
 
 
+.pravicyandappbtn{
+  width: get-vw(779px,1920);
+  height: get-vw(40.5px,1920);
+  display: flex;
+  margin-top: get-vw(150px,1920 );
+  margin-left: get-vw(142px,1920);
+  align-items: flex-end;
+  justify-content: space-between;
+  a{
+    font-family: Montserratarm-Light;
+    font-style: normal;
+    font-weight: 300;
+    font-size: get-vw(16px,1920);
+    line-height: get-vw(20px,1920);
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-decoration-line: underline!important;
+    color: #BFB7B6!important;
+   }
+}
 .storeaplication{
   width: get-vw(290px, 1920);
   height:get-vw( 41px,1920 );
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: get-vw(150px,1920 );
-  margin-left: get-vw(142px, 1920);
   cursor: pointer;
   img{
     width: get-vw(135px, 1920);
@@ -172,14 +190,14 @@
   }
   .footer{
     width:get-vw(375px,375 ) ;
-    min-height:get-vw(535px,375 ) ;
+    min-height:get-vw(615px,375 ) ;
     display: flex;
     justify-content: center;
     overflow-x: hidden!important;
     position: relative;
     .footerblok{
       width: get-vw(375px,375 );
-      height:get-vw( 535px,375 );
+      height:get-vw( 615px,375 );
       position: absolute;
       top: get-vw(0px,375 );
 
@@ -245,6 +263,7 @@
       }
     }
   }
+
   .social{
     width: get-vw(200px,375 );
     height: get-vw(32px,375 );
@@ -272,15 +291,34 @@
 
   }
 
-
+  .pravicyandappbtn{
+    width: get-vw(345px,375);
+    height: get-vw(121px,375);
+    display: flex;
+    margin-top: get-vw(285px,375 );
+    margin-left: get-vw(15px,375);
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    a{
+      font-family: Montserratarm-Light;
+      font-style: normal;
+      font-weight: 300;
+      font-size: get-vw(16px,375);
+      line-height: get-vw(20px,375);
+      text-align: right;
+      letter-spacing: -0.02em;
+      text-decoration-line: underline!important;
+      color: #BFB7B6!important;
+    }
+  }
   .storeaplication{
     width: get-vw(289px, 375);
     height:get-vw( 41px,375 );
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: get-vw(300px,375 );
-    margin-left: get-vw(15px, 375);
+    margin-top: get-vw(0px,375 );
+    margin-left: get-vw(0px, 375);
     cursor: pointer;
     img{
       width: get-vw(135px, 375);

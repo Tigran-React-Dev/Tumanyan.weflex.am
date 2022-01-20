@@ -33,7 +33,7 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
     const [itionalitem,setItionalitem]=useState([])
     const [sowlichniproductmodal,setsowproductmodal]=useState(false);
     const [like,setLike]=useState(false)
-
+    const [pricesinfo,setPricesInfo]=useState(prices?.[0]?.size_id)
     useEffect(()=>{
         likeproduct.forEach((item)=>{
             if(item.product_id==id){
@@ -97,7 +97,8 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
             count,
             ingredients,
             description:description ,
-            like
+            like,
+            size_id:pricesinfo,
         }
         //coll function send object to redux reducer and product add to Card
 
@@ -126,7 +127,8 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
         }
       }
      // response newprice obj id and product size to chenjing initial value
-    const changeSizeAndprice = (newprice, id, size) => {
+    const changeSizeAndprice = (newprice, id, size,size_id) => {
+        setPricesInfo(size_id)
         setactivprice(newprice)
         setpricesItog(newprice)
         setCount(1)
@@ -175,11 +177,11 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
             {(prices.length>1 &&  typeof(prices)!="string") && <div className={css.sizeproduct}>
                 <ul className={css.sizeitem}>
                     {
-                        prices.map(({id, sizes, price}, index) => {
+                        prices.map(({id, sizes, price,size_id}, index) => {
                             return <li
                                 key={index}
                                 style={fontproprty2}
-                                onClick={() => changeSizeAndprice(price, index+1, sizes.size)}
+                                onClick={() => changeSizeAndprice(price, index+1, sizes.size,size_id)}
                                 className={activeBtnStyle == index+1 ? css.btnsize : css.btnsize1}
                             >
                                 {sizes.size}

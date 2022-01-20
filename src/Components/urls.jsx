@@ -14,3 +14,4 @@ export const PROJECT_PAGE_INFO="/project/:id"
 export const FOOD_TRUCK_PAGE="/foodtruck";
 export const GRAND_BUFFE_PAGE ="/buffet/:id";
 export const SEARCH_PAGE = "/search";
+export const PRIVACY_POLICEY="/privacy_policy";

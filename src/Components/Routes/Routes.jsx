@@ -10,7 +10,7 @@ import {
     HOME_PAGE,
     LOGIN_PAGES,
     MENU_PAGE,
-    NEW_PASSWORD,
+    NEW_PASSWORD, PRIVACY_POLICEY,
     PROFIL_PAGE,
     PROJECT_PAGE_INFO,
     REGISTER_PAGE,
@@ -27,6 +27,7 @@ import ProjectModals from "../Projects/ProjectModals/ProjectModals";
 import Foodtruck from "../Foodtruck/Foodtruck";
 import GrantBuffet from "../GrandBuffet/GrantBuffet";
 import Serch from "../Serch/Serch";
+import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 
 
 
@@ -67,6 +68,7 @@ const Routes =()=>{
               <Route path={FOOD_TRUCK_PAGE} component={Foodtruck} exact/>
               <Route path={GRAND_BUFFE_PAGE} component={GrantBuffet} exact/>
               <Route path={SEARCH_PAGE} component={Serch} exact/>
+              <Route path={PRIVACY_POLICEY} component={PrivacyPolicy} exect/>
           </Switch>
 
 

@@ -258,10 +258,12 @@
     height: get-vw(67px,375);
     display: flex;
     overflow: hidden;
-    overflow-x: scroll;
+
+    -ms-overflow-style: none;
      &::-webkit-scrollbar{
        display: none;
      }
+
   }
   .btnmenuabout{
     min-width: max-content;
