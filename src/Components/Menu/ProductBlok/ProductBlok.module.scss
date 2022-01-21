@@ -16,8 +16,10 @@
   align-items: center;
   position: relative;
   img{
-   width: get-vw(127px,1920 );
-   height: get-vw(340px,1920 );
+    width: get-vw(379px,1920);
+    height: get-vw(340px,1920);
+    object-fit: cover;
+    border-radius: get-vw(10px,1920);
   }
   .akcia{
       width: get-vw(75px,1920 );

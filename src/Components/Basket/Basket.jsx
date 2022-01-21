@@ -287,7 +287,7 @@ const Basket = () => {
                        </div>
                         <div className={css.bonuss}>
                              <p style={fontproprty2}>օգտագործել իմ կուտակված</p>
-                             <span style={fontproprty}>{userBonus} ֏</span>
+                             <span style={fontproprty}>{userBonus ? userBonus : 0 } ֏</span>
                               <img src={btnbsk} alt=""  onClick={ChangeBonuces}/>
                         </div>
                         <div className={css.totaldiv}>

@@ -296,7 +296,8 @@ color: #BFB7B6;
   img{
     width: get-vw(379px,1920);
     height: get-vw(340px,1920);
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: get-vw(10px,1920);
   }
 }
 @media screen and(max-width: 600px){

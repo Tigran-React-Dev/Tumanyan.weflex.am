@@ -9,6 +9,7 @@ import {LikeObjSenddat} from "../redux/Action/AuthACtion";
 import { LoadProductData } from "../redux/Action/ProductAction";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import {HOME_PAGE} from "../urls";
 
 
 
@@ -29,6 +30,21 @@ const Menu = ({ history }) => {
     const Sauces = useSelector(({ ProductReducer  }) => ProductReducer.Sauces)
     const [advances,setadvances]=useState([])
     const [likeproduct,setLikeProduct]=useState([])
+
+    useEffect(()=>{
+
+
+        if(product.length){
+            let data =   product.filter(f=>f.name==id)
+            if(!data.length){
+                history.push(HOME_PAGE)
+            }
+        }
+
+
+    },[id,product])
+
+
     useEffect(()=>{
 
         dispatch(LoadProductData())
@@ -167,7 +183,7 @@ const Menu = ({ history }) => {
                    </div>
                     </>
                     }
-                    {id=="Սոուսներ" && <div className={css.Sauces}>
+                    {id=="Ըմպելիք" && <div className={css.Sauces}>
                         <p className={css.Saucestitle} style={fontproprty}>Սոուսներ</p>
                         <div className={css.sousesblog}>
                             {product.filter(fil=>fil.name==id)[0]?.souses?.map((obj) => {

@@ -88,7 +88,9 @@ const ProductBlokGrand = ({id,likeproductBuffet,category_buffet_id,names, name,n
 
         const newProductcard = {
              id,
+
             _id:Date.now(),
+            type:"buffet",
             name,
             nameRU,
             nameEN,

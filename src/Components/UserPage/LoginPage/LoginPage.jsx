@@ -106,7 +106,7 @@ const LoginPage = () => {
 
     }
     const responseFacebook =async (res)=>{
-        console.log(res)
+
         if(res.accessToken){
             const loginForm = new FormData();
             loginForm.append("accessToken", res.accessToken)
@@ -234,7 +234,7 @@ const LoginPage = () => {
                     )}
                 />
                 <GoogleLogin
-                    clientId="798988727061-09ffbg2uivsb38i34i6bknj6l1gogg5l.apps.googleusercontent.com"
+                    clientId="281210573759-2e20rq2b76s0saj0fgvqpktm69eleasp.apps.googleusercontent.com"
                     buttonText=""
                     icon={true}
                     onSuccess={responseGoogle}

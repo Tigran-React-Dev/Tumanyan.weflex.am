@@ -151,14 +151,14 @@ const Header = () => {
 
     const cardStyle = {
         top:  sowmenu ? "-3.4vw" : "0vw",
-        transition: "all 0.3s ease-in",
+        transition: "all 0.2s",
       };
     const menublogstyle = {
         top:  sowmenu ? "-3.4vw" : "0",
-        transition: "all 0.3s ease-in",
+        transition: "all 0.2s ",
      }
     const headerstyle ={
-         height: sowmenu ? "64px" : "160px",
+         height: sowmenu ? "3.3vw" : "8.3vw",
         }
     const fontproprty={fontFamily:languae=="ՀԱՅ" ?
             "Mardoto-Medium" : languae=="ENG" ?

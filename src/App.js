@@ -102,7 +102,7 @@ function App() {
     const stylemain={
         position:sowmenu ? "absolute" : "absolute",
         top:  sowmenu ? "-1.5vw" : "0vw",
-        transition: "all 0.3s ease-in",
+        //transition: "all 0.0s ease-in",
     }
 
 

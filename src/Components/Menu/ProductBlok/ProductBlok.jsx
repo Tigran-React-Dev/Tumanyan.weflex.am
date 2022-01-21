@@ -84,7 +84,9 @@ const ProductBlok = ({id,likeproduct, name,nameRU,nameEN,names, ingredients,imag
 
         const newProductcard = {
              id,
+             product_id:id,
             _id:Date.now(),
+            type:"product",
             name,
             nameRU,
             nameEN,
